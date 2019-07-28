@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<bg id="1" image="bg.png" />
+	<obj id="1" image="obj1.png" x="32" y="32" on="0" off="1" />
+	<obj id="2" image="obj2.png" x="128" y="128" on="1" off="2" />
+</data>
