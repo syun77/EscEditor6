@@ -12,10 +12,17 @@ class EscObj {
     public var flagOn:Int  = 0;
     public var flagOff:Int = 0;
 
+    var _root:String;
+
     // デバッグ情報
     var _txt:FlxText = null;
 
-    public function new() {
+    public function new(root:String) {
+        _root = root;
+    }
+
+    public function getImage():String {
+        return _root + image;
     }
 
     public function getString():String {
@@ -62,12 +69,17 @@ class EscObj {
 class EscLoader {
     public var bg:EscObj;
     public var objs:Array<EscObj>;
+    var _root:String;
 
-    public function new(file:String) {
+    public function new(root:String) {
+        // 基準フォルダを設定
+        _root = root;
         trace("EscLoader create.");
 
         objs = new Array<EscObj>();
 
+        // レイアウトファイル読み込み
+        var file:String = _root + "layout.xml";
         var xml:String = Assets.getText(file);
         var map:Xml = Xml.parse(xml).firstElement();
         for(child in map.elements()) {
@@ -96,17 +108,17 @@ class EscLoader {
     }
 
     function _parseObj(xml:Xml):EscObj {
-        var obj:EscObj = new EscObj();
-        obj.id      = xml.get("id");
+        var obj:EscObj = new EscObj(_root);
+        obj.id = xml.get("id");
         if(xml.exists("x")) {
-            obj.x   = Std.parseFloat(xml.get("x"));
+            obj.x = Std.parseFloat(xml.get("x"));
         }
         if(xml.exists("y")) {
-            obj.y   = Std.parseFloat(xml.get("y"));
+            obj.y = Std.parseFloat(xml.get("y"));
         }
-        obj.image   = xml.get("image");
+        obj.image = xml.get("image");
         if(xml.exists("on")) {
-            obj.flagOn  = Std.parseInt(xml.get("on"));
+            obj.flagOn = Std.parseInt(xml.get("on"));
         }
         if(xml.exists("off")) {
             obj.flagOff = Std.parseInt(xml.get("off"));

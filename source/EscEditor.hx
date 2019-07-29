@@ -17,13 +17,13 @@ class EscEditor extends FlxSpriteGroup {
     public function new() {
         super();
 
-        _loader = new EscLoader("assets/data/layout.xml");
+        _loader = new EscLoader("assets/data/scene001/");
         _txts = new Array<FlxText>();
 
         // 背景の読み込み
         {
             var bg = _loader.bg;
-            var file = "assets/images/" + _loader.bg.image;
+            var file = _loader.bg.getImage();
             _bg = new FlxSprite(bg.x, bg.y, file);
             bg.setText(_addText());
             this.add(_bg);
@@ -37,7 +37,7 @@ class EscEditor extends FlxSpriteGroup {
         // 配置オブジェクト
         _objs = new Array<FlxSprite>();
         for(obj in _loader.objs) {
-            var file = "assets/images/" + obj.image;
+            var file = obj.getImage();
             var spr = new FlxSprite(obj.x, obj.y, file);
             obj.setText(_addText());
             _objs.push(spr);
@@ -77,6 +77,7 @@ class EscEditor extends FlxSpriteGroup {
 			var y2:Float = obj.y + obj.height;
 			if(x1 < x && x < x2) {
 				if(y1 < y && y < y2) {
+                    // 画像領域内にマウスカーソルが存在する
 					return obj;
 				}
 			}
@@ -85,6 +86,9 @@ class EscEditor extends FlxSpriteGroup {
 		return null;
     }
 
+    /**
+     * 更新
+     */
     public override function update(elapsed:Float):Void {
         super.update(elapsed);
 
@@ -139,6 +143,9 @@ class EscEditor extends FlxSpriteGroup {
 
     }
 
+    /**
+     * 描画
+     */
     public override function draw():Void {
         super.draw();
     }
