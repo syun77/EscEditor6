@@ -76,6 +76,19 @@ class EscEditor extends FlxSpriteGroup {
     }
 
     /**
+     * 編集フラグを設定する
+     */
+    public function setEdit(b:Bool):Void {
+        _isEdit = b;
+        for(txt in _txts) {
+            txt.visible = b;
+        }
+    }
+    public function isEdit():Bool {
+        return _isEdit;
+    }
+
+    /**
      * テキストの追加
      */
     function _addText():FlxText {

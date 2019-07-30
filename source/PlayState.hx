@@ -29,5 +29,9 @@ class PlayState extends FlxState {
 			// リセット
 			FlxG.resetGame();
 		}
+		if(FlxG.keys.justPressed.E) {
+			var b = _editor.isEdit();
+			_editor.setEdit(b != true);
+		}
 	}
 }
