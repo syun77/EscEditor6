@@ -33,15 +33,6 @@ class EscEditor extends FlxSpriteGroup {
     public function new(root:String, isEdit:Bool) {
         super();
 
-        var script = "function hoge() { trace('hoge'); abc('abc'); }";
-        var parser = new Parser();
-        var program = parser.parseString(script);
-        var interp = new Interp();
-        // 関数登録
-        interp.variables.set("abc", function(str) { trace(str); } );
-        var p = interp.execute(program);
-        p();
-
         _isEdit = isEdit;
         _loader = new EscLoader(root);
         _txts = new Array<FlxText>();
