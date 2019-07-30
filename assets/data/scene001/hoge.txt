@@ -1,0 +1,3 @@
+function hoge() {
+	trace("hoge piyo momo");
+}

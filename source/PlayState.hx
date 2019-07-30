@@ -14,7 +14,7 @@ class PlayState extends FlxState {
 	override public function create():Void {
 		super.create();
 
-		_editor = new EscEditor();
+		_editor = new EscEditor("assets/data/scene001/", true);
 		this.add(_editor);
 
 	}

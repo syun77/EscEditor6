@@ -9,6 +9,7 @@ class EscObj {
     public var x:Float     = 0;
     public var y:Float     = 0;
     public var image:String = "";
+    public var click:String = "";
     public var flagOn:Int  = 0;
     public var flagOff:Int = 0;
 
@@ -25,11 +26,19 @@ class EscObj {
         return _root + image;
     }
 
+    public function getClick():String {
+        if(click == "") {
+            return null;
+        }
+        return Assets.getText('${_root}${click}.txt');
+    }
+
     public function getString():String {
         var str:String = "";
         str += '[${type},${id}] ';
         str += "(x,y)=(" + Std.int(x) + "," + Std.int(y) + ") ";
         str += '${image} ';
+        str += 'click=${click} ';
         str += 'On:${flagOn} Off:${flagOff} ';
 
         return str;
@@ -40,6 +49,7 @@ class EscObj {
         str += _buildAttr("image", image);
         str += _buildAttrInt("x", Std.int(x));
         str += _buildAttrInt("y", Std.int(y));
+        str += _buildAttr("click", click);
         str += _buildAttrInt("on", flagOn);
         str += _buildAttrInt("off", flagOff);
         str += "/>";
@@ -117,6 +127,9 @@ class EscLoader {
             obj.y = Std.parseFloat(xml.get("y"));
         }
         obj.image = xml.get("image");
+        if(xml.exists("click")) {
+            obj.click = xml.get("click");
+        }
         if(xml.exists("on")) {
             obj.flagOn = Std.parseInt(xml.get("on"));
         }

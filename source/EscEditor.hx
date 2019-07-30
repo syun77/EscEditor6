@@ -5,27 +5,54 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.util.FlxColor;
+import hscript.Parser;
+import hscript.Interp;
+
+class EscSprite extends FlxSprite {
+    public var obj:EscLoader.EscObj = null;
+    public override function update(elapsed:Float) {
+        super.update(elapsed);
+        // 座標を反映
+        obj.x = x;
+        obj.y = y;
+    }
+}
 
 class EscEditor extends FlxSpriteGroup {
+    var _isEdit:Bool = false;
     var _loader:EscLoader;
-    var _bg:FlxSprite;
-    var _objs:Array<FlxSprite>;
-    var _selobj:FlxSprite = null;
+    var _bg:EscSprite;
+    var _objs:Array<EscSprite>;
+    var _selobj:EscSprite = null;
     var _selframe:FlxSprite = null;
     var _txts:Array<FlxText>;
 
-    public function new() {
+    /**
+     * コンストラクタ
+     */
+    public function new(root:String, isEdit:Bool) {
         super();
 
-        _loader = new EscLoader("assets/data/scene001/");
+        var script = "function hoge() { trace('hoge'); abc('abc'); }";
+        var parser = new Parser();
+        var program = parser.parseString(script);
+        var interp = new Interp();
+        // 関数登録
+        interp.variables.set("abc", function(str) { trace(str); } );
+        var p = interp.execute(program);
+        p();
+
+        _isEdit = isEdit;
+        _loader = new EscLoader(root);
         _txts = new Array<FlxText>();
 
         // 背景の読み込み
         {
             var bg = _loader.bg;
             var file = _loader.bg.getImage();
-            _bg = new FlxSprite(bg.x, bg.y, file);
+            _bg = new EscSprite(bg.x, bg.y, file);
             bg.setText(_addText());
+            _bg.obj = bg;
             this.add(_bg);
         }
 
@@ -35,11 +62,12 @@ class EscEditor extends FlxSpriteGroup {
         this.add(_selframe);
 
         // 配置オブジェクト
-        _objs = new Array<FlxSprite>();
+        _objs = new Array<EscSprite>();
         for(obj in _loader.objs) {
             var file = obj.getImage();
-            var spr = new FlxSprite(obj.x, obj.y, file);
+            var spr = new EscSprite(obj.x, obj.y, file);
             obj.setText(_addText());
+            spr.obj = obj;
             _objs.push(spr);
         }
 
@@ -49,10 +77,16 @@ class EscEditor extends FlxSpriteGroup {
 
         // ヘルプテキスト
         for(txt in _txts) {
+            if(isEdit == false) {
+                txt.visible = false;
+            }
             this.add(txt);
         }
     }
 
+    /**
+     * テキストの追加
+     */
     function _addText():FlxText {
         var length:Int = _txts.length;
         var x:Float = 8;
@@ -67,7 +101,7 @@ class EscEditor extends FlxSpriteGroup {
 	/**
 	 * クリックしたオブジェクトを取得
 	 */
-    function _clickObj():FlxSprite {
+    function _clickObj():EscSprite {
 		for(obj in _objs) {
 			var x:Float = FlxG.mouse.x;
 			var y:Float = FlxG.mouse.y;
@@ -87,6 +121,23 @@ class EscEditor extends FlxSpriteGroup {
     }
 
     /**
+     * オブジェクトをクリックした時の処理
+     */
+    function _onClick(obj:EscLoader.EscObj):Void {
+        var str = obj.getClick();
+        if(str == null) {
+            return;
+        }
+        var parser = new Parser();
+        var program = parser.parseString(str);
+        var interp = new Interp();
+        // 関数登録
+        //interp.variables.set("abc", function(str) { trace(str); } );
+        var func = interp.execute(program);
+        func();
+    }
+
+    /**
      * 更新
      */
     public override function update(elapsed:Float):Void {
@@ -100,8 +151,6 @@ class EscEditor extends FlxSpriteGroup {
 		// 撰択しているオブジェクトと位置を合わせる
 		for(i in 0..._objs.length) {
 			var obj = _objs[i];
-			_loader.objs[i].x = obj.x;
-			_loader.objs[i].y = obj.y;
 		}
 
 		var str:String = "";
@@ -119,9 +168,20 @@ class EscEditor extends FlxSpriteGroup {
 				var width:Float = _selobj.width + 4;
 				var height:Float = _selobj.height + 4;
 				_selframe.makeGraphic(Std.int(width), Std.int(height), FlxColor.RED);
+                _onClick(_selobj.obj);
 			}
 		}
 
+        if(_isEdit) {
+            // デバッグ用更新
+            _updateDebug();
+        }
+    }
+
+    /**
+     * デバッグ表示の更新
+     */
+    function _updateDebug():Void {
 		_selframe.visible = false;
 		if(FlxG.mouse.pressed) {
 			if(_selobj != null) {
@@ -134,13 +194,6 @@ class EscEditor extends FlxSpriteGroup {
 				_selframe.y = _selobj.y - 2;
 			}
 		}
-    }
-
-    /**
-     * デバッグ表示の更新
-     */
-    function _updateDebug():Void {
-
     }
 
     /**
