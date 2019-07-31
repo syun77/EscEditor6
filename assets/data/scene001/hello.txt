@@ -1,4 +1,4 @@
 function hello() {
-	trace("hello world");
+	NOTICE("hello world");
 	BITON(1);
 }

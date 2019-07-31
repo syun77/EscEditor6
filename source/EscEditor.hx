@@ -7,6 +7,8 @@ import flixel.FlxG;
 import flixel.util.FlxColor;
 import hscript.Parser;
 import hscript.Interp;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 
 class EscSprite extends FlxSprite {
     public var obj:EscLoader.EscObj = null;
@@ -26,6 +28,8 @@ class EscEditor extends FlxSpriteGroup {
     var _selobj:EscSprite = null;
     var _selframe:FlxSprite = null;
     var _txts:Array<FlxText>;
+    var _txtNotice:FlxText;
+    var _tweenNotice:FlxTween = null;
 
     /**
      * コンストラクタ
@@ -73,6 +77,11 @@ class EscEditor extends FlxSpriteGroup {
             }
             this.add(txt);
         }
+
+        // 通知テキスト
+        _txtNotice = new FlxText(0, FlxG.height-40, FlxG.width, null, 20);
+        _txtNotice.alignment = FlxTextAlign.CENTER;
+        this.add(_txtNotice);
     }
 
     /**
@@ -108,6 +117,7 @@ class EscEditor extends FlxSpriteGroup {
     function _clickObj():EscSprite {
 		for(obj in _objs) {
             if(obj.visible == false) {
+                // 非表示時はクリックできない
                 continue;
             }
 			var x:Float = FlxG.mouse.x;
@@ -127,6 +137,18 @@ class EscEditor extends FlxSpriteGroup {
 		return null;
     }
 
+    function _startNotice(msg:String, time:Float):Void {
+        if(_tweenNotice != null) {
+            _tweenNotice.cancel();
+            _tweenNotice = null;
+        }
+        _txtNotice.text = msg;
+        _tweenNotice = FlxTween.tween(_txtNotice, {}, time, {onComplete:function(_) {
+            _txtNotice.text = "";
+            _tweenNotice = null;
+        }});
+    }
+
     /**
      * オブジェクトをクリックした時の処理
      */
@@ -140,6 +162,7 @@ class EscEditor extends FlxSpriteGroup {
         var interp = new Interp();
         // 関数登録
         interp.variables.set("BITON", function(idx:Int) { EscGlobal.flagSet(idx, true); } );
+        interp.variables.set("NOTICE", function(msg:String) { _startNotice(msg, 3); } );
         interp.variables.set("BITCHK", function(idx:Int) { return EscGlobal.flagCheck(idx); } );
         var func = interp.execute(program);
         func();
