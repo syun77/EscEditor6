@@ -84,7 +84,7 @@ class EscLoader {
     public function new(root:String) {
         // 基準フォルダを設定
         _root = root;
-        trace("EscLoader create.");
+        trace('EscLoader create. "${root}"');
 
         objs = new Array<EscObj>();
 
