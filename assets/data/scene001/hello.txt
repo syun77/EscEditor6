@@ -1,3 +1,4 @@
 function hello() {
 	trace("hello world");
+	BITON(1);
 }

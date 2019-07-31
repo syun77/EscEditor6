@@ -107,6 +107,9 @@ class EscEditor extends FlxSpriteGroup {
 	 */
     function _clickObj():EscSprite {
 		for(obj in _objs) {
+            if(obj.visible == false) {
+                continue;
+            }
 			var x:Float = FlxG.mouse.x;
 			var y:Float = FlxG.mouse.y;
 			var x1:Float = obj.x;
@@ -136,7 +139,8 @@ class EscEditor extends FlxSpriteGroup {
         var program = parser.parseString(str);
         var interp = new Interp();
         // 関数登録
-        //interp.variables.set("abc", function(str) { trace(str); } );
+        interp.variables.set("BITON", function(idx:Int) { EscGlobal.flagSet(idx, true); } );
+        interp.variables.set("BITCHK", function(idx:Int) { return EscGlobal.flagCheck(idx); } );
         var func = interp.execute(program);
         func();
     }
@@ -146,24 +150,6 @@ class EscEditor extends FlxSpriteGroup {
      */
     public override function update(elapsed:Float):Void {
         super.update(elapsed);
-
-		if(FlxG.keys.justPressed.Z) {
-			// テキストに出力する
-			trace("\n" + _loader.build());
-		}
-
-		// 撰択しているオブジェクトと位置を合わせる
-		for(i in 0..._objs.length) {
-			var obj = _objs[i];
-		}
-
-		var str:String = "";
-		_txts[0].text = _loader.bg.getString();
-		for(i in 0...2) {
-			str = "";
-			var obj = _loader.objs[i];
-			_txts[i + 1].text = obj.getString();
-		}
 
 		// クリックしたオブジェクトを取得する
 		if(FlxG.mouse.justPressed) {
@@ -176,9 +162,28 @@ class EscEditor extends FlxSpriteGroup {
 			}
 		}
 
-        if(_isEdit) {
+        if(isEdit()) {
             // デバッグ用更新
             _updateDebug();
+        }
+        else {
+            _updateObjVisible();
+        }
+    }
+
+    function _updateObjVisible():Void {
+        for(spr in _objs) {
+            var on = spr.obj.flagOn;
+            var off = spr.obj.flagOff;
+            spr.visible = false;
+            if(on == 0 || EscGlobal.flagCheck(on)) {
+                // 表示フラグが有効
+                spr.visible = true;
+                if(off > 0 && EscGlobal.flagCheck(off)) {
+                    // 非表示フラグが有効
+                    spr.visible = false;
+                }
+            }
         }
     }
 
@@ -186,6 +191,24 @@ class EscEditor extends FlxSpriteGroup {
      * デバッグ表示の更新
      */
     function _updateDebug():Void {
+
+        for(spr in _objs) {
+            spr.visible = true;
+        }
+
+        if(FlxG.keys.justPressed.Z) {
+            // テキストに出力する
+            trace("\n" + _loader.build());
+        }
+        
+		var str:String = "";
+		_txts[0].text = _loader.bg.getString();
+		for(i in 0...2) {
+			str = "";
+			var obj = _loader.objs[i];
+			_txts[i + 1].text = obj.getString();
+		}
+
 		_selframe.visible = false;
 		if(FlxG.mouse.pressed) {
 			if(_selobj != null) {

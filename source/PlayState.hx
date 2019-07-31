@@ -11,12 +11,17 @@ class PlayState extends FlxState {
 
 	var _editor:EscEditor;
 
+	/**
+	 * 生成
+	 */
 	override public function create():Void {
 		super.create();
 
+		// グローバル変数初期化
+		EscGlobal.init();
+
 		_editor = new EscEditor("assets/data/scene001/", true);
 		this.add(_editor);
-
 	}
 
 	/**
