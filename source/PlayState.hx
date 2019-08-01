@@ -23,6 +23,7 @@ class PlayState extends FlxState {
 	var _cursor:Int = 1;
 	var _cursorSpr:FlxSprite;
 	var _txts:Array<FlxText>;
+	var _flagEditor:EscFlagEditor;
 
 	// シーン編集
 	var _editor:EscEditor;
@@ -56,6 +57,12 @@ class PlayState extends FlxState {
 		for(txt in _txts) {
 			this.add(txt);
 		}
+
+		// フラグエディタ
+		_flagEditor = new EscFlagEditor();
+		_flagEditor.x = 300;
+		_flagEditor.y = 32;
+		_flagEditor.exists = false;
 	}
 
 	/**
@@ -117,6 +124,17 @@ class PlayState extends FlxState {
 			// 編集モード切り替え
 			var b = _editor.isEdit();
 			_editor.setEdit(b != true);
+		}
+		if(FlxG.keys.justPressed.F) {
+			// フラグ編集モード切り替え
+			if(_flagEditor.exists) {
+				this.remove(_flagEditor);
+				_flagEditor.exists = false;
+			}
+			else {
+				_flagEditor.exists = true;
+				this.add(_flagEditor);
+			}
 		}
 		if(FlxG.keys.justPressed.Q) {
 			// 強制終了

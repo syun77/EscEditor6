@@ -1,6 +1,7 @@
 package;
 
 class EscGlobal {
+    public static inline var MAX_FLAG:Int = 100; // フラグの最大数 (0無効)
     public static inline var SCENE_INVALID:Int = 0; // 無効なシーンID
 
     // フラグ
@@ -14,7 +15,7 @@ class EscGlobal {
      */
     public static function init():Void {
         _flags = new Array<Bool>();
-        for(i in 0...128) {
+        for(i in 0...MAX_FLAG) {
             _flags.push(false);
         }
     }
