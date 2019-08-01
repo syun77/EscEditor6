@@ -82,6 +82,9 @@ class EscEditor extends FlxSpriteGroup {
         _txtNotice = new FlxText(0, FlxG.height-40, FlxG.width, null, 20);
         _txtNotice.alignment = FlxTextAlign.CENTER;
         this.add(_txtNotice);
+
+        // 表示オブジェクト更新
+        _updateObjVisible();
     }
 
     /**
