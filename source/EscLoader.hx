@@ -107,6 +107,10 @@ class EscLoader {
         }
     }
 
+    public function getRoot():String {
+        return _root;
+    }
+
     /**
      * 更新
      */

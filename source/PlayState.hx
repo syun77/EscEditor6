@@ -36,8 +36,6 @@ class PlayState extends FlxState {
 		// グローバル変数初期化
 		EscGlobal.init();
 
-		_editor = new EscEditor("assets/data/scene001/", true);
-
 		// カーソルを生成
 		_cursorSpr = new FlxSprite(0, 0).makeGraphic(120, 20, FlxColor.GREEN);
 		this.add(_cursorSpr);
@@ -104,11 +102,24 @@ class PlayState extends FlxState {
 	}
 
 	function _updateEditScene():Void {
+		if(EscGlobal.hasNextSceneID()) {
+			// 次に進むシーンを取得する
+			var next = EscGlobal.getNextSceneID();
+			EscGlobal.clearNextSceneID();
+			var isEdit = _editor.isEdit();
+			// 削除
+			this.remove(_editor);
+			// 次のシーンに遷移する
+			_editor = new EscEditor(_getScenePath(next, true), isEdit);
+			this.add(_editor);
+		}
 		if(FlxG.keys.justPressed.E) {
+			// 編集モード切り替え
 			var b = _editor.isEdit();
 			_editor.setEdit(b != true);
 		}
 		if(FlxG.keys.justPressed.Q) {
+			// 強制終了
 			this.remove(_editor);
 			_editor = null;
 			_state = State.SelectScene;

@@ -1,25 +1,44 @@
 package;
 
 class EscGlobal {
-    public static var flags:Array<Bool>;
+    public static inline var SCENE_INVALID:Int = 0; // 無効なシーンID
+
+    // フラグ
+    static var _flags:Array<Bool>;
+
+    // 次のシーン
+    static var _nextScene:Int = SCENE_INVALID;
 
     /**
      * 初期化
      */
     public static function init():Void {
-        flags = new Array<Bool>();
+        _flags = new Array<Bool>();
         for(i in 0...128) {
-            flags.push(false);
+            _flags.push(false);
         }
+    }
+
+    public static function setNextSceneID(sceneID:Int):Void {
+        _nextScene = sceneID;
+    }
+    public static function getNextSceneID():Int {
+        return _nextScene;
+    }
+    public static function hasNextSceneID():Bool {
+        return _nextScene != SCENE_INVALID;
+    }
+    public static function clearNextSceneID():Void {
+        _nextScene = SCENE_INVALID;
     }
 
     /**
      * フラグ
      */
     public static function flagCheck(idx:Int):Bool {
-        return flags[idx];
+        return _flags[idx];
     }
     public static function flagSet(idx:Int, b:Bool):Void {
-        flags[idx] = b;
+        _flags[idx] = b;
     }
 }

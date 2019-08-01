@@ -153,17 +153,21 @@ class EscEditor extends FlxSpriteGroup {
      * オブジェクトをクリックした時の処理
      */
     function _onClick(obj:EscLoader.EscObj):Void {
+        trace('click: ${_loader.getRoot()}${obj.click}.txt');
         var str = obj.getClick();
         if(str == null) {
             return;
         }
+        trace(str);
         var parser = new Parser();
         var program = parser.parseString(str);
         var interp = new Interp();
         // 関数登録
         interp.variables.set("BITON", function(idx:Int) { EscGlobal.flagSet(idx, true); } );
+        interp.variables.set("BITOFF", function(idx:Int) { EscGlobal.flagSet(idx, false); } );
         interp.variables.set("NOTICE", function(msg:String) { _startNotice(msg, 3); } );
         interp.variables.set("BITCHK", function(idx:Int) { return EscGlobal.flagCheck(idx); } );
+        interp.variables.set("JUMP", function(idx:Int) { EscGlobal.setNextSceneID(idx); } );
         var func = interp.execute(program);
         func();
     }
