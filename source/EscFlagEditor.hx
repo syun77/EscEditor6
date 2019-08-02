@@ -14,6 +14,7 @@ class EscFlagEditor extends FlxSpriteGroup {
     static inline var WIDTH:Int = 20;
     static inline var HEIGHT:Int = 20;
 
+    var _isEnd:Bool = false;
     var _txts:Array<FlxText>;
     var _sprHorizontal:FlxSprite;
     var _sprVertical:FlxSprite;
@@ -72,6 +73,10 @@ class EscFlagEditor extends FlxSpriteGroup {
         this.add(_txtCaption);
     }
 
+    public function isEnd():Bool {
+        return _isEnd;
+    }
+
     /**
      * 更新
      */
@@ -96,6 +101,11 @@ class EscFlagEditor extends FlxSpriteGroup {
                 txt.text = "0";
             }
             idx++;
+        }
+
+        if(FlxG.keys.justPressed.X) {
+            // 終了
+            _isEnd = true;
         }
     }
 

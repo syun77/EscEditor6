@@ -20,10 +20,11 @@ class PlayState extends FlxState {
 	// 状態
 	var _state:State = State.SelectScene;
 
+	var _isEdit:Bool = true;
 	var _cursor:Int = 1;
 	var _cursorSpr:FlxSprite;
 	var _txts:Array<FlxText>;
-	var _flagEditor:EscFlagEditor;
+	var _txtEdit:FlxText;
 
 	// シーン編集
 	var _editor:EscEditor;
@@ -58,11 +59,8 @@ class PlayState extends FlxState {
 			this.add(txt);
 		}
 
-		// フラグエディタ
-		_flagEditor = new EscFlagEditor();
-		_flagEditor.x = 300;
-		_flagEditor.y = 32;
-		_flagEditor.exists = false;
+		_txtEdit = new FlxText(300, 32, 0, "", 12);
+		this.add(_txtEdit);
 	}
 
 	/**
@@ -81,6 +79,10 @@ class PlayState extends FlxState {
 			// リセット
 			FlxG.resetGame();
 		}
+		if(FlxG.keys.justPressed.F) {
+			// フラグ編集モード切り替え
+			openSubState(new DebugMenuSubState());
+		}
 	}
 
 	function _updateSelectScene():Void {
@@ -97,12 +99,21 @@ class PlayState extends FlxState {
 				_cursor = 1;
 			}
 		}
+		if(FlxG.keys.justPressed.E) {
+			_isEdit = (_isEdit == false);
+		}
+		if(_isEdit) {
+			_txtEdit.text = "Edit: On";
+		}
+		else {
+			_txtEdit.text = "Edit: Off";
+		}
 		_cursorSpr.x = _txts[_cursor - 1].x;
 		_cursorSpr.y = _txts[_cursor - 1].y;
 		_cursorSpr.visible = true;
 		if(FlxG.keys.justPressed.Z) {
 			_cursorSpr.visible = false;
-			_editor = new EscEditor(_getScenePath(_cursor, true), true);
+			_editor = new EscEditor(_getScenePath(_cursor, true), _isEdit);
 			this.add(_editor);
 			_state = State.EditScene;
 		}
@@ -113,28 +124,17 @@ class PlayState extends FlxState {
 			// 次に進むシーンを取得する
 			var next = EscGlobal.getNextSceneID();
 			EscGlobal.clearNextSceneID();
-			var isEdit = _editor.isEdit();
+			_isEdit = _editor.isEdit();
 			// 削除
 			this.remove(_editor);
 			// 次のシーンに遷移する
-			_editor = new EscEditor(_getScenePath(next, true), isEdit);
+			_editor = new EscEditor(_getScenePath(next, true), _isEdit);
 			this.add(_editor);
 		}
 		if(FlxG.keys.justPressed.E) {
 			// 編集モード切り替え
 			var b = _editor.isEdit();
 			_editor.setEdit(b != true);
-		}
-		if(FlxG.keys.justPressed.F) {
-			// フラグ編集モード切り替え
-			if(_flagEditor.exists) {
-				this.remove(_flagEditor);
-				_flagEditor.exists = false;
-			}
-			else {
-				_flagEditor.exists = true;
-				this.add(_flagEditor);
-			}
 		}
 		if(FlxG.keys.justPressed.Q) {
 			// 強制終了
