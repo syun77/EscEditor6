@@ -142,6 +142,10 @@ class PlayState extends FlxState {
 			_editor = null;
 			_state = State.SelectScene;
 		}
+		if(FlxG.keys.justPressed.I) {
+			// アイテム撰択を開く
+			openSubState(new ItemMenuSubState());
+		}
 	}
 
 	/**
