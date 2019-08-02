@@ -1,6 +1,9 @@
 package;
 
+import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.util.FlxColor;
 
 class DebugMenuSubState extends FlxSubState {
     var _flagEditor:EscFlagEditor = null;
@@ -10,6 +13,10 @@ class DebugMenuSubState extends FlxSubState {
      */
     override public function create():Void {
         super.create();
+
+        var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+        bg.alpha = 0.5;
+        this.add(bg);
 
         _flagEditor = new EscFlagEditor();
 		_flagEditor.x = 300;
