@@ -79,7 +79,8 @@ class EscEditor extends FlxSpriteGroup {
         }
 
         // 通知テキスト
-        _txtNotice = new FlxText(0, FlxG.height-40, FlxG.width, null, 20);
+        _txtNotice = new FlxText(0, FlxG.height-40, FlxG.width, null);
+        _txtNotice.setFormat("assets/fonts/PixelMplus12-Regular.ttf", 20);
         _txtNotice.alignment = FlxTextAlign.CENTER;
         this.add(_txtNotice);
 

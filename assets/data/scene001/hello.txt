@@ -1,4 +1,4 @@
 function hello() {
-	NOTICE("hello world");
+	NOTICE("こんにちは　世界");
 	BITON(1);
 }
