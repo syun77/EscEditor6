@@ -5,23 +5,20 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.util.FlxColor;
-import hscript.Parser;
-import hscript.Interp;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
-class EscSprite extends FlxSprite {
-    public var obj:EscLoader.EscObj = null;
-    public override function update(elapsed:Float) {
-        super.update(elapsed);
-        // 座標を反映
-        obj.x = x;
-        obj.y = y;
-    }
+/**
+ * 状態
+ */
+private enum State {
+    Execute;    // 実行中
+    ScriptWait; // スクリプト終了待ち
 }
 
 class EscEditor extends FlxSpriteGroup {
     var _isEdit:Bool = false;
+    var _state:State = State.Execute;
     var _loader:EscLoader;
     var _bg:EscSprite;
     var _objs:Array<EscSprite>;
@@ -30,6 +27,7 @@ class EscEditor extends FlxSpriteGroup {
     var _txts:Array<FlxText>;
     var _txtNotice:FlxText;
     var _tweenNotice:FlxTween = null;
+    var _script:EscScript;
 
     /**
      * コンストラクタ
@@ -86,6 +84,10 @@ class EscEditor extends FlxSpriteGroup {
 
         // 表示オブジェクト更新
         _updateObjVisible();
+
+        // スクリプト生成
+        _script = new EscScript();
+        this.add(_script);
     }
 
     /**
@@ -163,17 +165,13 @@ class EscEditor extends FlxSpriteGroup {
             return;
         }
         trace(str);
-        var parser = new Parser();
-        var program = parser.parseString(str);
-        var interp = new Interp();
-        // 関数登録
-        interp.variables.set("BITON", function(idx:Int) { EscGlobal.flagSet(idx, true); } );
-        interp.variables.set("BITOFF", function(idx:Int) { EscGlobal.flagSet(idx, false); } );
-        interp.variables.set("NOTICE", function(msg:String) { _startNotice(msg, 3); } );
-        interp.variables.set("BITCHK", function(idx:Int) { return EscGlobal.flagCheck(idx); } );
-        interp.variables.set("JUMP", function(idx:Int) { EscGlobal.setNextSceneID(idx); } );
-        var func = interp.execute(program);
-        func();
+
+        var tbl = new Map<String,Dynamic>();
+        tbl.set("NOTICE", function(msg:String) { _startNotice(msg, 3); } );
+
+        // スクリプト実行
+        _script.execute(str, tbl);
+        _state = State.ScriptWait;
     }
 
     /**
@@ -182,6 +180,25 @@ class EscEditor extends FlxSpriteGroup {
     public override function update(elapsed:Float):Void {
         super.update(elapsed);
 
+        switch(_state) {
+            case State.Execute:
+                _updateExecute();
+            case State.ScriptWait:
+                if(_script.isEnd()) {
+                    _state = State.Execute;
+                }
+        }
+
+        if(isEdit()) {
+            // デバッグ用更新
+            _updateDebug();
+        }
+        else {
+            _updateObjVisible();
+        }
+    }
+
+    function _updateExecute():Void {
 		// クリックしたオブジェクトを取得する
 		if(FlxG.mouse.justPressed) {
 			_selobj = _clickObj();
@@ -192,14 +209,6 @@ class EscEditor extends FlxSpriteGroup {
                 _onClick(_selobj.obj);
 			}
 		}
-
-        if(isEdit()) {
-            // デバッグ用更新
-            _updateDebug();
-        }
-        else {
-            _updateObjVisible();
-        }
     }
 
     function _updateObjVisible():Void {
