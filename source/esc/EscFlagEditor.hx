@@ -1,4 +1,4 @@
-package;
+package esc;
 
 import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;

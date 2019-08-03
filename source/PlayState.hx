@@ -6,6 +6,10 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import openfl.Assets;
+import esc.EscEditor;
+import esc.EscGlobal;
+import ui.ItemMenuSubState;
+import ui.DebugMenuSubState;
 
 /**
  * 状態

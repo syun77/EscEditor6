@@ -1,4 +1,4 @@
-package;
+package esc;
 
 class EscGlobal {
     public static inline var MAX_FLAG:Int = 100; // フラグの最大数 (0無効)

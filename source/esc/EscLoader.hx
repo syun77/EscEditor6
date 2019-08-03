@@ -1,4 +1,4 @@
-package;
+package esc;
 
 import openfl.Assets;
 import flixel.text.FlxText;

@@ -1,9 +1,10 @@
-package;
+package ui;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
+import esc.EscFlagEditor;
 
 class DebugMenuSubState extends FlxSubState {
     var _flagEditor:EscFlagEditor = null;
