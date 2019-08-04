@@ -60,11 +60,11 @@ class PlayState extends FlxState {
 		var x = 32;
 		var y = 48;
 		for(i in 1...32) {
-			var path = _getScenePath(i, false);
+			var path = Resources.getScenePath(i, false);
 			if(Assets.exists(path) == false) {
 				break; // シーンデータが存在しない
 			}
-			var txt = new FlxText(x, y, 0, "Scene" + fillZero(i, 3), 20);
+			var txt = new FlxText(x, y, 0, "Scene" + Utils.fillZero(i, 3), 20);
 			_txts.push(txt);
 			y += 24;
 		}
@@ -126,7 +126,7 @@ class PlayState extends FlxState {
 		_cursorSpr.visible = true;
 		if(FlxG.keys.justPressed.Z) {
 			_cursorSpr.visible = false;
-			_editor = new EscEditor(_getScenePath(_cursor, true), _isEdit);
+			_editor = new EscEditor(Resources.getScenePath(_cursor, true), _isEdit);
 			this.add(_editor);
 			_state = State.EditScene;
 		}
@@ -141,7 +141,7 @@ class PlayState extends FlxState {
 			// 削除
 			this.remove(_editor);
 			// 次のシーンに遷移する
-			_editor = new EscEditor(_getScenePath(next, true), _isEdit);
+			_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
 			this.add(_editor);
 		}
 		if(FlxG.keys.justPressed.E) {
@@ -161,30 +161,7 @@ class PlayState extends FlxState {
 		}
 	}
 
-	/**
-	 * シーンファイルのパスを取得する
-	 */
-	function _getScenePath(scene:Int, isRoot:Bool):String {
-		if(isRoot) {
-			return "assets/data/scene" + fillZero(scene, 3) + "/";
-		}
-		else {
-			return "assets/data/scene" + fillZero(scene, 3) + "/layout.xml";
-		}
-	}
-
 	function _getInfomationUI():InfomationUI {
 		return _editor.getInfomationUI();
-	}
-
-	/**
-     * ０埋めした数値文字列を返す
-     * @param	n 元の数値
-     * @param	digit ゼロ埋めする桁数
-     * @return  ゼロ埋めした文字列
-     */
-	public static function fillZero(n:Int, digit:Int):String {
-		var str:String = "" + n;
-		return StringTools.lpad(str, "0", digit);
 	}
 }
