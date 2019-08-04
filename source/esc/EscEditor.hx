@@ -7,6 +7,7 @@ import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import ui.InfomationUI;
 
 /**
  * 状態
@@ -25,8 +26,7 @@ class EscEditor extends FlxSpriteGroup {
     var _selobj:EscSprite = null;
     var _selframe:FlxSprite = null;
     var _txts:Array<FlxText>;
-    var _txtNotice:FlxText;
-    var _tweenNotice:FlxTween = null;
+    var _infomationUI:InfomationUI;
     var _script:EscScript;
 
     /**
@@ -77,10 +77,8 @@ class EscEditor extends FlxSpriteGroup {
         }
 
         // 通知テキスト
-        _txtNotice = new FlxText(0, FlxG.height-40, FlxG.width, null);
-        _txtNotice.setFormat("assets/fonts/PixelMplus12-Regular.ttf", 20);
-        _txtNotice.alignment = FlxTextAlign.CENTER;
-        this.add(_txtNotice);
+        _infomationUI = new InfomationUI();
+        this.add(_infomationUI);
 
         // 表示オブジェクト更新
         _updateObjVisible();
@@ -101,6 +99,10 @@ class EscEditor extends FlxSpriteGroup {
     }
     public function isEdit():Bool {
         return _isEdit;
+    }
+
+    public function getInfomationUI():InfomationUI {
+        return _infomationUI;
     }
 
     /**
@@ -143,19 +145,6 @@ class EscEditor extends FlxSpriteGroup {
 		return null;
     }
 
-    function _startNotice(msg:String, time:Float):Void {
-        if(_tweenNotice != null) {
-            _tweenNotice.cancel();
-            _tweenNotice = null;
-        }
-        _txtNotice.text = msg;
-        _txtNotice.visible = true;
-        _tweenNotice = FlxTween.tween(_txtNotice, {}, time, {onComplete:function(_) {
-            _txtNotice.visible = false;
-            _tweenNotice = null;
-        }});
-    }
-
     /**
      * オブジェクトをクリックした時の処理
      */
@@ -167,11 +156,8 @@ class EscEditor extends FlxSpriteGroup {
         }
         trace(str);
 
-        var tbl = new Map<String,Dynamic>();
-        tbl.set("NOTICE", function(msg:String) { _startNotice(msg, 3); } );
-
         // スクリプト実行
-        _script.execute(str, tbl);
+        _script.execute(str, null);
         _state = State.ScriptWait;
     }
 

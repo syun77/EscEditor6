@@ -10,6 +10,7 @@ import esc.EscEditor;
 import esc.EscGlobal;
 import ui.ItemMenuSubState;
 import ui.DebugMenuSubState;
+import ui.InfomationUI;
 
 /**
  * 状態
@@ -32,6 +33,14 @@ class PlayState extends FlxState {
 
 	// シーン編集
 	var _editor:EscEditor;
+
+	public static function getInfomationUI():InfomationUI {
+		if(Std.is(FlxG.state, PlayState)) {
+			var playstate = cast(FlxG.state, PlayState);
+			return playstate._getInfomationUI();
+		}
+		return null;
+	}
 
 	/**
 	 * 生成
@@ -162,6 +171,10 @@ class PlayState extends FlxState {
 		else {
 			return "assets/data/scene" + fillZero(scene, 3) + "/layout.xml";
 		}
+	}
+
+	function _getInfomationUI():InfomationUI {
+		return _editor.getInfomationUI();
 	}
 
 	/**

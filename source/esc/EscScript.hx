@@ -19,14 +19,15 @@ private enum State {
  * コマンド種別
  */
 private enum Cmd {
-    BitOn;   // フラグを立てる
-    BitOff;  // フラグを下げる
-    IfGoto;  // フラグが立っていたら指定のラベルまでジャンプする
-    Label;   // ラベルの定義
-    Jump;    // シーンジャンプ
-    Message; // メッセージ表示
-    Wait;    // 一定時間待つ
-    Other;   // その他
+    BitOn;      // フラグを立てる
+    BitOff;     // フラグを下げる
+    IfGoto;     // フラグが立っていたら指定のラベルまでジャンプする
+    Label;      // ラベルの定義
+    Jump;       // シーンジャンプ
+    Infomation; // インフォメーションテキスト表示
+    Message;    // メッセージ表示
+    Wait;       // 一定時間待つ
+    Other;      // その他
 }
 
 /**
@@ -95,14 +96,15 @@ class EscScript extends FlxSpriteGroup {
 
         _cmdList = new List<EscCommand>();
         _cmdTbl = [
-            Cmd.BitOn   => _cmdBitOn,
-            Cmd.BitOff  => _cmdBitOff,
-            Cmd.IfGoto  => _cmdIfGoto,
-            Cmd.Label   => _cmdLabel,
-            Cmd.Message => _cmdMessage,
-            Cmd.Wait    => _cmdWait,
-            Cmd.Jump    => _cmdJump,
-            Cmd.Other   => _cmdOther,
+            Cmd.BitOn      => _cmdBitOn,
+            Cmd.BitOff     => _cmdBitOff,
+            Cmd.IfGoto     => _cmdIfGoto,
+            Cmd.Label      => _cmdLabel,
+            Cmd.Message    => _cmdMessage,
+            Cmd.Wait       => _cmdWait,
+            Cmd.Infomation => _cmdInfomation,
+            Cmd.Jump       => _cmdJump,
+            Cmd.Other      => _cmdOther,
         ];
     }
 
@@ -132,6 +134,11 @@ class EscScript extends FlxSpriteGroup {
     }
     function _cmdMessage(cmd:EscCommand):CmdRet {
         var msg = cmd.paramString(0);
+        return CmdRet.Continue;
+    }
+    function _cmdInfomation(cmd:EscCommand):CmdRet {
+        var msg = cmd.paramString(0);
+        PlayState.getInfomationUI().start(msg, 3);
         return CmdRet.Continue;
     }
     function _cmdWait(cmd:EscCommand):CmdRet {
@@ -228,10 +235,12 @@ class EscScript extends FlxSpriteGroup {
         var program = parser.parseString(str);
         _interp = new Interp();
         // 関数登録
-        for(key in tbl.keys()) {
-            _register(key, function(msg:String) {
-                _add(Cmd.Other, msg).func = tbl[key];
-            });
+        if(tbl != null) {
+            for(key in tbl.keys()) {
+                _register(key, function(msg:String) {
+                    _add(Cmd.Other, msg).func = tbl[key];
+                });
+            }
         }
         _registers();
 
@@ -254,6 +263,7 @@ class EscScript extends FlxSpriteGroup {
         _register("JUMP",   function(idx:Int)    { _add(Cmd.Jump, idx); } );
         _register("MSG",    function(msg:String) { _add(Cmd.Message, msg); } );
         _register("WAIT",   function(time:Float) { _add(Cmd.Wait, time); } );
+        _register("NOTICE", function(msg:String) { _add(Cmd.Infomation, msg); });
     }
     function _register(key:String, variable:Dynamic):Void {
         _interp.variables.set(key, variable);
