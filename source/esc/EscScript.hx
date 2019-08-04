@@ -264,10 +264,7 @@ class EscScript extends FlxSpriteGroup {
      */
     function _add(cmd:Cmd, param:Dynamic=null):EscCommand {
         var command = new EscCommand(cmd, param);
-
-        // TODO: 終端から実行されるため先頭に追加していく
         _cmdList.add(command);
-        // _cmdList.push(command);
         return command;
     }
 }

@@ -149,8 +149,9 @@ class EscEditor extends FlxSpriteGroup {
             _tweenNotice = null;
         }
         _txtNotice.text = msg;
+        _txtNotice.visible = true;
         _tweenNotice = FlxTween.tween(_txtNotice, {}, time, {onComplete:function(_) {
-            _txtNotice.text = "";
+            _txtNotice.visible = false;
             _tweenNotice = null;
         }});
     }
