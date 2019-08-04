@@ -1,5 +1,5 @@
 function hoge() {
 	NOTICE("hoge piyo momo");
-	WAIT(3);
+	WAIT(1);
 	JUMP(2);
 }
