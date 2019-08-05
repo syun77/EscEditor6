@@ -1,8 +1,12 @@
 package;
 
 class Resources {
+	// フォント
     public static inline var FONT_PATH:String = "assets/fonts/PixelMplus12-Regular.ttf";
     public static inline var FONT_SIZE:Int = 20;
+
+	// カーソル
+	public static inline var CURSOR_PATH:String = "assets/images/arrow.png";
     
 	/**
 	 * シーンファイルのパスを取得する

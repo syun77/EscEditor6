@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import ui.InfomationUI;
+import ui.MovingCursorUI;
 
 /**
  * 状態
@@ -28,6 +29,7 @@ class EscEditor extends FlxSpriteGroup {
     var _txts:Array<FlxText>;
     var _infomationUI:InfomationUI;
     var _script:EscScript;
+    var _movingCursorUI:MovingCursorUI;
 
     /**
      * コンストラクタ
@@ -76,12 +78,17 @@ class EscEditor extends FlxSpriteGroup {
             this.add(txt);
         }
 
-        // 通知テキスト
-        _infomationUI = new InfomationUI();
-        this.add(_infomationUI);
 
         // 表示オブジェクト更新
         _updateObjVisible();
+
+        // 移動カーソル
+        _movingCursorUI = new MovingCursorUI();
+        this.add(_movingCursorUI);
+        
+        // 通知テキスト
+        _infomationUI = new InfomationUI();
+        this.add(_infomationUI);
 
         // スクリプト生成
         _script = new EscScript();
