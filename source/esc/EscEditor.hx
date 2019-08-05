@@ -44,10 +44,8 @@ class EscEditor extends FlxSpriteGroup {
         // 背景の読み込み
         {
             var bg = _loader.bg;
-            var file = _loader.bg.getImage();
-            _bg = new EscSprite(bg.x, bg.y, file);
+            _bg = new EscSprite(bg.x, bg.y, bg);
             bg.setText(_addText());
-            _bg.obj = bg;
             this.add(_bg);
         }
 
@@ -59,10 +57,8 @@ class EscEditor extends FlxSpriteGroup {
         // 配置オブジェクト
         _objs = new Array<EscSprite>();
         for(obj in _loader.objs) {
-            var file = obj.getImage();
-            var spr = new EscSprite(obj.x, obj.y, file);
+            var spr = new EscSprite(obj.x, obj.y, obj);
             obj.setText(_addText());
-            spr.obj = obj;
             _objs.push(spr);
         }
 
@@ -83,7 +79,7 @@ class EscEditor extends FlxSpriteGroup {
         _updateObjVisible();
 
         // 移動カーソル
-        _movingCursorUI = new MovingCursorUI();
+        _movingCursorUI = new MovingCursorUI(_loader.movings);
         this.add(_movingCursorUI);
         
         // 通知テキスト
@@ -155,7 +151,7 @@ class EscEditor extends FlxSpriteGroup {
     /**
      * オブジェクトをクリックした時の処理
      */
-    function _onClick(obj:EscLoader.EscObj):Void {
+    function _onClick(obj:EscObj):Void {
         trace('click: ${_loader.getRoot()}${obj.click}.txt');
         var str = obj.getClick();
         if(str == null) {
@@ -200,24 +196,14 @@ class EscEditor extends FlxSpriteGroup {
 				var width:Float = _selobj.width + 4;
 				var height:Float = _selobj.height + 4;
 				_selframe.makeGraphic(Std.int(width), Std.int(height), FlxColor.RED);
-                _onClick(_selobj.obj);
+                _onClick(_selobj.getObj());
 			}
 		}
     }
 
     function _updateObjVisible():Void {
         for(spr in _objs) {
-            var on = spr.obj.flagOn;
-            var off = spr.obj.flagOff;
-            spr.visible = false;
-            if(on == 0 || EscGlobal.flagCheck(on)) {
-                // 表示フラグが有効
-                spr.visible = true;
-                if(off > 0 && EscGlobal.flagCheck(off)) {
-                    // 非表示フラグが有効
-                    spr.visible = false;
-                }
-            }
+            spr.visible = spr.getObj().checkVisible();
         }
     }
 
