@@ -7,6 +7,8 @@ import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import esc.loader.EscLoader;
+import esc.loader.EscObj;
 import ui.InfomationUI;
 import ui.MovingCursorUI;
 

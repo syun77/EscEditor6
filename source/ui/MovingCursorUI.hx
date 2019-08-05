@@ -3,7 +3,7 @@ package ui;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxG;
-import esc.EscObj;
+import esc.loader.EscObj;
 
 /**
  * カーソルスプライト

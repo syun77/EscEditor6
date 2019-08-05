@@ -1,7 +1,7 @@
 package esc;
 
 import flixel.FlxSprite;
-import esc.EscObj;
+import esc.loader.EscObj;
 
 class EscSprite extends FlxSprite {
     var _obj:EscObj = null;
