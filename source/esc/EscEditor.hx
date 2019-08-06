@@ -19,6 +19,7 @@ import ui.TapUI;
 private enum State {
     Execute;    // 実行中
     ScriptWait; // スクリプト終了待ち
+    NextScene;  // 次のシーンに進む
 }
 
 class EscEditor extends FlxSpriteGroup {
@@ -175,9 +176,18 @@ class EscEditor extends FlxSpriteGroup {
             case State.ScriptWait:
                 _movingCursorUI.visible = false;
                 if(_script.isEnd()) {
-                    _movingCursorUI.visible = true;
-                    _state = State.Execute;
+                    if(EscGlobal.hasNextSceneID()) {
+                        // 次のシーンに進む
+                        _state = State.NextScene;
+                    }
+                    else {
+                        _movingCursorUI.visible = true;
+                        _state = State.Execute;
+                    }
                 }
+            case State.NextScene:
+                // 次のシーンに進む
+                _movingCursorUI.visible = false;
         }
 
         if(isEdit()) {
@@ -251,12 +261,5 @@ class EscEditor extends FlxSpriteGroup {
 				_selframe.y = _selobj.y - 2;
 			}
 		}
-    }
-
-    /**
-     * 描画
-     */
-    public override function draw():Void {
-        super.draw();
     }
 }

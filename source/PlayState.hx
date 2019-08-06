@@ -18,9 +18,12 @@ import ui.InfomationUI;
 private enum State {
 	SelectScene; // シーン撰択
 	EditScene;   // シーン編集
+	NextScene;   // 次のシーンに進む
 }
 
 class PlayState extends FlxState {
+
+	static inline var FADE_TIME:Float = 0.25;
 
 	// 状態
 	var _state:State = State.SelectScene;
@@ -87,6 +90,8 @@ class PlayState extends FlxState {
 				_updateSelectScene();
 			case State.EditScene:
 				_updateEditScene();
+			case State.NextScene:
+				// 次のシーンへ進む
 		}
 		if(FlxG.keys.justPressed.R) {
 			// リセット
@@ -134,15 +139,23 @@ class PlayState extends FlxState {
 
 	function _updateEditScene():Void {
 		if(EscGlobal.hasNextSceneID()) {
-			// 次に進むシーンを取得する
-			var next = EscGlobal.getNextSceneID();
-			EscGlobal.clearNextSceneID();
-			_isEdit = _editor.isEdit();
-			// 削除
-			this.remove(_editor);
-			// 次のシーンに遷移する
-			_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
-			this.add(_editor);
+			// 次のシーンに進む
+			_state = State.NextScene;
+			FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
+				// 次に進むシーンを取得する
+				var next = EscGlobal.getNextSceneID();
+				EscGlobal.clearNextSceneID();
+				_isEdit = _editor.isEdit();
+				// 削除
+				this.remove(_editor);
+				// 次のシーンに遷移する
+				_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
+				this.add(_editor);
+
+				FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, true);
+				// シーン編集に戻る
+				_state = State.EditScene;
+			});
 		}
 		if(FlxG.keys.justPressed.E) {
 			// 編集モード切り替え
