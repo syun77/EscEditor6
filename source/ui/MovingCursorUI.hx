@@ -48,6 +48,10 @@ private class CursorSprite extends FlxSprite {
         x = _xstart + (_vx * Math.abs(Math.sin(t)));
         y = _ystart + (_vy * Math.abs(Math.sin(t)));
     }
+
+    public function getObj():EscObj {
+        return _obj;
+    }
 }
 
 class MovingCursorUI extends FlxSpriteGroup {
@@ -104,6 +108,16 @@ class MovingCursorUI extends FlxSpriteGroup {
         }
 
 
+    }
+
+    public function clickObj():EscObj {
+        for(spr in _cursors) {
+            if(Utils.checkClickSprite(spr)) {
+                return spr.getObj();
+			}
+        }
+
+        return null;
     }
 
     /**

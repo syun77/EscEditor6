@@ -129,25 +129,16 @@ class EscEditor extends FlxSpriteGroup {
 	 */
     function _clickObj():EscSprite {
 		for(obj in _objs) {
-            if(obj.visible == false) {
-                // 非表示時はクリックできない
-                continue;
+            if(Utils.checkClickSprite(obj)) {
+                return obj;
             }
-			var x:Float = FlxG.mouse.x;
-			var y:Float = FlxG.mouse.y;
-			var x1:Float = obj.x;
-			var y1:Float = obj.y;
-			var x2:Float = obj.x + obj.width;
-			var y2:Float = obj.y + obj.height;
-			if(x1 < x && x < x2) {
-				if(y1 < y && y < y2) {
-                    // 画像領域内にマウスカーソルが存在する
-					return obj;
-				}
-			}
 		}
 
 		return null;
+    }
+
+    function _clickMovingObj():EscObj {
+        return _movingCursorUI.clickObj();
     }
 
     /**
@@ -176,7 +167,9 @@ class EscEditor extends FlxSpriteGroup {
             case State.Execute:
                 _updateExecute();
             case State.ScriptWait:
+                _movingCursorUI.visible = false;
                 if(_script.isEnd()) {
+                    _movingCursorUI.visible = true;
                     _state = State.Execute;
                 }
         }
@@ -200,6 +193,12 @@ class EscEditor extends FlxSpriteGroup {
 				_selframe.makeGraphic(Std.int(width), Std.int(height), FlxColor.RED);
                 _onClick(_selobj.getObj());
 			}
+            else {
+                var obj = _clickMovingObj();
+                if(obj != null) {
+                    _onClick(obj);
+                }
+            }
 		}
     }
 
