@@ -185,14 +185,12 @@ class EscScript extends FlxSpriteGroup {
 
     function _updateExecute():Void {
         while(true) {
-            trace("_cmdList.length", _cmdList.length);
             if(_cmdList.length <= 0) {
                 // おしまい
                 _state = State.Standby;
                 return;
             }
             var cmd = _cmdList.pop();
-            cmd.dump();
             if(_jumpLabel != null) {
                 if(_jumpLabel != _lastLabel) {
                     // ラベルが一致しない
