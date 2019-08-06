@@ -7,6 +7,7 @@ class Resources {
 
 	// カーソル
 	public static inline var CURSOR_PATH:String = "assets/images/arrow.png";
+	public static inline var TAP_PATH:String = "assets/images/tap.png";
     
 	/**
 	 * シーンファイルのパスを取得する

@@ -11,6 +11,7 @@ import esc.loader.EscLoader;
 import esc.loader.EscObj;
 import ui.InfomationUI;
 import ui.MovingCursorUI;
+import ui.TapUI;
 
 /**
  * 状態
@@ -32,6 +33,7 @@ class EscEditor extends FlxSpriteGroup {
     var _infomationUI:InfomationUI;
     var _script:EscScript;
     var _movingCursorUI:MovingCursorUI;
+    var _tagUI:TapUI;
 
     /**
      * コンストラクタ
@@ -91,6 +93,10 @@ class EscEditor extends FlxSpriteGroup {
         // スクリプト生成
         _script = new EscScript();
         this.add(_script);
+
+        // タップエフェクト
+        _tagUI = new TapUI();
+        this.add(_tagUI);
     }
 
     /**
@@ -184,8 +190,11 @@ class EscEditor extends FlxSpriteGroup {
     }
 
     function _updateExecute():Void {
-		// クリックしたオブジェクトを取得する
 		if(FlxG.mouse.justPressed) {
+            // タップエフェクト開始
+            _tagUI.start(FlxG.mouse.x, FlxG.mouse.y);
+
+            // クリックしたオブジェクトを取得する
 			_selobj = _clickObj();
 			if(_selobj != null) {
 				var width:Float = _selobj.width + 4;
