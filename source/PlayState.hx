@@ -11,6 +11,7 @@ import esc.EscGlobal;
 import ui.ItemMenuSubState;
 import ui.DebugMenuSubState;
 import ui.InfomationUI;
+import ui.NumberInputSubState;
 
 /**
  * 状態
@@ -171,6 +172,9 @@ class PlayState extends FlxState {
 		if(FlxG.keys.justPressed.I) {
 			// アイテム撰択を開く
 			openSubState(new ItemMenuSubState());
+		}
+		if(FlxG.keys.justPressed.D) {
+			openSubState(new NumberInputSubState());
 		}
 	}
 
