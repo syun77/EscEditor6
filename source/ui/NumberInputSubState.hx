@@ -8,8 +8,12 @@ import flixel.FlxG;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
+import esc.EscGlobal;
 
 private class NumberInputUI extends FlxSpriteGroup {
+
+    public static inline var SPR_WIDTH:Float = 64;
+    public static inline var SPR_HEIGHT:Float = 64;
 
     static inline var DEFAULT_COLOR:Int = FlxColor.GRAY;
 
@@ -25,13 +29,12 @@ private class NumberInputUI extends FlxSpriteGroup {
         _num = num;
 
         _sprList = new Array<FlxSprite>();
-        var size:Float = 20;
+        var size:Float = SPR_HEIGHT;
         for(i in 0...2) {
             var spr = new FlxSprite(0, 0, Resources.NUM_ARROW);
             var px2 = px;
             var py2 = py;
             var rot:Float = 0;
-            size = spr.height;
             if(i == 0) {
                 py2 = py - size;
                 _upperY = py2;
@@ -41,7 +44,6 @@ private class NumberInputUI extends FlxSpriteGroup {
                 rot = 180;
                 _bottomY = py2;
             }
-            size = spr.height;
             spr.x = px2;
             spr.y = py2;
             spr.angle = rot;
@@ -77,7 +79,7 @@ private class NumberInputUI extends FlxSpriteGroup {
                         _num = 0;
                     }
                     ynext = _upperY;
-                    spr.y = ynext - (spr.height * 0.1);
+                    spr.y = ynext - (SPR_HEIGHT * 0.1);
                 }
                 else {
                     _num--;
@@ -85,21 +87,56 @@ private class NumberInputUI extends FlxSpriteGroup {
                         _num = 9;
                     }
                     ynext = _bottomY;
-                    spr.y = ynext + (spr.height * 0.1);
+                    spr.y = ynext + (SPR_HEIGHT * 0.1);
                 }
                 FlxTween.color(spr, 0.1, FlxColor.WHITE, DEFAULT_COLOR);
                 FlxTween.tween(spr, {y:ynext}, 0.1, {ease:FlxEase.expoOut});
             }
         }
     }
+
+    public function getNum():Int {
+        return _num;
+    }
 }
 
 class NumberInputSubState extends FlxSubState {
+
+    static inline var MARGIN_X:Float = 12;
+
+    var _digit:Int = 0;
+    var _num:Int = 0;
+    var _uiList:Array<NumberInputUI>;
     public function new() {
         super();
 
-        var numUI = new NumberInputUI(200, 200, 5);
-        this.add(numUI);
+        {
+            var idx = EscGlobal.numberInputGetIdx();
+            _num = EscGlobal.valGet(idx);
+        }
+        {
+            _digit = EscGlobal.numberInputGetDigit();
+        }
+
+        _uiList = new Array<NumberInputUI>();
+        var w = NumberInputUI.SPR_WIDTH;
+        var h = NumberInputUI.SPR_HEIGHT;
+        var ox = MARGIN_X;
+        var px = (FlxG.width / 2) - ((w + ox) * _digit / 2);
+        var py = (FlxG.height / 2) - (h / 2);
+        for(i in 0..._digit) {
+            var pow = Math.pow(10, i+1);
+            var div = Math.pow(10, i);
+            var num = Std.int((_num % pow) / div);
+            var numUI = new NumberInputUI(px, py, num);
+            _uiList.push(numUI);
+
+            px += w + ox;
+        }
+
+        for(ui in _uiList) {
+            this.add(ui);
+        }
     }
 
     override public function update(elapsed:Float):Void {

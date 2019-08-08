@@ -174,6 +174,7 @@ class PlayState extends FlxState {
 			openSubState(new ItemMenuSubState());
 		}
 		if(FlxG.keys.justPressed.D) {
+			EscGlobal.numberInputSet(1, 5);
 			openSubState(new NumberInputSubState());
 		}
 	}
