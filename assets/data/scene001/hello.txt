@@ -1,4 +1,7 @@
 function hello() {
-	NOTICE("こんにちは　世界");
+	IF_GOTO(1, "end");
 	BITON(1);
+	NOTICE("こんにちは　世界");
+	
+	LABEL("end");
 }

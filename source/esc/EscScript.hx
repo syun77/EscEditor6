@@ -21,7 +21,10 @@ private enum State {
 private enum Cmd {
     BitOn;      // フラグを立てる
     BitOff;     // フラグを下げる
+    ValSet;     // 変数を設定する
+    ValGet;     // 変数を取得する
     IfGoto;     // フラグが立っていたら指定のラベルまでジャンプする
+    ExprGoto;   // 条件式が成立していたら指定のラベルまでジャンプする
     Label;      // ラベルの定義
     Jump;       // シーンジャンプ
     Infomation; // インフォメーションテキスト表示
@@ -98,7 +101,10 @@ class EscScript extends FlxSpriteGroup {
         _cmdTbl = [
             Cmd.BitOn      => _cmdBitOn,
             Cmd.BitOff     => _cmdBitOff,
+            Cmd.ValGet     => _cmdValGet,
+            Cmd.ValSet     => _cmdValSet,
             Cmd.IfGoto     => _cmdIfGoto,
+            Cmd.ExprGoto   => _cmdExprGoto,
             Cmd.Label      => _cmdLabel,
             Cmd.Message    => _cmdMessage,
             Cmd.Wait       => _cmdWait,
@@ -106,6 +112,15 @@ class EscScript extends FlxSpriteGroup {
             Cmd.Jump       => _cmdJump,
             Cmd.Other      => _cmdOther,
         ];
+    }
+
+    /**
+     * 初期化
+     */
+    function _init():Void {
+        _lastLabel = null;
+        _jumpLabel = null;
+        _wait = 0;
     }
 
     function _cmdBitOn(cmd:EscCommand):CmdRet {
@@ -118,6 +133,17 @@ class EscScript extends FlxSpriteGroup {
         EscGlobal.flagSet(idx, false);
         return CmdRet.Continue;
     }
+    function _cmdValSet(cmd:EscCommand):CmdRet {
+        var idx = cmd.paramInt(0);
+        var val = cmd.paramInt(1);
+        EscGlobal.valSet(idx, val);
+        return CmdRet.Continue;
+    }
+    function _cmdValGet(cmd:EscCommand):CmdRet {
+        var idx = cmd.paramInt(0);
+        EscGlobal.valGet(idx);
+        return CmdRet.Continue;
+    }
     function _cmdIfGoto(cmd:EscCommand):CmdRet {
         var idx = cmd.paramInt(0);
         var label = cmd.paramString(1);
@@ -125,6 +151,20 @@ class EscScript extends FlxSpriteGroup {
             // ラベルジャンプする
             _jumpLabel = label;
         }
+        return CmdRet.Continue;
+    }
+    function _cmdExprGoto(cmd:EscCommand):CmdRet {
+        var expr = cmd.paramString(0);
+        var label = cmd.paramString(1);
+
+        var parser = new Parser();
+        var program = parser.parseString(expr);
+        // 実行
+        if(_interp.execute(program)) {
+            // ラベルにジャンプする
+            _jumpLabel = label;
+        }
+
         return CmdRet.Continue;
     }
     function _cmdLabel(cmd:EscCommand):CmdRet {
@@ -229,6 +269,8 @@ class EscScript extends FlxSpriteGroup {
      * 実行
      */
     public function execute(str:String, tbl:Map<String,Dynamic>):Void {
+        _init();
+
         var parser = new Parser();
         var program = parser.parseString(str);
         _interp = new Interp();
@@ -246,8 +288,6 @@ class EscScript extends FlxSpriteGroup {
         var func = _interp.execute(program);
         func();
 
-        _interp = null;
-
         _state = State.Execute;
     }
 
@@ -257,11 +297,18 @@ class EscScript extends FlxSpriteGroup {
     function _registers():Void {
         _register("BITON",  function(idx:Int)    { _add(Cmd.BitOn, idx); } );
         _register("BITOFF", function(idx:Int)    { _add(Cmd.BitOff, idx); } );
+        _register("VALSET", function(idx:Int, val:Int) { _add(Cmd.ValSet, idx).add(val); } );
         _register("IF_GOTO", function(idx:Int, label:String) { _add(Cmd.IfGoto, idx).add(label); } );
+        _register("EXPR_GOTO", function(expr:String, label:String) { _add(Cmd.ExprGoto, expr).add(label); } );
+        _register("LABEL",  function(label:String) { _add(Cmd.Label, label); } );
         _register("JUMP",   function(idx:Int)    { _add(Cmd.Jump, idx); } );
         _register("MSG",    function(msg:String) { _add(Cmd.Message, msg); } );
         _register("WAIT",   function(time:Float) { _add(Cmd.Wait, time); } );
-        _register("NOTICE", function(msg:String) { _add(Cmd.Infomation, msg); });
+        _register("NOTICE", function(msg:String) { _add(Cmd.Infomation, msg); } );
+
+        // 条件式判定用
+        _register("BITCHK", function(idx:Int)    { EscGlobal.flagCheck(idx); } );
+        _register("VALGET", function(idx:Int)    { EscGlobal.valGet(idx); } );
     }
     function _register(key:String, variable:Dynamic):Void {
         _interp.variables.set(key, variable);
