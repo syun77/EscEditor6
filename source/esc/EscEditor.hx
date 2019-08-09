@@ -1,5 +1,6 @@
 package esc;
 
+import flixel.FlxSubState;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -22,7 +23,9 @@ private enum State {
     NextScene;  // 次のシーンに進む
 }
 
-class EscEditor extends FlxSpriteGroup {
+class EscEditor extends FlxSubState {
+    public static inline var FADE_TIME:Float = 0.25;
+
     var _isEdit:Bool = false;
     var _state:State = State.Execute;
     var _loader:EscLoader;
@@ -179,6 +182,11 @@ class EscEditor extends FlxSpriteGroup {
                     if(EscGlobal.hasNextSceneID()) {
                         // 次のシーンに進む
                         _state = State.NextScene;
+                        // フェード開始
+                        FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
+                            // フェード完了で閉じる
+                            close();
+                        });
                     }
                     else {
                         _movingCursorUI.visible = true;

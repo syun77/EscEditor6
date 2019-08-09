@@ -133,7 +133,7 @@ class PlayState extends FlxState {
 		if(FlxG.keys.justPressed.Z) {
 			_cursorSpr.visible = false;
 			_editor = new EscEditor(Resources.getScenePath(_cursor, true), _isEdit);
-			this.add(_editor);
+			openSubState(_editor);
 			_state = State.EditScene;
 		}
 	}
@@ -141,22 +141,15 @@ class PlayState extends FlxState {
 	function _updateEditScene():Void {
 		if(EscGlobal.hasNextSceneID()) {
 			// 次のシーンに進む
-			_state = State.NextScene;
-			FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
-				// 次に進むシーンを取得する
-				var next = EscGlobal.getNextSceneID();
-				EscGlobal.clearNextSceneID();
-				_isEdit = _editor.isEdit();
-				// 削除
-				this.remove(_editor);
-				// 次のシーンに遷移する
-				_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
-				this.add(_editor);
+			// 次に進むシーンを取得する
+			var next = EscGlobal.getNextSceneID();
+			EscGlobal.clearNextSceneID();
+			_isEdit = _editor.isEdit();
+			// 次のシーンに遷移する
+			_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
+			openSubState(_editor);
 
-				FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, true);
-				// シーン編集に戻る
-				_state = State.EditScene;
-			});
+			FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, true);
 		}
 		if(FlxG.keys.justPressed.E) {
 			// 編集モード切り替え
