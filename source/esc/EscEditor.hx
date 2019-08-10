@@ -190,6 +190,7 @@ class EscEditor extends FlxSubState {
                     }
                     else {
                         _movingCursorUI.visible = true;
+                        _movingCursorUI.update(elapsed);
                         _state = State.Execute;
                     }
                 }

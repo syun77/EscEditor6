@@ -3,6 +3,8 @@ package esc;
 import flixel.group.FlxSpriteGroup;
 import hscript.Parser;
 import hscript.Interp;
+import esc.EscEditor;
+import ui.NumberInputSubState;
 
 /**
  * 状態
@@ -19,18 +21,19 @@ private enum State {
  * コマンド種別
  */
 private enum Cmd {
-    BitOn;      // フラグを立てる
-    BitOff;     // フラグを下げる
-    ValSet;     // 変数を設定する
-    ValGet;     // 変数を取得する
-    IfGoto;     // フラグが立っていたら指定のラベルまでジャンプする
-    ExprGoto;   // 条件式が成立していたら指定のラベルまでジャンプする
-    Label;      // ラベルの定義
-    Jump;       // シーンジャンプ
-    Infomation; // インフォメーションテキスト表示
-    Message;    // メッセージ表示
-    Wait;       // 一定時間待つ
-    Other;      // その他
+    BitOn;       // フラグを立てる
+    BitOff;      // フラグを下げる
+    ValSet;      // 変数を設定する
+    ValGet;      // 変数を取得する
+    IfGoto;      // フラグが立っていたら指定のラベルまでジャンプする
+    ExprGoto;    // 条件式が成立していたら指定のラベルまでジャンプする
+    Label;       // ラベルの定義
+    Jump;        // シーンジャンプ
+    Infomation;  // インフォメーションテキスト表示
+    NumberInput; // 数値入力UI表示
+    Message;     // メッセージ表示
+    Wait;        // 一定時間待つ
+    Other;       // その他
 }
 
 /**
@@ -109,6 +112,7 @@ class EscScript extends FlxSpriteGroup {
             Cmd.Message    => _cmdMessage,
             Cmd.Wait       => _cmdWait,
             Cmd.Infomation => _cmdInfomation,
+            Cmd.NumberInput=> _cmdNumberInput,
             Cmd.Jump       => _cmdJump,
             Cmd.Other      => _cmdOther,
         ];
@@ -177,9 +181,28 @@ class EscScript extends FlxSpriteGroup {
         return CmdRet.Continue;
     }
     function _cmdInfomation(cmd:EscCommand):CmdRet {
-        var msg = cmd.paramString(0);
+        var str = cmd.paramString(0);
+        var msg = str;
+        var r = ~/\$V\[(\d)\]/;
+        if(r.match(str)) {
+            // $V[n] を変数に置き換え
+            var idx = Std.parseInt(r.matched(1));
+            var val = EscGlobal.valGet(idx);
+            msg = r.replace(str, '${val}');
+        }
+        
         PlayState.getInfomationUI().start(msg, 3);
         return CmdRet.Continue;
+    }
+    function _cmdNumberInput(cmd:EscCommand):CmdRet {
+        var idx = cmd.paramInt(0);
+        var digit = cmd.paramInt(1);
+        EscGlobal.numberInputSet(idx, digit);
+        var editor = PlayState.getEditor();
+        if(editor != null) {
+            editor.openSubState(new NumberInputSubState());
+        }
+        return CmdRet.Yield;
     }
     function _cmdWait(cmd:EscCommand):CmdRet {
         var wait = cmd.paramFloat(0);
@@ -305,10 +328,12 @@ class EscScript extends FlxSpriteGroup {
         _register("MSG",    function(msg:String) { _add(Cmd.Message, msg); } );
         _register("WAIT",   function(time:Float) { _add(Cmd.Wait, time); } );
         _register("NOTICE", function(msg:String) { _add(Cmd.Infomation, msg); } );
+        _register("NUMBER_INPUT", function(idx:Int, digit:Int) { _add(Cmd.NumberInput, idx).add(digit); } );
 
         // 条件式判定用
         _register("BITCHK", function(idx:Int)    { EscGlobal.flagCheck(idx); } );
         _register("VALGET", function(idx:Int)    { EscGlobal.valGet(idx); } );
+        _register("VALS",   function(idx:Int)    { EscGlobal.valGet(idx); } );
     }
     function _register(key:String, variable:Dynamic):Void {
         _interp.variables.set(key, variable);

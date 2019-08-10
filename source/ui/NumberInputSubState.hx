@@ -104,6 +104,7 @@ class NumberInputSubState extends FlxSubState {
 
     static inline var MARGIN_X:Float = 12;
 
+    var _idx:Int = 0;
     var _digit:Int = 0;
     var _num:Int = 0;
     var _uiList:Array<NumberInputUI>;
@@ -111,8 +112,8 @@ class NumberInputSubState extends FlxSubState {
         super();
 
         {
-            var idx = EscGlobal.numberInputGetIdx();
-            _num = EscGlobal.valGet(idx);
+            _idx = EscGlobal.numberInputGetIdx();
+            _num = EscGlobal.valGet(_idx);
         }
         {
             _digit = EscGlobal.numberInputGetDigit();
@@ -125,11 +126,13 @@ class NumberInputSubState extends FlxSubState {
         var px = (FlxG.width / 2) - ((w + ox) * _digit / 2);
         var py = (FlxG.height / 2) - (h / 2);
         for(i in 0..._digit) {
-            var pow = Math.pow(10, i+1);
-            var div = Math.pow(10, i);
+            var v = _digit - (1 + i);
+            var pow = Math.pow(10, v+1);
+            var div = Math.pow(10, v);
             var num = Std.int((_num % pow) / div);
             var numUI = new NumberInputUI(px, py, num);
-            _uiList.push(numUI);
+            // 前に追加
+            _uiList.unshift(numUI);
 
             px += w + ox;
         }
@@ -139,8 +142,21 @@ class NumberInputSubState extends FlxSubState {
         }
     }
 
+    /**
+     * 更新
+     */
     override public function update(elapsed:Float):Void {
         super.update(elapsed);
+
+        //　入力した値を反映
+        _num = 0;
+        for(i in 0..._uiList.length) {
+            var ui = _uiList[i];
+            _num += Std.int(ui.getNum() * Math.pow(10, i));
+        }
+
+        // グローバルデータに反映
+        EscGlobal.valSet(_idx, _num);
 
         if(FlxG.keys.justPressed.X) {
             close();

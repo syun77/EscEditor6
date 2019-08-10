@@ -11,7 +11,6 @@ import esc.EscGlobal;
 import ui.ItemMenuSubState;
 import ui.DebugMenuSubState;
 import ui.InfomationUI;
-import ui.NumberInputSubState;
 
 /**
  * 状態
@@ -38,6 +37,19 @@ class PlayState extends FlxState {
 	// シーン編集
 	var _editor:EscEditor;
 
+	/**
+	 * Editorを取得する
+	 */
+	public static function getEditor():EscEditor {
+		if(Std.is(FlxG.state, PlayState)) {
+			var playstate = cast(FlxG.state, PlayState);
+			return playstate._getEditor();
+		}
+		return null;
+	}
+	/**
+	 * アイテムUIを取得する
+	 */
 	public static function getInfomationUI():InfomationUI {
 		if(Std.is(FlxG.state, PlayState)) {
 			var playstate = cast(FlxG.state, PlayState);
@@ -166,12 +178,11 @@ class PlayState extends FlxState {
 			// アイテム撰択を開く
 			openSubState(new ItemMenuSubState());
 		}
-		if(FlxG.keys.justPressed.D) {
-			EscGlobal.numberInputSet(1, 5);
-			openSubState(new NumberInputSubState());
-		}
 	}
 
+	function _getEditor():EscEditor {
+		return _editor;
+	}
 	function _getInfomationUI():InfomationUI {
 		return _editor.getInfomationUI();
 	}
