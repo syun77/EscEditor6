@@ -266,13 +266,6 @@ class Lexer:
 					self.lexReader.unread(nextToken) # 戻す
 					self.ttype  = TokenType.SYMBOL
 					self.token = token
-		elif token == "$":
-			token = self.lexReader.read()
-			if re.match("\d+", token):
-				self.ttype  = TokenType.VAR
-				self.token = "$"+token
-			else:
-				self.fatal("Invalid syntax.")
 		elif token == "#":
 			token = self.lexReader.read()
 			if re.match("[\da-fA-F]+", token):
@@ -280,8 +273,23 @@ class Lexer:
 				self.token = "#" + token
 			else:
 				self.fatal("Invalid syntax.")
-		elif re.match("[$][\d]+", token):
+		elif token == "$":
+			token = self.lexReader.read()
+			if re.match("\d+", token):
+				self.ttype = TokenType.VAR
+				self.token = "$"+token
+			else:
+				self.fatal("Invalid syntax.")
+		elif re.match("[\$][\d]+", token):
 			self.ttype = TokenType.VAR
+			self.token = token
+		elif token == "%":
+			token = self.lexReader.read()
+			if re.match("\d+", token):
+				self.ttype = TokenType.BIT
+				self.token = "%"+token
+		elif re.match("[\%][\d]+", token):
+			self.ttype = TokenType.BIT
 			self.token = token
 		return True
 

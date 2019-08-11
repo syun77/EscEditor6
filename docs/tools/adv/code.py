@@ -6,6 +6,7 @@ class Code:
 	CODE_MESSAGE = "MSG" # メッセージ
 	CODE_INTEGER = "INT" # 数値
 	CODE_COLOR   = "COL" # 色（#ffffff）
+	CODE_BIT     = "BIT" # フラグ
 	CODE_VAR     = "VAR" # 変数
 	CODE_KEYWORD = "KEY" # 特殊キーワード
 	# ■演算子
@@ -53,11 +54,12 @@ class Code:
 	MSG_CLICK = 0x02 # クリック待ち（改ページしないキー入力待ち）
 	MSG_NOTICE= 0x09 # 通知メッセージ (一定時間表示して消す)
 	# 代入の種類
-	ASSIGN_EQ  = 0x00 # そのまま
-	ASSIGN_ADD = 0x01 # 加算
-	ASSIGN_SUB = 0x02 # 減算
-	ASSIGN_MUL = 0x03 # 乗算
-	ASSIGN_DIV = 0x04 # 除算
+	ASSIGN_EQ     = 0x00 # そのまま
+	ASSIGN_ADD    = 0x01 # 加算
+	ASSIGN_SUB    = 0x02 # 減算
+	ASSIGN_MUL    = 0x03 # 乗算
+	ASSIGN_DIV    = 0x04 # 除算
+	ASSIGN_EQ_BIT = 0x10 # フラグへの代入
 	# 真偽の種類
 	BOOL_FALSE = 0x00 # 偽
 	BOOL_TRUE  = 0x01 # 真

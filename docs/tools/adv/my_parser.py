@@ -19,6 +19,7 @@ from code      import Code
 from node.message  import Message
 from node.integer  import Integer
 from node.color    import Color
+from node.bit      import Bit
 from node.var      import Var
 from node.binexpr  import BinExpr
 from node.assign   import Assign
@@ -531,6 +532,8 @@ class MyParser:
         #      ｜ '-' 因子
         #      ｜ '!' 因子
         #      ｜ '(' 式 ')'
+        #      ｜ フラグ
+        #      ｜ フラグ '=' 式
         #      ｜ 変数
         #      ｜ 変数 '=' 式
         #      ｜ メッセージ表示
@@ -563,6 +566,16 @@ class MyParser:
             if self.getTokenType() != ')':
                 self.fatal("Illigal grammar not pair ')'")
             self.lookAhead() # skip ')'
+        elif ttype == TokenType.BIT:
+            sym = self.parseBit()
+            ttype = self.lookAhead()
+            if ttype == '=':
+                self.lookAhead() # skip '='
+                node = Assign('=', sym, self.parseExpression())
+            elif ttype in [TokenType.IADD, TokenType.ISUB, TokenType.IMUL, TokenType.IDIV]:
+                self.fatal("BIT is not valid assign type -> '%s'", ttype)
+            else:
+                node = sym
         elif ttype == TokenType.VAR:
             sym = self.parseVar()
             ttype = self.lookAhead()
@@ -646,6 +659,10 @@ class MyParser:
         else:
             message = token
         return Message(message)
+    def parseBit(self):
+        """ フラグの解析 """
+        no = self.lexer.token.lstrip("%")
+        return Bit(no)
     def parseVar(self):
         """ 変数の解析 """
         no = self.lexer.token.lstrip("$")

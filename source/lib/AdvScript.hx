@@ -13,11 +13,12 @@ class AdvScript {
   public static inline var RET_YIELD:Int    = 1;
 
   // 代入演算子
-  public static inline var ASSIGN_NON:Int = 0;
-  public static inline var ASSIGN_ADD:Int = 1;
-  public static inline var ASSIGN_SUB:Int = 2;
-  public static inline var ASSIGN_MUL:Int = 3;
-  public static inline var ASSIGN_DIV:Int = 4;
+  public static inline var ASSIGN_NON:Int = 0x00;
+  public static inline var ASSIGN_ADD:Int = 0x01;
+  public static inline var ASSIGN_SUB:Int = 0x02;
+  public static inline var ASSIGN_MUL:Int = 0x03;
+  public static inline var ASSIGN_DIV:Int = 0x04;
+  public static inline var ASSIGN_BIT:Int = 0x10;
 
 
   // 変数の最大数
@@ -26,6 +27,9 @@ class AdvScript {
   // ■スタティック
 
   // ■公開変数
+  public var funcLengthBit:Void -> Int = null;
+  public var funcSetBit:Int -> Bool -> Void = null;
+  public var funcGetBit:Int -> Bool = null;
   public var funcLengthVar:Void -> Int = null;
   public var funcSetVar:Int -> Int -> Void = null;
   public var funcGetVar:Int -> Int = null;
@@ -43,8 +47,38 @@ class AdvScript {
   var _userTbl:Map<String,Array<String>->Int>;
   // ログを出力するかどうか
   var _bLog:Bool = false;
+  // フラグ
+  var _bits:Array<Bool>;
   // 変数
   var _vars:Array<Int>;
+  public function lengthBit():Int {
+    if(funcLengthBit != null) {
+      return funcLengthBit();
+    }
+    return _bits.length;
+  }
+  public function setBit(idx:Int, v:Int):Void {
+    if(idx < 0 || lengthBit() <= idx) {
+      // 範囲外
+      throw 'Error: bit out of range %${idx}';
+    }
+    var b = (v != 0);
+    if(funcSetBit != null) {
+      funcSetBit(idx, b);
+      return;
+    }
+    _bits[idx] = b;
+  }
+  public function getBit(idx:Int):Int {
+    if(idx < 0 || lengthBit() <= idx) {
+      // 範囲外
+      throw 'Error: bit out of range %${idx}';
+    }
+    if(funcGetBit != null) {
+      return funcGetBit(idx) ? 1 : 0;
+    }
+    return _bits[idx] ? 1 : 0;
+  }
   public function lengthVar():Int {
     if(funcLengthVar != null) {
       return funcLengthVar();
@@ -96,6 +130,7 @@ class AdvScript {
 
     // システムテーブル登録
     _sysTbl = [
+      "BOOL"  => _BOOL,
       "INT"   => _INT,
       "SET"   => _SET,
       "ADD"   => _ADD,
@@ -103,6 +138,7 @@ class AdvScript {
       "MUL"   => _MUL,
       "DIV"   => _DIV,
       "NEG"   => _NEG,
+      "BIT"   => _BIT,
       "VAR"   => _VAR,
       "EQ"    => _EQ,
       "NE"    => _NE,
@@ -212,6 +248,13 @@ class AdvScript {
     return ret;
   }
 
+  private function _BOOL(param:Array<String>):Void {
+    var p0 = Std.parseInt(param[0]) != 0;
+    if(_bLog) {
+      trace('[SCRIPT] BOOL ${p0}');
+    }
+    pushStack(p0 ? 1 : 0);
+  }
   private function _INT(param:Array<String>):Void {
     var p0 = Std.parseInt(param[0]);
     if(_bLog) {
@@ -223,7 +266,14 @@ class AdvScript {
     var op  = Std.parseInt(param[0]);
     var idx = Std.parseInt(param[1]);
     var val = popStack();
-    var result = getVar(idx);
+    var result = 0;
+    var isBit = (op == ASSIGN_BIT);
+    if(isBit) {
+      result = getBit(idx);     
+    }
+    else {
+      result = getVar(idx); 
+    }
     var log = "";
     switch(op) {
       case ASSIGN_NON:
@@ -241,11 +291,20 @@ class AdvScript {
       case ASSIGN_DIV:
         log = '$$${idx} ${result}/${val}=${Std.int(result/val)}';
         result = Std.int(result / val);
+      case ASSIGN_BIT:
+        result = val;
+        log = '%${idx}=${result != 0 ? true : false}';
     }
     if(_bLog) {
       trace('[SCRIPT] SET ${log}');
     }
-    setVar(idx, result);
+
+    if(isBit) {
+      setBit(idx, result);
+    }
+    else {
+      setVar(idx, result);
+    }
   }
 
   private function _ADD(param:Array<String>):Void {
@@ -292,12 +351,21 @@ class AdvScript {
     pushStack(-val);
   }
 
+  private function _BIT(param:Array<String>):Void {
+    var idx = Std.parseInt(param[0]);
+    var bit = getBit(idx);
+    pushStack(bit);
+    if(_bLog) {
+      trace('[SCRIPT] BIT %${idx} is ${bit}');
+    }
+  }
+
   private function _VAR(param:Array<String>):Void {
     var idx = Std.parseInt(param[0]);
     var val = getVar(idx);
     pushStack(val);
     if(_bLog) {
-      trace('[SCRIPT] VAR $$${idx} is ${val} push ${_vars}');
+      trace('[SCRIPT] VAR $$${idx} is ${val}');
     }
   }
 

@@ -5,6 +5,7 @@ class TokenType:
 	""" トークンの種類定義 """
 	INT      = 'INT' # 数値
 #	LABEL    = 258 # ラベル・ファンクション
+	BIT      = 'BIT' # フラグ (%100とか)
 	VAR      = 'VAR' # 変数（$100とか）
 	QUOTES   = 'QUOTES' # '"' で囲まれた文字列
 	IADD     = '+=' # += 加算

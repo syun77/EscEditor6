@@ -5,6 +5,8 @@ from node.node import Node
 from tokentype import TokenType
 from code      import Code
 from binascii  import *
+from node.var  import Var
+from node.bit  import Bit
 
 """ 構文木代入演算クラス """
 class Assign(Node):
@@ -20,7 +22,12 @@ class Assign(Node):
 		# = 5byte
 		writer.writeString(Code.CODE_ASSIGN)
 		if self.op == '=':
-			ttype = Code.ASSIGN_EQ
+			if type(self.var) is Var:
+				ttype = Code.ASSIGN_EQ # 変数への代入
+			elif type(self.var) is Bit:
+				ttype = Code.ASSIGN_EQ_BIT # フラグへの代入
+			else:
+				raise Exception("Error: Illigal var.", self.var)
 		elif self.op == TokenType.IADD:
 			ttype = Code.ASSIGN_ADD
 		elif self.op == TokenType.ISUB:

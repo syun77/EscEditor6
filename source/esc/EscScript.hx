@@ -112,6 +112,8 @@ class EscScript extends FlxSpriteGroup {
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
+        _script.setLog(true);
+        _isLog = true;
         _state = State.Execute;
     }
     function _MSG(param:Array<String>):Int {
@@ -155,6 +157,12 @@ class EscScript extends FlxSpriteGroup {
      * 登録
      */
     function _register():Void {
+        // フラグ
+        _script.funcLengthBit = function() { return EscGlobal.MAX_FLAG; }
+        _script.funcSetBit = EscGlobal.flagSet;
+        _script.funcGetBit = EscGlobal.flagCheck;
+
+        // 変数
         _script.funcLengthVar = function() { return EscGlobal.MAX_VAL; }
         _script.funcSetVar = EscGlobal.valSet;
         _script.funcGetVar = EscGlobal.valGet;
