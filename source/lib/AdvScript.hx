@@ -293,7 +293,7 @@ class AdvScript {
         result = Std.int(result / val);
       case ASSIGN_BIT:
         result = val;
-        log = '%${idx}=${result != 0 ? true : false}';
+        log = '%${idx}=${result != 0}';
     }
     if(_bLog) {
       trace('[SCRIPT] SET ${log}');
@@ -311,7 +311,7 @@ class AdvScript {
     var right = popStack();
     var left  = popStack();
     if(_bLog) {
-      trace('[SCRIPT ADD ${left} + ${right} => push ${left+right}');
+      trace('[SCRIPT] ADD ${left} + ${right} => push ${left+right}');
     }
     pushStack(left + right);
   }
@@ -320,7 +320,7 @@ class AdvScript {
     var right = popStack();
     var left  = popStack();
     if(_bLog) {
-      trace('[SCRIPT SUB ${left} - ${right} => push ${left-right}');
+      trace('[SCRIPT] SUB ${left} - ${right} => push ${left-right}');
     }
     pushStack(left - right);
   }
@@ -329,7 +329,7 @@ class AdvScript {
     var right = popStack();
     var left  = popStack();
     if(_bLog) {
-      trace('[SCRIPT MUL ${left} * ${right} => push ${left*right}');
+      trace('[SCRIPT] MUL ${left} * ${right} => push ${left*right}');
     }
     pushStack(left * right);
   }
@@ -338,7 +338,7 @@ class AdvScript {
     var right = popStack();
     var left  = popStack();
     if(_bLog) {
-      trace('[SCRIPT MUL ${left} / ${right} => push ${Std.int(left/right)}');
+      trace('[SCRIPT] DIV ${left} / ${right} => push ${Std.int(left/right)}');
     }
     pushStack(Std.int(left / right));
   }
@@ -356,7 +356,7 @@ class AdvScript {
     var bit = getBit(idx);
     pushStack(bit);
     if(_bLog) {
-      trace('[SCRIPT] BIT %${idx} is ${bit}');
+      trace('[SCRIPT] BIT %${idx} is ${bit != 0}');
     }
   }
 

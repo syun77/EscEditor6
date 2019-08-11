@@ -107,6 +107,7 @@ class EscScript extends FlxSpriteGroup {
 
         // 実行
         var tbl = [
+            "WAIT"      => _WAIT,
             "MSG"       => _MSG,
             "NUM_INPUT" => _NUM_INPUT,
         ];
@@ -116,11 +117,17 @@ class EscScript extends FlxSpriteGroup {
         _isLog = true;
         _state = State.Execute;
     }
+    function _WAIT(param:Array<String>):Int {
+        _log('WAIT');
+        var sec = _script.popStack();
+        _wait = sec;
+        return AdvScript.RET_YIELD;
+    }
     function _MSG(param:Array<String>):Int {
-        _log('[SCRIPT] MSG');
+        _log('MSG');
         var type = Std.parseInt(param[0]);
         var msg = param[1];
-        var r = ~/\$V\[(\d)\]/;
+        var r = ~/\$V(\d)/;
         if(r.match(msg)) {
             // $V[n] を変数に置き換え
             var idx = Std.parseInt(r.matched(1));
@@ -129,11 +136,10 @@ class EscScript extends FlxSpriteGroup {
         }
         
         PlayState.getInfomationUI().start(msg, 3);
-
         return AdvScript.RET_CONTINUE;
     }
     function _NUM_INPUT(param:Array<String>):Int {
-        _log('[SCRIPT] NUM_INPUT');
+        _log('NUM_INPUT');
         var idx = _script.popStack();
         var digit = _script.popStack();
         EscGlobal.numberInputSet(idx, digit);
@@ -149,7 +155,7 @@ class EscScript extends FlxSpriteGroup {
     **/
     function _log(msg:String):Void {
         if(_isLog) {
-            trace(msg);
+            trace('[SCRIPT] ${msg}');
         }
     }
 
