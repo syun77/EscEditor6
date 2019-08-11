@@ -1,6 +1,7 @@
 //関数名,     命令コード, 引数リスト, ...
 NUM_INPUT,    NUM_INPUT,  idx, digit
 WAIT,         WAIT,       sec
+JUMP,         JUMP,       sceneId
 //draw_bg,    DRB,        id, effectId=0
 //erase_bg,   ERB,        effectId=0
 //draw_ch,    DRC,        id, pos, effectId=0

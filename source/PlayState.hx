@@ -161,8 +161,10 @@ class PlayState extends FlxState {
 	function _openEditor(sceneID:Int):Void {
 		_editor = new EscEditor(Resources.getScenePath(sceneID, true), _isEdit);
 		_editor.closeCallback = function() {
-			// 閉じたらシーン選択に戻る
-			_state = State.SelectScene;
+			if(EscGlobal.hasNextSceneID() == false) {
+				// 次のシーンがなければシーン選択に戻る
+				_state = State.SelectScene;
+			}
 		};
 		openSubState(_editor);
 	}

@@ -11,6 +11,7 @@ class AdvScript {
   // ■定数
   public static inline var RET_CONTINUE:Int = 0;
   public static inline var RET_YIELD:Int    = 1;
+  public static inline var RET_EXIT:Int     = 2;
 
   // 代入演算子
   public static inline var ASSIGN_NON:Int = 0x00;
@@ -212,6 +213,11 @@ class AdvScript {
       var ret = _loop();
       if(ret == RET_YIELD) {
         // いったん抜ける
+        break;
+      }
+      else if(ret == RET_EXIT) {
+        // 強制終了する
+        _bEnd = true;
         break;
       }
     }

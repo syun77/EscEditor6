@@ -39,22 +39,6 @@ class EscScript extends FlxSpriteGroup {
     }
 
     /*
-    function _cmdNumberInput(cmd:EscCommand):CmdRet {
-        var idx = cmd.paramInt(0);
-        var digit = cmd.paramInt(1);
-        EscGlobal.numberInputSet(idx, digit);
-        var editor = PlayState.getEditor();
-        if(editor != null) {
-            editor.openSubState(new NumberInputSubState());
-        }
-        return CmdRet.Yield;
-    }
-    function _cmdWait(cmd:EscCommand):CmdRet {
-        var wait = cmd.paramFloat(0);
-        _wait = wait;
-        _state = State.Wait;
-        return CmdRet.Yield;
-    }
     function _cmdJump(cmd:EscCommand):CmdRet {
         var sceneID = cmd.paramInt(0);
         EscGlobal.setNextSceneID(sceneID);
@@ -110,6 +94,7 @@ class EscScript extends FlxSpriteGroup {
             "WAIT"      => _WAIT,
             "MSG"       => _MSG,
             "NUM_INPUT" => _NUM_INPUT,
+            "JUMP"      => _JUMP,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -135,6 +120,7 @@ class EscScript extends FlxSpriteGroup {
             msg = r.replace(msg, '${val}');
         }
         
+        // インフォメーション表示
         PlayState.getInfomationUI().start(msg, 3);
         return AdvScript.RET_CONTINUE;
     }
@@ -148,6 +134,12 @@ class EscScript extends FlxSpriteGroup {
             editor.openSubState(new NumberInputSubState());
         }
         return AdvScript.RET_YIELD;
+    }
+    function _JUMP(param:Array<String>):Int {
+        var sceneID = _script.popStack();
+        _log('SCENE JUMP -> ${sceneID}');
+        EscGlobal.setNextSceneID(sceneID);
+        return AdvScript.RET_EXIT;
     }
 
     /**
