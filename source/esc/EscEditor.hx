@@ -13,6 +13,8 @@ import esc.loader.EscObj;
 import ui.InfomationUI;
 import ui.MovingCursorUI;
 import ui.TapUI;
+import ui.ItemMenuSubState;
+import ui.DebugMenuSubState;
 
 /**
  * 状態
@@ -161,6 +163,10 @@ class EscEditor extends FlxSubState {
      * オブジェクトをクリックした時の処理
      */
     function _onClick(obj:EscObj):Void {
+        if(isEdit()) {
+            return; // 編集モード中はクリックイベントは発生しない
+        }
+
         trace('click: ${_loader.getRoot()}${obj.click}.txt');
         var str = obj.getClick();
         if(str == null) {
@@ -221,9 +227,11 @@ class EscEditor extends FlxSubState {
 
         // デバッグテキスト更新
         _txtDebug.text = '${_state}';
+        _updateDebugInput();
     }
 
     function _updateExecute():Void {
+
 		if(FlxG.mouse.justPressed) {
             // タップエフェクト開始
             _tagUI.start(FlxG.mouse.x, FlxG.mouse.y);
@@ -284,6 +292,29 @@ class EscEditor extends FlxSubState {
 				_selframe.x = _selobj.x - 2;
 				_selframe.y = _selobj.y - 2;
 			}
+		}
+    }
+
+    function _updateDebugInput():Void {
+		if(FlxG.keys.justPressed.E) {
+			// 編集モード切り替え
+			setEdit(_isEdit != true);
+		}
+		if(FlxG.keys.justPressed.Q) {
+			// 強制終了
+            close();
+		}
+		if(FlxG.keys.justPressed.I) {
+			// アイテム撰択を開く
+			openSubState(new ItemMenuSubState());
+		}
+		if(FlxG.keys.justPressed.R) {
+			// リセット
+			FlxG.resetGame();
+		}
+		if(FlxG.keys.justPressed.F) {
+			// フラグ編集モード切り替え
+			openSubState(new DebugMenuSubState());
 		}
     }
 }

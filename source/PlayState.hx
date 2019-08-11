@@ -8,8 +8,6 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import esc.EscEditor;
 import esc.EscGlobal;
-import ui.ItemMenuSubState;
-import ui.DebugMenuSubState;
 import ui.InfomationUI;
 
 /**
@@ -106,14 +104,6 @@ class PlayState extends FlxState {
 			case State.NextScene:
 				// 次のシーンへ進む
 		}
-		if(FlxG.keys.justPressed.R) {
-			// リセット
-			FlxG.resetGame();
-		}
-		if(FlxG.keys.justPressed.F) {
-			// フラグ編集モード切り替え
-			openSubState(new DebugMenuSubState());
-		}
 	}
 
 	function _updateSelectScene():Void {
@@ -144,8 +134,8 @@ class PlayState extends FlxState {
 		_cursorSpr.visible = true;
 		if(FlxG.keys.justPressed.Z) {
 			_cursorSpr.visible = false;
-			_editor = new EscEditor(Resources.getScenePath(_cursor, true), _isEdit);
-			openSubState(_editor);
+			// 指定のシーンを実行する
+			_openEditor(_cursor);
 			_state = State.EditScene;
 		}
 	}
@@ -159,26 +149,22 @@ class PlayState extends FlxState {
 			EscGlobal.clearNextSceneID();
 			_isEdit = EscGlobal.isEdit();
 			// 次のシーンに遷移する
-			_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
-			openSubState(_editor);
+			_openEditor(next);
 
 			FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, true);
 		}
-		if(FlxG.keys.justPressed.E) {
-			// 編集モード切り替え
-			var b = _editor.isEdit();
-			_editor.setEdit(b != true);
-		}
-		if(FlxG.keys.justPressed.Q) {
-			// 強制終了
-			this.remove(_editor);
-			_editor = null;
+	}
+
+	/**
+	 * EscEditorを開く
+	 */
+	function _openEditor(sceneID:Int):Void {
+		_editor = new EscEditor(Resources.getScenePath(sceneID, true), _isEdit);
+		_editor.closeCallback = function() {
+			// 閉じたらシーン選択に戻る
 			_state = State.SelectScene;
-		}
-		if(FlxG.keys.justPressed.I) {
-			// アイテム撰択を開く
-			openSubState(new ItemMenuSubState());
-		}
+		};
+		openSubState(_editor);
 	}
 
 	function _getEditor():EscEditor {
