@@ -167,15 +167,11 @@ class EscEditor extends FlxSubState {
             return; // 編集モード中はクリックイベントは発生しない
         }
 
-        trace('click: ${_loader.getRoot()}${obj.click}.txt');
-        var str = obj.getClick();
-        if(str == null) {
-            return;
-        }
-        trace(str);
+        var path = '${_loader.getRoot()}${obj.click}.csv';
+        trace('click: ${path}');
 
         // スクリプト実行
-        _script.execute(str, null);
+        _script.execute(path);
         _state = State.ScriptWait;
     }
 

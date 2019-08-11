@@ -1,2 +1,7 @@
-MSG,9,春はあけぼの。
+INT,12345
+SET,0,1
+INT,5
+INT,1
+NUM_INPUT
+MSG,9,入力した数値 $V[1]
 END

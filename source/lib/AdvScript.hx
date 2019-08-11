@@ -25,6 +25,11 @@ class AdvScript {
 
   // ■スタティック
 
+  // ■公開変数
+  public var funcLengthVar:Void -> Int = null;
+  public var funcSetVar:Int -> Int -> Void = null;
+  public var funcGetVar:Int -> Int = null;
+
   // ■メンバ変数
   // スクリプトデータ
   var _data:Array<String>;
@@ -40,17 +45,30 @@ class AdvScript {
   var _bLog:Bool = false;
   // 変数
   var _vars:Array<Int>;
+  public function lengthVar():Int {
+    if(funcLengthVar != null) {
+      return funcLengthVar();
+    }
+    return _vars.length;
+  }
   public function setVar(idx:Int, v:Int):Void {
-    if(idx < 0 || _vars.length <= idx) {
+    if(idx < 0 || lengthVar() <= idx) {
       // 範囲外
       throw 'Error: var out of range $$${idx}';
+    }
+    if(funcSetVar != null) {
+      funcSetVar(idx, v);
+      return;
     }
     _vars[idx] = v;
   }
   public function getVar(idx:Int):Int {
-    if(idx < 0 || _vars.length <= idx) {
+    if(idx < 0 || lengthVar() <= idx) {
       // 範囲外
       throw 'Error: var out of range $$${idx}';
+    }
+    if(funcGetVar != null) {
+      return funcGetVar(idx);
     }
     return _vars[idx];
   }
