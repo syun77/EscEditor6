@@ -8,6 +8,7 @@ from code import Code
 class Message(Node):
 	def __init__(self, message):
 		# TODO: フォーマットチェック
+		prefix = message[0]
 		suffix = message[len(message)-1]
 		if suffix == "/":
 			# 改ページ記号がある
@@ -17,6 +18,10 @@ class Message(Node):
 			# クリック待ちがある
 			self.pagefeed = 2
 			message = message[:len(message)-1]
+		elif prefix == ":":
+			# 通知メッセージ
+			self.pagefeed = 9
+			message = message[1:]
 		else:
 			self.pagefeed = False
 		self.message = message
@@ -31,6 +36,8 @@ class Message(Node):
 			ff = Code.MSG_FF
 		elif self.pagefeed == 2:
 			ff = Code.MSG_CLICK
+		elif self.pagefeed == 9:
+			ff = Code.MSG_NOTICE
 		else:
 			ff = Code.MSG_NEXT
 		writer.writeString(ff)

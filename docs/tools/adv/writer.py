@@ -122,7 +122,7 @@ class Writer:
 			self.address,
 			self.parser.lexer.getFinename(),
 			self.parser.lexer.getLineno())
-		if self.labels.has_key(name):
+		if name in self.labels:
 			# ラベルが重複して定義されている
 			self.fatal("Duplicate label '%s'"%name)
 		self.labels[name] = label
@@ -156,7 +156,7 @@ class Writer:
 		self.writeLogEx("")
 		self.writeLogEx("## patchLabel begin ## 'proto' <-- 'real'")
 		for proto in self.labelsProto:
-			if self.labels.has_key(proto.getName()):
+			if proto.getName() in self.labels:
 				# 仮ラベル名を取得
 				name = proto.getName()
 				locProto = proto.getLocation()

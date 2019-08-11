@@ -51,6 +51,7 @@ class Code:
 	MSG_NEXT  = 0x00 # なし
 	MSG_FF    = 0x01 # 改ページ（キー入力待ち）
 	MSG_CLICK = 0x02 # クリック待ち（改ページしないキー入力待ち）
+	MSG_NOTICE= 0x09 # 通知メッセージ (一定時間表示して消す)
 	# 代入の種類
 	ASSIGN_EQ  = 0x00 # そのまま
 	ASSIGN_ADD = 0x01 # 加算

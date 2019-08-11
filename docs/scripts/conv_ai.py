@@ -10,11 +10,13 @@ def usage():
 
 def main(tool, fFuncDef, fDefines, inputDir, outDir):
 	
+	print("--------------------------------------")
 	print("tool: %s"%tool);
 	print("fFuncDef: %s"%fFuncDef);
 	print("fDefines: %s"%fDefines);
 	print("inputDir: %s"%inputDir);
 	print("outDir: %s"%outDir);
+	print("--------------------------------------")
 	
 	# *.txtを取得
 	txtList = glob.glob("%s*.txt"%inputDir)
