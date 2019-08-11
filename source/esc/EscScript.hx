@@ -25,6 +25,7 @@ private enum Cmd {
     BitOff;      // フラグを下げる
     ValSet;      // 変数を設定する
     ValGet;      // 変数を取得する
+    Goto;        // 指定のラベルまでジャンプする
     IfGoto;      // フラグが立っていたら指定のラベルまでジャンプする
     ExprGoto;    // 条件式が成立していたら指定のラベルまでジャンプする
     Label;       // ラベルの定義
@@ -102,6 +103,7 @@ class EscScript extends FlxSpriteGroup {
             Cmd.BitOff     => _cmdBitOff,
             Cmd.ValGet     => _cmdValGet,
             Cmd.ValSet     => _cmdValSet,
+            Cmd.Goto       => _cmdGoto,
             Cmd.IfGoto     => _cmdIfGoto,
             Cmd.ExprGoto   => _cmdExprGoto,
             Cmd.Label      => _cmdLabel,
@@ -142,6 +144,11 @@ class EscScript extends FlxSpriteGroup {
     function _cmdValGet(cmd:EscCommand):CmdRet {
         var idx = cmd.paramInt(0);
         EscGlobal.valGet(idx);
+        return CmdRet.Continue;
+    }
+    function _cmdGoto(cmd:EscCommand):CmdRet {
+        var label = cmd.paramString(0);
+        _jumpLabel = label;
         return CmdRet.Continue;
     }
     function _cmdIfGoto(cmd:EscCommand):CmdRet {
@@ -250,6 +257,12 @@ class EscScript extends FlxSpriteGroup {
                 return;
             }
             var cmd = _cmdList.pop();
+            if(cmd.cmd == Cmd.Label) {
+                // ラベルの場合のみここで実行
+                cmd.dump();
+                _cmdTbl[cmd.cmd](cmd);
+                continue;
+            }
             if(_jumpLabel != null) {
                 if(_jumpLabel != _lastLabel) {
                     // ラベルが一致しない
@@ -318,6 +331,7 @@ class EscScript extends FlxSpriteGroup {
         _register("BITON",  function(idx:Int)    { _add(Cmd.BitOn, idx); } );
         _register("BITOFF", function(idx:Int)    { _add(Cmd.BitOff, idx); } );
         _register("VALSET", function(idx:Int, val:Int) { _add(Cmd.ValSet, idx).add(val); } );
+        _register("GOTO",   function(label:String) { _add(Cmd.Goto, label); } );
         _register("IF_GOTO", function(idx:Int, label:String) { _add(Cmd.IfGoto, idx).add(label); } );
         _register("EXPR_GOTO", function(expr:String, label:String) { _add(Cmd.ExprGoto, expr).add(label); } );
         _register("LABEL",  function(label:String) { _add(Cmd.Label, label); } );
