@@ -1,5 +1,5 @@
 function hello() {
-	NUMBER_INPUT(1, 5);
+	//NUMBER_INPUT(1, 5);
 	IF_GOTO(1, "end");
 	BITON(1);
 	NOTICE("入力した数値 = $V[1]");

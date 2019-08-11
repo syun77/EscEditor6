@@ -17,6 +17,9 @@ class EscGlobal {
     static var _numberInputIdx:Int = 0; // 受け渡しする変数番号
     static var _numberInputDigit:Int = 0; // 受渡しする桁数
 
+    // 編集モードかどうか
+    static var _isEdit:Bool = false;
+
     /**
      * 初期化
      */
@@ -79,5 +82,13 @@ class EscGlobal {
     }
     public static function numberInputGetDigit():Int {
         return _numberInputDigit;
+    }
+
+    // デバッグ機能
+    public static function setEdit(b:Bool):Void {
+        _isEdit = b;
+    }
+    public static function isEdit():Bool {
+        return _isEdit;
     }
 }

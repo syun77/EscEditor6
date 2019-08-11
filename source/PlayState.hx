@@ -153,10 +153,11 @@ class PlayState extends FlxState {
 	function _updateEditScene():Void {
 		if(EscGlobal.hasNextSceneID()) {
 			// 次のシーンに進む
+			trace('_updateEditScene() -> hasNextSceneID: ${EscGlobal.getNextSceneID()}');
 			// 次に進むシーンを取得する
 			var next = EscGlobal.getNextSceneID();
 			EscGlobal.clearNextSceneID();
-			_isEdit = _editor.isEdit();
+			_isEdit = EscGlobal.isEdit();
 			// 次のシーンに遷移する
 			_editor = new EscEditor(Resources.getScenePath(next, true), _isEdit);
 			openSubState(_editor);

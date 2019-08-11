@@ -18,6 +18,8 @@ import ui.TapUI;
  * 状態
  */
 private enum State {
+    Init;       // 初期化
+    FadeInWait; // フェードイン待ち
     Execute;    // 実行中
     ScriptWait; // スクリプト終了待ち
     NextScene;  // 次のシーンに進む
@@ -27,7 +29,7 @@ class EscEditor extends FlxSubState {
     public static inline var FADE_TIME:Float = 0.25;
 
     var _isEdit:Bool = false;
-    var _state:State = State.Execute;
+    var _state:State = State.Init;
     var _loader:EscLoader;
     var _bg:EscSprite;
     var _objs:Array<EscSprite>;
@@ -38,6 +40,7 @@ class EscEditor extends FlxSubState {
     var _script:EscScript;
     var _movingCursorUI:MovingCursorUI;
     var _tagUI:TapUI;
+    var _txtDebug:FlxText;
 
     /**
      * コンストラクタ
@@ -76,9 +79,6 @@ class EscEditor extends FlxSubState {
 
         // ヘルプテキスト
         for(txt in _txts) {
-            if(isEdit == false) {
-                txt.visible = false;
-            }
             this.add(txt);
         }
 
@@ -101,12 +101,18 @@ class EscEditor extends FlxSubState {
         // タップエフェクト
         _tagUI = new TapUI();
         this.add(_tagUI);
+
+        _txtDebug = new FlxText(8, FlxG.height-32, 0, "");
+        this.add(_txtDebug);
+
+        setEdit(_isEdit);
     }
 
     /**
      * 編集フラグを設定する
      */
     public function setEdit(b:Bool):Void {
+        EscGlobal.setEdit(b);
         _isEdit = b;
         for(txt in _txts) {
             txt.visible = b;
@@ -174,19 +180,25 @@ class EscEditor extends FlxSubState {
         super.update(elapsed);
 
         switch(_state) {
+            case State.Init:
+                _state = State.FadeInWait;
+            case State.FadeInWait:
+                _state = State.Execute;
             case State.Execute:
                 _updateExecute();
             case State.ScriptWait:
                 _movingCursorUI.visible = false;
                 if(_script.isEnd()) {
+                    trace('script.isEnd() -> sceneID = ${EscGlobal.getNextSceneID()}');
                     if(EscGlobal.hasNextSceneID()) {
                         // 次のシーンに進む
                         _state = State.NextScene;
                         // フェード開始
                         FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
                             // フェード完了で閉じる
+                            trace("EscEditor.update() -> close()");
                             close();
-                        });
+                        }, true);
                     }
                     else {
                         _movingCursorUI.visible = true;
@@ -206,6 +218,9 @@ class EscEditor extends FlxSubState {
         else {
             _updateObjVisible();
         }
+
+        // デバッグテキスト更新
+        _txtDebug.text = '${_state}';
     }
 
     function _updateExecute():Void {

@@ -72,11 +72,7 @@ class EscCommand {
     }
 
     public function dump():Void {
-        trace(cmd);
-        for(param in params) {
-            trace(param);
-        }
-        trace(func);
+        trace(cmd, params, func);
     }
 }
 
@@ -264,6 +260,7 @@ class EscScript extends FlxSpriteGroup {
                 _lastLabel = null;
             }
 
+            cmd.dump();
             var func = _cmdTbl[cmd.cmd];
             var ret = func(cmd);
             switch(ret) {
