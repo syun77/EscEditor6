@@ -67,7 +67,7 @@ class MyParser:
         }
         for fDefine in defines.split(","):
             f = open(fDefine)
-            data = yaml.load(f)["data"]
+            data = yaml.load(f, Loader=yaml.SafeLoader)["data"]
             self.defines.update(data)
             f.close
 
@@ -82,7 +82,7 @@ class MyParser:
         glob = self.globals[name]
         return glob.getInstance()
     def hasDefines(self, name):
-        return self.defines.has_key(name)
+        return name in self.defines
     def getDefines(self, name):
         """ 定数の取得 """
         define = self.defines[name]

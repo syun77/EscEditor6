@@ -1,0 +1,3 @@
+data:
+  HOGE: 1
+  PIYO: 2

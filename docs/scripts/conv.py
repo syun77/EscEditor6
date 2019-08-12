@@ -6,7 +6,7 @@ import sys
 import glob
 
 def usage():
-	print "Usage: conv_ai.py [gmadv.py] [define_functions.h] [define_consts.txt] [input_dir] [output_dir]"
+	print("Usage: conv_ai.py [gmadv.py] [define_functions.h] [define_consts.txt] [input_dir] [output_dir]")
 
 def main(tool, fFuncDef, fDefines, inputDir, outDir):
 	
@@ -27,7 +27,7 @@ def main(tool, fFuncDef, fDefines, inputDir, outDir):
 
 		cmd = "python3 %s %s %s %s %s"%(
 			tool, fFuncDef, fDefines, fInput, fOut)
-		print cmd
+		print(cmd)
 		os.system(cmd)
 
 if __name__ == '__main__':
@@ -35,8 +35,8 @@ if __name__ == '__main__':
 	argc = len(sys.argv)
 	if argc < 6:
 		# 引数が足りない
-		print args
-		print "Error: Not enough parameter. given=%d require=%d"%(argc, 6)
+		print(args)
+		print("Error: Not enough parameter. given=%d require=%d"%(argc, 6))
 		usage()
 		quit()
 
