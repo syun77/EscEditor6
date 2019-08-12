@@ -6,9 +6,9 @@ class Resources {
     public static inline var FONT_SIZE:Int = 20;
 
 	// カーソル
-	public static inline var CURSOR_PATH:String = "assets/images/arrow.png";
-	public static inline var TAP_PATH:String = "assets/images/tap.png";
-	public static inline var NUM_ARROW:String = "assets/images/num_arrow.png";
+	public static inline var CURSOR_PATH:String = "assets/images/common/arrow.png";
+	public static inline var TAP_PATH:String    = "assets/images/common/tap.png";
+	public static inline var NUM_ARROW:String   = "assets/images/common/num_arrow.png";
     
 	/**
 	 * シーンファイルのパスを取得する
