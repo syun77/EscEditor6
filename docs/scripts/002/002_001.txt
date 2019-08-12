@@ -1,0 +1,5 @@
+":Hello world"
+WAIT(3)
+%2 = true
+JUMP(1)
+

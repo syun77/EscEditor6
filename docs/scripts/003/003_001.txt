@@ -1,0 +1,4 @@
+":Nothing is there"
+WAIT(3)
+JUMP(1)
+

@@ -1,0 +1,8 @@
+MSG,9,Hello world
+INT,3
+WAIT
+BOOL,1
+SET,16,2
+INT,1
+JUMP
+END

@@ -26,7 +26,7 @@ class PlayState extends FlxState {
 	// 状態
 	var _state:State = State.SelectScene;
 
-	var _isEdit:Bool = true;
+	var _isEdit:Bool = false;
 	var _cursor:Int = 1;
 	var _cursorSpr:FlxSprite;
 	var _txts:Array<FlxText>;

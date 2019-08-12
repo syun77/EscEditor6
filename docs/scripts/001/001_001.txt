@@ -11,6 +11,4 @@ if(%1 == false) {
 }
 else {
     ":暗号は解読済みだ"
-    WAIT(1)
-    JUMP(2)
 }

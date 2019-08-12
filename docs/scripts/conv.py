@@ -3,52 +3,60 @@
 
 import os
 import sys
+import re
 import glob
 
 def usage():
-	print("Usage: conv_ai.py [gmadv.py] [define_functions.h] [define_consts.txt] [input_dir] [output_dir]")
+	print("Usage: conv.py [sceneId]")
 
-def main(tool, fFuncDef, fDefines, inputDir, outDir):
+def execute(root, sceneId):
 	
-	print("--------------------------------------")
-	print("tool: %s"%tool);
-	print("fFuncDef: %s"%fFuncDef);
-	print("fDefines: %s"%fDefines);
-	print("inputDir: %s"%inputDir);
-	print("outDir: %s"%outDir);
-	print("--------------------------------------")
+	print("======================================")
+	print("Convert: scene%03d"%sceneId)
+	print("======================================")
 	
-	# *.txtを取得
-	txtList = glob.glob("%s*.txt"%inputDir)
+	# ツール
+	tool = "%s/../tools/adv/gmadv.py"%(root)
+	# 関数定義
+	funcDef = "%s/common/define_functions.h"%(root)
+	# 定数定義
+	defines = "%s/common/const_header.txt"%(root)
+	# 入力フォルダ
+	inputDir = "%s/%03d/"%(root, sceneId)
+	# 出力フォルダ
+	outDir = "%s/../../assets/data/scene%03d/"%(root, sceneId)
+	
+	# 入力フォルダをカレントディレクトリに設定
+	os.chdir(inputDir)
+	
+	cmd = "python3 ../_conv.py %s %s %s %s %s"%(
+		tool, funcDef, defines, inputDir, outDir)
+	os.system(cmd)
 
-	for txt in txtList:
-		fInput = txt
-		fOut   = outDir + txt.replace(inputDir, "").replace(".txt", ".csv")
-
-		cmd = "python3 %s %s %s %s %s"%(
-			tool, fFuncDef, fDefines, fInput, fOut)
-		print(cmd)
-		os.system(cmd)
-
+def main(sceneId):
+	# ルートディレクトリ取得
+	root = os.path.dirname(os.path.abspath(__file__))
+	if sceneId == "all":
+		files = os.listdir(root)
+		for f in files:
+			if re.match(r'\d{3}', f):
+				execute(root, int(f))
+		return
+	
+	if re.match(r'\d{1,3}', sceneId) == None:
+		raise Error("Invalid sceneId = '%s'"%sceneId)
+	execute(root, int(sceneId))
 if __name__ == '__main__':
 	args = sys.argv
 	argc = len(sys.argv)
-	if argc < 6:
+	if argc < 2:
 		# 引数が足りない
 		print(args)
-		print("Error: Not enough parameter. given=%d require=%d"%(argc, 6))
+		print("Error: Not enough parameter. given=%d require=%d"%(argc, 2))
 		usage()
 		quit()
 
-	# ツール
-	tool = args[1]
-	# 関数定義
-	fFuncDef = args[2]
-	# 定数定義
-	fDefines = args[3]
-	# 入力フォルダ
-	inputDir = args[4]
-	# 出力フォルダ
-	outDir = args[5]
+	# シーンID
+	sceneId = args[1]
 
-	main(tool, fFuncDef, fDefines, inputDir, outDir)
+	main(sceneId)
