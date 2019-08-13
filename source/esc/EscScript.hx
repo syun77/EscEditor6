@@ -2,6 +2,7 @@ package esc;
 
 import flixel.group.FlxSpriteGroup;
 import ui.NumberInputSubState;
+import ui.PictureInputSubState;
 import lib.AdvScript;
 
 /**
@@ -94,6 +95,7 @@ class EscScript extends FlxSpriteGroup {
             "WAIT"      => _WAIT,
             "MSG"       => _MSG,
             "NUM_INPUT" => _NUM_INPUT,
+            "PIC_INPUT" => _PIC_INPUT,
             "JUMP"      => _JUMP,
         ];
         _script = new AdvScript(tbl, filepath);
@@ -132,6 +134,18 @@ class EscScript extends FlxSpriteGroup {
         var editor = PlayState.getEditor();
         if(editor != null) {
             editor.openSubState(new NumberInputSubState());
+        }
+        return AdvScript.RET_YIELD;
+    }
+    function _PIC_INPUT(param:Array<String>):Int {
+        _log('PIC_INPUT');
+        var pic = _script.popStack();
+        var idx = _script.popStack();
+        var digit = _script.popStack();
+        EscGlobal.numberInputSet(idx, digit);
+        var editor = PlayState.getEditor();
+        if(editor != null) {
+            editor.openSubState(new PictureInputSubState(pic, digit));
         }
         return AdvScript.RET_YIELD;
     }

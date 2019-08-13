@@ -1,5 +1,6 @@
 //関数名,     命令コード, 引数リスト, ...
 NUM_INPUT,    NUM_INPUT,  idx, digit
+PIC_INPUT,    PIC_INPUT,  picId, idx, digit
 WAIT,         WAIT,       sec
 JUMP,         JUMP,       sceneId
 //draw_bg,    DRB,        id, effectId=0
