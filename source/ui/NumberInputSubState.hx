@@ -10,6 +10,9 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import esc.EscGlobal;
 
+/**
+ * 桁ごとの数値入力UI
+ */
 private class NumberInputUI extends FlxSpriteGroup {
 
     public static inline var SPR_WIDTH:Float = 64;
@@ -17,29 +20,41 @@ private class NumberInputUI extends FlxSpriteGroup {
 
     static inline var DEFAULT_COLOR:Int = FlxColor.GRAY;
 
+    // 方向定数
+    static inline var DIR_UP:Int   = 0;
+    static inline var DIR_DOWN:Int = 1;
+    static inline var DIR_MAX:Int  = 2;
+
     var _num:Int = 0;
     var _txt:FlxText;
     var _sprList:Array<FlxSprite>;
     var _upperY:Float = 0;
     var _bottomY:Float = 0;
 
+    /**
+     * コンストラクタ
+     */
     public function new(px:Float, py:Float, num:Int) {
         super();
 
+        // 初期数値を保持
         _num = num;
 
+        // 上下矢印画像読み込み
         _sprList = new Array<FlxSprite>();
         var size:Float = SPR_HEIGHT;
-        for(i in 0...2) {
+        for(i in 0...DIR_MAX) {
             var spr = new FlxSprite(0, 0, Resources.NUM_ARROW);
             var px2 = px;
             var py2 = py;
             var rot:Float = 0;
-            if(i == 0) {
+            if(i == DIR_UP) {
+                // 上
                 py2 = py - size;
                 _upperY = py2;
             }
             else {
+                // 下
                 py2 = py + size * 1.1;
                 rot = 180;
                 _bottomY = py2;
@@ -55,11 +70,15 @@ private class NumberInputUI extends FlxSpriteGroup {
             this.add(spr);
         }
 
+        // 数字テキスト
         _txt = new FlxText(px, py, Std.int(size), '${_num}', Std.int(size));
         _txt.alignment = FlxTextAlign.CENTER;
         this.add(_txt);
     }
 
+    /**
+     * 更新
+     */
     override public function update(elapsed:Float):Void {
         super.update(elapsed);
         _txt.text = '${_num}';
@@ -95,22 +114,35 @@ private class NumberInputUI extends FlxSpriteGroup {
         }
     }
 
+    /**
+     * 数値の取得
+     */
     public function getNum():Int {
         return _num;
     }
 }
 
+/**
+ * 数値入力管理
+ */
 class NumberInputSubState extends FlxSubState {
 
+    // 余白
     static inline var MARGIN_X:Float = 12;
 
     var _idx:Int = 0;
     var _digit:Int = 0;
     var _num:Int = 0;
     var _uiList:Array<NumberInputUI>;
+    var _okSpr:FlxSprite; // OKボタン
+
+    /**
+     * コンストラクタ
+     */
     public function new() {
         super();
 
+        // 生成パラメータを設定
         {
             _idx = EscGlobal.numberInputGetIdx();
             _num = EscGlobal.valGet(_idx);
@@ -119,6 +151,7 @@ class NumberInputSubState extends FlxSubState {
             _digit = EscGlobal.numberInputGetDigit();
         }
 
+        // 桁ごとの数値入力UIを生成
         _uiList = new Array<NumberInputUI>();
         var w = NumberInputUI.SPR_WIDTH;
         var h = NumberInputUI.SPR_HEIGHT;
@@ -140,6 +173,17 @@ class NumberInputSubState extends FlxSubState {
         for(ui in _uiList) {
             this.add(ui);
         }
+
+        // OKボタン
+        {
+            var px = FlxG.width/2;
+            var py = FlxG.height * 4 / 5;
+            var spr = new FlxSprite(px, py, Resources.BTN_OK_PATH);
+            spr.x -= spr.width/2;
+            spr.y -= spr.height/2;
+            _okSpr = spr;
+            this.add(_okSpr);
+        }
     }
 
     /**
@@ -160,6 +204,12 @@ class NumberInputSubState extends FlxSubState {
 
         if(FlxG.keys.justPressed.X) {
             close();
+        }
+        else if(FlxG.mouse.justPressed) {
+            if(Utils.checkClickSprite(_okSpr)) {
+                // OKボタンをクリックした
+                close();
+            }
         }
     }
 }
