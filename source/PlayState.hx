@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import esc.EscEditor;
 import esc.EscGlobal;
-import ui.InfomationUI;
+import ui.InformationUI;
 
 /**
  * 状態
@@ -48,10 +48,10 @@ class PlayState extends FlxState {
 	/**
 	 * アイテムUIを取得する
 	 */
-	public static function getInfomationUI():InfomationUI {
+	public static function getInformationUI():InformationUI {
 		if(Std.is(FlxG.state, PlayState)) {
 			var playstate = cast(FlxG.state, PlayState);
-			return playstate._getInfomationUI();
+			return playstate._getInformationUI();
 		}
 		return null;
 	}
@@ -172,7 +172,7 @@ class PlayState extends FlxState {
 	function _getEditor():EscEditor {
 		return _editor;
 	}
-	function _getInfomationUI():InfomationUI {
-		return _editor.getInfomationUI();
+	function _getInformationUI():InformationUI {
+		return _editor.getInformationUI();
 	}
 }

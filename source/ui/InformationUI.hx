@@ -7,7 +7,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
-class InfomationUI extends FlxSpriteGroup {
+class InformationUI extends FlxSpriteGroup {
 
     var _txt:FlxText;
     var _tween:FlxTween = null;

@@ -10,7 +10,7 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import esc.loader.EscLoader;
 import esc.loader.EscObj;
-import ui.InfomationUI;
+import ui.InformationUI;
 import ui.MovingCursorUI;
 import ui.TapUI;
 import ui.ItemMenuSubState;
@@ -38,7 +38,7 @@ class EscEditor extends FlxSubState {
     var _selobj:EscSprite = null;
     var _selframe:FlxSprite = null;
     var _txts:Array<FlxText>;
-    var _infomationUI:InfomationUI;
+    var _informationUI:InformationUI;
     var _script:EscScript;
     var _movingCursorUI:MovingCursorUI;
     var _tagUI:TapUI;
@@ -93,8 +93,8 @@ class EscEditor extends FlxSubState {
         this.add(_movingCursorUI);
         
         // 通知テキスト
-        _infomationUI = new InfomationUI();
-        this.add(_infomationUI);
+        _informationUI = new InformationUI();
+        this.add(_informationUI);
 
         // スクリプト生成
         _script = new EscScript();
@@ -124,8 +124,8 @@ class EscEditor extends FlxSubState {
         return _isEdit;
     }
 
-    public function getInfomationUI():InfomationUI {
-        return _infomationUI;
+    public function getInformationUI():InformationUI {
+        return _informationUI;
     }
 
     /**

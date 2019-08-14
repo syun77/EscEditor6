@@ -123,7 +123,7 @@ class EscScript extends FlxSpriteGroup {
         }
         
         // インフォメーション表示
-        PlayState.getInfomationUI().start(msg, 3);
+        PlayState.getInformationUI().start(msg, 3);
         return AdvScript.RET_CONTINUE;
     }
     function _NUM_INPUT(param:Array<String>):Int {
