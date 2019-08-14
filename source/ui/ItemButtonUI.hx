@@ -46,6 +46,7 @@ class ItemButtonUI extends FlxSpriteGroup {
         this.add(_bg2);
 
         _item = new FlxSprite(0, 0);
+        _item.scale.set(0, 0);
         this.add(_item);
 
         _txt = new FlxText(0, _bg.height, _bg.width, "ITEM", 10);
@@ -94,7 +95,7 @@ class ItemButtonUI extends FlxSpriteGroup {
                 // アイテムが変わった
                 _item.loadGraphic(Resources.getItemPath(itemID));
                 _item.visible = true;
-                _cnt2 = 0;
+                _startClickedAnim();
             }
         }
         _itemID = itemID;
@@ -110,9 +111,14 @@ class ItemButtonUI extends FlxSpriteGroup {
 
         if(Utils.checkClickSprite(_bg)) {
             // クリックした
+            _startClickedAnim();
             return true;
         }
 
         return false;
+    }
+
+    function _startClickedAnim():Void {
+        _cnt2 = 0;
     }
 }

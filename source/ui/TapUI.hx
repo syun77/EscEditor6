@@ -48,7 +48,7 @@ class TapUI extends FlxSprite {
         super.update(elapsed);
 
         if(alpha > 0) {
-            alpha -= elapsed;
+            alpha -= elapsed * 2;
         }
     }
 }

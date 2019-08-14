@@ -5,6 +5,8 @@ import flixel.text.FlxText;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 
@@ -12,14 +14,16 @@ import flash.geom.Rectangle;
  * フラグ編集
  */
 class EscFlagEditor extends FlxSpriteGroup {
-    static inline var FONT_SIZE:Int = 14;
-    static inline var WIDTH:Int = 16;
-    static inline var HEIGHT:Int = 16;
+    static inline var FONT_SIZE:Int = 20;
+    static inline var WIDTH:Int = 24;
+    static inline var HEIGHT:Int = 24;
 
+    var _ofs:Int = 0;
+    var _cursor:Int = 0;
     var _isEnd:Bool = false;
+
     var _sprHorizontal:FlxSprite;
     var _sprVertical:FlxSprite;
-    var _cursor:Int = 0;
     var _txtCaption:FlxText;
     var _textSpr:FlxSprite;
     var _txt0:FlxText;
@@ -41,6 +45,7 @@ class EscFlagEditor extends FlxSpriteGroup {
         {
             _txt0 = new FlxText(0, 0, 0, "0", FONT_SIZE);
             _txt1 = new FlxText(0, 0, 0, "1", FONT_SIZE);
+            _txt1.color = FlxColor.RED;
 
             // 全てのフラグを更新
             _updateAllFlags(0);
@@ -66,17 +71,38 @@ class EscFlagEditor extends FlxSpriteGroup {
 
         if(FlxG.keys.justPressed.Z) {
             // フラグのOn/Off切り替え
-            var flag = EscGlobal.flagCheck(_cursor) == false;
-            EscGlobal.flagSet(_cursor, flag);
-
-            // フラグ更新
-            _updateFlag(_cursor);
+            _toggleFlag();
         }
 
         if(FlxG.keys.justPressed.X) {
             // 終了
             _isEnd = true;
         }
+
+        if(FlxG.mouse.justPressed) {
+            var i = Std.int((FlxG.mouse.x - x) / WIDTH) - 1;
+            var j = Std.int((FlxG.mouse.y - y) / HEIGHT) - 1;
+            if(0 <= i && i < 10) {
+                if(0 <= j && j < 10) {
+                    _cursor = i + (j * 10);
+                    _toggleFlag();
+                }
+            }
+        }
+        if(FlxG.mouse.justPressedRight) {
+            _isEnd = true;
+        }
+    }
+
+    function _toggleFlag():Void {
+        var flag = EscGlobal.flagCheck(_cursor) == false;
+        EscGlobal.flagSet(_cursor, flag);
+
+        // フラグ更新
+        _updateFlag(_cursor);
+
+        _txtCaption.scale.x = 1.3;
+        FlxTween.tween(_txtCaption.scale, {x:1}, 0.2, {ease:FlxEase.backOut});
     }
 
     /**
@@ -89,6 +115,9 @@ class EscFlagEditor extends FlxSpriteGroup {
             _sprVertical.x = (digitX + 1) * WIDTH + x - 2;
             _sprHorizontal.y = (digitY + 1) * HEIGHT + y + 2;
         }
+
+        // 前回の値を保持
+        var prevCursor = _cursor;
 
         if(FlxG.keys.justPressed.LEFT) {
             digitX--;
@@ -117,10 +146,22 @@ class EscFlagEditor extends FlxSpriteGroup {
 
         _cursor = (digitY * 10) + digitX;
 
+        // 選択項目の更新があったかどうか
+        var isDirty = (_cursor != prevCursor);
+
+        // フラグ連続変更対応
+        if(isDirty) {
+            // 選択項目の更新があった
+            if(FlxG.keys.pressed.Z) {
+                _toggleFlag();
+            }
+        }
+
+        // キャプション更新
         {
-            var str = '${_cursor}: ';
+            var str = '${_ofs + _cursor}: ';
             var color = FlxColor.BLUE;
-            if(EscGlobal.flagCheck(_cursor)) {
+            if(EscGlobal.flagCheck(_ofs + _cursor)) {
                 str += "On";
                 _txtCaption.color = FlxColor.RED;
                 color = FlxColor.PURPLE;
@@ -183,6 +224,9 @@ class EscFlagEditor extends FlxSpriteGroup {
         _textSpr.updateFramePixels();
     }
 
+    /**
+     * 指定のフラグを更新
+     */
     function _updateFlag(idx:Int):Void {
         var flag = EscGlobal.flagCheck(idx);
         var txt = _txt0;

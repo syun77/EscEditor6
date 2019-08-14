@@ -13,7 +13,7 @@ import esc.loader.EscObj;
 import ui.InformationUI;
 import ui.MovingCursorUI;
 import ui.TapUI;
-import ui.ItemMenuSubState;
+import ui.ItemMenuUI;
 import ui.DebugMenuSubState;
 import ui.ItemButtonUI;
 
@@ -25,6 +25,7 @@ private enum State {
     FadeInWait; // フェードイン待ち
     Execute;    // 実行中
     ScriptWait; // スクリプト終了待ち
+    ItemMenu;   // アイテムメニューを開いている
     NextScene;  // 次のシーンに進む
 }
 
@@ -50,6 +51,7 @@ class EscEditor extends FlxSubState {
     var _movingCursorUI:MovingCursorUI;
     var _tapUI:TapUI;
     var _btnItem:ItemButtonUI; // アイテムボタン
+    var _itemMenu:ItemMenuUI; // アイテムメニュー
 
     // スクリプト
     var _script:EscScript;
@@ -104,6 +106,10 @@ class EscEditor extends FlxSubState {
         // アイテムボタン
         _btnItem = new ItemButtonUI();
         this.add(_btnItem);
+
+        // アイテムメニュー
+        _itemMenu = new ItemMenuUI(_btnItem);
+        this.add(_itemMenu);
 
         // 移動カーソル
         _movingCursorUI = new MovingCursorUI(_loader.movings);
@@ -207,7 +213,6 @@ class EscEditor extends FlxSubState {
             case State.Execute:
                 _updateExecute();
             case State.ScriptWait:
-                _movingCursorUI.visible = false;
                 if(_script.isEnd()) {
                     trace('script.isEnd() -> sceneID = ${EscGlobal.getNextSceneID()}');
                     if(EscGlobal.hasNextSceneID()) {
@@ -221,14 +226,17 @@ class EscEditor extends FlxSubState {
                         }, true);
                     }
                     else {
-                        _movingCursorUI.visible = true;
                         _movingCursorUI.update(elapsed);
                         _state = State.Execute;
                     }
                 }
+            case State.ItemMenu:
+                if(_itemMenu.exists == false) {
+                    // アイテムメニューを閉じた
+                    _state = State.Execute;
+                }
             case State.NextScene:
                 // 次のシーンに進む
-                _movingCursorUI.visible = false;
         }
 
         if(isEdit()) {
@@ -239,16 +247,22 @@ class EscEditor extends FlxSubState {
             _updateObjVisible();
         }
 
+        // 移動カーソル更新
+        _updateMovingCursorUI();
+
         // デバッグテキスト更新
         _txtDebug.text = '${_state}';
         _updateDebugInput();
+
+        if(FlxG.mouse.justPressed) {
+            // タップエフェクト開始
+            _tapUI.start(FlxG.mouse.x, FlxG.mouse.y);
+        }
     }
 
     function _updateExecute():Void {
 
 		if(FlxG.mouse.justPressed) {
-            // タップエフェクト開始
-            _tapUI.start(FlxG.mouse.x, FlxG.mouse.y);
 
             // クリックしたオブジェクトを取得する
 			_selobj = _clickObj();
@@ -271,7 +285,7 @@ class EscEditor extends FlxSubState {
 
             // アイテムボタン
             if(_btnItem.clicked()) {
-                openSubState(new ItemMenuSubState(_btnItem));
+                _openItemMenu();
                 return;
             }
 		}
@@ -280,6 +294,24 @@ class EscEditor extends FlxSubState {
     function _updateObjVisible():Void {
         for(spr in _objs) {
             spr.visible = spr.getObj().checkVisible();
+        }
+    }
+
+    function _updateMovingCursorUI():Void {
+        var ui = _movingCursorUI;
+        switch(_state) {
+            case State.Init:
+                ui.visible = false;
+            case State.FadeInWait:
+                ui.visible = false;
+            case State.Execute:
+                ui.visible = true;
+            case State.ScriptWait:
+                ui.visible = false;
+            case State.ItemMenu:
+                ui.visible = false;
+            case State.NextScene:
+                ui.visible = false;
         }
     }
 
@@ -319,6 +351,14 @@ class EscEditor extends FlxSubState {
 		}
     }
 
+    /**
+     * アイテムメニューを開く
+     */
+    function _openItemMenu():Void {
+        _state = State.ItemMenu;
+        _itemMenu.open();
+    }
+
     function _updateDebugInput():Void {
 		if(FlxG.keys.justPressed.E) {
 			// 編集モード切り替え
@@ -330,7 +370,9 @@ class EscEditor extends FlxSubState {
 		}
 		if(FlxG.keys.justPressed.I) {
 			// アイテム撰択を開く
-			openSubState(new ItemMenuSubState(_btnItem));
+            if(_state == State.Execute) {
+                _openItemMenu();
+            }
 		}
 		if(FlxG.keys.justPressed.R) {
 			// リセット
