@@ -36,6 +36,8 @@ class EscEditor extends FlxSubState {
     var _bg:EscSprite;
     var _objs:Array<EscSprite>;
     var _selobj:EscSprite = null;
+    var _selobjOfsX:Float = 0;
+    var _selobjOfsY:Float = 0;
     var _selframe:FlxSprite = null;
     var _txts:Array<FlxText>;
     var _informationUI:InformationUI;
@@ -236,6 +238,8 @@ class EscEditor extends FlxSubState {
             // クリックしたオブジェクトを取得する
 			_selobj = _clickObj();
 			if(_selobj != null) {
+                _selobjOfsX = _selobj.x - FlxG.mouse.x;
+                _selobjOfsY = _selobj.y - FlxG.mouse.y;
 				var width:Float = _selobj.width + 4;
 				var height:Float = _selobj.height + 4;
 				_selframe.makeGraphic(Std.int(width), Std.int(height), FlxColor.RED);
@@ -282,8 +286,8 @@ class EscEditor extends FlxSubState {
 		if(FlxG.mouse.pressed) {
 			if(_selobj != null) {
 				// マウスの位置に移動
-				_selobj.x = FlxG.mouse.x;
-				_selobj.y = FlxG.mouse.y;
+				_selobj.x = FlxG.mouse.x + _selobjOfsX;
+				_selobj.y = FlxG.mouse.y + _selobjOfsY;
 				// 枠を表示
 				_selframe.visible = true;
 				_selframe.x = _selobj.x - 2;

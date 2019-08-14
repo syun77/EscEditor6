@@ -21,8 +21,8 @@ class InformationUI extends FlxSpriteGroup {
 
         // 背景
         {
-            var h = HEIGHT + 20;
-            _bg = new FlxSprite(0, FlxG.height-h).makeGraphic(FlxG.width, h, FlxColor.WHITE);
+            var h = HEIGHT;
+            _bg = new FlxSprite(0, FlxG.height-h-5).makeGraphic(FlxG.width, h, FlxColor.WHITE);
             _bg.color = FlxColor.BLACK;
             _bg.alpha = 0.5;
             this.add(_bg);
@@ -35,10 +35,26 @@ class InformationUI extends FlxSpriteGroup {
         this.add(_txt);
 
         visible = false;
+        _bg.scale.y = 0;
     }
 
     override public function update(elapsed:Float):Void {
         super.update(elapsed);
+
+        if(_tween != null) {
+            var t = _tween.scale * 5;
+            if(t > 1) {
+                t = 1;
+            }
+           _bg.scale.y = FlxEase.expoOut(t); 
+        }
+    }
+
+    override public function destroy():Void {
+        if(_tween != null) {
+            _tween.cancel();
+            _tween = null;
+        }
     }
 
     public function start(msg:String, time:Float):Void {
@@ -51,6 +67,7 @@ class InformationUI extends FlxSpriteGroup {
         visible = true;
         _tween = FlxTween.tween(_txt, {}, time, {onComplete:function(_) {
             visible = false;
+            _bg.scale.y = 0;
             _tween = null;
         }});
     }

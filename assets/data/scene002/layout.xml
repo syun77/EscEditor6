@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<bg id="1" image="bg.png" />
-	<obj id="1" image="obj1.png" x="32" y="32" click="002_001" on="0" off="0" />
-	<obj id="2" image="obj2.png" x="400" y="128" click="002_002" on="0" off="0" />
+	<obj id="1" image="drawer1.png" x="124" y="364" click="002_drawer1" on="0" off="0" />
+	<obj id="2" image="drawer2.png" x="346" y="364" click="002_drawer2" on="0" off="0" />
+	<obj id="3" image="graffiti.png" x="357" y="314" click="002_graffiti" on="0" off="0" />
 </data>
