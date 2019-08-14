@@ -134,10 +134,11 @@ class EscEditor extends FlxSubState {
     function _addText():FlxText {
         var length:Int = _txts.length;
         var x:Float = 8;
-        var y:Float = 8 + (length * 24);
+        var y:Float = 8 + (length * 12);
         var txt = new FlxText(x, y);
-        var size:Int = 20;
+        var size:Int = 10;
         txt.setFormat(null, size);
+        txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 1);
         _txts.push(txt);
         return txt;
     }
@@ -271,7 +272,7 @@ class EscEditor extends FlxSubState {
         
 		var str:String = "";
 		_txts[0].text = _loader.bg.getString();
-		for(i in 0...2) {
+		for(i in 0..._loader.objs.length) {
 			str = "";
 			var obj = _loader.objs[i];
 			_txts[i + 1].text = obj.getString();

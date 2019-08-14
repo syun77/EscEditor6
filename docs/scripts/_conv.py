@@ -30,6 +30,10 @@ def main(tool, fFuncDef, fDefines, inputDir, outDir):
 		print("%s"%fInput)
 		os.system(cmd)
 		print("--------------------------------------")
+		
+		# ログを削除する
+		fLog = fOut + ".log"
+		os.remove(fLog)
 
 if __name__ == '__main__':
 	args = sys.argv
