@@ -15,6 +15,7 @@ import ui.MovingCursorUI;
 import ui.TapUI;
 import ui.ItemMenuSubState;
 import ui.DebugMenuSubState;
+import ui.ItemButtonUI;
 
 /**
  * 状態
@@ -35,15 +36,25 @@ class EscEditor extends FlxSubState {
     var _loader:EscLoader;
     var _bg:EscSprite;
     var _objs:Array<EscSprite>;
+
+    // 選択オブジェクト
     var _selobj:EscSprite = null;
     var _selobjOfsX:Float = 0;
     var _selobjOfsY:Float = 0;
     var _selframe:FlxSprite = null;
+
     var _txts:Array<FlxText>;
+
+    // UI
     var _informationUI:InformationUI;
-    var _script:EscScript;
     var _movingCursorUI:MovingCursorUI;
-    var _tagUI:TapUI;
+    var _tapUI:TapUI;
+    var _btnItem:ItemButtonUI; // アイテムボタン
+
+    // スクリプト
+    var _script:EscScript;
+
+    // デバッグ
     var _txtDebug:FlxText;
 
     /**
@@ -90,6 +101,10 @@ class EscEditor extends FlxSubState {
         // 表示オブジェクト更新
         _updateObjVisible();
 
+        // アイテムボタン
+        _btnItem = new ItemButtonUI();
+        this.add(_btnItem);
+
         // 移動カーソル
         _movingCursorUI = new MovingCursorUI(_loader.movings);
         this.add(_movingCursorUI);
@@ -103,8 +118,8 @@ class EscEditor extends FlxSubState {
         this.add(_script);
 
         // タップエフェクト
-        _tagUI = new TapUI();
-        this.add(_tagUI);
+        _tapUI = new TapUI();
+        this.add(_tapUI);
 
         _txtDebug = new FlxText(8, FlxG.height-32, 0, "");
         this.add(_txtDebug);
@@ -140,7 +155,7 @@ class EscEditor extends FlxSubState {
         var txt = new FlxText(x, y);
         var size:Int = 10;
         txt.setFormat(null, size);
-        txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 1);
+        txt.setBorderStyle(FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK, 1);
         _txts.push(txt);
         return txt;
     }
@@ -233,7 +248,7 @@ class EscEditor extends FlxSubState {
 
 		if(FlxG.mouse.justPressed) {
             // タップエフェクト開始
-            _tagUI.start(FlxG.mouse.x, FlxG.mouse.y);
+            _tapUI.start(FlxG.mouse.x, FlxG.mouse.y);
 
             // クリックしたオブジェクトを取得する
 			_selobj = _clickObj();

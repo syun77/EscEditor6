@@ -12,7 +12,10 @@ class Resources {
 	public static inline var INPUT_SPR_SIZE:Float = 64;
 
 	// ボタン
-	public static inline var BTN_OK_PATH:String = "assets/images/common/ok.png";
+	public static inline var BTN_OK_PATH:String    = "assets/images/common/ok.png";
+	public static inline var BTN_BACK_PATH:String  = "assets/images/common/back.png";
+	public static inline var BTN_CLOSE_PATH:String = "assets/images/common/close.png";
+	public static inline var BTN_ITEM_PATH:String  = "assets/images/common/item_button.png";
     
 	/**
 	 * シーンファイルのパスを取得する
@@ -36,5 +39,14 @@ class Resources {
 	 */
 	public static function getInputPicturePath(inputNo:Int):String {
 		return "assets/images/inputs/" + Utils.fillZero(inputNo, 3) + "/pictures.png";
+	}
+
+	/**
+	 * アイテム画像のパスを取得する
+	 * @param itemID アイテム番号
+	 * @return アイテム画像のパス
+	 */
+	public static function getItemPath(itemID:Int):String {
+		return 'assets/images/item/${Utils.fillZero(itemID, 3)}.png'; 
 	}
 }

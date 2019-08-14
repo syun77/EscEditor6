@@ -3,6 +3,10 @@ NUM_INPUT,    NUM_INPUT,  idx, digit
 PIC_INPUT,    PIC_INPUT,  picId, idx, digit
 WAIT,         WAIT,       sec
 JUMP,         JUMP,       sceneId
+ITEM_ADD,     ITEM_ADD,   itemId
+ITEM_HAS,     ITEM_HAS,   itemId
+ITEM_DEL,     ITEM_DEL,   itemId
+ITEM_CHK,     ITEM_CHK,   itemId
 //draw_bg,    DRB,        id, effectId=0
 //erase_bg,   ERB,        effectId=0
 //draw_ch,    DRC,        id, pos, effectId=0

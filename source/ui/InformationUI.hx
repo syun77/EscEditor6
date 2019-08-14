@@ -32,6 +32,7 @@ class InformationUI extends FlxSpriteGroup {
         _txt = new FlxText(0, FlxG.height-40, FlxG.width, null);
         _txt.setFormat(Resources.FONT_PATH, Resources.FONT_SIZE);
         _txt.alignment = FlxTextAlign.CENTER;
+        _txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 2);
         this.add(_txt);
 
         visible = false;

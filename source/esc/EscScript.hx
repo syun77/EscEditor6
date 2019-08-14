@@ -39,14 +39,6 @@ class EscScript extends FlxSpriteGroup {
         _wait = 0;
     }
 
-    /*
-    function _cmdJump(cmd:EscCommand):CmdRet {
-        var sceneID = cmd.paramInt(0);
-        EscGlobal.setNextSceneID(sceneID);
-        return CmdRet.Exit;
-    }
-    */
-
     /**
      * 実行を終了したかどうか
      */
@@ -97,6 +89,10 @@ class EscScript extends FlxSpriteGroup {
             "NUM_INPUT" => _NUM_INPUT,
             "PIC_INPUT" => _PIC_INPUT,
             "JUMP"      => _JUMP,
+            "ITEM_ADD"  => _ITEM_ADD,
+            "ITEM_HAS"  => _ITEM_HAS,
+            "ITEM_DEL"  => _ITEM_DEL,
+            "ITEM_CHK"  => _ITEM_CHK,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -154,6 +150,49 @@ class EscScript extends FlxSpriteGroup {
         _log('SCENE JUMP -> ${sceneID}');
         EscGlobal.setNextSceneID(sceneID);
         return AdvScript.RET_EXIT;
+    }
+    function _ITEM_ADD(param:Array<String>):Int {
+        _log('ITEM_ADD');
+        var itemID = _script.popStack();
+        EscGlobal.itemAdd(itemID);
+
+        // アイテム入手メッセージ表示
+        var msg = '「${EscGlobal.itemName(itemID)}」を手に入れた';
+        PlayState.getInformationUI().start(msg, 3);
+        return AdvScript.RET_YIELD;
+    }
+    function _ITEM_HAS(param:Array<String>):Int {
+        _log('ITEM_HAS');
+        var itemID = _script.popStack();
+        if(EscGlobal.itemHas(itemID)) {
+            EscGlobal.retSet(1);
+        }
+        else {
+            EscGlobal.retSet(0);
+        }
+        return AdvScript.RET_CONTINUE;
+    }
+    function _ITEM_DEL(param:Array<String>):Int {
+        _log('ITEM_DEL');
+        var itemID = _script.popStack();
+        if(EscGlobal.itemDel(itemID)) {
+            EscGlobal.retSet(1);
+        }
+        else {
+            EscGlobal.retSet(0);
+        }
+        return AdvScript.RET_CONTINUE;
+    }
+    function _ITEM_CHK(param:Array<String>):Int {
+        _log('ITEM_CHK');
+        var itemID = _script.popStack();
+        if(EscGlobal.itemCheck(itemID)) {
+            EscGlobal.retSet(1);
+        }
+        else {
+            EscGlobal.retSet(0);
+        }
+        return AdvScript.RET_CONTINUE;
     }
 
     /**
