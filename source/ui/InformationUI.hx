@@ -52,6 +52,7 @@ class InformationUI extends FlxSpriteGroup {
 
     override public function destroy():Void {
         if(_tween != null) {
+            // ここで消しておかないと解放済みのメモリにアクセスしてしまう
             _tween.cancel();
             _tween = null;
         }
