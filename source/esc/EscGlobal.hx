@@ -157,6 +157,10 @@ class EscGlobal {
     public static function itemDel(idx:Int):Bool {
         if(itemHas(idx)) {
             _items[idx] = ItemState.Del;
+            if(itemCheck(idx)) {
+                // 装備していたら外す
+                valSet(VAL_ITEM, ITEM_INVALID);
+            }
             return true;
         }
         return false; // 所持していないアイテム
@@ -181,6 +185,16 @@ class EscGlobal {
     // アイテム名を取得する
     public static function itemName(idx:Int):String {
         return _itemNames[idx];
+    }
+    // アイテムが全てNoneかどうか
+    public static function itemAllNone():Bool {
+        for(item in _items) {
+            if(item != ItemState.None) {
+                return false;
+            }
+        }
+        // 全てNone
+        return true;
     }
 
     /**

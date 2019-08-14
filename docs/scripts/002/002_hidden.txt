@@ -1,8 +1,10 @@
-ITEM_HAS(ITEM_YELLOW_KEY)
-if($1) {
-	":もう何もない"
+if(%21) {
+	// 鍵をすでに拾った
+	":ここには何もない"
 }
 else {
 	// 黄色いカギ入手
 	ITEM_ADD(ITEM_YELLOW_KEY)
+	// 入手ずみフラグを立てる
+	%21 = true
 }

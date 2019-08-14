@@ -5,22 +5,25 @@ import flixel.text.FlxText;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.FlxG;
+import flash.geom.Point;
+import flash.geom.Rectangle;
 
 /**
  * フラグ編集
  */
 class EscFlagEditor extends FlxSpriteGroup {
-    static inline var FONT_SIZE:Int = 20;
-    static inline var WIDTH:Int = 20;
-    static inline var HEIGHT:Int = 20;
+    static inline var FONT_SIZE:Int = 14;
+    static inline var WIDTH:Int = 16;
+    static inline var HEIGHT:Int = 16;
 
     var _isEnd:Bool = false;
-    var _txts:Array<FlxText>;
     var _sprHorizontal:FlxSprite;
     var _sprVertical:FlxSprite;
-    var _txtHeaders:Array<FlxText>;
     var _cursor:Int = 0;
     var _txtCaption:FlxText;
+    var _textSpr:FlxSprite;
+    var _txt0:FlxText;
+    var _txt1:FlxText;
 
     /**
      * コンストラクタ
@@ -34,40 +37,15 @@ class EscFlagEditor extends FlxSpriteGroup {
         this.add(_sprHorizontal);
         this.add(_sprVertical);
 
-        // 文字
-        _txts = new Array<FlxText>();
-        for(j in 0...10) {
-            for(i in 0...10) {
-                var px = (i + 1) * WIDTH;
-                var py = (j + 1) * HEIGHT;
-                var txt = new FlxText(px, py, 0, "0", FONT_SIZE);
-                _txts.push(txt);
-            }
-        }
+        _textSpr = new FlxSprite().makeGraphic(11 * WIDTH, 11 * HEIGHT, FlxColor.TRANSPARENT);
+        {
+            _txt0 = new FlxText(0, 0, 0, "0", FONT_SIZE);
+            _txt1 = new FlxText(0, 0, 0, "1", FONT_SIZE);
 
-        for(txt in _txts) {
-            this.add(txt);
+            // 全てのフラグを更新
+            _updateAllFlags(0);
         }
-
-        // ヘッダ文字
-        _txtHeaders = new Array<FlxText>();
-        for(i in 0...10) {
-            var px = (i + 1) * WIDTH;
-            var py = 0;
-            var txt = new FlxText(px, py, 0, '${i}', FONT_SIZE);
-            txt.color = FlxColor.GRAY;
-            _txtHeaders.push(txt);
-        }
-        for(j in 0...10) {
-            var px = 0;
-            var py = (j + 1) * HEIGHT;
-            var txt = new FlxText(px, py, 0, '${j}', FONT_SIZE);
-            txt.color = FlxColor.GRAY;
-            _txtHeaders.push(txt);
-        }
-        for(txt in _txtHeaders) {
-            this.add(txt);
-        }
+        this.add(_textSpr);
 
         _txtCaption = new FlxText(8, HEIGHT*12, 0, 16);
         this.add(_txtCaption);
@@ -88,19 +66,11 @@ class EscFlagEditor extends FlxSpriteGroup {
 
         if(FlxG.keys.justPressed.Z) {
             // フラグのOn/Off切り替え
-            var flag = EscGlobal.flagCheck(_cursor);
-            EscGlobal.flagSet(_cursor, flag == false);
-        }
+            var flag = EscGlobal.flagCheck(_cursor) == false;
+            EscGlobal.flagSet(_cursor, flag);
 
-        var idx:Int = 0;
-        for(txt in _txts) {
-            if(EscGlobal.flagCheck(idx)) {
-                txt.text = "1";
-            }
-            else {
-                txt.text = "0";
-            }
-            idx++;
+            // フラグ更新
+            _updateFlag(_cursor);
         }
 
         if(FlxG.keys.justPressed.X) {
@@ -147,20 +117,6 @@ class EscFlagEditor extends FlxSpriteGroup {
 
         _cursor = (digitY * 10) + digitX;
 
-        var idx:Int = 0;
-        for(txt in _txts) {
-            if(idx == _cursor) {
-                txt.color = FlxColor.LIME;
-                if(EscGlobal.flagCheck(_cursor)) {
-                    txt.color = FlxColor.RED;
-                }
-            }
-            else {
-                txt.color = FlxColor.WHITE;
-            }
-            idx++;
-        }
-
         {
             var str = '${_cursor}: ';
             var color = FlxColor.BLUE;
@@ -180,9 +136,69 @@ class EscFlagEditor extends FlxSpriteGroup {
     }
 
     /**
-     * 描画
+     * フラグを全て更新
      */
-    public override function draw():Void {
-        super.draw();
+    function _updateAllFlags(ofs:Int):Void {
+        var pt = new Point();
+        var rect = new Rectangle();
+        rect.x = 0;
+        rect.y = 0;
+
+        // ヘッダ文字
+        var txtHeader = new FlxText(0, 0, 0, FONT_SIZE-2);
+        txtHeader.color = FlxColor.fromRGB(0xA0, 0xA0, 0xA0, 0xFF);
+        for(i in 0...10) {
+            txtHeader.text = '${i}';
+            pt.x = WIDTH * (i + 1);
+            pt.y = 0;
+            rect.width = txtHeader.width;
+            rect.height = txtHeader.height;
+            _textSpr.pixels.copyPixels(txtHeader.pixels, rect, pt);
+        }
+        for(j in 0...10) {
+            txtHeader.text = '${j}';
+            pt.x = 0;
+            pt.y = HEIGHT * (j + 1);
+            rect.width = txtHeader.width;
+            rect.height = txtHeader.height;
+            _textSpr.pixels.copyPixels(txtHeader.pixels, rect, pt);
+        }
+
+        // 本体
+        for(j in 0...10) {
+            for(i in 0...10) {
+                pt.x = WIDTH * (i + 1);
+                pt.y = HEIGHT * (j + 1);
+                var idx = ofs + (i + (10 * j));
+                var txt = _txt0;
+                if(EscGlobal.flagCheck(idx)) {
+                    txt = _txt1;
+                }
+                rect.width = txt.width;
+                rect.height = txt.height;
+                _textSpr.pixels.copyPixels(txt.pixels, rect, pt);
+            }
+        }
+        _textSpr.dirty = true;
+        _textSpr.updateFramePixels();
+    }
+
+    function _updateFlag(idx:Int):Void {
+        var flag = EscGlobal.flagCheck(idx);
+        var txt = _txt0;
+        if(flag) {
+            txt = _txt1;
+        }
+        var i = _cursor % 10 + 1;
+        var j = Std.int(_cursor / 10) + 1;
+        var pt = new Point(i * WIDTH, j * HEIGHT);
+        var rect = new Rectangle();
+        rect.x = 0;
+        rect.y = 0;
+        rect.width = txt.width;
+        rect.height = txt.height;
+        _textSpr.pixels.copyPixels(txt.pixels, rect, pt);
+        _textSpr.dirty = true;
+        _textSpr.updateFramePixels();
     }
 }
