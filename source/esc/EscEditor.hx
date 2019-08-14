@@ -259,12 +259,20 @@ class EscEditor extends FlxSubState {
 				var height:Float = _selobj.height + 4;
 				_selframe.makeGraphic(Std.int(width), Std.int(height), FlxColor.RED);
                 _onClick(_selobj.getObj());
+                return;
 			}
-            else {
-                var obj = _clickMovingObj();
-                if(obj != null) {
-                    _onClick(obj);
-                }
+
+            // シーン移動
+            var obj = _clickMovingObj();
+            if(obj != null) {
+                _onClick(obj);
+                return;
+            }
+
+            // アイテムボタン
+            if(_btnItem.clicked()) {
+                openSubState(new ItemMenuSubState(_btnItem));
+                return;
             }
 		}
     }
@@ -322,7 +330,7 @@ class EscEditor extends FlxSubState {
 		}
 		if(FlxG.keys.justPressed.I) {
 			// アイテム撰択を開く
-			openSubState(new ItemMenuSubState());
+			openSubState(new ItemMenuSubState(_btnItem));
 		}
 		if(FlxG.keys.justPressed.R) {
 			// リセット
@@ -330,7 +338,7 @@ class EscEditor extends FlxSubState {
 		}
 		if(FlxG.keys.justPressed.F) {
 			// フラグ編集モード切り替え
-			openSubState(new DebugMenuSubState());
+			openSubState(new DebugMenuSubState(FlxColor.fromRGB(0, 0, 0, 0x80)));
 		}
     }
 }

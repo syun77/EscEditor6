@@ -5,6 +5,8 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.util.FlxColor;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import esc.EscGlobal;
 
 /**
@@ -15,6 +17,7 @@ class ItemButtonUI extends FlxSpriteGroup {
     static inline var MARGIN:Float = 8; // 余白
 
     var _cnt:Float = 0;
+    var _cnt2:Float = 0;
     var _bg:FlxSprite;
     var _bg2:FlxSprite;
     var _item:FlxSprite;
@@ -31,6 +34,7 @@ class ItemButtonUI extends FlxSpriteGroup {
         _bg.loadGraphic(Resources.BTN_ITEM_PATH, true);
         _bg.animation.add("0", [0], 1);
         _bg.animation.play("0");
+        _bg.scale.set(0, 0);
         this.add(_bg);
 
         _bg2 = new FlxSprite(0, 0);
@@ -38,6 +42,7 @@ class ItemButtonUI extends FlxSpriteGroup {
         _bg2.animation.add("0", [1], 1);
         _bg2.animation.play("0");
         _bg2.alpha = 0;
+        _bg2.scale.set(0, 0);
         this.add(_bg2);
 
         _item = new FlxSprite(0, 0);
@@ -61,6 +66,16 @@ class ItemButtonUI extends FlxSpriteGroup {
 
         _cnt += elapsed;
         _bg2.alpha = 0.2 + (0.2 * Math.sin(_cnt*4));
+        _cnt2 += elapsed;
+        if(_cnt2 > 1) {
+            _cnt2 = 1;
+        }
+        {
+            var sc = FlxEase.elasticOut(_cnt2);
+            _item.scale.set(sc, sc);
+            _bg.scale.set(sc, sc);
+            _bg2.scale.set(sc, sc);
+        }
 
         var itemID = EscGlobal.valGet(EscGlobal.VAL_ITEM);
         if(itemID == EscGlobal.ITEM_INVALID) {
@@ -79,6 +94,7 @@ class ItemButtonUI extends FlxSpriteGroup {
                 // アイテムが変わった
                 _item.loadGraphic(Resources.getItemPath(itemID));
                 _item.visible = true;
+                _cnt2 = 0;
             }
         }
         _itemID = itemID;
@@ -88,7 +104,7 @@ class ItemButtonUI extends FlxSpriteGroup {
      * クリックしたかどうか
      */
     public function clicked():Bool {
-        if(EscGlobal.valGet(EscGlobal.VAL_ITEM) == EscGlobal.ITEM_INVALID) {
+        if(EscGlobal.itemAllNone()) {
             return false;
         }
 

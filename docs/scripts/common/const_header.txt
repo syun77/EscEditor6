@@ -1,3 +1,6 @@
 data:
   ITEM_YELLOW_KEY: 1 # 黄色いカギ
-  PIYO: 2
+  ITEM_RED_KEY: 2 # 赤いカギ
+  ITEM_BLUE_KEY: 3 # 青いカギ
+  ITEM_GREEN_KEY: 4 # 緑のカギ
+

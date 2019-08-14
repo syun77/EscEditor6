@@ -16,10 +16,6 @@ class DebugMenuSubState extends FlxSubState {
     override public function create():Void {
         super.create();
 
-        var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-        bg.alpha = 0.5;
-        this.add(bg);
-
         _flagEditor = new EscFlagEditor();
 		_flagEditor.x = 300;
 		_flagEditor.y = 32;
