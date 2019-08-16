@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<bg id="1" image="bg.png" />
-	<obj id="1" image="obj1.png" x="32" y="32" click="003_001" on="0" off="0" />
-	<obj id="2" image="obj2.png" x="400" y="400" click="003_002" on="2" off="0" />
+	<obj id="1" image="number.png" x="270" y="167" click="003_number" on="0" off="0" />
+	<obj id="2" image="lock.png" x="296" y="215" click="003_lock" on="0" off="0" />
+	<move id="left" click="003_jump001" on="0" off="0" />
+	<move id="right" click="003_jump002" on="0" off="0" />
 </data>

@@ -1,4 +1,0 @@
-function hello() {
-	NOTICE("not find anything in there.");
-	JUMP(1);
-}

@@ -1,6 +1,0 @@
-MSG,9,Nothing is there
-INT,3
-WAIT
-INT,1
-JUMP
-END
