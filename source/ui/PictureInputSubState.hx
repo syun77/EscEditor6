@@ -136,7 +136,8 @@ private class PictureInputUI extends FlxSpriteGroup {
     }
 
     function _updatePicture():Void {
-        var idx = (_digit * _max) + _num;
+        //var idx = (_digit * _max) + _num;
+        var idx = (_num * _digitMax) + _digit;
         _pictureSpr.animation.play('${idx}');
     }
 }

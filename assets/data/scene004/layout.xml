@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<bg id="1" image="bg.png" />
+	<obj id="1" image="chair.png" x="48" y="291" click="004_chair" on="0" off="0" />
+	<obj id="2" image="clock.png" x="48" y="10" click="004_clock" on="0" off="0" />
+	<move id="right" click="004_jump" on="0" off="0" />
+</data>

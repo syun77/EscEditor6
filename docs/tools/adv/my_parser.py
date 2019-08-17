@@ -88,7 +88,7 @@ class MyParser:
         define = self.defines[name]
         return define
     def hasKeyword(self, name):
-        return self.keywords.has_key(name)
+        return name in self.keywords
     def getKeywords(self, name):
         """ キーワードの取得 """
         key = self.keywords[name]

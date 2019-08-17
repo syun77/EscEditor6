@@ -5,6 +5,7 @@
 	<obj id="2" image="drawer2.png" x="346" y="364" click="002_drawer2" on="0" off="0" />
 	<obj id="3" image="graffiti.png" x="357" y="314" click="002_graffiti" on="0" off="0" />
 	<obj id="4" image="hidden.png" x="160" y="444" click="002_hidden" on="0" off="0" />
+	<obj id="5" image="pic_input.png" x="158" y="80" click="002_pic_input" on="0" off="0" />
 	<move id="left" click="002_jump003" on="0" off="0" />
 	<move id="right" click="002_jump001" on="0" off="0" />
 </data>
