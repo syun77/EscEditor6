@@ -190,6 +190,9 @@ class EscEditor extends FlxSubState {
         if(isEdit()) {
             return; // 編集モード中はクリックイベントは発生しない
         }
+        if(obj.click == "") {
+            return; // クリックイベントが存在しない
+        }
 
         var path = '${_loader.getRoot()}${obj.click}.csv';
         trace('click: ${path}');
