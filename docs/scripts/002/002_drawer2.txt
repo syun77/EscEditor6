@@ -3,15 +3,20 @@ if(%20) {
 	":中には何もない"
 }
 else {
-	// まだ鍵を開けていない
-	ITEM_CHK(ITEM_YELLOW_KEY)
+	ITEM_CHK(ITEM_RED_KEY)
 	if($1) {
-		":鍵を使って引き出しを開けた"
-		ITEM_DEL(ITEM_YELLOW_KEY)
-		%20 = true
+		":このカギでは開かない"
 	}
 	else {
-		":引き出しは鍵がかかっている"
+		// まだ鍵を開けていない
+		ITEM_CHK(ITEM_BLUE_KEY)
+		if($1) {
+			":青いカギを使って引き出しを開けた"
+			ITEM_DEL(ITEM_YELLOW_KEY)
+			%20 = true
+		}
+		else {
+			":引き出しはカギがかかっている"
+		}
 	}
-
 }

@@ -5,6 +5,5 @@
 	<obj id="2" image="number2.png" x="270" y="167" click="003_number2" on="30" off="0" />
 	<obj id="3" image="lock.png" x="296" y="215" click="003_lock" on="0" off="30" />
 	<obj id="4" image="lock2.png" x="296" y="215" click="003_lock2" on="30" off="0" />
-	<move id="left" click="003_jump001" on="0" off="0" />
-	<move id="right" click="003_jump002" on="0" off="0" />
+	<move id="down" click="003_jump" on="0" off="0" />
 </data>

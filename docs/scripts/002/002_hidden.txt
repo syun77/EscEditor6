@@ -3,11 +3,8 @@ if(%21) {
 	":ここには何もない"
 }
 else {
-	// 黄色いカギ入手
-	ITEM_ADD(ITEM_YELLOW_KEY)
+	// 赤いカギ入手
 	ITEM_ADD(ITEM_RED_KEY)
-	ITEM_ADD(ITEM_BLUE_KEY)
-	ITEM_ADD(ITEM_GREEN_KEY)
 	// 入手ずみフラグを立てる
 	%21 = true
 }

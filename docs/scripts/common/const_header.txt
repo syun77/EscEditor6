@@ -3,4 +3,6 @@ data:
   ITEM_RED_KEY: 2 # 赤いカギ
   ITEM_BLUE_KEY: 3 # 青いカギ
   ITEM_GREEN_KEY: 4 # 緑のカギ
+  ITEM_GLASS: 5 # 虫眼鏡
+  ITEM_FLOPPY_DISK: 6 # フロッピーディスク
 
