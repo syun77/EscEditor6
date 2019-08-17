@@ -1,0 +1,9 @@
+ITEM_CHK(ITEM_RED_KEY)
+if($1) {
+	%30 = true
+	ITEM_DEL(ITEM_RED_KEY)
+	":赤いカギを差し込んだ"
+}
+else {
+	":カギ穴がある"
+}

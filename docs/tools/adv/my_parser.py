@@ -572,6 +572,8 @@ class MyParser:
             if ttype == '=':
                 self.lookAhead() # skip '='
                 node = Assign('=', sym, self.parseExpression())
+                if node.nodeR is None:
+                    self.fatal("nodeR is null")
             elif ttype in [TokenType.IADD, TokenType.ISUB, TokenType.IMUL, TokenType.IDIV]:
                 self.fatal("BIT is not valid assign type -> '%s'", ttype)
             else:
@@ -582,6 +584,8 @@ class MyParser:
             if ttype == '=':
                 self.lookAhead() # skip '='
                 node = Assign('=', sym, self.parseExpression())
+                if node.nodeR is None:
+                    self.fatal("nodeR is null")
             elif ttype == TokenType.IADD:
                 self.lookAhead() # skip '+='
                 node = Assign(TokenType.IADD, sym, self.parseExpression())

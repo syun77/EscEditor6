@@ -8,6 +8,6 @@
 	<obj id="5" image="pic_input.png" x="158" y="80" click="002_pic_input" on="0" off="0" />
 	<obj id="6" image="glass.png" x="150" y="250" click="002_glass" on="0" off="23" />
 	<obj id="7" image="floppy_disk.png" x="37" y="380" click="002_floppy_disk" on="0" off="24" />
-	<move id="left" click="002_jump003" on="0" off="0" />
+	<move id="left" click="002_jump004" on="0" off="0" />
 	<move id="right" click="002_jump001" on="0" off="0" />
 </data>

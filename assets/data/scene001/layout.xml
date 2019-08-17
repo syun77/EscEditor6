@@ -4,5 +4,5 @@
 	<obj id="1" image="knob.png" x="224" y="288" click="001_knob" on="0" off="0" />
 	<obj id="2" image="sticker.png" x="268" y="188" click="001_sticker" on="0" off="0" />
 	<move id="left" click="001_jump002" on="3" off="0" />
-	<move id="right" click="001_jump003" on="3" off="0" />
+	<move id="right" click="001_jump005" on="3" off="0" />
 </data>

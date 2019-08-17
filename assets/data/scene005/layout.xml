@@ -5,6 +5,7 @@
 	<obj id="2" image="sticker1.png" x="220" y="74" click="005_sticker1" on="0" off="0" />
 	<obj id="3" image="sticker2.png" x="220" y="142" click="005_sticker2" on="0" off="0" />
 	<obj id="4" image="bottle_opener.png" x="234" y="214" click="005_bottle_opener" on="0" off="0" />
-	<obj id="5" image="lock.png" x="29" y="215" click="005_lock" on="0" off="0" />
-	<move id="right" click="005_jump" on="0" off="0" />
+	<obj id="5" image="lock.png" x="29" y="136" click="005_lock" on="0" off="0" />
+	<move id="left" click="005_jump001" on="0" off="0" />
+	<move id="right" click="005_jump004" on="0" off="0" />
 </data>
