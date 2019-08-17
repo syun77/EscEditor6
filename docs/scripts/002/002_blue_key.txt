@@ -1,0 +1,3 @@
+%27 = true
+ITEM_ADD(ITEM_BLUE_KEY)
+

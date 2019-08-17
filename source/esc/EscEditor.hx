@@ -170,7 +170,12 @@ class EscEditor extends FlxSubState {
 	 * クリックしたオブジェクトを取得
 	 */
     function _clickObj():EscSprite {
-		for(obj in _objs) {
+        var tmp = new Array<EscSprite>();
+        for(obj in _objs) {
+            tmp.push(obj);
+        }
+        tmp.reverse(); // 逆順にする
+		for(obj in tmp) {
             if(Utils.checkClickSprite(obj)) {
                 return obj;
             }

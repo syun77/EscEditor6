@@ -1,0 +1,3 @@
+%29 = true
+ITEM_ADD(ITEM_GREEN_KEY)
+
