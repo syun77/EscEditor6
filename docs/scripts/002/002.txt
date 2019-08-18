@@ -1,0 +1,100 @@
+def blue_key
+{
+	%27 = true
+	ITEM_ADD(ITEM_BLUE_KEY)
+}
+
+def drawer1a
+{
+	%25 = true
+}
+
+def drawer1b
+{
+	%25 = false
+}
+
+def drawer2a
+{
+	%26 = true
+}
+
+def drawer2b
+{
+	%26 = false
+}
+
+def floppy_disk
+{
+	if(%24 == false) {
+		// フロッピーディスク入手
+		ITEM_ADD(ITEM_FLOPPY_DISK)
+		%24 = true // 入手フラグON
+	}
+}
+
+def glass
+{
+	if(%23 == false) {
+		// 虫眼鏡入手
+		ITEM_ADD(ITEM_GLASS)
+		%23 = true // 入手フラグON
+	}
+}
+
+def graffiti
+{
+	":「せがさをたしのえくつ」と書いてある"
+}
+
+def green_key
+{
+	%29 = true
+	ITEM_ADD(ITEM_GREEN_KEY)
+}
+
+def hidden
+{
+	if(%21) {
+		// 鍵をすでに拾った
+		":ここには何もない"
+	}
+	else {
+		// 赤いカギ入手
+		ITEM_ADD(ITEM_RED_KEY)
+		// 入手ずみフラグを立てる
+		%21 = true
+	}
+}
+
+def jump001
+{
+	JUMP(1)
+}
+
+def jump004
+{
+	JUMP(4)
+}
+
+def pic_input
+{
+	PIC_INPUT(1, 20, 6)
+	
+	// まだらなかが
+	// みぢりにきぎ
+	// むづるぬくぐ
+	// めでれねけげ
+	// もどろのこご
+
+	// みどりのかぎ
+	// １４１４０１
+
+	if($20 == 141401) {
+		":カギが開いた"
+		%28 = true
+	}
+	else {
+		":正しくないようだ"
+	}
+}

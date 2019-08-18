@@ -52,6 +52,12 @@ class AdvScript {
   var _bits:Array<Bool>;
   // 変数
   var _vars:Array<Int>;
+
+  // 実行中の関数名
+  var _funcName:String = null;
+  // コールスタック
+  var _callStack:Array<Int>;
+
   public function lengthBit():Int {
     if(funcLengthBit != null) {
       return funcLengthBit();
@@ -121,6 +127,23 @@ class AdvScript {
   }
 
   /**
+   * 指定の関数名に直接ジャンプする
+   */
+  public function jumpFunction(name:String):Bool {
+    var addr = _searchFunction(name);
+    if(addr < 0) {
+      if(_bLog) {
+        trace('[Error] Not find function: ${name}');
+      }
+      return false; // 見つからなかった
+    }
+    else {
+      _jump(addr + 1); // "FUNC_START" の次のアドレスから開始
+      return true;
+    }
+  }
+
+  /**
    * コンストラクタ
    **/
   public function new(cmdTbl:Map<String,Array<String>->Int>, filepath:String=null) {
@@ -153,6 +176,8 @@ class AdvScript {
       "GOTO"  => _GOTO,
       "WHILE" => _WHILE,
       "END"   => _END,
+      "FUNC_START" => _FUNC_START,
+      "FUNC_END"   => _FUNC_END,
     ];
 
     _userTbl = cmdTbl;
@@ -161,6 +186,9 @@ class AdvScript {
     for(i in 0...MAX_VAR) {
       _vars.push(0);
     }
+
+    _funcName = null;
+    _callStack = new Array<Int>();
   }
 
   /**
@@ -229,6 +257,7 @@ class AdvScript {
   private function _loop():Int {
     var line = _data[_pc];
     if(line == "") {
+      // 空行
       _pc++;
       return RET_CONTINUE;
     }
@@ -241,6 +270,7 @@ class AdvScript {
     var ret = RET_CONTINUE;
 
     if(_sysTbl.exists(cmd)) {
+      // システム関数
       _sysTbl[cmd](param);
       ret = RET_CONTINUE;
     }
@@ -248,10 +278,31 @@ class AdvScript {
       if(_userTbl.exists(cmd) == false) {
         throw 'Error: Not found command = ${cmd}';
       }
+      // ユーザー定義関数
       ret = _userTbl[cmd](param);
     }
 
     return ret;
+  }
+
+  /**
+   * 指定の関数名を探す
+   */
+  private function _searchFunction(name:String):Int {
+    for(i in 0..._data.length) {
+      var line = _data[i];
+      var d = line.split(",");
+      var cmd = d[0];
+      if(cmd != "FUNC_START") {
+        continue;
+      }
+      var func = d[1];
+      if(name == func) {
+        return i+1; // 関数名を見つけた (スクリプト上のアドレスは+1)
+      }
+    }
+
+    return -1; // 見つからなかった
   }
 
   private function _BOOL(param:Array<String>):Void {
@@ -499,5 +550,25 @@ class AdvScript {
       trace("-------------------");
     }
     _bEnd = true;
+  }
+
+  private function _FUNC_START(param:Array<String>):Void {
+    if(_bLog) {
+      trace("[SCRIPT] FUNC_START");
+    }
+    _bEnd = true; // 通常は呼び出されないので終了する
+  }
+
+  private function _FUNC_END(param:Array<String>):Void {
+    if(_bLog) {
+      trace("[SCRIPT] FUNC_END");
+    }
+    if(_callStack.length == 0) {
+      _bEnd = true; // 直接呼び出しの場合は終了する
+    }
+    else {
+      var addr = _callStack.pop(); // コールスタックがある場合は復帰する
+      _pc = addr /*+ 1*/; // 呼び出しの次のアドレス
+    }
   }
 }

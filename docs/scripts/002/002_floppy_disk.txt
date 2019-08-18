@@ -1,5 +1,0 @@
-if(%24 == false) {
-	// フロッピーディスク入手
-	ITEM_ADD(ITEM_FLOPPY_DISK)
-	%24 = true // 入手フラグON
-}

@@ -9,12 +9,14 @@ class EscLoader {
     public var bg:EscObj;
     public var objs:Array<EscObj>;
     public var movings:Array<EscObj>;
+    var _sceneID:Int;
     var _root:String;
 
-    public function new(root:String) {
+    public function new(sceneID:Int) {
+        _sceneID = sceneID;
         // 基準フォルダを設定
-        _root = root;
-        trace('EscLoader create. "${root}"');
+        _root = Resources.getScenePath(sceneID, true);
+        trace('EscLoader create. "${_root}"');
 
         objs = new Array<EscObj>();
         movings = new Array<EscObj>();
@@ -45,6 +47,10 @@ class EscLoader {
 
     public function getRoot():String {
         return _root;
+    }
+
+    public function getScriptPath():String {
+        return '${_root}${Utils.fillZero(_sceneID, 3)}.csv';
     }
 
     /**

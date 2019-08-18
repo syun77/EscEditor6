@@ -35,6 +35,9 @@ private enum State {
 }
 
 class EscEditor extends FlxSubState {
+    // 新しいスクリプト対応
+    public static inline var NEW_SCRIPT:Bool = true;
+
     public static inline var FADE_TIME:Float = 0.25;
 
     var _isEdit:Bool = false;
@@ -73,11 +76,11 @@ class EscEditor extends FlxSubState {
     /**
      * コンストラクタ
      */
-    public function new(root:String, isEdit:Bool) {
+    public function new(sceneID:Int, isEdit:Bool) {
         super();
 
         _isEdit = isEdit;
-        _loader = new EscLoader(root);
+        _loader = new EscLoader(sceneID);
         _txts = new Array<FlxText>();
 
         // 背景の読み込み
@@ -244,11 +247,18 @@ class EscEditor extends FlxSubState {
             return; // クリックイベントが存在しない
         }
 
-        var path = '${_loader.getRoot()}${obj.click}.csv';
-        trace('click: ${path}');
+        if(NEW_SCRIPT) {
+            var path = _loader.getScriptPath();
+            trace('click: ${path} :${obj.click}');
+            _script.execute(path, obj.click);
+        }
+        else {
+            var path = '${_loader.getRoot()}${obj.click}.csv';
+            trace('click: ${path}');
 
-        // スクリプト実行
-        _script.execute(path);
+            // スクリプト実行
+            _script.execute(path);
+        }
         _state = State.ScriptWait;
     }
 
@@ -299,8 +309,8 @@ class EscEditor extends FlxSubState {
 #if debug
         // デバッグテキスト更新
         _txtDebug.text = '${_state}';
-#end
         _updateDebugInput();
+#end
 
         if(FlxG.mouse.justPressed) {
             // タップエフェクト開始

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<bg id="1" image="bg.png" />
-	<obj id="1" image="drawer1.png" x="124" y="364" click="002_drawer1a" on="0" off="25" />
-	<obj id="2" image="drawer2.png" x="114" y="364" click="002_drawer1b" on="25" off="0" />
-	<obj id="11" image="drawer1.png" x="346" y="364" click="002_drawer2a" on="0" off="26" />
-	<obj id="12" image="drawer2.png" x="336" y="364" click="002_drawer2b" on="26" off="0" />
-	<obj id="3" image="graffiti.png" x="357" y="314" click="002_graffiti" on="0" off="0" />
-	<obj id="4" image="hidden.png" x="160" y="444" click="002_hidden" on="0" off="0" />
-	<obj id="5" image="pic_input.png" x="158" y="100" click="002_pic_input" on="0" off="28" />
-	<obj id="6" image="glass.png" x="150" y="250" click="002_glass" on="0" off="23" />
-	<obj id="7" image="floppy_disk.png" x="37" y="380" click="002_floppy_disk" on="0" off="24" />
-	<obj id="8" image="blue_key.png" x="413" y="385" click="002_blue_key" on="26" off="27" />
+	<obj id="1" image="drawer1.png" x="124" y="364" click="drawer1a" on="0" off="25" />
+	<obj id="2" image="drawer2.png" x="114" y="364" click="drawer1b" on="25" off="0" />
+	<obj id="11" image="drawer1.png" x="346" y="364" click="drawer2a" on="0" off="26" />
+	<obj id="12" image="drawer2.png" x="336" y="364" click="drawer2b" on="26" off="0" />
+	<obj id="3" image="graffiti.png" x="357" y="314" click="graffiti" on="0" off="0" />
+	<obj id="4" image="hidden.png" x="160" y="444" click="hidden" on="0" off="0" />
+	<obj id="5" image="pic_input.png" x="158" y="100" click="pic_input" on="0" off="28" />
+	<obj id="6" image="glass.png" x="150" y="250" click="glass" on="0" off="23" />
+	<obj id="7" image="floppy_disk.png" x="37" y="380" click="floppy_disk" on="0" off="24" />
+	<obj id="8" image="blue_key.png" x="413" y="385" click="blue_key" on="26" off="27" />
 	<obj id="9" image="unlocked.png" x="151" y="76" on="28" off="0" />
-	<obj id="10" image="green_key.png" x="224" y="91" click="002_green_key" on="28" off="29" />
-	<move id="left" click="002_jump004" on="0" off="0" />
-	<move id="right" click="002_jump001" on="0" off="0" />
+	<obj id="10" image="green_key.png" x="224" y="91" click="green_key" on="28" off="29" />
+	<move id="left" click="jump004" on="0" off="0" />
+	<move id="right" click="jump001" on="0" off="0" />
 </data>

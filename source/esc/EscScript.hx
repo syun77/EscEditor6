@@ -16,6 +16,7 @@ private enum State {
  * スクリプト管理
  */
 class EscScript {
+    
     var _state:State = State.Standby;
     var _script:AdvScript;
     var _wait:Float = 0;
@@ -81,7 +82,7 @@ class EscScript {
     /**
      * 実行
      */
-    public function execute(filepath:String):Void {
+    public function execute(filepath:String, funcname:String=null):Void {
         _init();
 
         // 実行
@@ -101,6 +102,12 @@ class EscScript {
         _register();
         _script.setLog(true);
         _isLog = true;
+
+        if(funcname != null) {
+            // 直接関数を呼び出す
+            _script.jumpFunction(funcname);
+        }
+
         _state = State.Execute;
     }
     function _WAIT(param:Array<String>):Int {

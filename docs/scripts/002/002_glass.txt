@@ -1,5 +1,0 @@
-if(%23 == false) {
-	// 虫眼鏡入手
-	ITEM_ADD(ITEM_GLASS)
-	%23 = true // 入手フラグON
-}
