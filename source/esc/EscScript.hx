@@ -1,8 +1,5 @@
 package esc;
 
-import flixel.group.FlxSpriteGroup;
-import ui.NumberInputSubState;
-import ui.PictureInputSubState;
 import lib.AdvScript;
 
 /**
@@ -18,7 +15,7 @@ private enum State {
 /**
  * スクリプト管理
  */
-class EscScript extends FlxSpriteGroup {
+class EscScript {
     var _state:State = State.Standby;
     var _script:AdvScript;
     var _wait:Float = 0;
@@ -29,7 +26,6 @@ class EscScript extends FlxSpriteGroup {
      * コンストラクタ
      */
     public function new() {
-        super();
         _init();
     }
 
@@ -57,9 +53,7 @@ class EscScript extends FlxSpriteGroup {
     /**
      * 更新
      */
-    override public function update(elapsed:Float):Void {
-        super.update(elapsed);
-
+    public function update(elapsed:Float):Void {
         switch(_state) {
             case State.Standby:
                 // 何もしない
@@ -138,7 +132,7 @@ class EscScript extends FlxSpriteGroup {
         EscGlobal.numberInputSet(idx, digit);
         var editor = PlayState.getEditor();
         if(editor != null) {
-            editor.openSubState(new NumberInputSubState());
+            editor.openNumberInput();
         }
         return AdvScript.RET_YIELD;
     }
@@ -150,7 +144,7 @@ class EscScript extends FlxSpriteGroup {
         EscGlobal.numberInputSet(idx, digit);
         var editor = PlayState.getEditor();
         if(editor != null) {
-            editor.openSubState(new PictureInputSubState(pic, digit));
+            editor.openPictureInput(pic, digit);
         }
         return AdvScript.RET_YIELD;
     }

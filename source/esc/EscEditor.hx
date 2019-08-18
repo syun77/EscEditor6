@@ -17,6 +17,9 @@ import ui.TapUI;
 import ui.ItemMenuUI;
 import ui.DebugMenuSubState;
 import ui.ItemButtonUI;
+import ui.MenuUIBase;
+import ui.NumberInputUI;
+import ui.PictureInputUI;
 
 /**
  * 状態
@@ -26,7 +29,7 @@ private enum State {
     FadeInWait; // フェードイン待ち
     Execute;    // 実行中
     ScriptWait; // スクリプト終了待ち
-    ItemMenu;   // アイテムメニューを開いている
+    MenuUIWait; // 何かUIを開いている
     NextScene;  // 次のシーンに進む
     Completed;  // ゲームクリア
 }
@@ -51,9 +54,13 @@ class EscEditor extends FlxSubState {
     // UI
     var _informationUI:InformationUI;
     var _movingCursorUI:MovingCursorUI;
+    var _numberInputUI:NumberInputUI;
+    var _pictureInputUI:PictureInputUI;
     var _tapUI:TapUI;
     var _btnItem:ItemButtonUI; // アイテムボタン
     var _itemMenu:ItemMenuUI; // アイテムメニュー
+    var _activeUI:MenuUIBase; // 実行中のオーバーレイするメニューUI
+    
 
     // スクリプト
     var _script:EscScript;
@@ -107,6 +114,8 @@ class EscEditor extends FlxSubState {
         // 表示オブジェクト更新
         _updateObjVisible();
 
+        _activeUI = null;
+
         // アイテムボタン
         _btnItem = new ItemButtonUI();
         this.add(_btnItem);
@@ -123,9 +132,16 @@ class EscEditor extends FlxSubState {
         _informationUI = new InformationUI();
         this.add(_informationUI);
 
+        // 数値入力UI
+        _numberInputUI = new NumberInputUI();
+        this.add(_numberInputUI);
+
+        // 画像入力UI
+        _pictureInputUI = new PictureInputUI();
+        this.add(_pictureInputUI);
+
         // スクリプト生成
         _script = new EscScript();
-        this.add(_script);
 
         // タップエフェクト
         _tapUI = new TapUI();
@@ -160,6 +176,24 @@ class EscEditor extends FlxSubState {
 
     public function getInformationUI():InformationUI {
         return _informationUI;
+    }
+
+    public function openNumberInput():Void {
+        _numberInputUI.open();
+        _numberInputUI.funcClosed = function() {
+            // 実行後はスクリプト再生に戻す
+            _state = State.ScriptWait;
+        }
+        _openMenu(_numberInputUI);
+    }
+
+    public function openPictureInput(pictureID:Int, digit:Int):Void {
+        _pictureInputUI.open(pictureID, digit);
+        _pictureInputUI.funcClosed = function() {
+            // 実行後はスクリプト再生に戻す
+            _state = State.ScriptWait;
+        }
+        _openMenu(_pictureInputUI);
     }
 
     /**
@@ -233,10 +267,14 @@ class EscEditor extends FlxSubState {
                 _updateExecute();
             case State.ScriptWait:
                 _updateScriptWait(elapsed);
-            case State.ItemMenu:
-                if(_itemMenu.exists == false) {
+            case State.MenuUIWait:
+                if(_activeUI.isClosed()) {
                     // アイテムメニューを閉じた
                     _state = State.Execute;
+                    if(_activeUI.funcClosed != null) {
+                        // コールバック関数があれば呼び出し
+                        _activeUI.funcClosed();
+                    }
                 }
             case State.NextScene:
                 // 次のシーンに進む
@@ -302,6 +340,7 @@ class EscEditor extends FlxSubState {
     }
 
     function _updateScriptWait(elapsed:Float):Void {
+        _script.update(elapsed);
         if(_script.isEnd()) {
             trace('script.isEnd() -> sceneID = ${EscGlobal.getNextSceneID()}');
             if(EscGlobal.hasNextSceneID()) {
@@ -346,7 +385,7 @@ class EscEditor extends FlxSubState {
                 ui.visible = true;
             case State.ScriptWait:
                 ui.visible = false;
-            case State.ItemMenu:
+            case State.MenuUIWait:
                 ui.visible = false;
             case State.NextScene:
                 ui.visible = false;
@@ -392,11 +431,15 @@ class EscEditor extends FlxSubState {
     }
 
     /**
-     * アイテムメニューを開く
+     * メニューを開く
      */
+    function _openMenu(ui:MenuUIBase):Void {
+        _activeUI = ui;
+        _state = State.MenuUIWait;
+    }
     function _openItemMenu():Void {
-        _state = State.ItemMenu;
         _itemMenu.open();
+        _openMenu(_itemMenu);
     }
 
     function _updateDebugInput():Void {

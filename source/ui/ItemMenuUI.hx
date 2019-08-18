@@ -9,8 +9,9 @@ import flixel.tweens.FlxEase;
 import esc.EscGlobal;
 import flixel.util.FlxDestroyUtil;
 import ui.ItemButtonUI;
+import ui.MenuUIBase;
 
-class ItemMenuUI extends FlxSpriteGroup {
+class ItemMenuUI extends MenuUIBase {
 
     static inline var IMG_WIDTH:Int  = 92;
     static inline var IMG_HEIGHT:Int = 64;
@@ -130,6 +131,10 @@ class ItemMenuUI extends FlxSpriteGroup {
         if(_checkToClose()) {
             _close();
         }
+    }
+
+    override public function isClosed():Bool {
+        return exists == false;
     }
 
     /**

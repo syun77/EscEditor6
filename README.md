@@ -1,2 +1,2 @@
-# EscEditor
-脱出ゲームエディター
+# EscEditor2
+脱出ゲームエディター V2.00
