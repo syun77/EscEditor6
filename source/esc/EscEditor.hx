@@ -8,6 +8,7 @@ import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import flixel.util.FlxTimer;
 import esc.loader.EscLoader;
 import esc.loader.EscObj;
 import ui.InformationUI;
@@ -27,6 +28,7 @@ private enum State {
     ScriptWait; // スクリプト終了待ち
     ItemMenu;   // アイテムメニューを開いている
     NextScene;  // 次のシーンに進む
+    Completed;  // ゲームクリア
 }
 
 class EscEditor extends FlxSubState {
@@ -55,6 +57,8 @@ class EscEditor extends FlxSubState {
 
     // スクリプト
     var _script:EscScript;
+
+    var _txtCompleted:FlxText;
 
     // デバッグ
     var _txtDebug:FlxText;
@@ -126,6 +130,13 @@ class EscEditor extends FlxSubState {
         // タップエフェクト
         _tapUI = new TapUI();
         this.add(_tapUI);
+
+        // ゲームクリア
+        _txtCompleted = new FlxText(0, FlxG.height/2, FlxG.width, "", 32);
+        _txtCompleted.y -= _txtCompleted.height/2;
+        _txtCompleted.alignment = FlxTextAlign.CENTER;
+        _txtCompleted.setBorderStyle(FlxTextBorderStyle.OUTLINE);
+        this.add(_txtCompleted);
 
         _txtDebug = new FlxText(8, FlxG.height-32, 0, "");
         this.add(_txtDebug);
@@ -221,23 +232,7 @@ class EscEditor extends FlxSubState {
             case State.Execute:
                 _updateExecute();
             case State.ScriptWait:
-                if(_script.isEnd()) {
-                    trace('script.isEnd() -> sceneID = ${EscGlobal.getNextSceneID()}');
-                    if(EscGlobal.hasNextSceneID()) {
-                        // 次のシーンに進む
-                        _state = State.NextScene;
-                        // フェード開始
-                        FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
-                            // フェード完了で閉じる
-                            trace("EscEditor.update() -> close()");
-                            close();
-                        }, true);
-                    }
-                    else {
-                        _movingCursorUI.update(elapsed);
-                        _state = State.Execute;
-                    }
-                }
+                _updateScriptWait(elapsed);
             case State.ItemMenu:
                 if(_itemMenu.exists == false) {
                     // アイテムメニューを閉じた
@@ -245,6 +240,11 @@ class EscEditor extends FlxSubState {
                 }
             case State.NextScene:
                 // 次のシーンに進む
+            case State.Completed:
+                // ゲームクリア
+                if(_txtCompleted.size > 32) {
+                    _txtCompleted.size -= 2;
+                }
         }
 
         if(isEdit()) {
@@ -258,8 +258,10 @@ class EscEditor extends FlxSubState {
         // 移動カーソル更新
         _updateMovingCursorUI();
 
+#if debug
         // デバッグテキスト更新
         _txtDebug.text = '${_state}';
+#end
         _updateDebugInput();
 
         if(FlxG.mouse.justPressed) {
@@ -299,6 +301,34 @@ class EscEditor extends FlxSubState {
 		}
     }
 
+    function _updateScriptWait(elapsed:Float):Void {
+        if(_script.isEnd()) {
+            trace('script.isEnd() -> sceneID = ${EscGlobal.getNextSceneID()}');
+            if(EscGlobal.hasNextSceneID()) {
+                // 次のシーンに進む
+                _state = State.NextScene;
+                // フェード開始
+                FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
+                    // フェード完了で閉じる
+                    trace("EscEditor.update() -> close()");
+                    close();
+                }, true);
+            }
+            else if(_script.isCompleted()) {
+                _state = State.Completed;
+                _txtCompleted.text = "COMPLETED";
+                _txtCompleted.size = 80;
+                new FlxTimer().start(3, function(_) {
+                    FlxG.switchState(new TitleState());
+                });
+            }
+            else {
+                _movingCursorUI.update(elapsed);
+                _state = State.Execute;
+            }
+        }
+    }
+
     function _updateObjVisible():Void {
         for(spr in _objs) {
             spr.visible = spr.getObj().checkVisible();
@@ -319,6 +349,8 @@ class EscEditor extends FlxSubState {
             case State.ItemMenu:
                 ui.visible = false;
             case State.NextScene:
+                ui.visible = false;
+            case State.Completed:
                 ui.visible = false;
         }
     }

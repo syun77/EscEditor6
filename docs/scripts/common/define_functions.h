@@ -7,6 +7,7 @@ ITEM_ADD,     ITEM_ADD,   itemId
 ITEM_HAS,     ITEM_HAS,   itemId
 ITEM_DEL,     ITEM_DEL,   itemId
 ITEM_CHK,     ITEM_CHK,   itemId
+COMPLETE,     COMPLETE,   
 //draw_bg,    DRB,        id, effectId=0
 //erase_bg,   ERB,        effectId=0
 //draw_ch,    DRC,        id, pos, effectId=0

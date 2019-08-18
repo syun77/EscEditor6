@@ -33,7 +33,8 @@ def main(tool, fFuncDef, fDefines, inputDir, outDir):
 		
 		# ログを削除する
 		fLog = fOut + ".log"
-		os.remove(fLog)
+		if os.path.exists(fLog):
+			os.remove(fLog)
 
 if __name__ == '__main__':
 	args = sys.argv

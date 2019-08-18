@@ -23,6 +23,7 @@ class EscScript extends FlxSpriteGroup {
     var _script:AdvScript;
     var _wait:Float = 0;
     var _isLog:Bool = false;
+    var _isCompleted:Bool = false; // ゲームクリアフラグ
 
     /**
      * コンストラクタ
@@ -44,6 +45,13 @@ class EscScript extends FlxSpriteGroup {
      */
     public function isEnd():Bool {
         return _state == State.Standby;
+    }
+
+    /**
+     * ゲームをクリアしたかどうか
+     */
+    public function isCompleted():Bool {
+        return _isCompleted;
     }
 
     /**
@@ -93,6 +101,7 @@ class EscScript extends FlxSpriteGroup {
             "ITEM_HAS"  => _ITEM_HAS,
             "ITEM_DEL"  => _ITEM_DEL,
             "ITEM_CHK"  => _ITEM_CHK,
+            "COMPLETE"  => _COMPLETE,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -193,6 +202,11 @@ class EscScript extends FlxSpriteGroup {
             EscGlobal.retSet(0);
         }
         return AdvScript.RET_CONTINUE;
+    }
+    function _COMPLETE(param:Array<String>):Int {
+        _log('COMPLETE');
+        _isCompleted = true;
+        return AdvScript.RET_EXIT;
     }
 
     /**

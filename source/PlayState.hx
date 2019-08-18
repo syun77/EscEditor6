@@ -88,6 +88,14 @@ class PlayState extends FlxState {
 
 		_txtEdit = new FlxText(300, 32, 0, "", 12);
 		this.add(_txtEdit);
+
+#if !debug
+		// デバッグでなければ直接開始
+		_cursorSpr.visible = false;
+		// 指定のシーンを実行する
+		_openEditor(_cursor);
+		_state = State.EditScene;
+#end
 	}
 
 	/**
@@ -107,6 +115,9 @@ class PlayState extends FlxState {
 	}
 
 	function _updateSelectScene():Void {
+
+		_setVisibleAll(true);
+
 		var max = _txts.length;
 		if(FlxG.keys.justPressed.UP) {
 			_cursor--;
@@ -141,6 +152,9 @@ class PlayState extends FlxState {
 	}
 
 	function _updateEditScene():Void {
+
+		_setVisibleAll(false);
+
 		if(EscGlobal.hasNextSceneID()) {
 			// 次のシーンに進む
 			trace('_updateEditScene() -> hasNextSceneID: ${EscGlobal.getNextSceneID()}');
@@ -174,5 +188,13 @@ class PlayState extends FlxState {
 	}
 	function _getInformationUI():InformationUI {
 		return _editor.getInformationUI();
+	}
+
+	function _setVisibleAll(b:Bool):Void {
+		_txtEdit.visible = b;
+		_cursorSpr.visible = b;
+		for(txt in _txts) {
+			txt.visible = b;
+		}
 	}
 }
