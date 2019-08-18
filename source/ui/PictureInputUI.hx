@@ -246,6 +246,9 @@ class PictureInputUI extends MenuUIBase {
         }
     }
 
+    /**
+     * 閉じているかどうか
+     */
     override public function isClosed():Bool {
         return exists == false;
     }
