@@ -247,14 +247,14 @@ class EscEditor extends FlxSubState {
 
         var path = _loader.getScriptPath();
         trace('click: ${path} :${obj.click}');
+        // スクリプト実行
         _script.execute(path, obj.click);
 
         // ■"click" 属性をファイル名とする場合
         //var path = '${_loader.getRoot()}${obj.click}.csv';
         //trace('click: ${path}');
-
         // スクリプト実行
-        _script.execute(path);
+        //_script.execute(path);
 
         _state = State.ScriptWait;
     }
