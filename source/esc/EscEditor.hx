@@ -35,8 +35,6 @@ private enum State {
 }
 
 class EscEditor extends FlxSubState {
-    // 新しいスクリプト対応
-    public static inline var NEW_SCRIPT:Bool = true;
 
     public static inline var FADE_TIME:Float = 0.25;
 
@@ -247,18 +245,17 @@ class EscEditor extends FlxSubState {
             return; // クリックイベントが存在しない
         }
 
-        if(NEW_SCRIPT) {
-            var path = _loader.getScriptPath();
-            trace('click: ${path} :${obj.click}');
-            _script.execute(path, obj.click);
-        }
-        else {
-            var path = '${_loader.getRoot()}${obj.click}.csv';
-            trace('click: ${path}');
+        var path = _loader.getScriptPath();
+        trace('click: ${path} :${obj.click}');
+        _script.execute(path, obj.click);
 
-            // スクリプト実行
-            _script.execute(path);
-        }
+        // ■"click" 属性をファイル名とする場合
+        //var path = '${_loader.getRoot()}${obj.click}.csv';
+        //trace('click: ${path}');
+
+        // スクリプト実行
+        _script.execute(path);
+
         _state = State.ScriptWait;
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<bg id="1" image="bg.png" />
-	<obj id="1" image="chair.png" x="48" y="291" click="005_chair" on="0" off="0" />
-	<obj id="2" image="sticker1.png" x="233" y="120" click="005_sticker1" on="0" off="0" />
-	<obj id="4" image="bottle_opener.png" x="234" y="214" click="005_bottle_opener" on="0" off="0" />
-	<obj id="5" image="lock.png" x="29" y="136" click="005_lock" on="0" off="0" />
-	<move id="left" click="005_jump001" on="0" off="0" />
-	<move id="right" click="005_jump004" on="0" off="0" />
+	<obj id="1" image="chair.png" x="48" y="291" click="chair" on="0" off="0" />
+	<obj id="2" image="sticker1.png" x="233" y="120" click="sticker1" on="0" off="0" />
+	<obj id="4" image="bottle_opener.png" x="234" y="214" click="bottle_opener" on="0" off="0" />
+	<obj id="5" image="lock.png" x="29" y="136" click="lock" on="0" off="0" />
+	<move id="left" click="jump001" on="0" off="0" />
+	<move id="right" click="jump004" on="0" off="0" />
 </data>

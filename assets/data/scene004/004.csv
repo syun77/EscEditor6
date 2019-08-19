@@ -1,0 +1,15 @@
+FUNC_START,chair
+MSG,9,赤い椅子がある
+FUNC_END,chair
+FUNC_START,clock
+MSG,9,時計は「6時52分」をさしたまま動かない
+FUNC_END,clock
+FUNC_START,jump
+INT,5
+JUMP
+FUNC_END,jump
+FUNC_START,jump002
+INT,2
+JUMP
+FUNC_END,jump002
+END

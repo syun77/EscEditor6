@@ -1,0 +1,47 @@
+def jump
+{
+	JUMP(5)
+}
+
+def lock
+{
+	ITEM_CHK(ITEM_RED_KEY)
+	if($1) {
+		%30 = true
+		ITEM_DEL(ITEM_RED_KEY)
+		":赤いカギを差し込んだ"
+	}
+	else {
+		":カギ穴がある"
+	}
+}
+
+def lock2
+{
+	":赤いカギを差し込んでいる"
+}
+
+def number
+{
+	":電源がついていない"
+}
+
+def number2
+{
+	$30 = 0
+	NUM_INPUT(30, 4)
+	if($30 == 2590) {
+		":ロックが解除された"
+		%31 = true
+	}
+	else {
+		":数字が正しくないようだ"
+	}
+}
+
+def yellow_key
+{
+	// 黄色のカギを入手した
+	%32 = true
+	ITEM_ADD(ITEM_YELLOW_KEY)
+}

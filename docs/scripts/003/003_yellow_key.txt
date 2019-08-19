@@ -1,3 +1,0 @@
-// 黄色のカギを入手した
-%32 = true
-ITEM_ADD(ITEM_YELLOW_KEY)
