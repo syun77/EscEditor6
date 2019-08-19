@@ -1,4 +1,4 @@
-data:
+const:
   ITEM_YELLOW_KEY: 1 # 黄色いカギ
   ITEM_RED_KEY: 2 # 赤いカギ
   ITEM_BLUE_KEY: 3 # 青いカギ
@@ -6,3 +6,10 @@ data:
   ITEM_GLASS: 5 # 虫眼鏡
   ITEM_FLOPPY_DISK: 6 # フロッピーディスク
 
+var:
+  ITEM: 0 # 装備しているアイテム
+  RET: 1 # リターンコード
+  UNLOCK_CNT: 50
+
+flag:
+  OPEN_DOOR: 50

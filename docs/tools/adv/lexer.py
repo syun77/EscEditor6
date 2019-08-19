@@ -89,6 +89,10 @@ class Lexer:
 			"continue": TokenType.CONTINUE,
 			"break":  TokenType.BREAK,
 		}
+		self.varDefines = { # 変数の定数
+		}
+		self.flagDefines = { # フラグの定数
+		}
 	def fatal(self, msg):
 		""" エラー書き込む """
 		line = self.getLineText()
@@ -278,6 +282,9 @@ class Lexer:
 			if re.match("\d+", token):
 				self.ttype = TokenType.VAR
 				self.token = "$"+token
+			elif token in self.varDefines: # 定数テーブルから取得
+				self.ttype = TokenType.VAR
+				self.token = "$%d"%self.varDefines[token]
 			else:
 				self.fatal("Invalid syntax.")
 		elif re.match("[\$][\d]+", token):
@@ -288,6 +295,11 @@ class Lexer:
 			if re.match("\d+", token):
 				self.ttype = TokenType.BIT
 				self.token = "%"+token
+			elif token in self.flagDefines: # 定数テーブルから取得
+				self.ttype = TokenType.BIT
+				self.token = "%%%d"%self.flagDefines[token]
+			else:
+				self.fatal("Invalid syntax.")
 		elif re.match("[\%][\d]+", token):
 			self.ttype = TokenType.BIT
 			self.token = token

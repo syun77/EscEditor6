@@ -67,8 +67,13 @@ class MyParser:
         }
         for fDefine in defines.split(","):
             f = open(fDefine)
-            data = yaml.load(f, Loader=yaml.SafeLoader)["data"]
-            self.defines.update(data)
+            data = yaml.load(f, Loader=yaml.SafeLoader)
+            if "const" in data: # 定数
+                self.defines.update(data["const"])
+            if "var" in data: # 変数の定数
+                self.lexer.varDefines.update(data["var"])
+            if "flag" in data: # フラグの定数
+                self.lexer.flagDefines.update(data["flag"])
             f.close
 
         # 特殊キーワード

@@ -1,25 +1,25 @@
 def knob
 {
-	$50 = 0
+	$UNLOCK_CNT = 0
 	ITEM_HAS(ITEM_YELLOW_KEY)
-	if($1) {
-		$50 += 1
+	if($RET) {
+		$UNLOCK_CNT += 1
 	}
 	ITEM_HAS(ITEM_BLUE_KEY)
-	if($1) {
-		$50 += 1
+	if($RET) {
+		$UNLOCK_CNT += 1
 	}
 	ITEM_HAS(ITEM_GREEN_KEY)
-	if($1) {
-		$50 += 1
+	if($RET) {
+		$UNLOCK_CNT += 1
 	}
 	
-	if($50 == 3) {
-		%50 = true
+	if($UNLOCK_CNT == 3) {
+		%OPEN_DOOR = true
 		":ドアが開いた"
 	}
-	else if($50 > 0) {
-		$51 = 3 - $50
+	else if($UNLOCK_CNT > 0) {
+		$51 = 3 - $UNLOCK_CNT
 		":カギがあと$V51本必要だ"
 	}
 	else {
