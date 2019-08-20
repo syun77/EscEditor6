@@ -32,6 +32,10 @@ def execute(root, sceneId):
 	cmd = "python3 ../_conv.py %s %s %s %s %s"%(
 		tool, funcDef, defines, inputDir, outDir)
 	os.system(cmd)
+	
+	# 定数ヘッダファイル出力
+	cmd = "python3 ../_convConstHeader.py %s"%defines
+	os.system(cmd)
 
 def main(sceneId):
 	# ルートディレクトリ取得

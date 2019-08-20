@@ -74,7 +74,7 @@ class MyParser:
                 self.lexer.varDefines.update(data["var"])
             if "flag" in data: # フラグの定数
                 self.lexer.flagDefines.update(data["flag"])
-            f.close
+            f.close()
 
         # 特殊キーワード
         self.keywords = {
