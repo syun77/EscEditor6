@@ -1,6 +1,7 @@
 package esc;
 
 import lib.AdvScript;
+import state.PlayState;
 
 /**
  * 状態

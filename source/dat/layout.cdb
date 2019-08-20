@@ -37,35 +37,77 @@
 					],
 					"objs": [
 						{
-							"x": 268,
-							"y": 188,
+							"x": 133,
+							"y": 246,
 							"file": "../../assets/data/scene001/sticker.png",
 							"click": "sticker",
 							"on": "",
-							"off": "50",
-							"id": "1"
+							"off": "OPEN_DOOR",
+							"id": "1",
+							"image": "f994134bef9fe8fc39cf514ea6230a72"
 						},
 						{
 							"file": "../../assets/data/scene001/knob_yellow.png",
-							"x": 224,
-							"y": 376,
+							"x": 131,
+							"y": 432,
 							"click": "knob",
 							"on": "",
-							"off": "50",
-							"id": "2"
+							"off": "OPEN_DOOR",
+							"id": "2",
+							"image": "7735f8e2f78416a3560a29f045d26451"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene001/knob_blue.png",
+							"image": "82783cd741f4466543ae89e0a04f39ea",
+							"x": 131,
+							"y": 344,
+							"click": "knob",
+							"on": "",
+							"off": "OPEN_DOOR"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene001/knob_green.png",
+							"image": "42165530eff9d909b0e00e156f21ad9a",
+							"x": 131,
+							"y": 388,
+							"click": "knob",
+							"on": "",
+							"off": "OPEN_DOOR"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene001/unlock2.png",
+							"image": "ee8f81aabb8248a7d99a07512d7798cf",
+							"x": 120,
+							"y": 181,
+							"click": "unlock2",
+							"on": "OPEN_DOOR",
+							"off": ""
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene001/unlock.png",
+							"image": "8e7d1bdf885bf41d3bab1ceef377058b",
+							"x": 274,
+							"y": 181,
+							"click": "",
+							"on": "OPEN_DOOR",
+							"off": ""
 						}
 					],
 					"moves": [
 						{
 							"id": "left",
 							"click": "jump002",
-							"on": "3",
+							"on": "MOVABLE",
 							"off": ""
 						},
 						{
 							"id": "right",
 							"click": "jump005",
-							"on": "3",
+							"on": "MOVABLE",
 							"off": ""
 						}
 					]
@@ -118,6 +160,11 @@
 				{
 					"typeStr": "13",
 					"name": "file",
+					"display": null
+				},
+				{
+					"typeStr": "7",
+					"name": "image",
 					"display": null
 				},
 				{

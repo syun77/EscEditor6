@@ -12,4 +12,5 @@ var:
   UNLOCK_CNT: 50
 
 flag:
-  OPEN_DOOR: 50
+  MOVABLE: 3 # 移動可能
+  OPEN_DOOR: 50 # 扉を開いた

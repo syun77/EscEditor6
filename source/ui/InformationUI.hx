@@ -10,7 +10,6 @@ import flixel.util.FlxColor;
 
 class InformationUI extends FlxSpriteGroup {
 
-    static inline var HEIGHT:Int = Const.MARGIN_HEIGHT;
     static inline var TIMER:Float = 3;
 
     var _txt:FlxText;
@@ -20,7 +19,7 @@ class InformationUI extends FlxSpriteGroup {
         super();
 
         // テキスト
-        _txt = new FlxText(0, FlxG.height-HEIGHT, FlxG.width, null);
+        _txt = new FlxText(0, Const.getBottom(), FlxG.width, null);
         _txt.setFormat(Resources.FONT_PATH, Resources.FONT_SIZE);
         _txt.alignment = FlxTextAlign.CENTER;
         _txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 2);

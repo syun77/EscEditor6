@@ -1,4 +1,4 @@
-package;
+package state;
 
 import flixel.FlxG;
 import flixel.FlxState;

@@ -36,10 +36,27 @@ class EscObj {
     public function getString():String {
         var str:String = "";
         str += '[${type},${id}] ';
-        str += "(x,y)=(" + Std.int(x) + "," + Std.int(y) + ") ";
+        str += "(" + Std.int(x) + "," + Std.int(y) + ") ";
         str += '${image} ';
-        str += 'click=${click} ';
-        str += 'On:${flagOn} Off:${flagOff} ';
+        str += '<${click}> ';
+        if(flagOn > 0) {
+            var s = EscFlag.toString(flagOn);
+            if(s != "") {
+                str += 'On:${s} ';
+            }
+            else {
+                str += 'On:${flagOn} ';
+            }
+        }
+        if(flagOff > 0) {
+            var s = EscFlag.toString(flagOff);
+            if(s != "") {
+                str += 'Off:${s} ';
+            }
+            else {
+                str += 'Off:${flagOff} ';
+            }
+        }
 
         return str;
     }

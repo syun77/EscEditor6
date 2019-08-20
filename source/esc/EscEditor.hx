@@ -20,6 +20,7 @@ import ui.ItemButtonUI;
 import ui.MenuUIBase;
 import ui.NumberInputUI;
 import ui.PictureInputUI;
+import state.TitleState;
 
 /**
  * 状態
@@ -43,6 +44,7 @@ class EscEditor extends FlxSubState {
     var _loader:EscLoader;
     var _bg:EscSprite;
     var _objs:Array<EscSprite>;
+    var _bgBlank:FlxSprite;
 
     // 選択オブジェクト
     var _selobj:EscSprite = null;
@@ -104,6 +106,12 @@ class EscEditor extends FlxSubState {
 
         for(obj in _objs) {
             this.add(obj);
+        }
+
+        // 隠す背景
+        {
+            _bgBlank = new FlxSprite(0, Const.getBottom()).makeGraphic(FlxG.width, Const.MARGIN_HEIGHT, FlxColor.BLACK);
+            this.add(_bgBlank);
         }
 
         // ヘルプテキスト

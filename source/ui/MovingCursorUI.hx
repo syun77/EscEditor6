@@ -92,7 +92,7 @@ class MovingCursorUI extends FlxSpriteGroup {
                     vx += d;
                 case "down":
                     px = FlxG.width/2 - SIZE/2;
-                    py = FlxG.height - SIZE - 8;
+                    py = Const.getBottom() - SIZE - 8;
                     vy += d;
                     rot = 90;
                 default:

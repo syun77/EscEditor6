@@ -2,8 +2,8 @@ package esc.loader;
 
 import openfl.Assets;
 import flixel.text.FlxText;
-
-
+import dat.SceneDB;
+import esc.EscFlag;
 
 class EscLoader {
     public var bg:EscObj;
@@ -21,6 +21,35 @@ class EscLoader {
         objs = new Array<EscObj>();
         movings = new Array<EscObj>();
 
+        var scenes = dat.SceneDB.get(sceneID);
+        for(b in scenes.bgs) {
+            bg = new EscObj(_root);
+            bg.type = "bg";
+            bg.id = b.id;
+            bg.image = _toPath(b.file);
+        }
+        for(obj in scenes.objs) {
+            var o = new EscObj(_root);
+            o.type = "obj";
+            o.id = obj.id;
+            o.x  = obj.x;
+            o.y  = obj.y;
+            o.image   = _toPath(obj.file);
+            o.click   = obj.click;
+            o.flagOn  = _toFlag(obj.on);
+            o.flagOff = _toFlag(obj.off);
+            objs.push(o);
+        }
+        for(move in scenes.moves) {
+            var o = new EscObj(_root);
+            o.type    = "move";
+            o.id      = move.id;
+            o.click   = move.click;
+            o.flagOn  = _toFlag(move.on);
+            o.flagOff = _toFlag(move.off);
+            movings.push(o);
+        }
+/*
         // レイアウトファイル読み込み
         var file:String = _root + "layout.xml";
         var xml:String = Assets.getText(file);
@@ -43,6 +72,7 @@ class EscLoader {
                     movings.push(moving);
             }
         }
+*/
     }
 
     public function getRoot():String {
@@ -101,5 +131,28 @@ class EscLoader {
         str += "</data>\n";
 
         return str;
+    }
+
+    function _toPath(file:String):String {
+        return StringTools.replace(StringTools.replace(file, "../../", ""), _root, "");
+    }
+    function _toFlag(flag:String):Int {
+        var r = ~/\d+/;
+        if(flag == "") {
+            // 空文字はフラグ無効
+            return 0;
+        }
+        if(r.match(flag)) {
+            // 数値のみなら数値に変換
+            return Std.parseInt(flag);
+        }
+        if(EscFlag.has(flag)) {
+            // フラグに存在している場合は変換する
+            return EscFlag.get(flag);
+        }
+
+        // それ以外はエラー
+        trace('Can\'t find flag = ${flag}');
+        return 0;
     }
 }

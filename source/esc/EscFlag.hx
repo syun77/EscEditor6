@@ -1,8 +1,10 @@
 package esc;
 
 class EscFlag {
+	public static inline var MOVABLE:Int = 3;
 	public static inline var OPEN_DOOR:Int = 50;
 	static var _tbl:Map<String, Int> = [
+		"MOVABLE" => 3,
 		"OPEN_DOOR" => 50,
 	];
 	
