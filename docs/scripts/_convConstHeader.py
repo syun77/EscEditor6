@@ -94,7 +94,9 @@ def executeFlag(fOut, fdefines):
 	f.write(writer.buf)
 	f.close()
 	
-def execute(fOut, fDefines):
+def execute(root, kind, fDefines):
+	fOut = "%s/../../source/esc/%s.hx"%(root, kind)
+	
 	defines = {}
 	varDefines = {}
 	flagDefines = {}
@@ -112,10 +114,43 @@ def execute(fOut, fDefines):
 	writer = Writer()
 	writer.write("package esc;")
 	writer.write("");
-	writer.write("class EscConst {");
-	writer.write("// ■定数", 1);
-	for k, v in defines.items():
-		writer.write("public static inline var %s:Int = %d;"%(k, v), 1)
+	writer.write("class %s {"%kind);
+	if kind == "EscConst":
+		for k, v in defines.items():
+			writer.write("public static inline var %s:Int = %d;"%(k, v), 1)
+	else:
+		tbl = {}
+		if kind == "EscVar":
+			tbl = varDefines
+		elif kind == "EscFlag":
+			tbl = flagDefines
+		
+		for k, v in tbl.items():
+			writer.write("public static inline var %s:Int = %d;"%(k, v), 1);
+		
+		writer.write("static var _tbl:Map<String, Int> = [", 1)
+		for k, v in tbl.items():
+			writer.write("\"%s\" => %d,"%(k, v), 2)
+		writer.write("];", 1)
+		
+		writer.write("static var _tbl2:Map<Int, String> = [ // 逆引きテーブル", 1)
+		for k, v in tbl.items():
+			writer.write("%d => \"%s\","%(v, k), 2)
+		writer.write("];", 1)
+		
+		writer.write("public static function get(k:String):Int {", 1);
+		writer.write(	"if(_tbl.exists(k)) {", 2);
+		writer.write(		"return _tbl[k];", 3);
+		writer.write(	"}", 2);
+		writer.write(	"return 0;", 2);
+		writer.write("}", 1);
+		
+		writer.write("public static function toString(v:Int):String {", 1);
+		writer.write(	"if(_tbl2.exists(v)) {", 2);
+		writer.write(		"return _tbl2[v];", 3);
+		writer.write(	"}", 2);
+		writer.write(	"return \"\";", 2);
+		writer.write("}", 1);
 	
 	writer.write("}");
 	f = open(fOut, "w")
@@ -125,9 +160,10 @@ def execute(fOut, fDefines):
 def main(fDefines):
 	# ルートディレクトリ取得
 	root = os.path.dirname(os.path.abspath(__file__))
-	execute("%s/../../source/esc/EscConst.hx"%root, fDefines)
-	executeVar("%s/../../source/esc/EscVar.hx"%root, fDefines)
-	executeFlag("%s/../../source/esc/EscFlag.hx"%root, fDefines)
+	execute(root, "EscConst", fDefines)
+	execute(root, "EscVar", fDefines)
+	execute(root, "EscFlag", fDefines)
+
 if __name__ == '__main__':
 	args = sys.argv
 	argc = len(sys.argv)

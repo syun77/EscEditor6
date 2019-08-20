@@ -77,6 +77,8 @@ class EscEditor extends FlxSubState {
     public function new(sceneID:Int, isEdit:Bool) {
         super();
 
+        trace(EscFlag.get("a"));
+        trace(EscFlag.toString(1));
         _isEdit = isEdit;
         _loader = new EscLoader(sceneID);
         _txts = new Array<FlxText>();
