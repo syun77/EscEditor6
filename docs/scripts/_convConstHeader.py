@@ -133,24 +133,26 @@ def execute(root, kind, fDefines):
 			writer.write("\"%s\" => %d,"%(k, v), 2)
 		writer.write("];", 1)
 		
-		writer.write("static var _tbl2:Map<Int, String> = [ // 逆引きテーブル", 1)
-		for k, v in tbl.items():
-			writer.write("%d => \"%s\","%(v, k), 2)
-		writer.write("];", 1)
-		
-		writer.write("public static function get(k:String):Int {", 1);
-		writer.write(	"if(_tbl.exists(k)) {", 2);
-		writer.write(		"return _tbl[k];", 3);
-		writer.write(	"}", 2);
-		writer.write(	"return 0;", 2);
-		writer.write("}", 1);
-		
-		writer.write("public static function toString(v:Int):String {", 1);
-		writer.write(	"if(_tbl2.exists(v)) {", 2);
-		writer.write(		"return _tbl2[v];", 3);
-		writer.write(	"}", 2);
-		writer.write(	"return \"\";", 2);
-		writer.write("}", 1);
+		writer.write("""
+	public static function get(k:String):Int {
+		if(_tbl.exists(k)) {
+			return _tbl[k];
+		}
+		return 0;
+	}
+	public static function has(k:String):Bool {
+		return _tbl.exists(k);
+	}
+	// 逆引き
+	public static function toString(v:Int):String {
+		for(k in _tbl.keys()) {
+			if(_tbl[k] == v) {
+				return k;
+			}
+		}
+		return "";
+	}
+	""", 1);
 	
 	writer.write("}");
 	f = open(fOut, "w")

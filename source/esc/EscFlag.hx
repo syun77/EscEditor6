@@ -5,19 +5,24 @@ class EscFlag {
 	static var _tbl:Map<String, Int> = [
 		"OPEN_DOOR" => 50,
 	];
-	static var _tbl2:Map<Int, String> = [ // 逆引きテーブル
-		50 => "OPEN_DOOR",
-	];
+	
 	public static function get(k:String):Int {
 		if(_tbl.exists(k)) {
 			return _tbl[k];
 		}
 		return 0;
 	}
+	public static function has(k:String):Bool {
+		return _tbl.exists(k);
+	}
+	// 逆引き
 	public static function toString(v:Int):String {
-		if(_tbl2.exists(v)) {
-			return _tbl2[v];
+		for(k in _tbl.keys()) {
+			if(_tbl[k] == v) {
+				return k;
+			}
 		}
 		return "";
 	}
+	
 }
