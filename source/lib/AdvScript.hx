@@ -173,6 +173,7 @@ class AdvScript {
       "OR"    => _OR,
       "GREATER" => _GREATER,
       "IF"    => _IF,
+      "ELIF"  => _IF,
       "GOTO"  => _GOTO,
       "WHILE" => _WHILE,
       "END"   => _END,

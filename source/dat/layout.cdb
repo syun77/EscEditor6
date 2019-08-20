@@ -8,6 +8,10 @@
 					"name": "scene"
 				},
 				{
+					"typeStr": "13",
+					"name": "script"
+				},
+				{
 					"typeStr": "8",
 					"name": "bgs",
 					"display": null
@@ -110,7 +114,8 @@
 							"on": "MOVABLE",
 							"off": ""
 						}
-					]
+					],
+					"script": "../../docs/scripts/001/001.txt"
 				}
 			],
 			"separators": [],

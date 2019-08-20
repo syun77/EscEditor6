@@ -18,7 +18,7 @@ def knob
 		%OPEN_DOOR = true
 		":ドアが開いた"
 	}
-	else if($UNLOCK_CNT > 0) {
+	elif($UNLOCK_CNT > 0) {
 		$51 = 3 - $UNLOCK_CNT
 		":カギがあと$V51本必要だ"
 	}
