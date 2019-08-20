@@ -17,8 +17,8 @@ class DebugMenuSubState extends FlxSubState {
         super.create();
 
         _flagEditor = new EscFlagEditor();
-		_flagEditor.x = 300;
-		_flagEditor.y = 32;
+		_flagEditor.x = 8;
+		_flagEditor.y = 8;
         this.add(_flagEditor);
     }
 

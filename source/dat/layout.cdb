@@ -1,0 +1,181 @@
+{
+	"sheets": [
+		{
+			"name": "scenes",
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "scene"
+				},
+				{
+					"typeStr": "8",
+					"name": "bgs",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "objs",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "moves",
+					"opt": true,
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"scene": 1,
+					"bgs": [
+						{
+							"x": 0,
+							"y": 0,
+							"file": "../../assets/data/scene001/bg.png",
+							"id": "1"
+						}
+					],
+					"objs": [
+						{
+							"x": 268,
+							"y": 188,
+							"file": "../../assets/data/scene001/sticker.png",
+							"click": "sticker",
+							"on": "",
+							"off": "50",
+							"id": "1"
+						},
+						{
+							"file": "../../assets/data/scene001/knob_yellow.png",
+							"x": 224,
+							"y": 376,
+							"click": "knob",
+							"on": "",
+							"off": "50",
+							"id": "2"
+						}
+					],
+					"moves": [
+						{
+							"id": "left",
+							"click": "jump002",
+							"on": "3",
+							"off": ""
+						},
+						{
+							"id": "right",
+							"click": "jump005",
+							"on": "3",
+							"off": ""
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "scenes@bgs",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "13",
+					"name": "file",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "x"
+				},
+				{
+					"typeStr": "3",
+					"name": "y"
+				}
+			]
+		},
+		{
+			"name": "scenes@objs",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "13",
+					"name": "file",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "x"
+				},
+				{
+					"typeStr": "3",
+					"name": "y"
+				},
+				{
+					"typeStr": "1",
+					"name": "click",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "on",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "off",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "scenes@moves",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "click",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "on",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "off",
+					"display": null
+				}
+			]
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}
