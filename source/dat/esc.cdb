@@ -83,7 +83,7 @@
 						{
 							"id": "5",
 							"file": "../../assets/data/scene001/unlock2.png",
-							"image": "ee8f81aabb8248a7d99a07512d7798cf",
+							"image": "fe3e9876655645d9c6c87bdf5305f90f",
 							"x": 120,
 							"y": 181,
 							"click": "unlock2",
@@ -115,7 +115,7 @@
 							"off": ""
 						}
 					],
-					"script": "../../docs/scripts/001/001.txt"
+					"script": "../../docs/scripts/001/001.adv"
 				}
 			],
 			"separators": [],
