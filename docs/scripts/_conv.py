@@ -18,12 +18,12 @@ def main(tool, fFuncDef, fDefines, inputDir, outDir):
 	print("outDir: %s"%outDir);
 	print("--------------------------------------")
 	
-	# *.txtを取得
-	txtList = glob.glob("%s*.txt"%inputDir)
+	# *.advを取得
+	advList = glob.glob("%s*.adv"%inputDir)
 
-	for txt in txtList:
-		fInput = txt
-		fOut   = outDir + txt.replace(inputDir, "").replace(".txt", ".csv")
+	for adv in advList:
+		fInput = adv
+		fOut   = outDir + adv.replace(inputDir, "").replace(".adv", ".csv")
 
 		cmd = "python3 %s %s %s %s %s"%(
 			tool, fFuncDef, fDefines, fInput, fOut)
