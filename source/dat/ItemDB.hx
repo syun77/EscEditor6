@@ -4,8 +4,8 @@ package dat;
  * アイテム情報
  */
 class ItemDB {
-    public static function get(itemID:Int):Layout.Items {
-        for(item in Layout.items.all) {
+    public static function get(itemID:Int):EscDB.Items {
+        for(item in EscDB.items.all) {
             if(itemID == item.id) {
                 return item;
             }

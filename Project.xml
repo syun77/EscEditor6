@@ -30,7 +30,7 @@
 	<set name="BUILD_DIR" value="export" />
 	<classpath name="source" />
 	<assets path="assets" />
-	<assets path="source/dat/layout.cdb" />
+	<assets path="source/dat/esc.cdb" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

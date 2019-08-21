@@ -31,7 +31,7 @@ def execute(root, sceneId):
 	os.chdir(inputDir)
 	
 	# ■cdbからアイテム定数ヘッダを出力
-	cmd = "python3 ../_convItemHeader.py %s/../../source/dat/layout.cdb"%root
+	cmd = "python3 ../_convItemHeader.py %s/../../source/dat/esc.cdb"%root
 	os.system(cmd)
 	
 	# ■スクリプトコンバート
