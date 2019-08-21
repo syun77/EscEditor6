@@ -152,12 +152,23 @@ class EscGlobal {
         }
         return false; // 所持していないアイテム
     }
+    public static function itemRemove(idx:Int):Bool {
+        // まずは削除
+        if(itemDel(idx)) {
+            _items[idx] = ItemState.None;   
+            return true;
+        }
+        return false;
+    }
     public static function itemEquip(idx:Int):Bool {
         if(itemHas(idx)) {
             valSet(VAL_ITEM, idx);
             return true;
         }
         return false;
+    }
+    public static function itemGetState(idx:Int):ItemState {
+        return _items[idx];
     }
     // 所持アイテム数をカウントする
     public static function itemCount():Int {

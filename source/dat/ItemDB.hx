@@ -17,6 +17,9 @@ class ItemDB {
 
     public static function name(itemID:Int):String {
         var item = get(itemID);
+        if(item == null) {
+            return "";
+        }
         return item.name;
     }
 

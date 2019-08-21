@@ -476,8 +476,8 @@ class EscEditor extends FlxSubState {
 			// リセット
 			FlxG.resetGame();
 		}
-		if(FlxG.keys.justPressed.F) {
-			// フラグ編集モード切り替え
+		if(FlxG.keys.justPressed.SPACE) {
+			// デバッグメニュー起動
 			openSubState(new DebugMenuSubState(FlxColor.fromRGB(0, 0, 0, 0x80)));
 		}
     }
