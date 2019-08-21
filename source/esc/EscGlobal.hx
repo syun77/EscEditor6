@@ -1,5 +1,7 @@
 package esc;
 
+import dat.ItemDB;
+
 /**
  * アイテム所持状態
  */
@@ -44,8 +46,6 @@ class EscGlobal {
     static var _vals:Array<Int>;
     // アイテム所持状態
     static var _items:Array<ItemState>;
-    // アイテム名
-    static var _itemNames:Array<String>;
 
     // 次のシーン
     static var _nextScene:Int = SCENE_INVALID;
@@ -75,19 +75,6 @@ class EscGlobal {
         for(i in 0...MAX_ITEM) {
             _items.push(ItemState.None);
         }
-        _itemNames = [
-            "", // 0
-            "黄色のカギ", // 1
-            "赤いカギ", // 2
-            "青いカギ", // 3
-            "緑のカギ", // 4
-            "虫眼鏡", // 5
-            "フロッピーディスク", // 6
-            "", // 7
-            "", // 8
-            "", // 9
-            "", // 10
-        ];
     }
 
     public static function setNextSceneID(sceneID:Int):Void {
@@ -184,7 +171,7 @@ class EscGlobal {
     }
     // アイテム名を取得する
     public static function itemName(idx:Int):String {
-        return _itemNames[idx];
+        return ItemDB.name(idx);
     }
     // アイテムが全てNoneかどうか
     public static function itemAllNone():Bool {

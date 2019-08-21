@@ -66,6 +66,7 @@ class MyParser:
             "EF_NEGA"      : Code.EF_NEGA
         }
         for fDefine in defines.split(","):
+            print("* open yaml: %s"%fDefine)
             f = open(fDefine)
             data = yaml.load(f, Loader=yaml.SafeLoader)
             if "const" in data: # 定数

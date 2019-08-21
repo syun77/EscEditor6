@@ -1,10 +1,5 @@
 const:
-  ITEM_YELLOW_KEY: 1 # 黄色いカギ
-  ITEM_RED_KEY: 2 # 赤いカギ
-  ITEM_BLUE_KEY: 3 # 青いカギ
-  ITEM_GREEN_KEY: 4 # 緑のカギ
-  ITEM_GLASS: 5 # 虫眼鏡
-  ITEM_FLOPPY_DISK: 6 # フロッピーディスク
+  TEST_CONST: 0
 
 var:
   ITEM: 0 # 装備しているアイテム

@@ -21,6 +21,7 @@ def execute(root, sceneId):
 	funcDef = "%s/common/define_functions.h"%(root)
 	# 定数定義
 	defines = "%s/common/const_header.txt"%(root)
+	defines += ",%s/common/item_header.txt"%(root) # アイテム定数ヘッダ
 	# 入力フォルダ
 	inputDir = "%s/%03d/"%(root, sceneId)
 	# 出力フォルダ
@@ -29,11 +30,16 @@ def execute(root, sceneId):
 	# 入力フォルダをカレントディレクトリに設定
 	os.chdir(inputDir)
 	
+	# ■cdbからアイテム定数ヘッダを出力
+	cmd = "python3 ../_convItemHeader.py %s/../../source/dat/layout.cdb"%root
+	os.system(cmd)
+	
+	# ■スクリプトコンバート
 	cmd = "python3 ../_conv.py %s %s %s %s %s"%(
 		tool, funcDef, defines, inputDir, outDir)
 	os.system(cmd)
 	
-	# 定数ヘッダファイル出力
+	# ■定数ヘッダファイル出力
 	cmd = "python3 ../_convConstHeader.py %s"%defines
 	os.system(cmd)
 
