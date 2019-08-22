@@ -121,7 +121,7 @@ class EscScript {
         _log('MSG');
         var type = Std.parseInt(param[0]);
         var msg = param[1];
-        var r = ~/\$V(\d+)/;
+        var r = ~/\$(\d+)/;
         if(r.match(msg)) {
             // $V[n] を変数に置き換え
             var idx = Std.parseInt(r.matched(1));

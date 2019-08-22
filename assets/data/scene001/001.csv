@@ -38,7 +38,7 @@ INT,3
 VAR,50
 SUB
 SET,0,51
-MSG,9,カギがあと$V51本必要だ
+MSG,9,カギがあと$51本必要だ
 GOTO,00000044
 MSG,9,カギがかかっていて扉は開かない
 FUNC_END,knob

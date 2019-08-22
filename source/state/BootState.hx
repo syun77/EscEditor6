@@ -11,6 +11,9 @@ class BootState extends FlxState {
     override public function create():Void {
         super.create();
 
+        // デフォルトカーソル非表示
+        FlxG.mouse.useSystemCursor = true;
+
         // データベースファイル読み込み
         DBLoader.load();
 
