@@ -21,6 +21,7 @@ import ui.MenuUIBase;
 import ui.NumberInputUI;
 import ui.PictureInputUI;
 import state.TitleState;
+import save.GameData;
 
 /**
  * 状態
@@ -480,5 +481,28 @@ class EscEditor extends FlxSubState {
 			// デバッグメニュー起動
 			openSubState(new DebugMenuSubState(FlxColor.fromRGB(0, 0, 0, 0x80)));
 		}
+        if(FlxG.keys.justPressed.S) {
+            // セーブ
+            GameData.save();
+        }
+        if(FlxG.keys.justPressed.L) {
+            // ロード
+            // 次のシーンに進む
+            _state = State.NextScene;
+            // フェード開始
+            FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
+                if(GameData.load()) {
+                    // フェード完了で閉じる
+                    EscGlobal.setNextSceneID(EscGlobal.getNowSceneID());
+                    trace("EscEditor.update() -> close()");
+                    close();
+                }
+                else {
+                    // セーブデータがないので、フェード解除
+                    EscGlobal.setNextSceneID(EscGlobal.getNowSceneID());
+                    FlxG.camera.fade(FlxColor.BLACK, FADE_TIME);
+                }
+            }, true);
+        }
     }
 }

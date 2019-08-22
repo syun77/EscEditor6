@@ -5,7 +5,7 @@ import dat.ItemDB;
 /**
  * アイテム所持状態
  */
-private enum ItemState {
+enum ItemState {
     None; // 未所持
     Has;  // 所持している
     Del;  // 持っていたけど削除した
@@ -17,6 +17,7 @@ private enum ItemState {
 class EscGlobal {
     // --------------------------------------------------------------------
     // ■定数
+    public static inline var START_SCENE_ID:Int = 1;
     // 最大数
     public static inline var MAX_FLAG:Int = 100; // フラグの最大数 (0無効)
     public static inline var MAX_VAL:Int  = 100; // 変数の最大数
@@ -47,6 +48,8 @@ class EscGlobal {
     // アイテム所持状態
     static var _items:Array<ItemState>;
 
+    // 現在のシーン
+    static var _nowScene:Int = 1;
     // 次のシーン
     static var _nextScene:Int = SCENE_INVALID;
 
@@ -75,6 +78,29 @@ class EscGlobal {
         for(i in 0...MAX_ITEM) {
             _items.push(ItemState.None);
         }
+
+        // 開始シーンを設定
+        _nowScene = START_SCENE_ID;
+        _nextScene = SCENE_INVALID;
+
+        _isEdit = false;
+    }
+
+    public static function getFlags():Array<Bool> {
+        return _flags;
+    }
+    public static function getVals():Array<Int> {
+        return _vals;
+    }
+    public static function getItems():Array<ItemState> {
+        return _items;
+    }
+
+    public static function setNowSceneID(sceneID:Int):Void {
+        _nowScene = sceneID;
+    }
+    public static function getNowSceneID():Int {
+        return _nowScene;
     }
 
     public static function setNextSceneID(sceneID:Int):Void {
@@ -169,6 +195,24 @@ class EscGlobal {
     }
     public static function itemGetState(idx:Int):ItemState {
         return _items[idx];
+    }
+    public static function itemSetState(idx:Int, state:ItemState):Void {
+        _items[idx] = state;
+    }
+    public static function itemStateToInt(state:ItemState):Int {
+        return switch(state) {
+        case ItemState.None: 0;
+        case ItemState.Has:  1;
+        case ItemState.Del:  2;
+        }
+    }
+    public static function intToItemState(i:Int):ItemState {
+        return switch(i) {
+        case 0: ItemState.None;
+        case 1: ItemState.Has;
+        case 2: ItemState.Del;
+        default: ItemState.None;
+        }
     }
     // 所持アイテム数をカウントする
     public static function itemCount():Int {

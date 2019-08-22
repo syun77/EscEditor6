@@ -9,6 +9,7 @@ import openfl.Assets;
 import esc.EscEditor;
 import esc.EscGlobal;
 import ui.InformationUI;
+import save.GameData;
 
 /**
  * 状態
@@ -31,6 +32,7 @@ class PlayState extends FlxState {
 	var _cursorSpr:FlxSprite;
 	var _txts:Array<FlxText>;
 	var _txtEdit:FlxText;
+	var _txtLoad:FlxText;
 
 	// シーン編集
 	var _editor:EscEditor;
@@ -86,8 +88,14 @@ class PlayState extends FlxState {
 			this.add(txt);
 		}
 
-		_txtEdit = new FlxText(300, 32, 0, "", 12);
+		_txtEdit = new FlxText(256, 32, 0, "", 12);
 		this.add(_txtEdit);
+
+		_txtLoad = new FlxText(256, 48, 0, "", 12);
+		this.add(_txtLoad);
+		if(GameData.exists()) {
+			_txtLoad.text = "ENTER: Load";
+		}
 
 #if !debug
 		// デバッグでなければ直接開始
@@ -144,10 +152,15 @@ class PlayState extends FlxState {
 		_cursorSpr.y = _txts[_cursor - 1].y;
 		_cursorSpr.visible = true;
 		if(FlxG.keys.justPressed.Z) {
-			_cursorSpr.visible = false;
 			// 指定のシーンを実行する
 			_openEditor(_cursor);
 			_state = State.EditScene;
+		}
+		else if(FlxG.keys.justPressed.ENTER) {
+			if(GameData.load()) {
+				_openEditor(EscGlobal.getNowSceneID());
+				_state = State.EditScene;
+			}
 		}
 	}
 
@@ -173,6 +186,8 @@ class PlayState extends FlxState {
 	 * EscEditorを開く
 	 */
 	function _openEditor(sceneID:Int):Void {
+		// 現在のシーンIDを設定
+		EscGlobal.setNowSceneID(sceneID);
 		_editor = new EscEditor(sceneID, _isEdit);
 		_editor.closeCallback = function() {
 			if(EscGlobal.hasNextSceneID() == false) {
@@ -192,6 +207,7 @@ class PlayState extends FlxState {
 
 	function _setVisibleAll(b:Bool):Void {
 		_txtEdit.visible = b;
+		_txtLoad.visible = b;
 		_cursorSpr.visible = b;
 		for(txt in _txts) {
 			txt.visible = b;
