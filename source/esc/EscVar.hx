@@ -1,12 +1,16 @@
 package esc;
 
 class EscVar {
-	public static inline var ITEM:Int = 0;
-	public static inline var RET:Int = 1;
+	public static inline var RET:Int = 0;
+	public static inline var ITEM:Int = 1;
+	public static inline var CRAFT1:Int = 2;
+	public static inline var CRAFT2:Int = 3;
 	public static inline var UNLOCK_CNT:Int = 50;
 	static var _tbl:Map<String, Int> = [
-		"ITEM" => 0,
-		"RET" => 1,
+		"RET" => 0,
+		"ITEM" => 1,
+		"CRAFT1" => 2,
+		"CRAFT2" => 3,
 		"UNLOCK_CNT" => 50,
 	];
 	

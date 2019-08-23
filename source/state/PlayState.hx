@@ -186,6 +186,9 @@ class PlayState extends FlxState {
 	 * EscEditorを開く
 	 */
 	function _openEditor(sceneID:Int):Void {
+		// 全て非表示
+		_setVisibleAll(false);
+
 		// 現在のシーンIDを設定
 		EscGlobal.setNowSceneID(sceneID);
 		_editor = new EscEditor(sceneID, _isEdit);

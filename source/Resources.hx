@@ -16,6 +16,9 @@ class Resources {
 	public static inline var BTN_BACK_PATH:String  = "assets/images/common/back.png";
 	public static inline var BTN_CLOSE_PATH:String = "assets/images/common/close.png";
 	public static inline var BTN_ITEM_PATH:String  = "assets/images/common/item_button.png";
+
+	// スクリプト
+	public static inline var ADV_ITEM_PATH:String = "assets/data/item/item.csv";
     
 	/**
 	 * シーンファイルのパスを取得する

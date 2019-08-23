@@ -9,12 +9,17 @@ import glob
 def usage():
 	print("Usage: conv.py [sceneId]")
 
-def execute(root, sceneId):
+def execute(root, sceneId, name=None):
 	
-	print("======================================")
-	print("Convert: scene%03d"%sceneId)
-	print("======================================")
-	
+	if name is None:
+		print("======================================")
+		print("Convert: scene%03d"%sceneId)
+		print("======================================")
+	else:
+		print("======================================")
+		print("Convert: %s"%name)
+		print("======================================")
+		
 	# ツール
 	tool = "%s/../tools/adv/gmadv.py"%(root)
 	# 関数定義
@@ -22,10 +27,18 @@ def execute(root, sceneId):
 	# 定数定義
 	defines = "%s/common/const_header.txt"%(root)
 	defines += ",%s/common/item_header.txt"%(root) # アイテム定数ヘッダ
-	# 入力フォルダ
-	inputDir = "%s/%03d/"%(root, sceneId)
-	# 出力フォルダ
-	outDir = "%s/../../assets/data/scene%03d/"%(root, sceneId)
+
+	if name is None:
+		# 入力フォルダ
+		inputDir = "%s/%03d/"%(root, sceneId)
+		# 出力フォルダ
+		outDir = "%s/../../assets/data/scene%03d/"%(root, sceneId)
+	else:
+		# 入力フォルダ
+		inputDir = "%s/%s/"%(root, name)
+		# 出力フォルダ
+		outDir = "%s/../../assets/data/%s/"%(root, name)
+	
 	
 	# 入力フォルダをカレントディレクトリに設定
 	os.chdir(inputDir)
@@ -47,15 +60,26 @@ def main(sceneId):
 	# ルートディレクトリ取得
 	root = os.path.dirname(os.path.abspath(__file__))
 	if sceneId == "all":
+		# 全てのシーンをコンバート
 		files = os.listdir(root)
 		for f in files:
 			if re.match(r'\d{3}', f):
 				execute(root, int(f))
+		# アイテムもコンバート
+		execute(root, 0, "item")
+		return
+	
+	if sceneId == "item":
+		# アイテムスクリプトをコンバート
+		execute(root, 0, "item")
 		return
 	
 	if re.match(r'\d{1,3}', sceneId) == None:
+		# 不正なシーンID
 		raise Error("Invalid sceneId = '%s'"%sceneId)
+	# 指定のシーンのみをコンバートする
 	execute(root, int(sceneId))
+	
 if __name__ == '__main__':
 	args = sys.argv
 	argc = len(sys.argv)

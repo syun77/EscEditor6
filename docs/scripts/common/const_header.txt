@@ -2,8 +2,10 @@ const:
   TEST_CONST: 0
 
 var:
-  ITEM: 0 # 装備しているアイテム
-  RET: 1 # リターンコード
+  RET:    0 # リターンコード
+  ITEM:   1 # 装備しているアイテム
+  CRAFT1: 2 # 合成するアイテム1
+  CRAFT2: 3 # 合成するアイテム2
   UNLOCK_CNT: 50
 
 flag:

@@ -4,3 +4,4 @@ const:
   ITEM_RED_KEY: 2
   ITEM_BLUE_KEY: 3
   ITEM_GREEN_KEY: 4
+  ITEM_GLASS: 5

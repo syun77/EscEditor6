@@ -269,6 +269,11 @@
 					"id": 4,
 					"name": "緑のカギ",
 					"const": "ITEM_GREEN_KEY"
+				},
+				{
+					"id": 5,
+					"name": "虫めがね",
+					"const": "ITEM_GLASS"
 				}
 			],
 			"separators": [],

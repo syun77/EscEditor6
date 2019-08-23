@@ -35,6 +35,9 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
+	<!-- flixel.addons.package を有効にする -->
+	<haxelib name="flixel-addons" />
+	<!-- CastleDB を有効にする -->
 	<haxelib name="castle" />
 
 	<!--In case you want to use the addons package-->

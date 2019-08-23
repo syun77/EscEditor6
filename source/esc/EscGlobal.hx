@@ -27,18 +27,6 @@ class EscGlobal {
     public static inline var ITEM_INVALID:Int  = 0; // 無効なアイテムID
     public static inline var SCENE_INVALID:Int = 0; // 無効なシーンID
 
-    // システム変数
-    public static inline var VAL_ITEM:Int = 0; // 変数0: 装備しているアイテム番号を保持する
-    public static inline var VAL_RET:Int = 1; // 変数1: リターンコード。戻り値はこの変数に保持する
-    public static inline var VAL_2:Int = 2;
-    public static inline var VAL_3:Int = 3;
-    public static inline var VAL_4:Int = 4;
-    public static inline var VAL_5:Int = 5;
-    public static inline var VAL_6:Int = 6;
-    public static inline var VAL_7:Int = 7;
-    public static inline var VAL_8:Int = 8;
-    public static inline var VAL_9:Int = 9;
-
     // --------------------------------------------------------------------
     // ■変数
     // フラグ
@@ -143,10 +131,10 @@ class EscGlobal {
      * リターンコード
      */
     public static function retGet():Int {
-        return valGet(VAL_RET);
+        return valGet(EscVar.RET);
     }
     public static function retSet(v:Int):Void {
-        valSet(VAL_RET, v);
+        valSet(EscVar.RET, v);
     }
 
     /**
@@ -165,14 +153,14 @@ class EscGlobal {
         return _items[idx] == ItemState.Has;
     }
     public static function itemCheck(idx:Int):Bool {
-        return valGet(VAL_ITEM) == idx; // 装備しているアイテムかどうか
+        return valGet(EscVar.ITEM) == idx; // 装備しているアイテムかどうか
     }
     public static function itemDel(idx:Int):Bool {
         if(itemHas(idx)) {
             _items[idx] = ItemState.Del;
             if(itemCheck(idx)) {
                 // 装備していたら外す
-                valSet(VAL_ITEM, ITEM_INVALID);
+                valSet(EscVar.ITEM, ITEM_INVALID);
             }
             return true;
         }
@@ -188,10 +176,13 @@ class EscGlobal {
     }
     public static function itemEquip(idx:Int):Bool {
         if(itemHas(idx)) {
-            valSet(VAL_ITEM, idx);
+            valSet(EscVar.ITEM, idx);
             return true;
         }
         return false;
+    }
+    public static function itemEquipGetID():Int {
+        return valGet(EscVar.ITEM);
     }
     public static function itemGetState(idx:Int):ItemState {
         return _items[idx];

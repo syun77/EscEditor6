@@ -207,6 +207,28 @@ class EscEditor extends FlxSubState {
     }
 
     /**
+     * スクリプトを開始する
+     * @param path スクリプトのパス
+     * @param funcName 開始する関数名
+     * @return Bool 実行できたらtrue
+     */
+    public function startScript(path:String, funcName:String = null):Bool {
+
+        if(funcName == null) {
+            // ファイルの先頭から実行する
+            _script.execute(path);
+        }
+        else {
+            // スクリプト実行
+            _script.execute(path, funcName);
+
+        }
+
+        _state = State.ScriptWait;
+        return true;
+    }
+
+    /**
      * テキストの追加
      */
     function _addText():FlxText {
@@ -257,15 +279,13 @@ class EscEditor extends FlxSubState {
         var path = _loader.getScriptPath();
         trace('click: ${path} :${obj.click}');
         // スクリプト実行
-        _script.execute(path, obj.click);
+        startScript(path, obj.click);
 
         // ■"click" 属性をファイル名とする場合
         //var path = '${_loader.getRoot()}${obj.click}.csv';
         //trace('click: ${path}');
         // スクリプト実行
         //_script.execute(path);
-
-        _state = State.ScriptWait;
     }
 
     /**
@@ -376,6 +396,9 @@ class EscEditor extends FlxSubState {
                 new FlxTimer().start(3, function(_) {
                     FlxG.switchState(new TitleState());
                 });
+            }
+            else if(_activeUI != null) {
+                _state = State.MenuUIWait;
             }
             else {
                 _movingCursorUI.update(elapsed);

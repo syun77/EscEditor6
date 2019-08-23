@@ -7,6 +7,7 @@ ITEM_ADD,     ITEM_ADD,   itemId
 ITEM_HAS,     ITEM_HAS,   itemId
 ITEM_DEL,     ITEM_DEL,   itemId
 ITEM_CHK,     ITEM_CHK,   itemId
+CRAFT_CHK,    CRAFT_CHK,  itemId1, itemId2
 COMPLETE,     COMPLETE,   
 //draw_bg,    DRB,        id, effectId=0
 //erase_bg,   ERB,        effectId=0

@@ -5,7 +5,6 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.util.FlxColor;
-import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import esc.EscGlobal;
 
@@ -78,7 +77,8 @@ class ItemButtonUI extends FlxSpriteGroup {
             _bg2.scale.set(sc, sc);
         }
 
-        var itemID = EscGlobal.valGet(EscGlobal.VAL_ITEM);
+        // 装備アイテムを取得する
+        var itemID = EscGlobal.itemEquipGetID();
         if(itemID == EscGlobal.ITEM_INVALID) {
             if(EscGlobal.itemAllNone()) {
                 visible = false;

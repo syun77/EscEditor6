@@ -97,6 +97,7 @@ class EscScript {
             "ITEM_HAS"  => _ITEM_HAS,
             "ITEM_DEL"  => _ITEM_DEL,
             "ITEM_CHK"  => _ITEM_CHK,
+            "CRAFT_CHK" => _CRAFT_CHK,
             "COMPLETE"  => _COMPLETE,
         ];
         _script = new AdvScript(tbl, filepath);
@@ -198,6 +199,18 @@ class EscScript {
         _log('ITEM_CHK');
         var itemID = _script.popStack();
         if(EscGlobal.itemCheck(itemID)) {
+            EscGlobal.retSet(1);
+        }
+        else {
+            EscGlobal.retSet(0);
+        }
+        return AdvScript.RET_CONTINUE;
+    }
+    function _CRAFT_CHK(param:Array<String>):Int {
+        var itemID1 = _script.popStack();
+        var itemID2 = _script.popStack();
+        if(EscGlobal.valGet(EscVar.CRAFT1) == itemID1 && EscGlobal.valGet(EscVar.CRAFT2) == itemID2) {
+            // 合成可能
             EscGlobal.retSet(1);
         }
         else {

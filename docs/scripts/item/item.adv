@@ -1,0 +1,24 @@
+CRAFT_CHK(ITEM_YELLOW_KEY, ITEM_RED_KEY)
+if($RET) {
+	ITEM_DEL(ITEM_YELLOW_KEY)
+	ITEM_DEL(ITEM_RED_KEY)
+	ITEM_ADD(ITEM_GLASS)
+	":虫めがねを合成した"
+	return
+}
+
+if($ITEM == ITEM_YELLOW_KEY) {
+	":黄色いカギだ"
+}
+elif($ITEM == ITEM_RED_KEY) {
+	":赤いカギだ。柄の部分に時計の模様が描かれている"
+}
+elif($ITEM == ITEM_GREEN_KEY) {
+	":緑色のカギだ"
+}
+elif($ITEM == ITEM_BLUE_KEY) {
+	":青色のカギだ"
+}
+elif($ITEM == ITEM_GLASS) {
+	":虫めがねだ"
+}

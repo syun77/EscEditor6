@@ -176,6 +176,7 @@ class AdvScript {
       "ELIF"  => _IF,
       "GOTO"  => _GOTO,
       "WHILE" => _WHILE,
+      "RETURN" => _RETURN,
       "END"   => _END,
       "FUNC_START" => _FUNC_START,
       "FUNC_END"   => _FUNC_END,
@@ -545,6 +546,14 @@ class AdvScript {
     _pc = address - 1;
   }
 
+  private function _RETURN(param:Array<String>):Void {
+    if(_bLog) {
+      trace("[SCRIPT] RETURN");
+      trace("- - - - - - - - - -");
+    }
+    // TODO: ひとまず終了とする
+    _bEnd = true;
+  }
   private function _END(param:Array<String>):Void {
     if(_bLog) {
       trace("[SCRIPT] END");
