@@ -13,4 +13,7 @@ class EscConst {
 	public static inline var ITEM_BATTERY:Int = 8;
 	public static inline var ITEM_REMOTE:Int = 9;
 	public static inline var ITEM_FLASHLIGHT:Int = 10;
+	public static inline var ITEM_ROPE:Int = 11;
+	public static inline var ITEM_ROPE_MAGNET:Int = 12;
+	public static inline var ITEM_MAGNET:Int = 13;
 }

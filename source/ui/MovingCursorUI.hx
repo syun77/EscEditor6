@@ -78,7 +78,7 @@ class MovingCursorUI extends FlxSpriteGroup {
             switch(obj.id) {
                 case "left":
                     px = 8;
-                    py = FlxG.height/2 - SIZE/2;
+                    py = Const.getCenterY() - SIZE/2;
                     vx -= d;
                     rot = 180;
                 case "up":
@@ -88,7 +88,7 @@ class MovingCursorUI extends FlxSpriteGroup {
                     rot = 270;
                 case "right":
                     px = FlxG.width - SIZE - 8;
-                    py = FlxG.height/2 - SIZE/2;
+                    py = Const.getCenterY() - SIZE/2;
                     vx += d;
                 case "down":
                     px = FlxG.width/2 - SIZE/2;

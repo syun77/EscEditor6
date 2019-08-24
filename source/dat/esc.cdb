@@ -299,6 +299,21 @@
 					"id": 10,
 					"name": "懐中電灯",
 					"const": "ITEM_FLASHLIGHT"
+				},
+				{
+					"id": 11,
+					"name": "ロープ",
+					"const": "ITEM_ROPE"
+				},
+				{
+					"id": 12,
+					"name": "磁石付きロープ",
+					"const": "ITEM_ROPE_MAGNET"
+				},
+				{
+					"id": 13,
+					"name": "磁石",
+					"const": "ITEM_MAGNET"
 				}
 			],
 			"separators": [],

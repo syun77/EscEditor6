@@ -119,7 +119,7 @@ class ItemMenuUI extends MenuUIBase {
         _bg.scale.y = 0;
         FlxTween.tween(_bg.scale, {y:1}, 0.2, {ease:FlxEase.expoOut});
 
-        for(i in 0...Const.MAX_ITEM) {
+        for(i in 0...EscGlobal.MAX_ITEM) {
             if(EscGlobal.itemHas(i) == false) {
                 continue;
             }
@@ -267,7 +267,7 @@ class ItemMenuUI extends MenuUIBase {
 
     function _refreshItems():Void {
         var idx = 0;
-        for(i in 0...Const.MAX_ITEM) {
+        for(i in 0...EscGlobal.MAX_ITEM) {
             if(EscGlobal.itemHas(i) == false) {
                 for(spr in _sprItems) {
                     if(i != spr.param) {

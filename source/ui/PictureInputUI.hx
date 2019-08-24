@@ -15,7 +15,7 @@ import ui.MenuUIBase;
  */
 private class ImageInputUI extends FlxSpriteGroup {
     public static inline var SPR_SIZE:Float = Resources.INPUT_SPR_SIZE;
-    static inline var DEFAULT_COLOR:Int = FlxColor.GRAY;
+    static inline var DEFAULT_COLOR:Int = 0xFFc0c0c0;
 
     // 方向定数
     static inline var DIR_UP:Int   = 0;
@@ -156,6 +156,7 @@ class PictureInputUI extends MenuUIBase {
     var _num:Int = 0;
     var _uiList:Array<ImageInputUI> = new Array<ImageInputUI>();
     var _okSpr:FlxSprite; // OKボタン
+    var _bg:FlxSprite;
 
     /**
      * コンストラクタ
@@ -163,10 +164,19 @@ class PictureInputUI extends MenuUIBase {
     public function new() {
         super();
 
+        // 背景
+        {
+            var bgHeight = Std.int(Resources.INPUT_SPR_SIZE*4);
+            _bg = new FlxSprite(0, Const.getCenterY()).makeGraphic(FlxG.width, bgHeight, FlxColor.BLACK);
+            _bg.y -= _bg.height/2;
+            _bg.alpha = 0.3;
+            this.add(_bg);
+        }
+
         // OKボタン
         {
             var px = FlxG.width/2;
-            var py = FlxG.height * 4 / 5;
+            var py = Const.getBottom() * 4 / 5;
             var spr = new FlxSprite(px, py, Resources.BTN_OK_PATH);
             spr.x -= spr.width/2;
             spr.y -= spr.height/2;
@@ -197,7 +207,7 @@ class PictureInputUI extends MenuUIBase {
         var h = ImageInputUI.SPR_SIZE;
         var ox = MARGIN_X;
         var px = (FlxG.width / 2) - ((w + ox) * _digit / 2);
-        var py = (FlxG.height / 2) - (h / 2);
+        var py = Const.getCenterY() - (h / 2);
         for(i in 0..._digit) {
             var v = _digit - (1 + i);
             var pow = Math.pow(10, v+1);

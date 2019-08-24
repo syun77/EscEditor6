@@ -9,7 +9,7 @@ class Resources {
 	public static inline var CURSOR_PATH:String = "assets/images/common/arrow.png";
 	public static inline var TAP_PATH:String    = "assets/images/common/tap.png";
 	public static inline var NUM_ARROW:String   = "assets/images/common/num_arrow.png";
-	public static inline var INPUT_SPR_SIZE:Float = 32;
+	public static inline var INPUT_SPR_SIZE:Float = 64;
 
 	// ボタン
 	public static inline var BTN_OK_PATH:String    = "assets/images/common/ok.png";
