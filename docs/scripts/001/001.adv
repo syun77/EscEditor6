@@ -1,5 +1,7 @@
 def knob
 {
+	//PIC_INPUT(1, 10, 6)
+	NUM_INPUT(10, 6)
 	$UNLOCK_CNT = 0
 	ITEM_HAS(ITEM_YELLOW_KEY)
 	if($RET) {

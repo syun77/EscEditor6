@@ -75,6 +75,7 @@ private class DigitInputUI extends FlxSpriteGroup {
         // 数字テキスト
         _txt = new FlxText(px, py, Std.int(size), '${_num}', Std.int(size));
         _txt.alignment = FlxTextAlign.CENTER;
+        _txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         this.add(_txt);
     }
 

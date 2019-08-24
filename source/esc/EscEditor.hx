@@ -311,6 +311,7 @@ class EscEditor extends FlxSubState {
                         // コールバック関数があれば呼び出し
                         _activeUI.funcClosed();
                     }
+                    _activeUI = null;
                 }
             case State.NextScene:
                 // 次のシーンに進む
