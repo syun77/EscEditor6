@@ -22,3 +22,7 @@ elif($ITEM == ITEM_BLUE_KEY) {
 elif($ITEM == ITEM_GLASS) {
 	":虫めがねだ"
 }
+elif($ITEM == ITEM_FLASHLIGHT_NA) {
+	":電池がなくて使えない懐中電灯だ"
+}
+

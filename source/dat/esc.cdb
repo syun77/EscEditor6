@@ -274,6 +274,31 @@
 					"id": 5,
 					"name": "虫めがね",
 					"const": "ITEM_GLASS"
+				},
+				{
+					"id": 6,
+					"name": "フロッピーディスク",
+					"const": "ITEM_FLOPPY"
+				},
+				{
+					"id": 7,
+					"name": "電池のない懐中電灯",
+					"const": "ITEM_FLASHLIGHT_NA"
+				},
+				{
+					"id": 8,
+					"name": "乾電池",
+					"const": "ITEM_BATTERY"
+				},
+				{
+					"id": 9,
+					"name": "リモコン",
+					"const": "ITEM_REMOTE"
+				},
+				{
+					"id": 10,
+					"name": "懐中電灯",
+					"const": "ITEM_FLASHLIGHT"
 				}
 			],
 			"separators": [],
