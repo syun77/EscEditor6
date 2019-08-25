@@ -2,6 +2,7 @@ package esc.loader;
 
 import flixel.text.FlxText;
 import openfl.Assets;
+import dat.EscDB;
 
 class EscObj {
     public var type:String = "";
@@ -10,8 +11,8 @@ class EscObj {
     public var y:Float     = 0;
     public var image:String = "";
     public var click:String = "";
-    public var flagOn:Int  = 0;
-    public var flagOff:Int = 0;
+    public var flagOn:dat.EscDB.Flags = null;
+    public var flagOff:dat.EscDB.Flags = null;
 
     var _root:String;
 
@@ -39,23 +40,11 @@ class EscObj {
         str += "(" + Std.int(x) + "," + Std.int(y) + ") ";
         str += '${image} ';
         str += '<${click}> ';
-        if(flagOn > 0) {
-            var s = EscFlag.toString(flagOn);
-            if(s != "") {
-                str += 'On:${s} ';
-            }
-            else {
-                str += 'On:${flagOn} ';
-            }
+        if(flagOn != null) {
+            str += 'On:${flagOn.id} ';
         }
-        if(flagOff > 0) {
-            var s = EscFlag.toString(flagOff);
-            if(s != "") {
-                str += 'Off:${s} ';
-            }
-            else {
-                str += 'Off:${flagOff} ';
-            }
+        if(flagOff != null) {
+            str += 'Off:${flagOff.id} ';
         }
 
         return str;
@@ -67,8 +56,12 @@ class EscObj {
         str += _buildAttrInt("x", Std.int(x));
         str += _buildAttrInt("y", Std.int(y));
         str += _buildAttr("click", click);
-        str += _buildAttrInt("on", flagOn);
-        str += _buildAttrInt("off", flagOff);
+        if(flagOn != null) {
+            str += _buildAttr("on", flagOn.id.toString());
+        }
+        if(flagOff != null) {
+            str += _buildAttr("off", flagOff.id.toString());
+        }
         str += "/>";
         return str;
     }
@@ -76,10 +69,17 @@ class EscObj {
         var on = flagOn;
         var off = flagOff;
         var visible = false;
-        if(on == 0 || EscGlobal.flagCheck(on)) {
-            // 表示フラグが有効
+        if(on == null) {
+            // 指定がなければ無条件で有効
             visible = true;
-            if(off > 0 && EscGlobal.flagCheck(off)) {
+        }
+        else {
+            // 指定がある場合は判定が必要
+            visible = EscGlobal.flagCheck(on.value);
+        }
+        if(visible) {
+            // 表示する場合はOFFフラグの判定が必要
+            if(off != null && EscGlobal.flagCheck(off.value)) {
                 // 非表示フラグが有効
                 visible = false;
             }

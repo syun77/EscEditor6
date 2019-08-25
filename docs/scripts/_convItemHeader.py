@@ -28,8 +28,8 @@ def execute(cdb, root):
 	for dat in jsonDict["sheets"]:
 		if dat["name"] == "items":
 			for line in dat["lines"]:
-#				writer.write("%s:%s # %s"%(line["const"], line["id"], line["name"]), 1)
-				writer.write("  %s: %s"%(line["const"], line["id"]))
+				writer.write("  %s: %s # %s"%(line["const"], line["id"], line["name"]))
+				#writer.write("  %s: %s"%(line["const"], line["id"]))
 	
 	path = root + "/common/item_header.txt"
 	fOut = open(path, "w")

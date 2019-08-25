@@ -5,13 +5,11 @@ class EscVar {
 	public static inline var ITEM:Int = 1;
 	public static inline var CRAFT1:Int = 2;
 	public static inline var CRAFT2:Int = 3;
-	public static inline var DRAWER_PULL_CNT:Int = 20;
 	static var _tbl:Map<String, Int> = [
 		"RET" => 0,
 		"ITEM" => 1,
 		"CRAFT1" => 2,
 		"CRAFT2" => 3,
-		"DRAWER_PULL_CNT" => 20,
 	];
 	
 	public static function get(k:String):Int {
