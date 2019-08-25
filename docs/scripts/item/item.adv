@@ -18,6 +18,16 @@ if($RET) {
 	return
 }
 
+// ロープの合成チェック
+CRAFT_CHK(ITEM_ROPE, ITEM_MAGNET)
+if($RET) {
+	// ロープ＋磁石を生成
+	ITEM_DEL(ITEM_MAGNET)
+	ITEM_DEL(ITEM_ROPE)
+	ITEM_ADD(ITEM_ROPE_MAGNET)
+	return
+}
+
 
 if($ITEM == ITEM_USB_ADAPTER) {
 	":USBケーブルを差し込める電源アダプタだ"
@@ -46,4 +56,17 @@ elif($ITEM == ITEM_REMOTE) {
 		":エアコンのリモコンだ"
 	}
 }
+elif($ITEM == ITEM_MAGNET) {
+	":U型の磁石だ"
+}
+elif($ITEM == ITEM_ROPE) {
+	":しっかりした作りのロープだ"
+}
+elif($ITEM == ITEM_ROPE_MAGNET) {
+	":磁石をつないだロープだ"
+}
+elif($ITEM == ITEM_SILVER_KEY) {
+	":銀色のカギだ"
+}
+
 

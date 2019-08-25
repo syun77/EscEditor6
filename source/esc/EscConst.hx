@@ -19,4 +19,5 @@ class EscConst {
 	public static inline var ITEM_USB_ADAPTER:Int = 14;
 	public static inline var ITEM_USB_CABLE:Int = 15;
 	public static inline var ITEM_USB_ADAPTER_CABLE:Int = 16;
+	public static inline var ITEM_SILVER_KEY:Int = 17;
 }

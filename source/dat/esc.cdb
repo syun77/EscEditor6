@@ -277,7 +277,7 @@
 						},
 						{
 							"id": "right",
-							"click": "jump5",
+							"click": "jump6",
 							"on": "",
 							"off": ""
 						}
@@ -330,10 +330,50 @@
 							"file": "../../assets/data/scene004/sticker2.png",
 							"image": "a017138d0ba262c55af94f6f098efa4f",
 							"x": 103,
-							"y": 176,
+							"y": 24,
 							"click": "",
 							"on": "",
 							"off": ""
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene004/lock.png",
+							"image": "e21a7737a03abd63680ba74f6dd11023",
+							"x": 134,
+							"y": 210,
+							"click": "lock",
+							"on": "",
+							"off": "UNLOCK_GJ"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene004/unlock2.png",
+							"image": "a6593949e6428629d40072c8e5df67f1",
+							"x": 260,
+							"y": 210,
+							"click": "",
+							"on": "UNLOCK_GJ",
+							"off": ""
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene004/unlock.png",
+							"image": "22de0210ac9e4431206607f2b604e599",
+							"x": 134,
+							"y": 210,
+							"click": "",
+							"on": "UNLOCK_GJ",
+							"off": ""
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene004/magnet.png",
+							"image": "71b8120519c2ad61578ed27646e3c5c5",
+							"x": 183,
+							"y": 242,
+							"click": "magnet",
+							"on": "UNLOCK_GJ",
+							"off": "GAIN_MAGNET"
 						}
 					],
 					"moves": [
@@ -367,10 +407,118 @@
 							"id": "1",
 							"file": "../../assets/data/scene005/aiueo.png",
 							"image": "a88b03ce85510d75acf12258f54eec8f",
-							"x": 0,
-							"y": 0,
-							"click": "",
+							"x": 74,
+							"y": 14,
+							"click": "aiueo",
 							"on": "",
+							"off": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene005/lock.png",
+							"image": "265796aabfbfb7223f19d548d873af5c",
+							"x": 124,
+							"y": 211,
+							"click": "lock",
+							"on": "",
+							"off": "UNLOCK_AIUEO"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene005/unlock.png",
+							"image": "22de0210ac9e4431206607f2b604e599",
+							"x": 124,
+							"y": 211,
+							"click": "",
+							"on": "UNLOCK_AIUEO",
+							"off": ""
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene005/unlock2.png",
+							"image": "d0b86d150e4d7fdb0470d14acd0baff7",
+							"x": 252,
+							"y": 211,
+							"click": "",
+							"on": "UNLOCK_AIUEO",
+							"off": ""
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene005/rope.png",
+							"image": "c5df7ff65e7423d2051b32d355922823",
+							"x": 156,
+							"y": 228,
+							"click": "rope",
+							"on": "UNLOCK_AIUEO",
+							"off": "GAIN_ROPE"
+						}
+					],
+					"moves": [
+						{
+							"id": "left",
+							"click": "jump6",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "right",
+							"click": "jump4",
+							"on": "",
+							"off": ""
+						}
+					]
+				},
+				{
+					"scene": 6,
+					"script": "../../docs/scripts/006/006.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/knob.png",
+							"image": "90f7ff8ae2b22d856d7f92e1e942586d",
+							"x": 132,
+							"y": 345,
+							"click": "knob",
+							"on": "",
+							"off": "UNLOCK_SILVER_DOOR"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene006/sticker.png",
+							"image": "91695d203b9e861b17743280968f4e30",
+							"x": 136,
+							"y": 345,
+							"click": "sticker",
+							"on": "",
+							"off": "UNLOCK_SILVER_DOOR"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene006/unlock2.png",
+							"image": "07df353334c14f3bf956037ea3363a21",
+							"x": 120,
+							"y": 182,
+							"click": "complete",
+							"on": "UNLOCK_SILVER_DOOR",
+							"off": ""
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene006/unlock.png",
+							"image": "23d8561c6abf1c26721ec36dd704f379",
+							"x": 274,
+							"y": 182,
+							"click": "",
+							"on": "UNLOCK_SILVER_DOOR",
 							"off": ""
 						}
 					],
@@ -383,7 +531,7 @@
 						},
 						{
 							"id": "right",
-							"click": "jump4",
+							"click": "jump5",
 							"on": "",
 							"off": ""
 						}
@@ -601,6 +749,11 @@
 					"id": 16,
 					"name": "電源アダプタ付きUSBケーブル",
 					"const": "ITEM_USB_ADAPTER_CABLE"
+				},
+				{
+					"id": 17,
+					"name": "銀色のカギ",
+					"const": "ITEM_SILVER_KEY"
 				}
 			],
 			"separators": [],

@@ -15,6 +15,30 @@ def sticker
 	":「◯き◯し◯十◯引◯」と書いてある"
 }
 
+def lock
+{
+	// ああな
+	// いいに
+	// ううぬ
+	// ええね
+	// おおの
+	PIC_INPUT(3, 40, 3)
+	if($40 == 113) { // い(1)→い(1)→ね(3)
+		":ロックを解除した"
+		%UNLOCK_GJ = true
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+
+def magnet
+{
+	// 磁石入手
+	ITEM_ADD(ITEM_MAGNET)
+	%GAIN_MAGNET = true
+}
+
 def jump3
 {
 	JUMP(3)

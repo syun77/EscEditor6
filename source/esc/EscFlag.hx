@@ -10,6 +10,11 @@ class EscFlag {
 	public static inline var GAIN_FLASHLIGHT_NA:Int = 21;
 	public static inline var GAIN_FLOPPY_DISK:Int = 22;
 	public static inline var GAIN_REMOTE:Int = 30;
+	public static inline var UNLOCK_GJ:Int = 31;
+	public static inline var GAIN_MAGNET:Int = 32;
+	public static inline var UNLOCK_AIUEO:Int = 40;
+	public static inline var GAIN_ROPE:Int = 41;
+	public static inline var UNLOCK_SILVER_DOOR:Int = 50;
 	static var _tbl:Map<String, Int> = [
 		"MOVABLE" => 3,
 		"GAIN_USB_ADAPTER" => 12,
@@ -20,6 +25,11 @@ class EscFlag {
 		"GAIN_FLASHLIGHT_NA" => 21,
 		"GAIN_FLOPPY_DISK" => 22,
 		"GAIN_REMOTE" => 30,
+		"UNLOCK_GJ" => 31,
+		"GAIN_MAGNET" => 32,
+		"UNLOCK_AIUEO" => 40,
+		"GAIN_ROPE" => 41,
+		"UNLOCK_SILVER_DOOR" => 50,
 	];
 	
 	public static function get(k:String):Int {

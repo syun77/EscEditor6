@@ -37,10 +37,10 @@ def jump4
 	JUMP(4)
 }
 
-def jump5
+def jump6
 {
 	// 引き出しを引いた回数をリセット
 	$DRAWER_PULL_CNT = 0
 	%DRAWER_PULL = false
-	JUMP(5)
+	JUMP(6)
 }

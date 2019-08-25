@@ -1,6 +1,30 @@
-def jump3
+def aiueo
 {
-	JUMP(3)
+	":絵が描かれている"
+}
+
+def lock
+{
+	$50 = 1234
+	PIC_INPUT(1, 50, 5)
+	if($50 == 4123) { // スイカ(0)→カメ(4)→メガネ(1)→ネズミ(2)→みかん(3)
+		%UNLOCK_AIUEO = true
+		":ロックが解除された"
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+def rope
+{
+	// ロープ入手
+	ITEM_ADD(ITEM_ROPE)
+	%GAIN_ROPE = true
+}
+
+def jump6
+{
+	JUMP(6)
 }
 def jump4
 {
