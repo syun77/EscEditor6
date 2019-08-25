@@ -1,0 +1,20 @@
+def key
+{
+	// 磁石付きロープを装備している
+	ITEM_CHK(ITEM_ROPE_MAGNET)
+	if($RET) {
+		// 銀色のカギ取得
+		":カギを磁石付きのロープでたぐり寄せる……"
+		WAIT(2)
+		ITEM_ADD(ITEM_SILVER_KEY)
+		%GAIN_SILVER_KEY = true
+	}
+	else {
+		":カギまで手が届かない"
+	}
+}
+
+def back
+{
+	JUMP(4)
+}

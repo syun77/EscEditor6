@@ -254,8 +254,11 @@ class EscEditor extends FlxSubState {
         tmp.reverse(); // 逆順にする
 		for(obj in tmp) {
             if(Utils.checkClickSprite(obj)) {
-                if(obj.getObj().click == "") {
-                    continue; // イベントがない場合は判定しない
+                if(isEdit() == false) {
+                    // 通常モード
+                    if(obj.getObj().click == "") {
+                        continue; // イベントがない場合は判定しない
+                    }
                 }
                 return obj;
             }

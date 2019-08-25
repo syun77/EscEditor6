@@ -286,7 +286,7 @@ class Lexer:
 				self.ttype = TokenType.VAR
 				self.token = "$%d"%self.varDefines[token]
 			else:
-				self.fatal("Invalid syntax.")
+				self.fatal("Invalid syntax. %s"%token)
 		elif re.match("[\$][\d]+", token):
 			self.ttype = TokenType.VAR
 			self.token = token
@@ -299,7 +299,7 @@ class Lexer:
 				self.ttype = TokenType.BIT
 				self.token = "%%%d"%self.flagDefines[token]
 			else:
-				self.fatal("Invalid syntax.")
+				self.fatal("Invalid syntax. %s"%token)
 		elif re.match("[\%][\d]+", token):
 			self.ttype = TokenType.BIT
 			self.token = token

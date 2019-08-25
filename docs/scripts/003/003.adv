@@ -3,6 +3,10 @@ def drawer1
 	%DRAWER_PULL = true
 	// 引き出しを引いた回数をカウントする
 	$DRAWER_PULL_CNT += 1
+	if($DRAWER_PULL_CNT >= 10) {
+		// 引き出しの隠し条件達成
+		%DRAWER_PULL_SECRET = true
+	}
 }
 
 def drawer2
@@ -27,6 +31,13 @@ def floppy_disk
 def sticker
 {
 	":「ひ◯だ◯を◯回◯け」と書いてある"
+}
+
+def remote
+{
+	// リモコン入手
+	ITEM_ADD(ITEM_REMOTE)
+	%GAIN_REMOTE = true
 }
 
 def jump4

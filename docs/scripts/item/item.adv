@@ -68,5 +68,8 @@ elif($ITEM == ITEM_ROPE_MAGNET) {
 elif($ITEM == ITEM_SILVER_KEY) {
 	":銀色のカギだ"
 }
+elif($ITEM == ITEM_GLASS) {
+	":虫メガネだ"
+}
 
 

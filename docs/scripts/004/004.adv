@@ -1,13 +1,28 @@
 def hole
 {
-	":暗くて深い穴だ"
+	// 懐中電灯チェック
+	ITEM_CHK(ITEM_FLASHLIGHT)
+	if($RET) {
+		// 探索可能
+		if(%SEARCH_HOLE == false) {
+			":懐中電灯で穴を調べることができそうだ……"
+			WAIT(1)
+		}
+		%SEARCH_HOLE = true
+	}
+	if(%SEARCH_HOLE) {
+		JUMP(7)
+	}
+	else {
+		":暗くて深い穴だ"
+	}
 }
 
-def remote
+def glass
 {
-	// リモコン入手
-	ITEM_ADD(ITEM_REMOTE)
-	%GAIN_REMOTE = true
+	// 虫めがね入手
+	ITEM_ADD(ITEM_GLASS)
+	%GAIN_GLASS = true
 }
 
 def sticker

@@ -266,6 +266,36 @@
 							"click": "sticker",
 							"on": "",
 							"off": ""
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene003/unlock.png",
+							"image": "22de0210ac9e4431206607f2b604e599",
+							"x": 133,
+							"y": 66,
+							"click": "",
+							"on": "DRAWER_PULL_SECRET",
+							"off": ""
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene003/unlock2.png",
+							"image": "349c84e038562ca4ecbc39e4d1262772",
+							"x": 261,
+							"y": 66,
+							"click": "",
+							"on": "DRAWER_PULL_SECRET",
+							"off": ""
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene003/remote.png",
+							"image": "b5275baf3a04567c0e98a2fd0eb423f1",
+							"x": 182,
+							"y": 94,
+							"click": "remote",
+							"on": "DRAWER_PULL_SECRET",
+							"off": "GAIN_REMOTE"
 						}
 					],
 					"moves": [
@@ -307,13 +337,13 @@
 						},
 						{
 							"id": "2",
-							"file": "../../assets/data/scene004/remote.png",
-							"image": "b5275baf3a04567c0e98a2fd0eb423f1",
+							"file": "../../assets/data/scene004/scope.png",
+							"image": "9ebaf9b92c8445fb3cf35924d472074e",
 							"x": 11,
-							"y": 310,
-							"click": "remote",
+							"y": 324,
+							"click": "glass",
 							"on": "",
-							"off": "GAIN_REMOTE"
+							"off": "GAIN_GLASS"
 						},
 						{
 							"id": "3",
@@ -496,7 +526,7 @@
 							"file": "../../assets/data/scene006/sticker.png",
 							"image": "91695d203b9e861b17743280968f4e30",
 							"x": 136,
-							"y": 345,
+							"y": 216,
 							"click": "sticker",
 							"on": "",
 							"off": "UNLOCK_SILVER_DOOR"
@@ -532,6 +562,38 @@
 						{
 							"id": "right",
 							"click": "jump5",
+							"on": "",
+							"off": ""
+						}
+					]
+				},
+				{
+					"scene": 7,
+					"script": "../../docs/scripts/007/007.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene007/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene007/key.png",
+							"image": "04dbe904022ad12895d3a19dbcc90e8c",
+							"x": 180,
+							"y": 295,
+							"click": "key",
+							"on": "",
+							"off": "GAIN_SILVER_KEY"
+						}
+					],
+					"moves": [
+						{
+							"id": "down",
+							"click": "back",
 							"on": "",
 							"off": ""
 						}

@@ -22,13 +22,18 @@ flag:
   DRAWER_PULL: 20 #引き出しを引いた
   GAIN_FLASHLIGHT_NA: 21 # 懐中電灯を入手
   GAIN_FLOPPY_DISK: 22 # フロッピーディスクを入手
+  GAIN_REMOTE: 23 #リモコン入手
+  DRAWER_PULL_SECRET: 24 #引き出しの隠し条件達成
   # 004
-  GAIN_REMOTE: 30 #リモコン入手
+  GAIN_GLASS: 30 #虫めがね入手
   UNLOCK_GJ: 31 #ロック解除
   GAIN_MAGNET: 32 #磁石入手
+  SEARCH_HOLE: 33 #穴を調べられる
   # 005
   UNLOCK_AIUEO: 40 # しりとり解除
   GAIN_ROPE: 41 # ロープ入手
   # 006
   UNLOCK_SILVER_DOOR: 50 #銀色の扉を開いた
+  # 007
+  GAIN_SILVER_KEY: 60 #銀色の鍵を入手
   
