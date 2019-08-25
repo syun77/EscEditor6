@@ -1,0 +1,26 @@
+def hole
+{
+	":暗くて深い穴だ"
+}
+
+def remote
+{
+	// リモコン入手
+	ITEM_ADD(ITEM_REMOTE)
+	%GAIN_REMOTE = true
+}
+
+def sticker
+{
+	":「◯き◯し◯十◯引◯」と書いてある"
+}
+
+def jump3
+{
+	JUMP(3)
+}
+
+def jump5
+{
+	JUMP(5)
+}

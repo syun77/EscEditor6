@@ -18,7 +18,9 @@ flag:
   GAIN_USB_CABLE: 13 #USBケーブル入手
   USB_POWER_ON: 15 #電源ON
   UNLOCK_DOOR: 16 #扉の鍵を解除
-  # 002
+  # 003
   DRAWER_PULL: 20 #引き出しを引いた
   GAIN_FLASHLIGHT_NA: 21 # 懐中電灯を入手
   GAIN_FLOPPY_DISK: 22 # フロッピーディスクを入手
+  # 004
+  GAIN_REMOTE: 30 #リモコン入手

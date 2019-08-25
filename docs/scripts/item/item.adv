@@ -8,6 +8,16 @@ if($RET) {
 	return
 }
 
+// 懐中電灯の合成チェック
+CRAFT_CHK(ITEM_FLASHLIGHT_NA, ITEM_BATTERY)
+if($RET) {
+	// 電池のある懐中電灯を生成
+	ITEM_DEL(ITEM_FLASHLIGHT_NA)
+	ITEM_DEL(ITEM_BATTERY)
+	ITEM_ADD(ITEM_FLASHLIGHT)
+	return
+}
+
 
 if($ITEM == ITEM_USB_ADAPTER) {
 	":USBケーブルを差し込める電源アダプタだ"
@@ -23,5 +33,17 @@ elif($ITEM == ITEM_FLASHLIGHT_NA) {
 }
 elif($ITEM == ITEM_FLOPPY) {
 	":フロッピーディスクだ"
+}
+elif($ITEM == ITEM_REMOTE) {
+	// 懐中電灯を持っていれば電池取り出し
+	ITEM_HAS(ITEM_FLASHLIGHT_NA)
+	if($RET) {
+		ITEM_DEL(ITEM_REMOTE)
+		ITEM_ADD(ITEM_BATTERY)
+		":リモコンから電池を取り出した"
+	}
+	else {
+		":エアコンのリモコンだ"
+	}
 }
 

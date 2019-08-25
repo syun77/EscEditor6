@@ -9,6 +9,7 @@ class EscFlag {
 	public static inline var DRAWER_PULL:Int = 20;
 	public static inline var GAIN_FLASHLIGHT_NA:Int = 21;
 	public static inline var GAIN_FLOPPY_DISK:Int = 22;
+	public static inline var GAIN_REMOTE:Int = 30;
 	static var _tbl:Map<String, Int> = [
 		"MOVABLE" => 3,
 		"GAIN_USB_ADAPTER" => 12,
@@ -18,6 +19,7 @@ class EscFlag {
 		"DRAWER_PULL" => 20,
 		"GAIN_FLASHLIGHT_NA" => 21,
 		"GAIN_FLOPPY_DISK" => 22,
+		"GAIN_REMOTE" => 30,
 	];
 	
 	public static function get(k:String):Int {

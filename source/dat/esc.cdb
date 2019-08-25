@@ -256,6 +256,136 @@
 							"click": "floppy_disk",
 							"on": "",
 							"off": "GAIN_FLOPPY_DISK"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene003/sticker.png",
+							"image": "139c53a72d02eaf07b619b4914ca86b1",
+							"x": 135,
+							"y": 309,
+							"click": "sticker",
+							"on": "",
+							"off": ""
+						}
+					],
+					"moves": [
+						{
+							"id": "left",
+							"click": "jump4",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "right",
+							"click": "jump5",
+							"on": "",
+							"off": ""
+						}
+					]
+				},
+				{
+					"scene": 4,
+					"script": "../../docs/scripts/004/004.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/hole.png",
+							"image": "f52713ce8ed1cd79869b2cb943cfe792",
+							"x": 231,
+							"y": 384,
+							"click": "hole",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene004/remote.png",
+							"image": "b5275baf3a04567c0e98a2fd0eb423f1",
+							"x": 11,
+							"y": 310,
+							"click": "remote",
+							"on": "",
+							"off": "GAIN_REMOTE"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene004/sticker.png",
+							"image": "aa2d485c89af343b93fc05721d887a3c",
+							"x": 181,
+							"y": 320,
+							"click": "sticker",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene004/sticker2.png",
+							"image": "a017138d0ba262c55af94f6f098efa4f",
+							"x": 103,
+							"y": 176,
+							"click": "",
+							"on": "",
+							"off": ""
+						}
+					],
+					"moves": [
+						{
+							"id": "right",
+							"click": "jump3",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "left",
+							"click": "jump5",
+							"on": "",
+							"off": ""
+						}
+					]
+				},
+				{
+					"scene": 5,
+					"script": "../../docs/scripts/005/005.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/aiueo.png",
+							"image": "a88b03ce85510d75acf12258f54eec8f",
+							"x": 0,
+							"y": 0,
+							"click": "",
+							"on": "",
+							"off": ""
+						}
+					],
+					"moves": [
+						{
+							"id": "left",
+							"click": "jump3",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "right",
+							"click": "jump4",
+							"on": "",
+							"off": ""
 						}
 					]
 				}

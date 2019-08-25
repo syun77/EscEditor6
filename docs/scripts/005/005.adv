@@ -1,0 +1,8 @@
+def jump3
+{
+	JUMP(3)
+}
+def jump4
+{
+	JUMP(4)
+}

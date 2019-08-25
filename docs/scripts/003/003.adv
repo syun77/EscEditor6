@@ -23,3 +23,24 @@ def floppy_disk
 	ITEM_ADD(ITEM_FLOPPY)
 	%GAIN_FLOPPY_DISK = true
 }
+
+def sticker
+{
+	":「ひ◯だ◯を◯回◯け」と書いてある"
+}
+
+def jump4
+{
+	// 引き出しを引いた回数をリセット
+	$DRAWER_PULL_CNT = 0
+	%DRAWER_PULL = false
+	JUMP(4)
+}
+
+def jump5
+{
+	// 引き出しを引いた回数をリセット
+	$DRAWER_PULL_CNT = 0
+	%DRAWER_PULL = false
+	JUMP(5)
+}
