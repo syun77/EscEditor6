@@ -5,13 +5,19 @@ class EscFlag {
 	public static inline var GAIN_USB_ADAPTER:Int = 12;
 	public static inline var GAIN_USB_CABLE:Int = 13;
 	public static inline var USB_POWER_ON:Int = 15;
-	public static inline var OPEN_DOOR:Int = 50;
+	public static inline var UNLOCK_DOOR:Int = 16;
+	public static inline var DRAWER_PULL:Int = 20;
+	public static inline var GAIN_FLASHLIGHT_NA:Int = 21;
+	public static inline var GAIN_FLOPPY_DISK:Int = 22;
 	static var _tbl:Map<String, Int> = [
 		"MOVABLE" => 3,
 		"GAIN_USB_ADAPTER" => 12,
 		"GAIN_USB_CABLE" => 13,
 		"USB_POWER_ON" => 15,
-		"OPEN_DOOR" => 50,
+		"UNLOCK_DOOR" => 16,
+		"DRAWER_PULL" => 20,
+		"GAIN_FLASHLIGHT_NA" => 21,
+		"GAIN_FLOPPY_DISK" => 22,
 	];
 	
 	public static function get(k:String):Int {

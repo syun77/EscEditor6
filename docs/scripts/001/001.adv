@@ -74,11 +74,17 @@ def input
 	// おろごと
 	PIC_INPUT(2, 10, 4)
 	if($10 == 1121) { // い(1)り(1)ぐ(2)ち(1)
-		%15 = true
+		%UNLOCK_DOOR = true
 		":扉が開いた"
 		return
 	}
 	else {
 		":正しくないようだ"
 	}
+}
+
+def next
+{
+	// 次のシーンに進む
+	JUMP(3)
 }

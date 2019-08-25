@@ -78,7 +78,7 @@
 							"y": 206,
 							"click": "sticker",
 							"on": "",
-							"off": ""
+							"off": "UNLOCK_DOOR"
 						},
 						{
 							"id": "5",
@@ -88,7 +88,7 @@
 							"y": 352,
 							"click": "knob",
 							"on": "",
-							"off": ""
+							"off": "UNLOCK_DOOR"
 						},
 						{
 							"id": "6",
@@ -108,7 +108,7 @@
 							"y": 302,
 							"click": "input",
 							"on": "USB_POWER_ON",
-							"off": ""
+							"off": "UNLOCK_DOOR"
 						},
 						{
 							"id": "８",
@@ -118,7 +118,7 @@
 							"y": 371,
 							"click": "outlet1",
 							"on": "",
-							"off": ""
+							"off": "UNLOCK_DOOR"
 						},
 						{
 							"id": "９",
@@ -128,7 +128,7 @@
 							"y": 388,
 							"click": "outlet2",
 							"on": "",
-							"off": ""
+							"off": "UNLOCK_DOOR"
 						},
 						{
 							"id": "10",
@@ -138,6 +138,26 @@
 							"y": 389,
 							"click": "connect",
 							"on": "USB_POWER_ON",
+							"off": "UNLOCK_DOOR"
+						},
+						{
+							"id": "11",
+							"file": "../../assets/data/scene001/unlock.png",
+							"image": "8e7d1bdf885bf41d3bab1ceef377058b",
+							"x": 273,
+							"y": 180,
+							"click": "",
+							"on": "UNLOCK_DOOR",
+							"off": ""
+						},
+						{
+							"id": "12",
+							"file": "../../assets/data/scene001/unlock2.png",
+							"image": "ee8f81aabb8248a7d99a07512d7798cf",
+							"x": 120,
+							"y": 180,
+							"click": "next",
+							"on": "UNLOCK_DOOR",
 							"off": ""
 						}
 					],
@@ -182,6 +202,60 @@
 							"click": "back",
 							"on": "",
 							"off": ""
+						}
+					]
+				},
+				{
+					"scene": 3,
+					"script": "../../docs/scripts/003/003.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/drawer1.png",
+							"image": "eec8edb8f5ae335a65bd3be4d8f58903",
+							"x": 102,
+							"y": 362,
+							"click": "drawer1",
+							"on": "",
+							"off": "DRAWER_PULL"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/drawer2.png",
+							"image": "d470e5b16674ed8fd9cbd70933ac3838",
+							"x": 93,
+							"y": 362,
+							"click": "drawer2",
+							"on": "DRAWER_PULL",
+							"off": ""
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene003/flashlight.png",
+							"image": "a2e9b11655dd4b67c5bb567ff37bc888",
+							"x": 89,
+							"y": 248,
+							"click": "flashlight",
+							"on": "",
+							"off": "GAIN_FLASHLIGHT_NA"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene003/floppy_disk.png",
+							"image": "ac7b54d82a65f6e4d245a049eee3ddf2",
+							"x": 222,
+							"y": 213,
+							"click": "floppy_disk",
+							"on": "",
+							"off": "GAIN_FLOPPY_DISK"
 						}
 					]
 				}

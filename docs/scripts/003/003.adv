@@ -1,0 +1,25 @@
+def drawer1
+{
+	%DRAWER_PULL = true
+	// 引き出しを引いた回数をカウントする
+	$DRAWER_PULL_CNT += 1
+}
+
+def drawer2
+{
+	%DRAWER_PULL = false
+}
+
+def flashlight
+{
+	// 懐中電灯を入手
+	ITEM_ADD(ITEM_FLASHLIGHT_NA)
+	%GAIN_FLASHLIGHT_NA = true
+}
+
+def floppy_disk
+{
+	// フロッピーディスクを入手
+	ITEM_ADD(ITEM_FLOPPY)
+	%GAIN_FLOPPY_DISK = true
+}

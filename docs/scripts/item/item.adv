@@ -1,7 +1,27 @@
+// USBケーブル合成チェック
 CRAFT_CHK(ITEM_USB_ADAPTER, ITEM_USB_CABLE)
 if($RET) {
 	// USBケーブル合成
 	ITEM_DEL(ITEM_USB_ADAPTER)
 	ITEM_DEL(ITEM_USB_CABLE)
 	ITEM_ADD(ITEM_USB_ADAPTER_CABLE)
+	return
 }
+
+
+if($ITEM == ITEM_USB_ADAPTER) {
+	":USBケーブルを差し込める電源アダプタだ"
+}
+elif($ITEM == ITEM_USB_CABLE) {
+	":USBケーブルだ"
+}
+elif($ITEM == ITEM_USB_ADAPTER_CABLE) {
+	":USBと電源をつなげるケーブルだ"
+}
+elif($ITEM == ITEM_FLASHLIGHT_NA) {
+	":電池がない懐中電灯だ"
+}
+elif($ITEM == ITEM_FLOPPY) {
+	":フロッピーディスクだ"
+}
+

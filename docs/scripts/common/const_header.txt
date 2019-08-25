@@ -2,15 +2,23 @@ const:
   TEST_CONST: 0
 
 var:
+  # system
   RET:    0 # リターンコード
   ITEM:   1 # 装備しているアイテム
   CRAFT1: 2 # 合成するアイテム1
   CRAFT2: 3 # 合成するアイテム2
-  UNLOCK_CNT: 50
+  # 001
+  # 002
+  DRAWER_PULL_CNT: 20 #引き出しを引いた数
 
 flag:
+  # 001
   MOVABLE: 3 # 移動可能
   GAIN_USB_ADAPTER: 12 #USBアダプター入手
   GAIN_USB_CABLE: 13 #USBケーブル入手
   USB_POWER_ON: 15 #電源ON
-  OPEN_DOOR: 50 # 扉を開いた
+  UNLOCK_DOOR: 16 #扉の鍵を解除
+  # 002
+  DRAWER_PULL: 20 #引き出しを引いた
+  GAIN_FLASHLIGHT_NA: 21 # 懐中電灯を入手
+  GAIN_FLOPPY_DISK: 22 # フロッピーディスクを入手
