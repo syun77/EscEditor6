@@ -16,4 +16,7 @@ class EscConst {
 	public static inline var ITEM_ROPE:Int = 11;
 	public static inline var ITEM_ROPE_MAGNET:Int = 12;
 	public static inline var ITEM_MAGNET:Int = 13;
+	public static inline var ITEM_USB_ADAPTER:Int = 14;
+	public static inline var ITEM_USB_CABLE:Int = 15;
+	public static inline var ITEM_USB_ADAPTER_CABLE:Int = 16;
 }

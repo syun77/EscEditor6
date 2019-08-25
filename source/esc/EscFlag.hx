@@ -2,9 +2,15 @@ package esc;
 
 class EscFlag {
 	public static inline var MOVABLE:Int = 3;
+	public static inline var GAIN_USB_ADAPTER:Int = 12;
+	public static inline var GAIN_USB_CABLE:Int = 13;
+	public static inline var USB_POWER_ON:Int = 15;
 	public static inline var OPEN_DOOR:Int = 50;
 	static var _tbl:Map<String, Int> = [
 		"MOVABLE" => 3,
+		"GAIN_USB_ADAPTER" => 12,
+		"GAIN_USB_CABLE" => 13,
+		"USB_POWER_ON" => 15,
 		"OPEN_DOOR" => 50,
 	];
 	

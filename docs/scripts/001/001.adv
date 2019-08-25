@@ -1,73 +1,84 @@
+def adapter
+{
+	// USBアダプター入手
+	ITEM_ADD(ITEM_USB_ADAPTER)
+	%GAIN_USB_ADAPTER = true
+}
+def usb_cable
+{
+	// USBケーブル入手
+	ITEM_ADD(ITEM_USB_CABLE)
+	%GAIN_USB_CABLE = true
+}
+
+def sticker
+{
+	// 拡大する
+	JUMP(2)
+}
+
 def knob
 {
-	/*
-	PIC_INPUT(1, 10, 5)
-	if($10 == 4123) { // スイカ(0)→カメ(4)→メガネ(1)→ネズミ(2)→みかん(3)
-		":正解"
+	":電子ロックがかかっているようだ"
+}
+
+def outlet1
+{
+	if($ITEM == ITEM_USB_ADAPTER_CABLE) {
+		// 電源ON
+		%USB_POWER_ON = true
+		ITEM_DEL(ITEM_USB_ADAPTER_CABLE)
+		":ケーブルを接続した"
+		return
 	}
-	*/
-	
+
+	if(%USB_POWER_ON == false) {
+		":コンセントがある"
+		return
+	}
+	":ケーブルがつながって電力が供給されている"
+}
+
+def outlet2
+{
+	if($ITEM == ITEM_USB_ADAPTER_CABLE) {
+		// 電源ON
+		%USB_POWER_ON = true
+		ITEM_DEL(ITEM_USB_ADAPTER_CABLE)
+		":ケーブルを接続した"
+		return
+	}
+
+	if(%USB_POWER_ON == false) {
+		":USBを差し込む穴がある"
+		return
+	}
+	":ケーブルがつながって電力が供給されている"
+}
+def connect
+{
+	":ケーブルがつながって電力が供給されている"
+}
+
+def input
+{
+	if(%USB_POWER_ON == false) {
+		":電源がついていない"
+		return
+	}
+
 	// あらがた
 	// いりぎち
 	// うるぐつ
 	// えれげて
 	// おろごと
-	/*
-	PIC_INPUT(2, 20, 4)
-	if($20 == 1121) { // い(1)り(1)ぐ(2)ち(1)
-		":正解"
+	PIC_INPUT(2, 10, 4)
+	if($10 == 1121) { // い(1)り(1)ぐ(2)ち(1)
+		%15 = true
+		":扉が開いた"
 		return
 	}
-	*/
-	
-	//NUM_INPUT(10, 5)
-	
-	$UNLOCK_CNT = 0
-	ITEM_HAS(ITEM_YELLOW_KEY)
-	if($RET) {
-		$UNLOCK_CNT += 1
-	}
-	ITEM_HAS(ITEM_BLUE_KEY)
-	if($RET) {
-		$UNLOCK_CNT += 1
-	}
-	ITEM_HAS(ITEM_GREEN_KEY)
-	if($RET) {
-		$UNLOCK_CNT += 1
-	}
-	
-	if($UNLOCK_CNT == 3) {
-		%OPEN_DOOR = true
-		":ドアが開いた"
-	}
-	elif($UNLOCK_CNT > 0) {
-		$51 = 3 - $UNLOCK_CNT
-		":カギがあと$51本必要だ"
-	}
 	else {
-		":カギがかかっていて扉は開かない"
+		":正しくないようだ"
 	}
-}
-
-def jump002
-{
-	JUMP(2)
-}
-
-def jump005
-{
-	JUMP(5)
-}
-
-def sticker
-{
-	":「カギを探せ」と書いてある……"
-	// フラグ3をONにする
-	%3 = true
-}
-
-def unlock2
-{
-	// 脱出成功
-	COMPLETE()
 }

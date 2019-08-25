@@ -41,81 +41,149 @@
 					],
 					"objs": [
 						{
-							"x": 133,
-							"y": 246,
-							"file": "../../assets/data/scene001/sticker.png",
-							"click": "sticker",
-							"on": "",
-							"off": "OPEN_DOOR",
 							"id": "1",
-							"image": "f994134bef9fe8fc39cf514ea6230a72"
+							"file": "../../assets/data/scene001/table.png",
+							"image": "f9407e6d0a8c1a0fef2b1ccd70c77ddc",
+							"x": -23,
+							"y": 438,
+							"click": "",
+							"on": "",
+							"off": ""
 						},
 						{
-							"file": "../../assets/data/scene001/knob_yellow.png",
-							"x": 131,
-							"y": 432,
-							"click": "knob",
-							"on": "",
-							"off": "OPEN_DOOR",
 							"id": "2",
-							"image": "7735f8e2f78416a3560a29f045d26451"
+							"file": "../../assets/data/scene001/adapter.png",
+							"image": "4c2302b405e89bdbb02b78a4ff8d855a",
+							"x": 63,
+							"y": 431,
+							"click": "adapter",
+							"on": "0",
+							"off": "GAIN_USB_ADAPTER"
 						},
 						{
 							"id": "3",
-							"file": "../../assets/data/scene001/knob_blue.png",
-							"image": "82783cd741f4466543ae89e0a04f39ea",
-							"x": 131,
-							"y": 344,
-							"click": "knob",
-							"on": "",
-							"off": "OPEN_DOOR"
+							"file": "../../assets/data/scene001/cable.png",
+							"image": "607f4cfabce66f6b32f0a978f9b5382b",
+							"x": 0,
+							"y": 409,
+							"click": "usb_cable",
+							"on": "0",
+							"off": "GAIN_USB_CABLE"
 						},
 						{
 							"id": "4",
-							"file": "../../assets/data/scene001/knob_green.png",
-							"image": "42165530eff9d909b0e00e156f21ad9a",
-							"x": 131,
-							"y": 388,
-							"click": "knob",
+							"file": "../../assets/data/scene001/sticker.png",
+							"image": "759f8a93ce87715b3e0b9a6a6f616d3f",
+							"x": 133,
+							"y": 206,
+							"click": "sticker",
 							"on": "",
-							"off": "OPEN_DOOR"
+							"off": ""
 						},
 						{
 							"id": "5",
-							"file": "../../assets/data/scene001/unlock2.png",
-							"image": "fe3e9876655645d9c6c87bdf5305f90f",
-							"x": 120,
-							"y": 181,
-							"click": "unlock2",
-							"on": "OPEN_DOOR",
+							"file": "../../assets/data/scene001/knob.png",
+							"image": "7735f8e2f78416a3560a29f045d26451",
+							"x": 129,
+							"y": 352,
+							"click": "knob",
+							"on": "",
 							"off": ""
 						},
 						{
 							"id": "6",
-							"file": "../../assets/data/scene001/unlock.png",
-							"image": "8e7d1bdf885bf41d3bab1ceef377058b",
-							"x": 274,
-							"y": 181,
+							"file": "../../assets/data/scene001/input1.png",
+							"image": "d902f4b85db6be1318f7865c464094dd",
+							"x": 137,
+							"y": 302,
+							"click": "input",
+							"on": "",
+							"off": "USB_POWER_ON"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene001/input2.png",
+							"image": "1feec54c37e8028621fcfbccdc7d7b55",
+							"x": 137,
+							"y": 302,
+							"click": "input",
+							"on": "USB_POWER_ON",
+							"off": ""
+						},
+						{
+							"id": "８",
+							"file": "../../assets/data/scene001/outlet1.png",
+							"image": "6f46dbf90b9cbe1bda7da0aee3429e93",
+							"x": 286,
+							"y": 371,
+							"click": "outlet1",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "９",
+							"file": "../../assets/data/scene001/outlet2.png",
+							"image": "63b04c3b519e43edad6d2fb2ab4da967",
+							"x": 235,
+							"y": 388,
+							"click": "outlet2",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "10",
+							"file": "../../assets/data/scene001/connect.png",
+							"image": "19b355d852bac963c47d6068a4d7d0a3",
+							"x": 248,
+							"y": 389,
+							"click": "connect",
+							"on": "USB_POWER_ON",
+							"off": ""
+						}
+					],
+					"script": "../../docs/scripts/001/001.adv"
+				},
+				{
+					"scene": 2,
+					"script": "../../docs/scripts/002/002.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/jyukugo1.png",
+							"image": "aa5da1d9d3b1c0e392a7aa320ffe41ff",
+							"x": 22,
+							"y": 140,
 							"click": "",
-							"on": "OPEN_DOOR",
+							"on": "",
+							"off": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene002/jyukugo2.png",
+							"image": "b58b30ffd67222aa8a41a5397c22db0d",
+							"x": 206,
+							"y": 140,
+							"click": "",
+							"on": "",
 							"off": ""
 						}
 					],
 					"moves": [
 						{
-							"id": "left",
-							"click": "jump002",
-							"on": "MOVABLE",
-							"off": ""
-						},
-						{
-							"id": "right",
-							"click": "jump005",
-							"on": "MOVABLE",
+							"id": "down",
+							"click": "back",
+							"on": "",
 							"off": ""
 						}
-					],
-					"script": "../../docs/scripts/001/001.adv"
+					]
 				}
 			],
 			"separators": [],
@@ -314,6 +382,21 @@
 					"id": 13,
 					"name": "磁石",
 					"const": "ITEM_MAGNET"
+				},
+				{
+					"id": 14,
+					"name": "USB電源アダプタ",
+					"const": "ITEM_USB_ADAPTER"
+				},
+				{
+					"id": 15,
+					"name": "USBケーブル",
+					"const": "ITEM_USB_CABLE"
+				},
+				{
+					"id": 16,
+					"name": "電源アダプタ付きUSBケーブル",
+					"const": "ITEM_USB_ADAPTER_CABLE"
 				}
 			],
 			"separators": [],

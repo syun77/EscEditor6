@@ -57,7 +57,7 @@ class ItemMenuUI extends MenuUIBase {
 
         _bg = new FlxSprite(0, FlxG.height/2).makeGraphic(FlxG.width, Std.int(IMG_HEIGHT * CNT_VERTICAL), FlxColor.BLACK);
         _bg.y -= _bg.height/2;
-        _bg.alpha = 0.5;
+        _bg.alpha = 0.3;
         _bg.scale.y = 0;
         this.add(_bg);
 

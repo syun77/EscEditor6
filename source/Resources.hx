@@ -21,18 +21,12 @@ class Resources {
 	public static inline var ADV_ITEM_PATH:String = "assets/data/item/item.csv";
     
 	/**
-	 * シーンファイルのパスを取得する
+	 * シーンフォルダのパスを取得する
      * @param scene シーン番号 (1始まり)
-     * @param isRoot ルートフォルダを取得するかどうか
-     * @return シーンファイルへのパス
+     * @return シーンフォルダへのパス
 	 */
-    public static function getScenePath(scene:Int, isRoot:Bool):String {
-		if(isRoot) {
-			return "assets/data/scene" + Utils.fillZero(scene, 3) + "/";
-		}
-		else {
-			return "assets/data/scene" + Utils.fillZero(scene, 3) + "/layout.xml";
-		}
+    public static function getSceneDirectory(scene:Int):String {
+		return "assets/data/scene" + Utils.fillZero(scene, 3) + "/";
     }
 
 	/**

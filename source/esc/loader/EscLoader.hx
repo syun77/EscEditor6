@@ -15,7 +15,7 @@ class EscLoader {
     public function new(sceneID:Int) {
         _sceneID = sceneID;
         // 基準フォルダを設定
-        _root = Resources.getScenePath(sceneID, true);
+        _root = Resources.getSceneDirectory(sceneID);
         trace('EscLoader create. "${_root}"');
 
         objs = new Array<EscObj>();
@@ -40,14 +40,16 @@ class EscLoader {
             o.flagOff = _toFlag(obj.off);
             objs.push(o);
         }
-        for(move in scenes.moves) {
-            var o = new EscObj(_root);
-            o.type    = "move";
-            o.id      = move.id;
-            o.click   = move.click;
-            o.flagOn  = _toFlag(move.on);
-            o.flagOff = _toFlag(move.off);
-            movings.push(o);
+        if(scenes.moves != null) {
+            for(move in scenes.moves) {
+                var o = new EscObj(_root);
+                o.type    = "move";
+                o.id      = move.id;
+                o.click   = move.click;
+                o.flagOn  = _toFlag(move.on);
+                o.flagOff = _toFlag(move.off);
+                movings.push(o);
+            }
         }
 /*
         // レイアウトファイル読み込み

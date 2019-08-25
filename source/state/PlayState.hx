@@ -76,7 +76,8 @@ class PlayState extends FlxState {
 		var x = 32;
 		var y = 48;
 		for(i in 1...32) {
-			var path = Resources.getScenePath(i, false);
+			var path = Resources.getSceneDirectory(i);
+			path += "bg.png"; // "bg.png" は必ず存在する
 			if(Assets.exists(path) == false) {
 				break; // シーンデータが存在しない
 			}

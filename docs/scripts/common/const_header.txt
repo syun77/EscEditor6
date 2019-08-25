@@ -10,4 +10,7 @@ var:
 
 flag:
   MOVABLE: 3 # 移動可能
+  GAIN_USB_ADAPTER: 12 #USBアダプター入手
+  GAIN_USB_CABLE: 13 #USBケーブル入手
+  USB_POWER_ON: 15 #電源ON
   OPEN_DOOR: 50 # 扉を開いた
