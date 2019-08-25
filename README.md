@@ -1,4 +1,5 @@
-# EscEditor2
-脱出ゲームエディター V2.00
+# EscEditor3
+脱出ゲームエディター V3.00
 
-https://syun77.github.io/EscEditor2/html5/bin/
+https://syun77.github.io/EscEditor3/html5/bin/
+(※準備中)
