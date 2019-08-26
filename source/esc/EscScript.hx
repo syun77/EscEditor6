@@ -2,6 +2,7 @@ package esc;
 
 import lib.AdvScript;
 import state.PlayState;
+import dat.ItemDB;
 
 /**
  * 状態
@@ -168,8 +169,14 @@ class EscScript {
         var itemID = _script.popStack();
         EscGlobal.itemAdd(itemID);
 
+        var item = ItemDB.get(itemID);
+        if(item.flag != null) {
+            // 獲得フラグをONにする
+            EscGlobal.flagSet(item.flag.value, true);
+        }
+
         // アイテム入手メッセージ表示
-        var msg = '「${EscGlobal.itemName(itemID)}」を手に入れた';
+        var msg = '「${item.name}」を手に入れた';
         PlayState.getInformationUI().start(msg, 3);
         return AdvScript.RET_YIELD;
     }

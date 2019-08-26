@@ -1,7 +1,5 @@
 package esc;
 
-import dat.ItemDB;
-
 /**
  * アイテム所持状態
  */
@@ -214,10 +212,6 @@ class EscGlobal {
             }
         }
         return ret;
-    }
-    // アイテム名を取得する
-    public static function itemName(idx:Int):String {
-        return ItemDB.name(idx);
     }
     // アイテムが全てNoneかどうか
     public static function itemAllNone():Bool {

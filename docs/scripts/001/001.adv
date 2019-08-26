@@ -2,13 +2,11 @@ def adapter
 {
 	// USBアダプター入手
 	ITEM_ADD(ITEM_USB_ADAPTER)
-	%GAIN_USB_ADAPTER = true
 }
 def usb_cable
 {
 	// USBケーブル入手
 	ITEM_ADD(ITEM_USB_CABLE)
-	%GAIN_USB_CABLE = true
 }
 
 def sticker
