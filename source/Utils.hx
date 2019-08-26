@@ -45,6 +45,9 @@ class Utils {
           if(v >= max) {
                return 1;
           }
+          if(min == max) {
+               return 1;
+          }
           
           if(ease == null) {
                ease = function(t) return t;
