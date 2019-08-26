@@ -12,7 +12,7 @@ class SceneDB {
      */
     public static function get(sceneID:Int):EscDB.Scenes {
         for(scene in EscDB.scenes.all) {
-            if(sceneID == scene.scene) {
+            if(sceneID == scene.value) {
                 return scene;
             }
         }

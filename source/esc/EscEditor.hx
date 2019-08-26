@@ -278,6 +278,15 @@ class EscEditor extends FlxSubState {
         if(isEdit()) {
             return; // 編集モード中はクリックイベントは発生しない
         }
+
+        if(obj.clickToJump != null) {
+            // シーン遷移有効
+            trace('SCENE JUMP -> ${obj.clickToJump.id}');
+            EscGlobal.setNextSceneID(obj.clickToJump.value);
+            _state = State.ScriptWait; // スクリプト街に進めることでシーン遷移チェックができる
+            return;
+        }
+
         if(obj.click == "") {
             return; // クリックイベントが存在しない
         }
@@ -392,7 +401,6 @@ class EscEditor extends FlxSubState {
                 // フェード開始
                 FlxG.camera.fade(FlxColor.BLACK, FADE_TIME, false, function() {
                     // フェード完了で閉じる
-                    trace("EscEditor.update() -> close()");
                     close();
                 }, true);
             }

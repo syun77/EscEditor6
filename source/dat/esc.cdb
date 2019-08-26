@@ -4,8 +4,13 @@
 			"name": "scenes",
 			"columns": [
 				{
+					"typeStr": "0",
+					"name": "id",
+					"display": null
+				},
+				{
 					"typeStr": "3",
-					"name": "scene"
+					"name": "value"
 				},
 				{
 					"typeStr": "13",
@@ -30,7 +35,6 @@
 			],
 			"lines": [
 				{
-					"scene": 1,
 					"bgs": [
 						{
 							"x": 0,
@@ -150,10 +154,12 @@
 							"on": "UNLOCK_DOOR"
 						}
 					],
-					"script": "../../docs/scripts/001/001.adv"
+					"script": "../../docs/scripts/001/001.adv",
+					"id": "Entrance",
+					"moves": [],
+					"value": 1
 				},
 				{
-					"scene": 2,
 					"script": "../../docs/scripts/002/002.adv",
 					"bgs": [
 						{
@@ -183,10 +189,13 @@
 					],
 					"moves": [
 						{
-							"id": "down",
-							"click": "back"
+							"id": 3,
+							"click": "back",
+							"jump": "Entrance"
 						}
-					]
+					],
+					"id": "EntranceSticker",
+					"value": 2
 				}
 			],
 			"separators": [],
@@ -277,8 +286,13 @@
 			"lines": [],
 			"columns": [
 				{
-					"typeStr": "1",
-					"name": "id",
+					"typeStr": "5:left,up,right,down",
+					"name": "id"
+				},
+				{
+					"typeStr": "6:scenes",
+					"name": "jump",
+					"opt": true,
 					"display": null
 				},
 				{

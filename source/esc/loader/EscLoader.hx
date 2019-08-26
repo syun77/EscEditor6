@@ -22,29 +22,37 @@ class EscLoader {
         movings = new Array<EscObj>();
 
         var scenes = dat.SceneDB.get(sceneID);
+        // 背景
         for(b in scenes.bgs) {
             bg = new EscObj(_root);
             bg.type = "bg";
             bg.id = b.id;
             bg.image = _toPath(b.file);
         }
-        for(obj in scenes.objs) {
-            var o = new EscObj(_root);
-            o.type = "obj";
-            o.id = obj.id;
-            o.x  = obj.x;
-            o.y  = obj.y;
-            o.image   = _toPath(obj.file);
-            o.click   = obj.click;
-            o.flagOn  = obj.on;
-            o.flagOff = obj.off;
-            objs.push(o);
+
+        // オブジェクト
+        if(scenes.objs != null) {
+            for(obj in scenes.objs) {
+                var o = new EscObj(_root);
+                o.type = "obj";
+                o.id = obj.id;
+                o.x  = obj.x;
+                o.y  = obj.y;
+                o.image   = _toPath(obj.file);
+                o.click   = obj.click;
+                o.flagOn  = obj.on;
+                o.flagOff = obj.off;
+                objs.push(o);
+            }
         }
+
+        // 移動カーソル
         if(scenes.moves != null) {
             for(move in scenes.moves) {
                 var o = new EscObj(_root);
                 o.type    = "move";
-                o.id      = move.id;
+                o.id      = Direction.toString(move.id.toInt());
+                o.clickToJump = move.jump;
                 o.click   = move.click;
                 o.flagOn  = move.on;
                 o.flagOff = move.off;

@@ -5,14 +5,15 @@ import openfl.Assets;
 import dat.EscDB;
 
 class EscObj {
-    public var type:String = "";
-    public var id:String   = "";
-    public var x:Float     = 0;
-    public var y:Float     = 0;
-    public var image:String = "";
-    public var click:String = "";
-    public var flagOn:dat.EscDB.Flags = null;
-    public var flagOff:dat.EscDB.Flags = null;
+    public var type:String = ""; // 種別 
+    public var id:String   = ""; // ID
+    public var x:Float     = 0; // 配置座標(X)
+    public var y:Float     = 0; // 配置座標(Y)
+    public var image:String = ""; // 画像
+    public var click:String = ""; // クリックイベント
+    public var clickToJump:dat.EscDB.Scenes = null; // クリック時のジャンプシーン
+    public var flagOn:dat.EscDB.Flags       = null; // ONフラグ
+    public var flagOff:dat.EscDB.Flags      = null; // OFFフラグ
 
     var _root:String;
 
