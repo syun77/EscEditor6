@@ -4,8 +4,8 @@
 ############################
 const:
   # シーン
-  Entrance: 1 # 
-  EntranceSticker: 2 # 
+  Entrance: 1 # 入り口
+  EntranceSticker: 2 # 入り口〜張り紙
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー

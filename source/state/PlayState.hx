@@ -68,20 +68,17 @@ class PlayState extends FlxState {
 		EscGlobal.init();
 
 		// カーソルを生成
-		_cursorSpr = new FlxSprite(0, 0).makeGraphic(120, 20, FlxColor.GREEN);
+		_cursorSpr = new FlxSprite(0, 0).makeGraphic(200, 20, FlxColor.GREEN);
 		this.add(_cursorSpr);
 
 		// メニューテキスト
 		_txts = new Array<FlxText>();
-		var x = 32;
+		var x = 8;
 		var y = 48;
-		for(i in 1...32) {
-			var path = Resources.getSceneDirectory(i);
-			path += "bg.png"; // "bg.png" は必ず存在する
-			if(Assets.exists(path) == false) {
-				break; // シーンデータが存在しない
-			}
-			var txt = new FlxText(x, y, 0, "Scene" + Utils.fillZero(i, 3), 20);
+		for(scene in dat.EscDB.scenes.all) {
+			var txt = new FlxText(x, y, 0, "");
+			txt.setFormat(Resources.FONT_PATH, Resources.FONT_SIZE);
+			txt.text = '${Utils.fillZero(scene.value, 3)}:${scene.name}';
 			_txts.push(txt);
 			y += 24;
 		}

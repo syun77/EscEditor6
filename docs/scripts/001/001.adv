@@ -12,7 +12,7 @@ def usb_cable
 def sticker
 {
 	// 拡大する
-	JUMP(2)
+	JUMP(EntranceSticker)
 }
 
 def knob

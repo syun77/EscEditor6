@@ -20,6 +20,7 @@ import ui.ItemButtonUI;
 import ui.MenuUIBase;
 import ui.NumberInputUI;
 import ui.PictureInputUI;
+import ui.TelopUI;
 import state.TitleState;
 import save.GameData;
 
@@ -70,6 +71,7 @@ class EscEditor extends FlxSubState {
     var _script:EscScript;
 
     var _txtCompleted:FlxText;
+    var _telop:TelopUI;
 
     // デバッグ
     var _txtDebug:FlxText;
@@ -157,11 +159,18 @@ class EscEditor extends FlxSubState {
         _tapUI = new TapUI();
         this.add(_tapUI);
 
+        // テロップ
+        _telop = new TelopUI();
+        this.add(_telop);
+
+        // 現在のシーン名表示
+        _telop.startSceneName(sceneID);
+
         // ゲームクリア
         _txtCompleted = new FlxText(0, FlxG.height/2, FlxG.width, "", 32);
         _txtCompleted.y -= _txtCompleted.height/2;
         _txtCompleted.alignment = FlxTextAlign.CENTER;
-        _txtCompleted.setBorderStyle(FlxTextBorderStyle.OUTLINE);
+        _txtCompleted.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         this.add(_txtCompleted);
 
         _txtDebug = new FlxText(8, FlxG.height-32, 0, "");

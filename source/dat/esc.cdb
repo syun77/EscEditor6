@@ -9,6 +9,11 @@
 					"display": null
 				},
 				{
+					"typeStr": "1",
+					"name": "name",
+					"display": null
+				},
+				{
 					"typeStr": "3",
 					"name": "value"
 				},
@@ -157,7 +162,8 @@
 					"script": "../../docs/scripts/001/001.adv",
 					"id": "Entrance",
 					"moves": [],
-					"value": 1
+					"value": 1,
+					"name": "入り口"
 				},
 				{
 					"script": "../../docs/scripts/002/002.adv",
@@ -195,7 +201,8 @@
 						}
 					],
 					"id": "EntranceSticker",
-					"value": 2
+					"value": 2,
+					"name": "入り口〜張り紙"
 				}
 			],
 			"separators": [],

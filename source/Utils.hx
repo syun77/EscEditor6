@@ -37,4 +37,19 @@ class Utils {
 
           return false;
      }
+
+     public static function lerpRatio(v:Float, min:Float, max:Float, ease:Float->Float=null):Float {
+          if(v <= min) {
+               return 0;
+          }
+          if(v >= max) {
+               return 1;
+          }
+          
+          if(ease == null) {
+               ease = function(t) return t;
+          }
+
+          return ease((v - min) / (max-min));
+     }
 }

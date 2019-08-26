@@ -18,7 +18,7 @@ class Writer:
 			self.buf += "  "
 		self.buf += "%s\n"%line
 	def writeKeyValue(self, key, value, comment, tab=0):
-		self.write("%s: %s # %s"%(key, value, comment, tab))
+		self.write("%s: %s # %s"%(key, value, comment), tab)
 
 def execute(cdb, root):
 	f = open(cdb)
@@ -38,20 +38,20 @@ def execute(cdb, root):
 		if dat["name"] == "scenes":
 			writer.write("# シーン", 1)
 			for line in dat["lines"]:
-				writer.write("  %s: %s # %s"%(line["id"], line["value"], ""))
+				writer.writeKeyValue(line["id"], line["value"], line["name"], 1)
 			writer.write("", 1)
 		# アイテム定数を出力
 		if dat["name"] == "items":
 			writer.write("# アイテム", 1)
 			for line in dat["lines"]:
-				writer.write("  %s: %s # %s"%(line["id"], line["value"], line["name"]))
+				writer.writeKeyValue(line["id"], line["value"], line["name"], 1)
 			writer.write("", 1)
 	# ■フラグ定数
 	writer.write("flag:")
 	for dat in jsonDict["sheets"]:
 		if dat["name"] == "flags":
 			for line in dat["lines"]:
-				writer.write("  %s: %s # %s"%(line["id"], line["value"], line["comment"]))
+				writer.writeKeyValue(line["id"], line["value"], line["comment"], 1)
 	
 	path = root + "/common/cdb_header.txt"
 	fOut = open(path, "w")
