@@ -10,10 +10,3 @@ var:
   # 001
   # 002
 
-flag:
-  # 001
-  GAIN_USB_ADAPTER: 12 #USBアダプター入手
-  GAIN_USB_CABLE: 13 #USBケーブル入手
-  USB_POWER_ON: 15 #電源ON
-  UNLOCK_DOOR: 16 #扉の鍵を解除
-  

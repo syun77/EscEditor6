@@ -454,10 +454,6 @@
 			],
 			"lines": [
 				{
-					"id": "NONE",
-					"value": 0
-				},
-				{
 					"id": "GAIN_USB_ADAPTER",
 					"value": 12,
 					"comment": "USBアダプタ入手"

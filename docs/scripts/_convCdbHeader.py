@@ -8,7 +8,7 @@ import glob
 import json
 
 def usage():
-	print("Usage: _convItemHeader.py [item.cdb]")
+	print("Usage: _convCdbHeader.py [dat.cdb]")
 
 class Writer:
 	def __init__(self):
@@ -29,9 +29,13 @@ def execute(cdb, root):
 		if dat["name"] == "items":
 			for line in dat["lines"]:
 				writer.write("  %s: %s # %s"%(line["const"], line["id"], line["name"]))
-				#writer.write("  %s: %s"%(line["const"], line["id"]))
+	writer.write("flag:")
+	for dat in jsonDict["sheets"]:
+		if dat["name"] == "flags":
+			for line in dat["lines"]:
+				writer.write("  %s: %s # %s"%(line["id"], line["value"], line["comment"]))
 	
-	path = root + "/common/item_header.txt"
+	path = root + "/common/cdb_header.txt"
 	fOut = open(path, "w")
 	fOut.write(writer.buf)
 	fOut.close()

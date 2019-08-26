@@ -26,7 +26,7 @@ def execute(root, sceneId, name=None):
 	funcDef = "%s/common/define_functions.h"%(root)
 	# 定数定義
 	defines = "%s/common/const_header.txt"%(root)
-	defines += ",%s/common/item_header.txt"%(root) # アイテム定数ヘッダ
+	defines += ",%s/common/cdb_header.txt"%(root) # CastleDB定数ヘッダ
 
 	if name is None:
 		# 入力フォルダ
@@ -43,8 +43,8 @@ def execute(root, sceneId, name=None):
 	# 入力フォルダをカレントディレクトリに設定
 	os.chdir(inputDir)
 	
-	# ■cdbからアイテム定数ヘッダを出力
-	cmd = "python3 ../_convItemHeader.py %s/../../source/dat/esc.cdb"%root
+	# ■cdbから定数ヘッダを出力
+	cmd = "python3 ../_convCdbHeader.py %s/../../source/dat/esc.cdb"%root
 	os.system(cmd)
 	
 	# ■スクリプトコンバート
