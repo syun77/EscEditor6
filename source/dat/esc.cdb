@@ -303,7 +303,7 @@
 			"name": "items",
 			"columns": [
 				{
-					"typeStr": "3",
+					"typeStr": "0",
 					"name": "id"
 				},
 				{
@@ -312,123 +312,107 @@
 					"display": null
 				},
 				{
-					"typeStr": "1",
-					"name": "const"
+					"typeStr": "3",
+					"name": "value"
 				},
 				{
 					"typeStr": "6:flags",
 					"name": "flag",
-					"display": null
+					"opt": true
 				}
 			],
 			"lines": [
 				{
-					"id": 0,
 					"name": "ダミー",
-					"const": "ITEM_DUMMY",
-					"flag": "NONE"
+					"value": 0,
+					"id": "ITEM_DUMMY"
 				},
 				{
-					"id": 1,
 					"name": "黄色いカギ",
-					"const": "ITEM_YELLOW_KEY",
-					"flag": "NONE"
+					"value": 1,
+					"id": "ITEM_YELLOW_KEY"
 				},
 				{
-					"id": 2,
 					"name": "赤いカギ",
-					"const": "ITEM_RED_KEY",
-					"flag": "NONE"
+					"value": 2,
+					"id": "ITEM_RED_KEY"
 				},
 				{
-					"id": 3,
 					"name": "青いカギ",
-					"const": "ITEM_BLUE_KEY",
-					"flag": "NONE"
+					"value": 3,
+					"id": "ITEM_BLUE_KEY"
 				},
 				{
-					"id": 4,
 					"name": "緑のカギ",
-					"const": "ITEM_GREEN_KEY",
-					"flag": "NONE"
+					"value": 4,
+					"id": "ITEM_GREEN_KEY"
 				},
 				{
-					"id": 5,
 					"name": "虫めがね",
-					"const": "ITEM_GLASS",
-					"flag": "NONE"
+					"value": 5,
+					"id": "ITEM_GLASS"
 				},
 				{
-					"id": 6,
 					"name": "フロッピーディスク",
-					"const": "ITEM_FLOPPY",
-					"flag": "NONE"
+					"value": 6,
+					"id": "ITEM_FLOPPY"
 				},
 				{
-					"id": 7,
 					"name": "電池のない懐中電灯",
-					"const": "ITEM_FLASHLIGHT_NA",
-					"flag": "NONE"
+					"value": 7,
+					"id": "ITEM_FLASHLIGHT_NA"
 				},
 				{
-					"id": 8,
 					"name": "乾電池",
-					"const": "ITEM_BATTERY",
-					"flag": "NONE"
+					"value": 8,
+					"id": "ITEM_BATTERY"
 				},
 				{
-					"id": 9,
 					"name": "リモコン",
-					"const": "ITEM_REMOTE",
-					"flag": "NONE"
+					"value": 9,
+					"id": "ITEM_REMOTE"
 				},
 				{
-					"id": 10,
 					"name": "懐中電灯",
-					"const": "ITEM_FLASHLIGHT",
-					"flag": "NONE"
+					"value": 10,
+					"id": "ITEM_FLASHLIGHT"
 				},
 				{
-					"id": 11,
 					"name": "ロープ",
-					"const": "ITEM_ROPE",
-					"flag": "NONE"
+					"value": 11,
+					"id": "ITEM_ROPE"
 				},
 				{
-					"id": 12,
 					"name": "磁石付きロープ",
-					"const": "ITEM_ROPE_MAGNET",
-					"flag": "NONE"
+					"value": 12,
+					"id": "ITEM_ROPE_MAGNET"
 				},
 				{
-					"id": 13,
 					"name": "磁石",
-					"const": "ITEM_MAGNET",
-					"flag": "NONE"
+					"value": 13,
+					"id": "ITEM_MAGNET"
 				},
 				{
-					"id": 14,
 					"name": "USB電源アダプタ",
-					"const": "ITEM_USB_ADAPTER",
+					"value": 14,
+					"id": "ITEM_USB_ADAPTER",
 					"flag": "GAIN_USB_ADAPTER"
 				},
 				{
-					"id": 15,
 					"name": "USBケーブル",
-					"const": "ITEM_USB_CABLE",
-					"flag": "GAIN_USB_CABLE"
+					"flag": "GAIN_USB_CABLE",
+					"value": 15,
+					"id": "ITEM_USB_CABLE"
 				},
 				{
-					"id": 16,
 					"name": "電源アダプタ付きUSBケーブル",
-					"const": "ITEM_USB_ADAPTER_CABLE",
-					"flag": "NONE"
+					"value": 16,
+					"id": "ITEM_USB_ADAPTER_CABLE"
 				},
 				{
-					"id": 17,
 					"name": "銀色のカギ",
-					"const": "ITEM_SILVER_KEY",
-					"flag": "NONE"
+					"value": 17,
+					"id": "ITEM_SILVER_KEY"
 				}
 			],
 			"separators": [],

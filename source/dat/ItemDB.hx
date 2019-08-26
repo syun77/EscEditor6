@@ -6,7 +6,7 @@ package dat;
 class ItemDB {
     public static function get(itemID:Int):EscDB.Items {
         for(item in EscDB.items.all) {
-            if(itemID == item.id) {
+            if(itemID == item.value) {
                 return item;
             }
         }

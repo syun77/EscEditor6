@@ -24,11 +24,14 @@ def execute(cdb, root):
 	f.close()
 	jsonDict = json.loads(jsonStr)
 	writer = Writer()
+	# ■汎用定数
 	writer.write("const:")
 	for dat in jsonDict["sheets"]:
+		# アイテム定数を出力
 		if dat["name"] == "items":
 			for line in dat["lines"]:
-				writer.write("  %s: %s # %s"%(line["const"], line["id"], line["name"]))
+				writer.write("  %s: %s # %s"%(line["id"], line["value"], line["name"]))
+	# ■フラグ定数
 	writer.write("flag:")
 	for dat in jsonDict["sheets"]:
 		if dat["name"] == "flags":
