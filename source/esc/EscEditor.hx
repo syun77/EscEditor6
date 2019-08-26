@@ -530,6 +530,7 @@ class EscEditor extends FlxSubState {
 		}
         if(FlxG.keys.justPressed.S) {
             // セーブ
+            _telop.startSaving();
             GameData.save();
         }
         if(FlxG.keys.justPressed.L) {

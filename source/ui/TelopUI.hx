@@ -3,6 +3,7 @@ package ui;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxDestroyUtil;
 import ui.SceneNameUI;
+import ui.SavingUI;
 
 /**
  * テロップ表示管理
@@ -21,6 +22,13 @@ class TelopUI extends FlxSpriteGroup {
      */
     public function startSceneName(sceneID:Int):Void {
         this.add(new SceneNameUI(sceneID));
+    }
+
+    /**
+     * セーブ中表示開始
+     */
+    public function startSaving():Void {
+        this.add(new SavingUI());
     }
 
     /**
