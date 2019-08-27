@@ -340,6 +340,11 @@
 					"typeStr": "6:flags",
 					"name": "flag",
 					"opt": true
+				},
+				{
+					"typeStr": "8",
+					"name": "materials",
+					"opt": true
 				}
 			],
 			"lines": [
@@ -428,7 +433,15 @@
 				{
 					"name": "電源アダプタ付きUSBケーブル",
 					"value": 16,
-					"id": "ITEM_USB_ADAPTER_CABLE"
+					"id": "ITEM_USB_ADAPTER_CABLE",
+					"materials": [
+						{
+							"material": "ITEM_USB_ADAPTER"
+						},
+						{
+							"material": "ITEM_USB_CABLE"
+						}
+					]
 				},
 				{
 					"name": "銀色のカギ",
@@ -481,6 +494,21 @@
 			],
 			"separators": [],
 			"props": {}
+		},
+		{
+			"name": "items@materials",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "6:items",
+					"name": "material",
+					"display": null
+				}
+			]
 		}
 	],
 	"customTypes": [],

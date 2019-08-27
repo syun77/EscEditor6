@@ -239,15 +239,6 @@ class ItemMenuUI extends MenuUIBase {
             var itemID2 = EscGlobal.ITEM_INVALID;
             if(hitSpr != null) {
                 itemID2 = hitSpr.param;
-                if(itemID2 < itemID1) {
-                    // 数値の小さい方を先にする
-                    itemID2 = itemID1;
-                    itemID1 = hitSpr.param;
-                    trace(itemID1, itemID2);
-                }
-                else {
-                    trace(itemID1, itemID2);
-                }
             }
             EscGlobal.valSet(EscVar.CRAFT1, itemID1); // 合成アイテム１
             EscGlobal.valSet(EscVar.CRAFT2, itemID2); // 合成アイテム２

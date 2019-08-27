@@ -192,14 +192,18 @@ class EscScript {
         return AdvScript.RET_CONTINUE;
     }
     function _ITEM_DEL(param:Array<String>):Int {
-        _log('ITEM_DEL');
         var itemID = _script.popStack();
+        _log('ITEM_DEL ${ItemDB.get(itemID).name}');
+        // アイテムを削除
+        EscGlobal.itemDel(itemID);
+        /*
         if(EscGlobal.itemDel(itemID)) {
             EscGlobal.retSet(1);
         }
         else {
             EscGlobal.retSet(0);
         }
+        */
         return AdvScript.RET_CONTINUE;
     }
     function _ITEM_CHK(param:Array<String>):Int {
@@ -216,6 +220,9 @@ class EscScript {
     function _CRAFT_CHK(param:Array<String>):Int {
         var itemID1 = _script.popStack();
         var itemID2 = _script.popStack();
+        var ret = ItemDB.checkCraft(itemID1, itemID2);
+        EscGlobal.retSet(ret);
+        /*
         if(EscGlobal.valGet(EscVar.CRAFT1) == itemID1 && EscGlobal.valGet(EscVar.CRAFT2) == itemID2) {
             // 合成可能
             EscGlobal.retSet(1);
@@ -223,6 +230,7 @@ class EscScript {
         else {
             EscGlobal.retSet(0);
         }
+        */
         return AdvScript.RET_CONTINUE;
     }
     function _COMPLETE(param:Array<String>):Int {
