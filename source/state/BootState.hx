@@ -18,7 +18,9 @@ class BootState extends FlxState {
         DBLoader.load();
 
 #if debug
-        FlxG.switchState(new PlayState());
+        // FlxG.switchState(new TitleState());
+        FlxG.switchState(new TestState());
+        //FlxG.switchState(new PlayState());
 #else
         FlxG.switchState(new TitleState());
 #end

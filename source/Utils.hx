@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.ui.FlxButton;
 
 class Utils {
 	/**
@@ -54,5 +55,31 @@ class Utils {
           }
 
           return ease((v - min) / (max-min));
+     }
+
+     /**
+      * ボタンのスケール値を設定する
+      * @param btn ボタンオブジェクト
+      * @param scale スケール値
+      * @param font フォントパス
+      */
+     public static function scaleButton(btn:FlxButton, scale:Float, font:String=null):Void {
+          // ボタンサイズを変更
+          btn.scale.set(scale, scale);
+
+          // ラベル変更
+          var label = btn.label;
+          label.setFormat(font, Std.int(label.size*scale), label.color, label.alignment);
+
+          // ラベルの描画オフセット変更
+          for(ofs in btn.labelOffsets) {
+               ofs.y *= scale;
+          }
+
+          // ラベルの幅を変更
+          label.fieldWidth *= scale;
+
+          // 当たり判定更新
+          btn.updateHitbox();
      }
 }

@@ -105,6 +105,15 @@ class DraggableUI extends FlxSprite {
     public function endWait():Void {
         _isWait = false;
     }
+
+    /**
+     * ドラッグ移動をキャンセルする
+     */
+    public function cancelToDrag():Void {
+        endWait();
+        _state = State.Standby;
+    }
+
     /**
      * 移動距離が半径の半分以下
      * @return Bool
