@@ -509,6 +509,69 @@
 					"display": null
 				}
 			]
+		},
+		{
+			"name": "panels",
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "answer"
+				},
+				{
+					"typeStr": "8",
+					"name": "choices"
+				}
+			],
+			"lines": [
+				{
+					"id": 1,
+					"answer": "あいうえお",
+					"choices": [
+						{
+							"letter": "あ"
+						},
+						{
+							"letter": "い"
+						},
+						{
+							"letter": "う"
+						},
+						{
+							"letter": "え"
+						},
+						{
+							"letter": "お"
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "panels@choices",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "letter",
+					"display": null
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "flag",
+					"opt": true,
+					"display": null
+				}
+			]
 		}
 	],
 	"customTypes": [],

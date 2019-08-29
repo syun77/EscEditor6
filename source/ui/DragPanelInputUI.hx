@@ -2,13 +2,13 @@ package ui;
 
 import ui.MenuUIBase;
 import flixel.FlxSprite;
-import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
 import ui.DraggableUI;
-import flixel.math.FlxRandom;
 import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.text.FlxText;
+import dat.PanelDB;
+import esc.EscGlobal;
 
 class DragPanelUI extends DraggableUI {
     // public.
@@ -98,6 +98,7 @@ class DragPanelInputUI extends MenuUIBase {
     static inline var ANSWER_INVALID_ID:Int = -1;
     static inline var HIT_OFS:Int = 2;
 
+    var _id:Int = 0;
     var _cnt:Int = 0;
     var _time:Float = 0;
     var _state:State = State.Standby;
@@ -105,18 +106,23 @@ class DragPanelInputUI extends MenuUIBase {
     var _draggedPanel:DragPanelUI;
     var _answerHitList:Array<FlxSprite>;
     var _answers:Array<Int>;
-    var _answer:Int = 0;
+    var _answer:String;
 
     /**
      * コンストラクタ
      */
-    public function new(choice:String, answer:Int, digit:Int) {
+    public function new(id:Int) {
         super();
 
-        // 答えを保持
-        _answer = answer;
+        _id = id;
 
-        var ANSWER_NUM:Int = digit;
+        // パネル情報を取得する
+        var info = PanelDB.get(id);
+
+        // 答えを保持
+        _answer = info.answer;
+
+        var ANSWER_NUM:Int = _answer.length;
 
         // 答えの当たり判定
         _answerHitList = new Array<FlxSprite>();
@@ -137,10 +143,19 @@ class DragPanelInputUI extends MenuUIBase {
 
         // パネル
         _panels = new Array<DragPanelUI>();
-        for(i in 0...choice.length) {
+        var choices = info.choices;
+        for(i in 0...choices.length) {
+            var choice = choices[i];
+            if(choice.flag != null) {
+                if(EscGlobal.flagCheck(choice.flag.value) == false) {
+                    // フラグが立っていないので非表示
+                    continue;
+                }
+            }
+
             var px = FlxG.random.float(64, FlxG.width-64);
             var py = FlxG.random.float(64, FlxG.height-64);
-            var panel = new DragPanelUI(px, py, '${choice.charAt(i)}');
+            var panel = new DragPanelUI(px, py, '${choice.letter}');
             panel.ID = i; // 要素番号を保持する
             _panels.push(panel);
         }
@@ -310,20 +325,20 @@ class DragPanelInputUI extends MenuUIBase {
     }
 
     function _checkAnswer():Bool {
-        var total:Int = 0;
-        var digit:Int = _answers.length - 1;
+        // 入力した文字を判定する
+        var str:String = "";
         for(i in 0..._answers.length) {
             if(_answers[i] == ANSWER_INVALID_ID) {
                 // 指定なしの項目があれば必ず不正解
-                total = -1;
+                str = "";
                 break;
             }
-            total += Std.int(_answers[i] * Math.pow(10, digit));
-            digit--;
+            var answerID = _answers[i];
+            str += _panels[answerID].getText().text;
         }
 
-        trace(_answer, total);
-        return _answer == total;
+        trace(_answer, str);
+        return _answer == str;
     }
 
     /**

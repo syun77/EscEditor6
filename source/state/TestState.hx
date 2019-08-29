@@ -15,6 +15,6 @@ class TestState extends FlxState {
     override public function create():Void {
         super.create();
 
-        this.add(new DragPanelInputUI("abcdef", 1234, 4));
+        this.add(new DragPanelInputUI(1));
     }
 }
