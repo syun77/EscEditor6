@@ -9,6 +9,7 @@ import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
+import flixel.util.FlxDestroyUtil;
 import esc.loader.EscLoader;
 import esc.loader.EscObj;
 import ui.InformationUI;
@@ -20,6 +21,7 @@ import ui.ItemButtonUI;
 import ui.MenuUIBase;
 import ui.NumberInputUI;
 import ui.PictureInputUI;
+import ui.DragPanelInputUI;
 import ui.TelopUI;
 import state.TitleState;
 import save.GameData;
@@ -59,12 +61,10 @@ class EscEditor extends FlxSubState {
     // UI
     var _informationUI:InformationUI;
     var _movingCursorUI:MovingCursorUI;
-    var _numberInputUI:NumberInputUI;
-    var _pictureInputUI:PictureInputUI;
     var _tapUI:TapUI;
     var _btnItem:ItemButtonUI; // アイテムボタン
-    var _itemMenu:ItemMenuUI; // アイテムメニュー
     var _activeUI:MenuUIBase; // 実行中のオーバーレイするメニューUI
+    var _activeUILayer:FlxSpriteGroup;
     
 
     // スクリプト
@@ -132,10 +132,6 @@ class EscEditor extends FlxSubState {
         _btnItem = new ItemButtonUI();
         this.add(_btnItem);
 
-        // アイテムメニュー
-        _itemMenu = new ItemMenuUI(_btnItem);
-        this.add(_itemMenu);
-
         // 移動カーソル
         _movingCursorUI = new MovingCursorUI(_loader.movings);
         this.add(_movingCursorUI);
@@ -144,13 +140,9 @@ class EscEditor extends FlxSubState {
         _informationUI = new InformationUI();
         this.add(_informationUI);
 
-        // 数値入力UI
-        _numberInputUI = new NumberInputUI();
-        this.add(_numberInputUI);
-
-        // 画像入力UI
-        _pictureInputUI = new PictureInputUI();
-        this.add(_pictureInputUI);
+        // アクティブUIレイヤー
+        _activeUILayer = new FlxSpriteGroup();
+        this.add(_activeUILayer);
 
         // スクリプト生成
         _script = new EscScript();
@@ -198,21 +190,31 @@ class EscEditor extends FlxSubState {
     }
 
     public function openNumberInput():Void {
-        _numberInputUI.open();
-        _numberInputUI.funcClosed = function() {
-            // 実行後はスクリプト再生に戻す
-            _state = State.ScriptWait;
-        }
-        _openMenu(_numberInputUI);
+        var menu = new NumberInputUI();
+        menu.open();
+        _openMenu(menu, true);
     }
 
     public function openPictureInput(pictureID:Int, digit:Int):Void {
-        _pictureInputUI.open(pictureID, digit);
-        _pictureInputUI.funcClosed = function() {
-            // 実行後はスクリプト再生に戻す
+        var menu = new PictureInputUI();
+        menu.open(pictureID, digit);
+        _openMenu(menu, true);
+    }
+
+    public function openPanelInput(panelID:Int):Void {
+        var menu = new DragPanelInputUI(panelID);
+        menu.funcClosed = function() {
+            // 結果を保存する
+            if(menu.getResult()) {
+                EscGlobal.retSet(1); // 成功
+            }
+            else {
+                EscGlobal.retSet(0);
+            }
+            // スクリプト処理を続行する
             _state = State.ScriptWait;
         }
-        _openMenu(_pictureInputUI);
+        _openMenu(menu, false);
     }
 
     /**
@@ -335,7 +337,8 @@ class EscEditor extends FlxSubState {
                         // コールバック関数があれば呼び出し
                         _activeUI.funcClosed();
                     }
-                    _activeUI = null;
+                    _activeUILayer.remove(_activeUI);
+                    _activeUI = FlxDestroyUtil.destroy(_activeUI);
                 }
             case State.NextScene:
                 // 次のシーンに進む
@@ -496,13 +499,21 @@ class EscEditor extends FlxSubState {
     /**
      * メニューを開く
      */
-    function _openMenu(ui:MenuUIBase):Void {
+    function _openMenu(ui:MenuUIBase, onEndToScript):Void {
+        if(onEndToScript) {
+            ui.funcClosed = function() {
+                // 実行後はスクリプト再生に戻す
+                _state = State.ScriptWait;
+            }
+        }
         _activeUI = ui;
+        _activeUILayer.add(ui);
         _state = State.MenuUIWait;
     }
     function _openItemMenu():Void {
-        _itemMenu.open();
-        _openMenu(_itemMenu);
+        var menu = new ItemMenuUI(_btnItem);
+        menu.open();
+        _openMenu(menu, false);
     }
 
     function _updateDebugInput():Void {

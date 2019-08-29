@@ -12,7 +12,7 @@ import esc.EscGlobal;
 
 class DragPanelUI extends DraggableUI {
     // public.
-    public static inline var BG_COLOR:Int = FlxColor.GRAY;
+    public static inline var BG_COLOR:Int = 0xFFa0a0a0;
 
     // private.
     static inline var SIZE:Int = 64;
@@ -28,12 +28,12 @@ class DragPanelUI extends DraggableUI {
 
     /**
      * コンストラクタ
-     * @param px 
-     * @param py 
+     * @param px 座標(X)
+     * @param py 座標(Y)
+     * @param str 文字
      */
     public function new(px:Float, py:Float, str:String) {
-        super(px, py);
-        makeGraphic(64, 64, FlxColor.WHITE);
+        super(px, py, Resources.PANEL_BG_PATH);
         color = BG_COLOR;
 
         _txt = new FlxText(px, py, SIZE, str, SIZE);
@@ -96,6 +96,7 @@ class DragPanelInputUI extends MenuUIBase {
     static inline var ANSWER_Y:Int = 64;
     static inline var ANSWER_OFS_X:Int = 70;
     static inline var ANSWER_INVALID_ID:Int = -1;
+    static inline var PANEL_NUM:Int = 4;
     static inline var HIT_OFS:Int = 2;
 
     var _id:Int = 0;
@@ -107,6 +108,8 @@ class DragPanelInputUI extends MenuUIBase {
     var _answerHitList:Array<FlxSprite>;
     var _answers:Array<Int>;
     var _answer:String;
+    var _result:Bool = false;
+    var _backSpr:FlxSprite;
 
     /**
      * コンストラクタ
@@ -122,7 +125,8 @@ class DragPanelInputUI extends MenuUIBase {
         // 答えを保持
         _answer = info.answer;
 
-        var ANSWER_NUM:Int = _answer.length;
+        var ANSWER_NUM:Int = haxe.Utf8.length(_answer);
+        trace('ANSWER_NUM: ${ANSWER_NUM} <- ${_answer}');
 
         // 答えの当たり判定
         _answerHitList = new Array<FlxSprite>();
@@ -146,18 +150,34 @@ class DragPanelInputUI extends MenuUIBase {
         var choices = info.choices;
         for(i in 0...choices.length) {
             var choice = choices[i];
-            if(choice.flag != null) {
-                if(EscGlobal.flagCheck(choice.flag.value) == false) {
-                    // フラグが立っていないので非表示
+            if(choice.on != null) {
+                if(EscGlobal.flagCheck(choice.on.value) == false) {
+                    // Onフラグが立っていないので非表示
+                    continue;
+                }
+            }
+            if(choice.off != null) {
+                if(EscGlobal.flagCheck(choice.off.value) == true) {
+                    // Offフラグが立っているので非表示
                     continue;
                 }
             }
 
-            var px = FlxG.random.float(64, FlxG.width-64);
-            var py = FlxG.random.float(64, FlxG.height-64);
+            var idx = _panels.length;
+            var px = FlxG.width/2 + ((idx%PANEL_NUM)-(PANEL_NUM/2)) * ANSWER_OFS_X;
+            var py = _answerHitList[0].y + _answerHitList[0].height;
+            py += ANSWER_SIZE + Std.int(idx/PANEL_NUM) * ANSWER_OFS_X;
             var panel = new DragPanelUI(px, py, '${choice.letter}');
-            panel.ID = i; // 要素番号を保持する
+            panel.ID = _panels.length; // 要素番号を保持する
             _panels.push(panel);
+        }
+
+        {
+            // 背景
+            var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+            bg.color = FlxColor.BLACK;
+            bg.alpha = 0.5;
+            this.add(bg);
         }
 
         for(spr in _answerHitList) {
@@ -168,6 +188,25 @@ class DragPanelInputUI extends MenuUIBase {
             this.add(panel);
             this.add(panel.getText());
         }
+
+        // BACKボタン
+        {
+            var px = FlxG.width/2;
+            var py = Const.getBottom();
+            var spr = new FlxSprite(px, py, Resources.BTN_BACK_PATH);
+            spr.x -= spr.width/2;
+            spr.y -= spr.height * 1.5;
+            _backSpr = spr;
+            this.add(_backSpr);
+        }
+    }
+
+    /**
+     * 結果を取得する
+     * @return Bool
+     */
+    public function getResult():Bool {
+        return _result;
     }
 
     /**
@@ -194,13 +233,21 @@ class DragPanelInputUI extends MenuUIBase {
             case State.CorrectBlink:
                 _updateCorrectBlink();
         }
-
     }
 
     /**
      * 更新・待機
      */
     function _updateStandby():Void {
+
+        if(FlxG.mouse.justPressed) {
+            if(Utils.checkClickSprite(_backSpr)) {
+                // OKボタンをクリックした
+                kill();
+                return;
+            }
+        }
+
         _draggedPanel = null;
         var id:Int = -1;
         for(panel in _panels) {
@@ -236,11 +283,14 @@ class DragPanelInputUI extends MenuUIBase {
      */
     function _updateDragging():Void {
 
+        // パネル点滅
+        var ratio = Math.abs(Math.sin(_time * 8));
+        _draggedPanel.color = FlxColor.interpolate(DragPanelUI.BG_COLOR, FlxColor.WHITE, ratio);
+
         // 置き場所判定
         var hitSpr:FlxSprite = _hitAnswer(_draggedPanel);
         if(hitSpr != null) {
             // 点滅する
-            var ratio = Math.abs(Math.sin(_time * 8));
             hitSpr.color = FlxColor.interpolate(ANSWER_COLOR, FlxColor.WHITE, ratio);
         }
 
@@ -249,9 +299,13 @@ class DragPanelInputUI extends MenuUIBase {
             return;
         }
 
+        // 離したので元の色に戻す
+        _draggedPanel.color = DragPanelUI.BG_COLOR;
+
         if(hitSpr == null) {
             // 置き場所の指定がない場合は最初の位置に戻る
             _draggedPanel.resetOriginPosition();
+            _answers[_draggedPanel.ID] = ANSWER_INVALID_ID;
         }
         else {
             // 答えの枠に配置する
@@ -275,14 +329,16 @@ class DragPanelInputUI extends MenuUIBase {
             }
             // 答えに反映する
             _answers[hitID] = panelID;
-            trace(_answers);
         }
 
         _draggedPanel.endWait();
+        trace(_answers);
 
         if(_checkAnswer()) {
             // 正解
             trace("correct!");
+            _result = true;
+            _backSpr.exists = false; // 戻るボタンを非表示
             _state = State.Correct;
         }
         else {
@@ -403,6 +459,7 @@ class DragPanelInputUI extends MenuUIBase {
         if(isReset) {
             // 位置のリセットが必要
             replacedPanel.resetOriginPosition();
+            _answers[replacedPanel.ID] = ANSWER_INVALID_ID;
         }
 
         return replacedPanel;

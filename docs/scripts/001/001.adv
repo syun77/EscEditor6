@@ -2,11 +2,25 @@ def adapter
 {
 	// USBアダプター入手
 	ITEM_ADD(ITEM_USB_ADAPTER)
+	NUM_INPUT(10, 5)
+	if($RET) {
+		":正解 $10"
+	}
+	else {
+		":不正解 $10"
+	}
 }
 def usb_cable
 {
 	// USBケーブル入手
 	ITEM_ADD(ITEM_USB_CABLE)
+	PANEL_INPUT(1)
+	if($RET) {
+		":正解"
+	}
+	else {
+		":不正解"
+	}
 }
 
 def sticker

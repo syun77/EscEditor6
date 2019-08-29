@@ -93,6 +93,7 @@ class EscScript {
             "MSG"       => _MSG,
             "NUM_INPUT" => _NUM_INPUT,
             "PIC_INPUT" => _PIC_INPUT,
+            "PNL_INPUT" => _PNL_INPUT,
             "JUMP"      => _JUMP,
             "ITEM_ADD"  => _ITEM_ADD,
             "ITEM_HAS"  => _ITEM_HAS,
@@ -155,6 +156,15 @@ class EscScript {
         var editor = PlayState.getEditor();
         if(editor != null) {
             editor.openPictureInput(pic, digit);
+        }
+        return AdvScript.RET_YIELD;
+    }
+    function _PNL_INPUT(param:Array<String>):Int {
+        _log('PNL_INPUT');
+        var panelID = _script.popStack();
+        var editor = PlayState.getEditor();
+        if(editor != null) {
+            editor.openPanelInput(panelID);
         }
         return AdvScript.RET_YIELD;
     }

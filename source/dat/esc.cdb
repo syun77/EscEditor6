@@ -567,7 +567,12 @@
 				},
 				{
 					"typeStr": "6:flags",
-					"name": "flag",
+					"name": "on",
+					"opt": true
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "off",
 					"opt": true,
 					"display": null
 				}
