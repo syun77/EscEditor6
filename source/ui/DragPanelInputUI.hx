@@ -11,9 +11,12 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 
 class DragPanelUI extends DraggableUI {
+    // public.
+    public static inline var BG_COLOR:Int = FlxColor.GRAY;
+
+    // private.
     static inline var SIZE:Int = 64;
 
-    static inline var BG_COLOR:Int = FlxColor.GRAY;
     static inline var TEXT_COLOR:Int = FlxColor.WHITE;
     static inline var TEXT_OUTLINE_COLOR:Int = FlxColor.BLACK;
     static inline var TEXT_OFS_X:Int = -2;
@@ -74,9 +77,11 @@ class DragPanelUI extends DraggableUI {
  * 状態
  */
 private enum State {
-    Standby;
-    Dragging;
-    MsgWait;
+    Standby; // 待機中
+    Dragging; // ドラッグ中
+    MsgWait; // メッセージ待ち
+    Correct; // 正解
+    CorrectBlink; // 正解時の点滅
 }
 
 
@@ -93,20 +98,25 @@ class DragPanelInputUI extends MenuUIBase {
     static inline var ANSWER_INVALID_ID:Int = -1;
     static inline var HIT_OFS:Int = 2;
 
+    var _cnt:Int = 0;
     var _time:Float = 0;
     var _state:State = State.Standby;
     var _panels:Array<DragPanelUI>;
     var _draggedPanel:DragPanelUI;
     var _answerHitList:Array<FlxSprite>;
     var _answers:Array<Int>;
+    var _answer:Int = 0;
 
     /**
      * コンストラクタ
      */
-    public function new() {
+    public function new(choice:String, answer:Int, digit:Int) {
         super();
 
-        var ANSWER_NUM:Int = 5;
+        // 答えを保持
+        _answer = answer;
+
+        var ANSWER_NUM:Int = digit;
 
         // 答えの当たり判定
         _answerHitList = new Array<FlxSprite>();
@@ -127,10 +137,10 @@ class DragPanelInputUI extends MenuUIBase {
 
         // パネル
         _panels = new Array<DragPanelUI>();
-        for(i in 0...8) {
+        for(i in 0...choice.length) {
             var px = FlxG.random.float(64, FlxG.width-64);
             var py = FlxG.random.float(64, FlxG.height-64);
-            var panel = new DragPanelUI(px, py, '${i}');
+            var panel = new DragPanelUI(px, py, '${choice.charAt(i)}');
             panel.ID = i; // 要素番号を保持する
             _panels.push(panel);
         }
@@ -151,7 +161,7 @@ class DragPanelInputUI extends MenuUIBase {
      */
     override public function update(elapsed:Float):Void {
         super.update(elapsed);
-        _time++;
+        _time += elapsed;
 
         // 更新
         for(spr in _answerHitList) {
@@ -164,7 +174,12 @@ class DragPanelInputUI extends MenuUIBase {
             case State.Dragging:
                 _updateDragging();
             case State.MsgWait:
+            case State.Correct:
+                _updateCorrect();
+            case State.CorrectBlink:
+                _updateCorrectBlink();
         }
+
     }
 
     /**
@@ -210,7 +225,7 @@ class DragPanelInputUI extends MenuUIBase {
         var hitSpr:FlxSprite = _hitAnswer(_draggedPanel);
         if(hitSpr != null) {
             // 点滅する
-            var ratio = Math.abs(Math.sin(_time * 0.2));
+            var ratio = Math.abs(Math.sin(_time * 8));
             hitSpr.color = FlxColor.interpolate(ANSWER_COLOR, FlxColor.WHITE, ratio);
         }
 
@@ -233,7 +248,6 @@ class DragPanelInputUI extends MenuUIBase {
 
             // 交換パネルチェック
             replacedPanel = _checkSwapPanel(hitSpr, _draggedPanel);
-            trace('add: ${_draggedPanel.ID}');
             for(i in 0..._answers.length) {
                 if(_answers[i] == panelID) {
                     // 配置積みのものを移動した場合は元のを消す
@@ -250,8 +264,66 @@ class DragPanelInputUI extends MenuUIBase {
         }
 
         _draggedPanel.endWait();
-        _state = State.Standby;
 
+        if(_checkAnswer()) {
+            // 正解
+            trace("correct!");
+            _state = State.Correct;
+        }
+        else {
+            // 不正解
+            _state = State.Standby;
+        }
+
+    }
+
+    /**
+     * 更新・正解
+     */
+    function _updateCorrect():Void {
+        for(panel in _panels) {
+            if(panel.isEndReturn() == false) {
+                return; // 移動中のパネルがある
+            }
+        }
+
+        // 点滅処理へ
+        _cnt = 0;
+        _state = State.CorrectBlink;
+    }
+
+    /**
+     * 更新・正解時の点滅
+     */
+    function _updateCorrectBlink():Void {
+        for(i in _answers) {
+            var panel = _panels[i];
+            var ratio = Math.abs(Math.sin(_time * 8));
+            panel.color = FlxColor.interpolate(DragPanelUI.BG_COLOR, FlxColor.WHITE, ratio);
+        }
+
+        _cnt++;
+        if(_cnt > 60) {
+            // おしまい
+            kill();
+        }
+    }
+
+    function _checkAnswer():Bool {
+        var total:Int = 0;
+        var digit:Int = _answers.length - 1;
+        for(i in 0..._answers.length) {
+            if(_answers[i] == ANSWER_INVALID_ID) {
+                // 指定なしの項目があれば必ず不正解
+                total = -1;
+                break;
+            }
+            total += Std.int(_answers[i] * Math.pow(10, digit));
+            digit--;
+        }
+
+        trace(_answer, total);
+        return _answer == total;
     }
 
     /**
@@ -309,7 +381,6 @@ class DragPanelInputUI extends MenuUIBase {
                 // 移動前の場所
                 isReset = false;
                 // 配置済みのパネルの位置を交換する
-                trace('swap: ${replacedPanel.ID} -> ${i}');
                 var hit = _answerHitList[i];
                 _moveHitSpr(replacedPanel, hit);
             }
@@ -317,7 +388,6 @@ class DragPanelInputUI extends MenuUIBase {
         if(isReset) {
             // 位置のリセットが必要
             replacedPanel.resetOriginPosition();
-            trace('remove: ${answerID}');
         }
 
         return replacedPanel;

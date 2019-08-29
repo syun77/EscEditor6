@@ -75,6 +75,20 @@ class DraggableUI extends FlxSprite {
     }
 
     /**
+     * 戻り演出が終わったかどうか
+     * @return Bool 終わったら true
+     */
+    public function isEndReturn():Bool {
+        if(_state != State.Standby) {
+            return false;
+        }
+
+        var dx = _xstart - x;
+        var dy = _ystart - y;
+        return Math.sqrt(dx*dx + dy*dy) < 1;
+    }
+
+    /**
      * ドラッグ処理の有効フラグ設定
      * @param b trueなら有効
      */
