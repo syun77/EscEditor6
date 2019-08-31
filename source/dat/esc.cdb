@@ -61,11 +61,101 @@
 						{
 							"id": "2",
 							"file": "../../assets/data/scene001/gate_a2.png",
-							"image": "",
+							"image": "978cd72ce47bbee68d93899d78bce3c2",
 							"x": 60,
 							"y": 60,
 							"click": "",
 							"on": "UNLOCK_GATE_A"
+						},
+						{
+							"id": "３",
+							"file": "../../assets/data/scene001/gate_b.png",
+							"image": "b6b715f4caff22ce7c7ff499369365fb",
+							"x": 130,
+							"y": 60,
+							"click": "gate_b",
+							"off": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene001/gate_b2.png",
+							"image": "13fbb709132489a293a5ed6215aef2ee",
+							"x": 130,
+							"y": 60,
+							"click": "",
+							"on": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene001/gate_c.png",
+							"image": "b4ec93a8f3650a257b09aa0b74678855",
+							"x": 200,
+							"y": 60,
+							"click": "gate_c",
+							"off": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene001/gate_c2.png",
+							"image": "2abe4de691b058904ad48de5f7f45447",
+							"x": 200,
+							"y": 60,
+							"click": "",
+							"on": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene001/gate_d.png",
+							"image": "408db8444c4d81b0ff4017531cd8707d",
+							"x": 270,
+							"y": 60,
+							"click": "gate_d",
+							"off": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene001/gate_d2.png",
+							"image": "f727aedb10764714fda2357333f758f8",
+							"x": 270,
+							"y": 60,
+							"click": "",
+							"on": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "9",
+							"file": "../../assets/data/scene001/gate_e.png",
+							"image": "9f133434caf3914d2535baf37939a4af",
+							"x": 60,
+							"y": 150,
+							"click": "gate_e",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "10",
+							"file": "../../assets/data/scene001/gate_e2.png",
+							"image": "25483c1439d43c59c4ac8e07735b375e",
+							"x": 60,
+							"y": 150,
+							"click": "",
+							"on": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "11",
+							"file": "../../assets/data/scene001/gate_f.png",
+							"image": "294362a9c87428d6d49add32b0c349ba",
+							"x": 130,
+							"y": 150,
+							"click": "gate_f",
+							"off": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "12",
+							"file": "../../assets/data/scene001/gate_f2.png",
+							"image": "ace680d3b741cc6d954734a0940a27f5",
+							"x": 130,
+							"y": 150,
+							"click": "",
+							"on": "UNLOCK_GATE_F"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -407,14 +497,34 @@
 			],
 			"lines": [
 				{
-					"id": "UNLOCK_DOOR",
-					"value": 16,
-					"comment": "扉の鍵を解除"
+					"id": "UNLOCK_GATE_A",
+					"value": 10,
+					"comment": "GATE-Aのロックを解除"
 				},
 				{
-					"id": "UNLOCK_GATE_A",
-					"value": 20,
-					"comment": "GATE-Aのロックを解除"
+					"id": "UNLOCK_GATE_B",
+					"value": 11,
+					"comment": "GATE-Bのロックを解除"
+				},
+				{
+					"id": "UNLOCK_GATE_C",
+					"value": 12,
+					"comment": "GATE-Cのロックを解除"
+				},
+				{
+					"id": "UNLOCK_GATE_D",
+					"value": 13,
+					"comment": "GATE-Dのロックを解除"
+				},
+				{
+					"id": "UNLOCK_GATE_E",
+					"value": 14,
+					"comment": "GATE-Eのロックを解除"
+				},
+				{
+					"id": "UNLOCK_GATE_F",
+					"value": 15,
+					"comment": "GATE-Fのロックを解除"
 				}
 			],
 			"separators": [],
