@@ -466,6 +466,158 @@
 							"jump": "Entrance"
 						}
 					]
+				},
+				{
+					"id": "GateE",
+					"name": "ゲートE",
+					"value": 6,
+					"script": "../../docs/scripts/006/006.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/sticker2.png",
+							"image": "ef86f1da7b592b16b51bc05101a4ba9b",
+							"x": 62,
+							"y": 90,
+							"click": "sticker2",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene006/sticker3.png",
+							"image": "b1cf3e6e3fc15bb45641dfa6077fd680",
+							"x": 62,
+							"y": 146,
+							"click": "sticker3",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene006/a.png",
+							"image": "b0de4cfafb723e9441dcc339c40421de",
+							"x": 60,
+							"y": 300,
+							"click": "person_a",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene006/b.png",
+							"image": "3151b3ab0d08eef084dd01fec5e617bc",
+							"x": 164,
+							"y": 300,
+							"click": "person_b",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene006/c.png",
+							"image": "62971f46aa4422611c22e332c3a808d3",
+							"x": 268,
+							"y": 300,
+							"click": "person_c",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene006/answer.png",
+							"image": "07dcb8255a0e9d87ca92006b655018e0",
+							"x": 62,
+							"y": 240,
+							"click": "answer",
+							"off": "UNLOCK_GATE_E"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
+						}
+					]
+				},
+				{
+					"id": "GateE2",
+					"name": "　",
+					"value": 7,
+					"script": "../../assets/data/scene007/bg.png",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene007/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene007/sticker.png",
+							"image": "a1da9e42249a2313ed01446c775e71ae",
+							"x": 30,
+							"y": 4,
+							"click": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene007/caution.png",
+							"image": "af43e250bf6b00a2df5ca2205cf35923",
+							"x": 243,
+							"y": 448,
+							"click": ""
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene007/answer1.png",
+							"image": "3be7c9ad21550d2cff5ee1b3e4bc7014",
+							"x": 60,
+							"y": 255,
+							"click": "answer1",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene007/answer2.png",
+							"image": "eac6d6ca735aa694cadaa172c8a13f20",
+							"x": 60,
+							"y": 300,
+							"click": "answer2",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene007/answer3.png",
+							"image": "6d0e6dfa6249f04c66551bb5fffd47ac",
+							"x": 60,
+							"y": 346,
+							"click": "answer3",
+							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene007/answer4.png",
+							"image": "3217564a9c9246fd8ede7e3bdd071320",
+							"x": 60,
+							"y": 392,
+							"click": "answer4",
+							"off": "UNLOCK_GATE_E"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "GateE"
+						}
+					]
 				}
 			],
 			"separators": [],

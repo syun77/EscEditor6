@@ -1,0 +1,29 @@
+def person_a
+{
+":A「ウソつきが犯人。正直者は犯人じゃないよ」"
+}
+
+def person_b
+{
+":B「犯人は私です」"
+}
+
+def person_c
+{
+":C「Bが犯人だね」"
+}
+
+def sticker2
+{
+":「正直者は正直なことしか言わない」と書いてある"
+}
+
+def sticker3
+{
+":「ウソつきはウソのことしか言わない」と書いてある"
+}
+
+def answer
+{
+	JUMP(GateE2)
+}

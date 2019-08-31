@@ -9,6 +9,8 @@ const:
   GateB: 3 # ゲートB
   GateC: 4 # ゲートC
   GateD: 5 # ゲートD
+  GateE: 6 # ゲートE
+  GateE2: 7 # 　
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー

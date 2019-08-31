@@ -1,0 +1,20 @@
+def answer1
+{
+	":不正解です"
+	%UNLOCK_GATE_E = true
+}
+def answer2
+{
+	":不正解です"
+	%UNLOCK_GATE_E = true
+}
+def answer3
+{
+	":正解"
+	%UNLOCK_GATE_E = true
+}
+def answer4
+{
+	":不正解です"
+	%UNLOCK_GATE_E = true
+}
