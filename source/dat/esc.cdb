@@ -316,6 +316,80 @@
 							"click": "hint",
 							"on": "PULL_DRAWER"
 						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
+						}
+					]
+				},
+				{
+					"id": "GateC",
+					"name": "ゲートC",
+					"value": 4,
+					"script": "../../docs/scripts/004/004.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/sticker.png",
+							"image": "9e3fc65f1288186eee83fe78f7caa4b0",
+							"x": 29,
+							"y": 50,
+							"click": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene004/lock.png",
+							"image": "f43fa8c24aefaaf6e11502436ff76c4a",
+							"x": 88,
+							"y": 224,
+							"click": "",
+							"off": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene004/number.png",
+							"image": "e31c53d0e5894402a9c6e54c4fb5e7de",
+							"x": 160,
+							"y": 242,
+							"click": "number",
+							"off": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene004/unlock.png",
+							"image": "b5aeb1a9556baa44391cf0caa42d4093",
+							"x": 88,
+							"y": 224,
+							"click": "",
+							"on": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene004/unlock2.png",
+							"image": "877f6a33136fd1eca0623ebc0db3639f",
+							"x": 284,
+							"y": 224,
+							"click": "",
+							"on": "UNLOCK_GATE_C"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
+						}
 					]
 				}
 			],

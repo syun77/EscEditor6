@@ -1,0 +1,11 @@
+def number
+{
+	NUM_INPUT(40, 2)
+	if($40 == 12) {
+		":ロックが解除された"
+		%UNLOCK_GATE_C = true
+	}
+	else {
+		":正しくないようだ"
+	}
+}

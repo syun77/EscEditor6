@@ -7,6 +7,7 @@ const:
   Entrance: 1 # 入り口
   GateA: 2 # ゲートA
   GateB: 3 # ゲートB
+  GateC: 4 # ゲートC
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
