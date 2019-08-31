@@ -1,5 +1,11 @@
-def back
+def number
 {
-	// 入り口の前に戻る
-	JUMP(Entrance)
+	NUM_INPUT(20, 4)
+	if($20 == 5050) {
+		":ロックが解除された"
+		%UNLOCK_GATE_A = true
+	}
+	else {
+		":正しくないようだ"
+	}
 }

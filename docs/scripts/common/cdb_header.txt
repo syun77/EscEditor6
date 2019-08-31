@@ -5,7 +5,7 @@
 const:
   # シーン
   Entrance: 1 # 入り口
-  EntranceSticker: 2 # 入り口〜張り紙
+  GateA: 2 # ゲートA
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -28,7 +28,5 @@ const:
   ITEM_SILVER_KEY: 17 # 銀色のカギ
   
 flag:
-  GAIN_USB_ADAPTER: 12 # USBアダプタ入手
-  GAIN_USB_CABLE: 13 # USBケーブル入手
-  USB_POWER_ON: 15 # 電源ON
   UNLOCK_DOOR: 16 # 扉の鍵を解除
+  UNLOCK_GATE_A: 20 # GATE-Aのロックを解除

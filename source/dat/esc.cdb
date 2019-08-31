@@ -51,112 +51,21 @@
 					"objs": [
 						{
 							"id": "1",
-							"file": "../../assets/data/scene001/table.png",
-							"image": "f9407e6d0a8c1a0fef2b1ccd70c77ddc",
-							"x": -23,
-							"y": 438,
-							"click": ""
+							"file": "../../assets/data/scene001/gate_a.png",
+							"image": "1fc6ea55403fc7a66de4434eae550bd1",
+							"x": 60,
+							"y": 60,
+							"click": "gate_a",
+							"off": "UNLOCK_GATE_A"
 						},
 						{
 							"id": "2",
-							"file": "../../assets/data/scene001/adapter.png",
-							"image": "4c2302b405e89bdbb02b78a4ff8d855a",
-							"x": 63,
-							"y": 431,
-							"click": "adapter",
-							"off": "GAIN_USB_ADAPTER"
-						},
-						{
-							"id": "3",
-							"file": "../../assets/data/scene001/cable.png",
-							"image": "607f4cfabce66f6b32f0a978f9b5382b",
-							"x": 0,
-							"y": 409,
-							"click": "usb_cable",
-							"off": "GAIN_USB_CABLE"
-						},
-						{
-							"id": "4",
-							"file": "../../assets/data/scene001/sticker.png",
-							"image": "759f8a93ce87715b3e0b9a6a6f616d3f",
-							"x": 133,
-							"y": 206,
-							"click": "sticker",
-							"off": "UNLOCK_DOOR"
-						},
-						{
-							"id": "5",
-							"file": "../../assets/data/scene001/knob.png",
-							"image": "7735f8e2f78416a3560a29f045d26451",
-							"x": 129,
-							"y": 352,
-							"click": "knob",
-							"off": "UNLOCK_DOOR"
-						},
-						{
-							"id": "6",
-							"file": "../../assets/data/scene001/input1.png",
-							"image": "d902f4b85db6be1318f7865c464094dd",
-							"x": 137,
-							"y": 302,
-							"click": "input",
-							"off": "USB_POWER_ON"
-						},
-						{
-							"id": "7",
-							"file": "../../assets/data/scene001/input2.png",
-							"image": "1feec54c37e8028621fcfbccdc7d7b55",
-							"x": 137,
-							"y": 302,
-							"click": "input",
-							"on": "USB_POWER_ON",
-							"off": "UNLOCK_DOOR"
-						},
-						{
-							"id": "８",
-							"file": "../../assets/data/scene001/outlet1.png",
-							"image": "6f46dbf90b9cbe1bda7da0aee3429e93",
-							"x": 286,
-							"y": 371,
-							"click": "outlet1",
-							"off": "UNLOCK_DOOR"
-						},
-						{
-							"id": "９",
-							"file": "../../assets/data/scene001/outlet2.png",
-							"image": "63b04c3b519e43edad6d2fb2ab4da967",
-							"x": 235,
-							"y": 388,
-							"click": "outlet2",
-							"off": "UNLOCK_DOOR"
-						},
-						{
-							"id": "10",
-							"file": "../../assets/data/scene001/connect.png",
-							"image": "19b355d852bac963c47d6068a4d7d0a3",
-							"x": 248,
-							"y": 389,
-							"click": "connect",
-							"on": "USB_POWER_ON",
-							"off": "UNLOCK_DOOR"
-						},
-						{
-							"id": "11",
-							"file": "../../assets/data/scene001/unlock2.png",
-							"image": "ee8f81aabb8248a7d99a07512d7798cf",
-							"x": 120,
-							"y": 180,
-							"click": "next",
-							"on": "UNLOCK_DOOR"
-						},
-						{
-							"id": "12",
-							"file": "../../assets/data/scene001/unlock.png",
-							"image": "8e7d1bdf885bf41d3bab1ceef377058b",
-							"x": 273,
-							"y": 180,
+							"file": "../../assets/data/scene001/gate_a2.png",
+							"image": "",
+							"x": 60,
+							"y": 60,
 							"click": "",
-							"on": "UNLOCK_DOOR"
+							"on": "UNLOCK_GATE_A"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -166,10 +75,13 @@
 					"name": "入り口"
 				},
 				{
+					"id": "GateA",
+					"name": "ゲートA",
+					"value": 2,
 					"script": "../../docs/scripts/002/002.adv",
 					"bgs": [
 						{
-							"id": "1",
+							"id": "",
 							"file": "../../assets/data/scene002/bg.png",
 							"x": 0,
 							"y": 0
@@ -178,31 +90,56 @@
 					"objs": [
 						{
 							"id": "1",
-							"file": "../../assets/data/scene002/jyukugo1.png",
-							"image": "aa5da1d9d3b1c0e392a7aa320ffe41ff",
-							"x": 22,
-							"y": 140,
+							"file": "../../assets/data/scene002/sticker.png",
+							"image": "a5d964599f1642c9df3025ba612102e0",
+							"x": 29,
+							"y": 75,
 							"click": ""
 						},
 						{
 							"id": "2",
-							"file": "../../assets/data/scene002/jyukugo2.png",
-							"image": "b58b30ffd67222aa8a41a5397c22db0d",
-							"x": 206,
-							"y": 140,
-							"click": ""
+							"file": "../../assets/data/scene002/lock.png",
+							"image": "54dfb847b9b5dfd6c4935eb09f252699",
+							"x": 88,
+							"y": 166,
+							"click": "",
+							"off": "UNLOCK_GATE_A"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene002/number.png",
+							"image": "a4d64d92bdf5e3cc690397dbcd445c38",
+							"x": 130,
+							"y": 185,
+							"click": "number",
+							"off": "UNLOCK_GATE_A"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene002/unlock.png",
+							"image": "b5aeb1a9556baa44391cf0caa42d4093",
+							"x": 88,
+							"y": 166,
+							"click": "",
+							"on": "UNLOCK_GATE_A"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene002/unlock2.png",
+							"image": "a574679eba7fa1c588e54b6d42e9b80e",
+							"x": 284,
+							"y": 166,
+							"click": "",
+							"on": "UNLOCK_GATE_A"
 						}
 					],
 					"moves": [
 						{
 							"id": 3,
-							"click": "back",
+							"click": "",
 							"jump": "Entrance"
 						}
-					],
-					"id": "EntranceSticker",
-					"value": 2,
-					"name": "入り口〜張り紙"
+					]
 				}
 			],
 			"separators": [],
@@ -421,12 +358,10 @@
 				{
 					"name": "USB電源アダプタ",
 					"value": 14,
-					"id": "ITEM_USB_ADAPTER",
-					"flag": "GAIN_USB_ADAPTER"
+					"id": "ITEM_USB_ADAPTER"
 				},
 				{
 					"name": "USBケーブル",
-					"flag": "GAIN_USB_CABLE",
 					"value": 15,
 					"id": "ITEM_USB_CABLE"
 				},
@@ -472,24 +407,14 @@
 			],
 			"lines": [
 				{
-					"id": "GAIN_USB_ADAPTER",
-					"value": 12,
-					"comment": "USBアダプタ入手"
-				},
-				{
-					"id": "GAIN_USB_CABLE",
-					"value": 13,
-					"comment": "USBケーブル入手"
-				},
-				{
-					"id": "USB_POWER_ON",
-					"value": 15,
-					"comment": "電源ON"
-				},
-				{
 					"id": "UNLOCK_DOOR",
 					"value": 16,
 					"comment": "扉の鍵を解除"
+				},
+				{
+					"id": "UNLOCK_GATE_A",
+					"value": 20,
+					"comment": "GATE-Aのロックを解除"
 				}
 			],
 			"separators": [],
