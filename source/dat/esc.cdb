@@ -230,6 +230,93 @@
 							"jump": "Entrance"
 						}
 					]
+				},
+				{
+					"id": "GateB",
+					"name": "ゲートB",
+					"value": 3,
+					"script": "../../docs/scripts/003/003.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/sticker.png",
+							"image": "b08c46702c8620de49734ef8eb83cf8e",
+							"x": 31,
+							"y": 125,
+							"click": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/lock.png",
+							"image": "bdf340d6185e22fab36c59a8694e9645",
+							"x": 99,
+							"y": 15,
+							"click": "",
+							"off": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene003/input.png",
+							"image": "26b37bf21e6d369be87c8e69a69ccb29",
+							"x": 137,
+							"y": 32,
+							"click": "lock",
+							"off": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene003/unlock.png",
+							"image": "b5aeb1a9556baa44391cf0caa42d4093",
+							"x": 99,
+							"y": 15,
+							"click": "",
+							"on": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene003/unlock2.png",
+							"image": "6f063d06b8d0542746c1c07d06efd8ef",
+							"x": 295,
+							"y": 15,
+							"click": "",
+							"on": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene003/drawer1.png",
+							"image": "eec8edb8f5ae335a65bd3be4d8f58903",
+							"x": 97,
+							"y": 366,
+							"click": "pull_drawer",
+							"off": "PULL_DRAWER"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene003/drawer2.png",
+							"image": "d470e5b16674ed8fd9cbd70933ac3838",
+							"x": 87,
+							"y": 366,
+							"click": "close_drawer",
+							"on": "PULL_DRAWER"
+						},
+						{
+							"id": "10",
+							"file": "../../assets/data/scene003/sticker2.png",
+							"image": "5859d06335d96330776c1daeaf15ebe8",
+							"x": 118,
+							"y": 415,
+							"click": "hint",
+							"on": "PULL_DRAWER"
+						}
+					]
 				}
 			],
 			"separators": [],
@@ -525,6 +612,11 @@
 					"id": "UNLOCK_GATE_F",
 					"value": 15,
 					"comment": "GATE-Fのロックを解除"
+				},
+				{
+					"id": "PULL_DRAWER",
+					"value": 30,
+					"comment": "引き出しを開けているかどうか"
 				}
 			],
 			"separators": [],

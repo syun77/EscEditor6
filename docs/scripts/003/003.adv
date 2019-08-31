@@ -1,0 +1,34 @@
+def lock
+{
+	// さらあま
+	// しりいみ
+	// するうむ
+	// せれえめ
+	// そるおも
+	// ス(2)ラ(0)イ(1)ム(2)
+	PIC_INPUT(1, 30, 4)
+	if($30 == 2012) {
+		":ロックが解除された"
+		%UNLOCK_GATE_B = true
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+
+def pull_drawer
+{
+	// 引き出しを開ける
+	%PULL_DRAWER = true
+}
+
+def close_drawer
+{
+	// 引き出しを閉じる
+	%PULL_DRAWER = false
+}
+
+def hint
+{
+	":何かのヒントのようだ"
+}

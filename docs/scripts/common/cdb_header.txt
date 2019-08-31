@@ -6,6 +6,7 @@ const:
   # シーン
   Entrance: 1 # 入り口
   GateA: 2 # ゲートA
+  GateB: 3 # ゲートB
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -28,5 +29,10 @@ const:
   ITEM_SILVER_KEY: 17 # 銀色のカギ
   
 flag:
-  UNLOCK_DOOR: 16 # 扉の鍵を解除
-  UNLOCK_GATE_A: 20 # GATE-Aのロックを解除
+  UNLOCK_GATE_A: 10 # GATE-Aのロックを解除
+  UNLOCK_GATE_B: 11 # GATE-Bのロックを解除
+  UNLOCK_GATE_C: 12 # GATE-Cのロックを解除
+  UNLOCK_GATE_D: 13 # GATE-Dのロックを解除
+  UNLOCK_GATE_E: 14 # GATE-Eのロックを解除
+  UNLOCK_GATE_F: 15 # GATE-Fのロックを解除
+  PULL_DRAWER: 30 # 引き出しを開けているかどうか
