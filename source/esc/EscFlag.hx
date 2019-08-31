@@ -7,7 +7,17 @@ class EscFlag {
 	public static inline var UNLOCK_GATE_D:Int = 13;
 	public static inline var UNLOCK_GATE_E:Int = 14;
 	public static inline var UNLOCK_GATE_F:Int = 15;
+	public static inline var UNLOCK_GATE_Z:Int = 16;
 	public static inline var PULL_DRAWER:Int = 30;
+	public static inline var HINT1:Int = 90;
+	public static inline var HINT2:Int = 91;
+	public static inline var HINT3:Int = 92;
+	public static inline var HINT4:Int = 93;
+	public static inline var HINT5:Int = 94;
+	public static inline var HINT6:Int = 95;
+	public static inline var HINT7:Int = 96;
+	public static inline var HINT8:Int = 97;
+	public static inline var HINT9:Int = 98;
 	static var _tbl:Map<String, Int> = [
 		"UNLOCK_GATE_A" => 10,
 		"UNLOCK_GATE_B" => 11,
@@ -15,7 +25,17 @@ class EscFlag {
 		"UNLOCK_GATE_D" => 13,
 		"UNLOCK_GATE_E" => 14,
 		"UNLOCK_GATE_F" => 15,
+		"UNLOCK_GATE_Z" => 16,
 		"PULL_DRAWER" => 30,
+		"HINT1" => 90,
+		"HINT2" => 91,
+		"HINT3" => 92,
+		"HINT4" => 93,
+		"HINT5" => 94,
+		"HINT6" => 95,
+		"HINT7" => 96,
+		"HINT8" => 97,
+		"HINT9" => 98,
 	];
 	
 	public static function get(k:String):Int {

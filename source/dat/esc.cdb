@@ -623,7 +623,7 @@
 					"id": "GateF",
 					"name": "ゲートF",
 					"value": 8,
-					"script": "../../assets/data/scene008/bg.png",
+					"script": "../../docs/scripts/008/008.adv",
 					"bgs": [
 						{
 							"id": "1",
@@ -683,6 +683,147 @@
 							"id": 3,
 							"click": "",
 							"jump": "Entrance"
+						}
+					]
+				},
+				{
+					"id": "GateZ",
+					"name": "最終ゲート",
+					"value": 9,
+					"script": "../../docs/scripts/009/009.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene009/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene009/knob.png",
+							"image": "a45c96b3481bf5aef7bb4c152acb40d1",
+							"x": 128,
+							"y": 342,
+							"click": "lock",
+							"off": "UNLOCK_GATE_Z"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene009/input.png",
+							"image": "7cb0cba6db6dc2512fd2a3fa90590e6b",
+							"x": 125,
+							"y": 295,
+							"click": "input",
+							"off": "UNLOCK_GATE_Z"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene009/unlock.png",
+							"image": "23d8561c6abf1c26721ec36dd704f379",
+							"x": 274,
+							"y": 182,
+							"click": "",
+							"on": "UNLOCK_GATE_Z"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene009/unlock2.png",
+							"image": "61e0c0862e1cc5ab1ea390a63427d1d2",
+							"x": 121,
+							"y": 182,
+							"click": "complete",
+							"on": "UNLOCK_GATE_Z"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene009/hint1.png",
+							"image": "1673b99462ac99b01b4eacd16f4b329a",
+							"x": 281,
+							"y": 443,
+							"click": "hint1",
+							"on": "HINT1"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene009/hint2.png",
+							"image": "86220f7f48d4dbfd31abaabd257f669a",
+							"x": 14,
+							"y": 411,
+							"click": "hint2",
+							"on": "HINT2"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene009/hint3.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 88,
+							"y": 448,
+							"click": "hint3",
+							"on": "HINT3"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene009/hint4.png",
+							"image": "75db2f29cfd05ce61667f555a105ed02",
+							"x": 226,
+							"y": 440,
+							"click": "hint4",
+							"on": "HINT4"
+						},
+						{
+							"id": "9",
+							"file": "../../assets/data/scene009/hint5.png",
+							"image": "d993ae91a898bad79591e3d4b3915c0b",
+							"x": 352,
+							"y": 446,
+							"click": "hint5",
+							"on": "HINT5"
+						},
+						{
+							"id": "10",
+							"file": "../../assets/data/scene009/hint6.png",
+							"image": "cd2a017f048f7ca575b34fbc60055bd3",
+							"x": 188,
+							"y": 430,
+							"click": "hint6",
+							"on": "HINT6"
+						},
+						{
+							"id": "11",
+							"file": "../../assets/data/scene009/hint7.png",
+							"image": "ae8b82a625f739813e08686ca3c3d5b1",
+							"x": 321,
+							"y": 429,
+							"click": "hint7",
+							"on": "HINT7"
+						},
+						{
+							"id": "12",
+							"file": "../../assets/data/scene009/hint8.png",
+							"image": "73c6025c32575a32637dafa293189b7d",
+							"x": 145,
+							"y": 452,
+							"click": "hint8",
+							"on": "HINT8"
+						},
+						{
+							"id": "13",
+							"file": "../../assets/data/scene009/hint9.png",
+							"image": "4f00348b4019eef57de4cdea2dcdd338",
+							"x": 9,
+							"y": 452,
+							"click": "hint9",
+							"on": "HINT9"
+						},
+						{
+							"id": "14",
+							"file": "../../assets/data/scene009/sticker.png",
+							"image": "1fdf0ef54c15cc8fb89f86cf0c6b00cf",
+							"x": 72,
+							"y": 74,
+							"click": "sticker"
 						}
 					]
 				}
@@ -982,9 +1123,59 @@
 					"comment": "GATE-Fのロックを解除"
 				},
 				{
+					"id": "UNLOCK_GATE_Z",
+					"value": 16,
+					"comment": "GATE-Zのロック解除"
+				},
+				{
 					"id": "PULL_DRAWER",
 					"value": 30,
 					"comment": "引き出しを開けているかどうか"
+				},
+				{
+					"id": "HINT1",
+					"value": 90,
+					"comment": "ヒント1"
+				},
+				{
+					"id": "HINT2",
+					"value": 91,
+					"comment": "ヒント2"
+				},
+				{
+					"id": "HINT3",
+					"value": 92,
+					"comment": "ヒント3"
+				},
+				{
+					"id": "HINT4",
+					"value": 93,
+					"comment": "ヒント4"
+				},
+				{
+					"id": "HINT5",
+					"value": 94,
+					"comment": "ヒント5"
+				},
+				{
+					"id": "HINT6",
+					"value": 95,
+					"comment": "ヒント6"
+				},
+				{
+					"id": "HINT7",
+					"value": 96,
+					"comment": "ヒント7"
+				},
+				{
+					"id": "HINT8",
+					"value": 97,
+					"comment": "ヒント8"
+				},
+				{
+					"id": "HINT9",
+					"value": 98,
+					"comment": "ヒント9"
 				}
 			],
 			"separators": [],
