@@ -312,7 +312,7 @@
 							"file": "../../assets/data/scene003/sticker2.png",
 							"image": "5859d06335d96330776c1daeaf15ebe8",
 							"x": 118,
-							"y": 415,
+							"y": 387,
 							"click": "hint",
 							"on": "PULL_DRAWER"
 						}
@@ -382,6 +382,81 @@
 							"y": 224,
 							"click": "",
 							"on": "UNLOCK_GATE_C"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
+						}
+					]
+				},
+				{
+					"id": "GateD",
+					"name": "ゲートD",
+					"value": 5,
+					"script": "../../docs/scripts/005/005.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/sticker.png",
+							"image": "e59a88df2261e0a41b7069d353eb2039",
+							"x": 123,
+							"y": 95,
+							"click": "sticker"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene005/kuchinashi.png",
+							"image": "2512411af6b21a56320d4cad3a3864df",
+							"x": 279,
+							"y": 104,
+							"click": "kuchinashi"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene005/lock.png",
+							"image": "2038f76bd203b95cb957264cb0a1d9ee",
+							"x": 88,
+							"y": 166,
+							"click": "",
+							"off": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene005/input.png",
+							"image": "d23e430ae3dad151d75c2a413fff070c",
+							"x": 143,
+							"y": 185,
+							"click": "input",
+							"off": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene005/unlock2.png",
+							"image": "75f5ee71dff4380e7300846f34dd6b49",
+							"x": 284,
+							"y": 166,
+							"click": "",
+							"on": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene005/unlock.png",
+							"image": "b5aeb1a9556baa44391cf0caa42d4093",
+							"x": 88,
+							"y": 166,
+							"click": "",
+							"on": "UNLOCK_GATE_D"
 						}
 					],
 					"moves": [
