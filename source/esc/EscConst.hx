@@ -9,6 +9,7 @@ class EscConst {
 	public static inline var GateD:Int = 5;
 	public static inline var GateE:Int = 6;
 	public static inline var GateE2:Int = 7;
+	public static inline var GateF:Int = 8;
 	public static inline var ITEM_DUMMY:Int = 0;
 	public static inline var ITEM_YELLOW_KEY:Int = 1;
 	public static inline var ITEM_RED_KEY:Int = 2;

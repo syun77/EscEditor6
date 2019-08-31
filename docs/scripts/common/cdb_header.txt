@@ -11,6 +11,7 @@ const:
   GateD: 5 # ゲートD
   GateE: 6 # ゲートE
   GateE2: 7 # 　
+  GateF: 8 # ゲートF
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー

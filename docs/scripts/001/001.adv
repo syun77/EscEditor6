@@ -2,3 +2,27 @@ def gate_a
 {
 	JUMP(GateA)
 }
+def gate_b
+{
+	JUMP(GateB)
+}
+def gate_c
+{
+	JUMP(GateC)
+}
+def gate_d
+{
+	JUMP(GateD)
+}
+def gate_e
+{
+	JUMP(GateE)
+}
+def gate_f
+{
+	JUMP(GateF)
+}
+def gate_z
+{
+	//JUMP(GateZ)
+}

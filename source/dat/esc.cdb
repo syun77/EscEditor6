@@ -548,7 +548,7 @@
 					"id": "GateE2",
 					"name": "　",
 					"value": 7,
-					"script": "../../assets/data/scene007/bg.png",
+					"script": "../../docs/scripts/007/007.adv",
 					"bgs": [
 						{
 							"id": "1",
@@ -616,6 +616,73 @@
 							"id": 3,
 							"click": "",
 							"jump": "GateE"
+						}
+					]
+				},
+				{
+					"id": "GateF",
+					"name": "ゲートF",
+					"value": 8,
+					"script": "../../assets/data/scene008/bg.png",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene008/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene008/sticker.png",
+							"image": "169a8791905abfd992a5c5ddc3079756",
+							"x": 29,
+							"y": 50,
+							"click": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene008/lock.png",
+							"image": "4cb4ea816ce4937780adc123797ce0c3",
+							"x": 88,
+							"y": 224,
+							"click": "",
+							"off": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene008/number.png",
+							"image": "b855c1bc8234e3fae9cf625c29a10d2f",
+							"x": 128,
+							"y": 242,
+							"click": "number",
+							"off": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene008/unlock.png",
+							"image": "b5aeb1a9556baa44391cf0caa42d4093",
+							"x": 88,
+							"y": 224,
+							"click": "",
+							"on": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene008/unlock2.png",
+							"image": "c5a47d2a994e09aa475a78433d4c4cf1",
+							"x": 284,
+							"y": 224,
+							"click": "",
+							"on": "UNLOCK_GATE_F"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
 						}
 					]
 				}
