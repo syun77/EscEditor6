@@ -25,6 +25,8 @@ class EscGlobal {
     public static inline var ITEM_INVALID:Int  = 0; // 無効なアイテムID
     public static inline var SCENE_INVALID:Int = 0; // 無効なシーンID
 
+    static inline var TIME_LIMIT:Float = 3;//5 * 60; // 制限時間
+
     // --------------------------------------------------------------------
     // ■変数
     // フラグ
@@ -45,6 +47,10 @@ class EscGlobal {
 
     // 編集モードかどうか
     static var _isEdit:Bool = false;
+
+    // スコア
+    static var _score:Int = 0;
+    static var _timelimit:Float = TIME_LIMIT;
 
     // --------------------------------------------------------------------
     // ■関数
@@ -70,6 +76,10 @@ class EscGlobal {
         _nextScene = SCENE_INVALID;
 
         _isEdit = false;
+
+        _score = 0;
+
+        _timelimit = TIME_LIMIT;
     }
 
     public static function getFlags():Array<Bool> {
@@ -244,5 +254,24 @@ class EscGlobal {
     }
     public static function isEdit():Bool {
         return _isEdit;
+    }
+
+    // スコア
+    public static function addScore(v:Int):Void {
+        _score += v;
+    }
+    public static function getScore():Int {
+        return _score;
+    }
+
+    // 制限時間
+    public static function subTimeLimit(elapsed:Float):Void {
+        _timelimit -= elapsed;
+        if(_timelimit < 0) {
+            _timelimit = 0;
+        }
+    }
+    public static function getTimeLimit():Float {
+        return _timelimit;
     }
 }

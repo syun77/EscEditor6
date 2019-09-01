@@ -52,3 +52,5 @@ flag:
   HINT7: 96 # ヒント7
   HINT8: 97 # ヒント8
   HINT9: 98 # ヒント9
+  STAR_A1: 20 # 
+  STAR_A2: 21 # 

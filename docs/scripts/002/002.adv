@@ -9,3 +9,15 @@ def number
 		":正しくないようだ"
 	}
 }
+
+def star1
+{
+	SCORE(50)
+	%STAR_A1 = true
+}
+
+def star2
+{
+	SCORE(500)
+	%STAR_A2 = true
+}

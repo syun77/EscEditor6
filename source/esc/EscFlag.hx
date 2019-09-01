@@ -18,6 +18,8 @@ class EscFlag {
 	public static inline var HINT7:Int = 96;
 	public static inline var HINT8:Int = 97;
 	public static inline var HINT9:Int = 98;
+	public static inline var STAR_A1:Int = 20;
+	public static inline var STAR_A2:Int = 21;
 	static var _tbl:Map<String, Int> = [
 		"UNLOCK_GATE_A" => 10,
 		"UNLOCK_GATE_B" => 11,
@@ -36,6 +38,8 @@ class EscFlag {
 		"HINT7" => 96,
 		"HINT8" => 97,
 		"HINT9" => 98,
+		"STAR_A1" => 20,
+		"STAR_A2" => 21,
 	];
 	
 	public static function get(k:String):Int {

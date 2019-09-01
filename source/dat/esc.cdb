@@ -221,6 +221,25 @@
 							"y": 166,
 							"click": "",
 							"on": "UNLOCK_GATE_A"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene002/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 21,
+							"y": 374,
+							"click": "star1",
+							"off": "STAR_A1"
+						},
+						{
+							"id": "",
+							"file": "../../assets/data/scene002/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 171,
+							"y": 225,
+							"click": "star2",
+							"on": "UNLOCK_GATE_A",
+							"off": "STAR_A2"
 						}
 					],
 					"moves": [
@@ -1176,6 +1195,14 @@
 					"id": "HINT9",
 					"value": 98,
 					"comment": "ヒント9"
+				},
+				{
+					"id": "STAR_A1",
+					"value": 20
+				},
+				{
+					"id": "STAR_A2",
+					"value": 21
 				}
 			],
 			"separators": [],

@@ -24,7 +24,11 @@ import ui.PictureInputUI;
 import ui.DragPanelInputUI;
 import ui.TelopUI;
 import state.TitleState;
+import state.ResultState;
 import save.GameData;
+
+// 次に進むシーン
+typedef NEXT_SCENE = ResultState;
 
 /**
  * 状態
@@ -37,6 +41,7 @@ private enum State {
     MenuUIWait; // 何かUIを開いている
     NextScene;  // 次のシーンに進む
     Completed;  // ゲームクリア
+    TimeUp;     // 時間ぎれ
 }
 
 class EscEditor extends FlxSubState {
@@ -159,7 +164,7 @@ class EscEditor extends FlxSubState {
         _telop.startSceneName(sceneID);
 
         // ゲームクリア
-        _txtCompleted = new FlxText(0, FlxG.height/2, FlxG.width, "", 32);
+        _txtCompleted = new FlxText(0, Const.getCenterY(), FlxG.width, "", 32);
         _txtCompleted.y -= _txtCompleted.height/2;
         _txtCompleted.alignment = FlxTextAlign.CENTER;
         _txtCompleted.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -347,6 +352,7 @@ class EscEditor extends FlxSubState {
                 if(_txtCompleted.size > 32) {
                     _txtCompleted.size -= 2;
                 }
+            case State.TimeUp:
         }
 
         if(isEdit()) {
@@ -373,6 +379,18 @@ class EscEditor extends FlxSubState {
     }
 
     function _updateExecute():Void {
+        
+        if(EscGlobal.getTimeLimit() == 0) {
+            // 時間ぎれ
+            _state = State.TimeUp;
+            _txtCompleted.text = "TIME OVER";
+            _txtCompleted.color = FlxColor.RED;
+            _txtCompleted.size = 32;
+            new FlxTimer().start(3, function(_) {
+                FlxG.switchState(new NEXT_SCENE());
+            });
+            return;
+        }
 
 		if(FlxG.mouse.justPressed) {
 
@@ -421,7 +439,7 @@ class EscEditor extends FlxSubState {
                 _txtCompleted.text = "COMPLETED";
                 _txtCompleted.size = 80;
                 new FlxTimer().start(3, function(_) {
-                    FlxG.switchState(new TitleState());
+                    FlxG.switchState(new NEXT_SCENE());
                 });
             }
             else if(_activeUI != null) {
@@ -456,6 +474,8 @@ class EscEditor extends FlxSubState {
             case State.NextScene:
                 ui.visible = false;
             case State.Completed:
+                ui.visible = false;
+            case State.TimeUp:
                 ui.visible = false;
         }
     }

@@ -101,6 +101,7 @@ class EscScript {
             "ITEM_CHK"  => _ITEM_CHK,
             "CRAFT_CHK" => _CRAFT_CHK,
             "COMPLETE"  => _COMPLETE,
+            "SCORE"     => _SCORE,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -232,21 +233,22 @@ class EscScript {
         var itemID2 = _script.popStack();
         var ret = ItemDB.checkCraft(itemID1, itemID2);
         EscGlobal.retSet(ret);
-        /*
-        if(EscGlobal.valGet(EscVar.CRAFT1) == itemID1 && EscGlobal.valGet(EscVar.CRAFT2) == itemID2) {
-            // 合成可能
-            EscGlobal.retSet(1);
-        }
-        else {
-            EscGlobal.retSet(0);
-        }
-        */
         return AdvScript.RET_CONTINUE;
     }
     function _COMPLETE(param:Array<String>):Int {
         _log('COMPLETE');
         _isCompleted = true;
         return AdvScript.RET_EXIT;
+    }
+    function _SCORE(param:Array<String>):Int {
+        var v = _script.popStack();
+        _log('SCORE v:${v}');
+        EscGlobal.addScore(v);
+
+        // インフォメーション表示
+        PlayState.getInformationUI().start('スコア +${v}', 3);
+
+        return AdvScript.RET_CONTINUE;
     }
 
     /**

@@ -51,7 +51,10 @@ def execute(cdb, root):
 	for dat in jsonDict["sheets"]:
 		if dat["name"] == "flags":
 			for line in dat["lines"]:
-				writer.writeKeyValue(line["id"], line["value"], line["comment"], 1)
+				comment = ""
+				if "comment" in line:
+					comment = line["comment"] # コメントは存在する場合のみ取得
+				writer.writeKeyValue(line["id"], line["value"], comment, 1)
 	
 	path = root + "/common/cdb_header.txt"
 	fOut = open(path, "w")
