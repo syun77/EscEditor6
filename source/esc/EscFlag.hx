@@ -21,6 +21,21 @@ class EscFlag {
 	public static inline var HINT9:Int = 98;
 	public static inline var STAR_A1:Int = 20;
 	public static inline var STAR_A2:Int = 21;
+	public static inline var STAR_B1:Int = 31;
+	public static inline var STAR_B2:Int = 32;
+	public static inline var STAR_B3:Int = 33;
+	public static inline var STAR_B4:Int = 34;
+	public static inline var STAR_B5:Int = 35;
+	public static inline var STAR_C1:Int = 40;
+	public static inline var STAR_C2:Int = 41;
+	public static inline var STAR_D1:Int = 50;
+	public static inline var STAR_D2:Int = 51;
+	public static inline var STAR_E1:Int = 60;
+	public static inline var STAR_E2:Int = 61;
+	public static inline var STAR_F1:Int = 80;
+	public static inline var STAR_Z1:Int = 99;
+	public static inline var CORRECT_E:Int = 65;
+	public static inline var STAR_F2:Int = 81;
 	static var _tbl:Map<String, Int> = [
 		"UNLOCK_GATE_A" => 10,
 		"UNLOCK_GATE_B" => 11,
@@ -42,6 +57,21 @@ class EscFlag {
 		"HINT9" => 98,
 		"STAR_A1" => 20,
 		"STAR_A2" => 21,
+		"STAR_B1" => 31,
+		"STAR_B2" => 32,
+		"STAR_B3" => 33,
+		"STAR_B4" => 34,
+		"STAR_B5" => 35,
+		"STAR_C1" => 40,
+		"STAR_C2" => 41,
+		"STAR_D1" => 50,
+		"STAR_D2" => 51,
+		"STAR_E1" => 60,
+		"STAR_E2" => 61,
+		"STAR_F1" => 80,
+		"STAR_Z1" => 99,
+		"CORRECT_E" => 65,
+		"STAR_F2" => 81,
 	];
 	
 	public static function get(k:String):Int {

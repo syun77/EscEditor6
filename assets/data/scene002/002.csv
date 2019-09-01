@@ -24,4 +24,7 @@ SCORE
 BOOL,1
 SET,16,21
 FUNC_END,star2
+FUNC_START,hint
+MSG,9,「カ」と書いてある
+FUNC_END,hint
 END

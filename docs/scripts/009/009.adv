@@ -96,3 +96,10 @@ def hint9
 {
 ":「カリウム＝K」と書いてある"
 }
+
+def star
+{
+	%STAR_Z1 = true
+	SCORE(2500)
+}
+

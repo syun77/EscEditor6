@@ -64,7 +64,7 @@
 							"image": "978cd72ce47bbee68d93899d78bce3c2",
 							"x": 60,
 							"y": 60,
-							"click": "",
+							"click": "gate_a",
 							"on": "UNLOCK_GATE_A"
 						},
 						{
@@ -82,7 +82,7 @@
 							"image": "13fbb709132489a293a5ed6215aef2ee",
 							"x": 130,
 							"y": 60,
-							"click": "",
+							"click": "gate_b",
 							"on": "UNLOCK_GATE_B"
 						},
 						{
@@ -100,7 +100,7 @@
 							"image": "2abe4de691b058904ad48de5f7f45447",
 							"x": 200,
 							"y": 60,
-							"click": "",
+							"click": "gate_c",
 							"on": "UNLOCK_GATE_C"
 						},
 						{
@@ -118,7 +118,7 @@
 							"image": "f727aedb10764714fda2357333f758f8",
 							"x": 270,
 							"y": 60,
-							"click": "",
+							"click": "gate_d",
 							"on": "UNLOCK_GATE_D"
 						},
 						{
@@ -136,7 +136,7 @@
 							"image": "25483c1439d43c59c4ac8e07735b375e",
 							"x": 60,
 							"y": 150,
-							"click": "",
+							"click": "gate_e",
 							"on": "UNLOCK_GATE_E"
 						},
 						{
@@ -154,7 +154,7 @@
 							"image": "ace680d3b741cc6d954734a0940a27f5",
 							"x": 130,
 							"y": 150,
-							"click": "",
+							"click": "gate_f",
 							"on": "UNLOCK_GATE_F"
 						},
 						{
@@ -170,8 +170,8 @@
 							"id": "14",
 							"file": "../../assets/data/scene001/help.png",
 							"image": "c15201f2936a19966f08e659a4732590",
-							"x": 95,
-							"y": 265,
+							"x": 0,
+							"y": 253,
 							"click": "",
 							"off": "OPEN_GATE_Z"
 						}
@@ -250,14 +250,23 @@
 							"off": "STAR_A1"
 						},
 						{
-							"id": "",
+							"id": "7",
 							"file": "../../assets/data/scene002/star.png",
 							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
-							"x": 171,
+							"x": 109,
 							"y": 225,
 							"click": "star2",
 							"on": "UNLOCK_GATE_A",
 							"off": "STAR_A2"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene002/hint.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 170,
+							"y": 221,
+							"click": "hint",
+							"on": "UNLOCK_GATE_A"
 						}
 					],
 					"moves": [
@@ -352,6 +361,62 @@
 							"y": 387,
 							"click": "hint",
 							"on": "PULL_DRAWER"
+						},
+						{
+							"id": "11",
+							"file": "../../assets/data/scene003/hint.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 163,
+							"y": 76,
+							"click": "hint2",
+							"on": "UNLOCK_GATE_B"
+						},
+						{
+							"id": "12",
+							"file": "../../assets/data/scene003/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 210,
+							"y": 76,
+							"click": "star1",
+							"on": "UNLOCK_GATE_B",
+							"off": "STAR_B1"
+						},
+						{
+							"id": "13",
+							"file": "../../assets/data/scene003/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 111,
+							"y": 438,
+							"click": "star2",
+							"off": "STAR_B2",
+							"on": "PULL_DRAWER"
+						},
+						{
+							"id": "14",
+							"file": "../../assets/data/scene003/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 118,
+							"y": 290,
+							"click": "star3",
+							"off": "STAR_B3"
+						},
+						{
+							"id": "15",
+							"file": "../../assets/data/scene003/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 198,
+							"y": 249,
+							"click": "star4",
+							"off": "STAR_B4"
+						},
+						{
+							"id": "16",
+							"file": "../../assets/data/scene003/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 108,
+							"y": 218,
+							"click": "star5",
+							"off": "STAR_B5"
 						}
 					],
 					"moves": [
@@ -419,6 +484,34 @@
 							"y": 224,
 							"click": "",
 							"on": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene004/hint.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 155,
+							"y": 280,
+							"click": "hint",
+							"on": "UNLOCK_GATE_C"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene004/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 211,
+							"y": 280,
+							"click": "star1",
+							"on": "UNLOCK_GATE_C",
+							"off": "STAR_C1"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene004/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 312,
+							"y": 96,
+							"click": "star2",
+							"off": "STAR_C2"
 						}
 					],
 					"moves": [
@@ -494,6 +587,34 @@
 							"y": 166,
 							"click": "",
 							"on": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene005/hint.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 148,
+							"y": 222,
+							"click": "hint",
+							"on": "UNLOCK_GATE_D"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene005/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 197,
+							"y": 223,
+							"click": "star1",
+							"on": "UNLOCK_GATE_D",
+							"off": "STAR_D1"
+						},
+						{
+							"id": "9",
+							"file": "../../assets/data/scene005/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 250,
+							"y": 171,
+							"click": "star2",
+							"off": "STAR_D2"
 						}
 					],
 					"moves": [
@@ -571,6 +692,25 @@
 							"y": 240,
 							"click": "answer",
 							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene006/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 15,
+							"y": 462,
+							"click": "star",
+							"on": "UNLOCK_GATE_E",
+							"off": "STAR_E2"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene006/hint.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 188,
+							"y": 349,
+							"click": "hint",
+							"on": "UNLOCK_GATE_E"
 						}
 					],
 					"moves": [
@@ -646,6 +786,16 @@
 							"y": 392,
 							"click": "answer4",
 							"off": "UNLOCK_GATE_E"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene007/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 204,
+							"y": 347,
+							"click": "star",
+							"off": "STAR_E1",
+							"on": "CORRECT_E"
 						}
 					],
 					"moves": [
@@ -713,6 +863,34 @@
 							"y": 224,
 							"click": "",
 							"on": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene008/hint.png",
+							"image": "1f06c12846d7b4554a880d05655e09fc",
+							"x": 197,
+							"y": 280,
+							"click": "hint",
+							"on": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene008/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 148,
+							"y": 280,
+							"click": "star1",
+							"on": "UNLOCK_GATE_F",
+							"off": "STAR_F1"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene008/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 174,
+							"y": 419,
+							"click": "star2",
+							"off": "STAR_F2"
 						}
 					],
 					"moves": [
@@ -861,6 +1039,16 @@
 							"x": 72,
 							"y": 74,
 							"click": "sticker"
+						},
+						{
+							"id": "15",
+							"file": "../../assets/data/scene009/star.png",
+							"image": "1d0994d2fc2fdee8fb7a098ac4bab8d9",
+							"x": 361,
+							"y": 220,
+							"click": "star",
+							"on": "UNLOCK_GATE_Z",
+							"off": "STAR_Z1"
 						}
 					]
 				}
@@ -1226,6 +1414,67 @@
 				{
 					"id": "STAR_A2",
 					"value": 21
+				},
+				{
+					"id": "STAR_B1",
+					"value": 31
+				},
+				{
+					"id": "STAR_B2",
+					"value": 32
+				},
+				{
+					"id": "STAR_B3",
+					"value": 33
+				},
+				{
+					"id": "STAR_B4",
+					"value": 34
+				},
+				{
+					"id": "STAR_B5",
+					"value": 35
+				},
+				{
+					"id": "STAR_C1",
+					"value": 40
+				},
+				{
+					"id": "STAR_C2",
+					"value": 41
+				},
+				{
+					"id": "STAR_D1",
+					"value": 50
+				},
+				{
+					"id": "STAR_D2",
+					"value": 51
+				},
+				{
+					"id": "STAR_E1",
+					"value": 60
+				},
+				{
+					"id": "STAR_E2",
+					"value": 61
+				},
+				{
+					"id": "STAR_F1",
+					"value": 80
+				},
+				{
+					"id": "STAR_Z1",
+					"value": 99
+				},
+				{
+					"id": "CORRECT_E",
+					"value": 65,
+					"comment": "ゲートEの問題に正解したかどうか"
+				},
+				{
+					"id": "STAR_F2",
+					"value": 81
 				}
 			],
 			"separators": [],

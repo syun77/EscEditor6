@@ -17,4 +17,13 @@ FUNC_START,answer
 INT,7
 JUMP
 FUNC_END,answer
+FUNC_START,star
+INT,50
+SCORE
+BOOL,1
+SET,16,61
+FUNC_END,star
+FUNC_START,hint
+MSG,9,「ー」と書いてある
+FUNC_END,hint
 END

@@ -28,7 +28,42 @@ def close_drawer
 	%PULL_DRAWER = false
 }
 
+def star1
+{
+	SCORE(600)
+	%STAR_B1 = true
+}
+
+def star2
+{
+	SCORE(30)
+	%STAR_B2 = true
+}
+
+def star3
+{
+	SCORE(10)
+	%STAR_B3 = true
+}
+
+def star4
+{
+	SCORE(10)
+	%STAR_B4 = true
+}
+
+def star5
+{
+	SCORE(10)
+	%STAR_B5 = true
+}
+
 def hint
 {
 	":何かのヒントのようだ"
+}
+
+def hint2
+{
+	":「ル」と書いてある"
 }

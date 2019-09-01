@@ -11,6 +11,8 @@ FUNC_END,answer2
 FUNC_START,answer3
 MSG,9,正解
 BOOL,1
+SET,16,65
+BOOL,1
 SET,16,14
 FUNC_END,answer3
 FUNC_START,answer4
@@ -18,4 +20,13 @@ MSG,9,不正解です
 BOOL,1
 SET,16,14
 FUNC_END,answer4
+FUNC_START,star
+BOOL,1
+SET,16,60
+INT,900
+SCORE
+FUNC_END,star
+FUNC_START,hint
+MSG,9,「ー」と書いてある
+FUNC_END,hint
 END

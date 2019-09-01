@@ -55,3 +55,18 @@ flag:
   HINT9: 98 # ヒント9
   STAR_A1: 20 # 
   STAR_A2: 21 # 
+  STAR_B1: 31 # 
+  STAR_B2: 32 # 
+  STAR_B3: 33 # 
+  STAR_B4: 34 # 
+  STAR_B5: 35 # 
+  STAR_C1: 40 # 
+  STAR_C2: 41 # 
+  STAR_D1: 50 # 
+  STAR_D2: 51 # 
+  STAR_E1: 60 # 
+  STAR_E2: 61 # 
+  STAR_F1: 80 # 
+  STAR_Z1: 99 # 
+  CORRECT_E: 65 # ゲートEの問題に正解したかどうか
+  STAR_F2: 81 # 

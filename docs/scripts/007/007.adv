@@ -11,10 +11,22 @@ def answer2
 def answer3
 {
 	":正解"
+	%CORRECT_E = true
 	%UNLOCK_GATE_E = true
 }
 def answer4
 {
 	":不正解です"
 	%UNLOCK_GATE_E = true
+}
+
+def star
+{
+	%STAR_E1 = true
+	SCORE(900)
+}
+
+def hint
+{
+	":「ー」と書いてある"
 }

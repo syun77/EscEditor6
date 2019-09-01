@@ -21,3 +21,8 @@ def star2
 	SCORE(500)
 	%STAR_A2 = true
 }
+
+def hint
+{
+	":「カ」と書いてある"
+}

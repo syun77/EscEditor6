@@ -21,14 +21,20 @@ class ResultState extends FlxState {
 
         var total:Int = EscGlobal.getScore();
         {
+            var txt = new FlxText(0, 160, FlxG.width, "", 20);
+            txt.text = 'SCORE: ${total}';
+            txt.alignment = FlxTextAlign.CENTER;
+            this.add(txt);
+        }
+        {
             var sec    = EscGlobal.getTimeLimit();
             var minute = Std.int(sec / 60);
             var second = Std.int(sec) % 60;
 
-            var score = Std.int(sec) * 50; // タイムボーナス x50
+            var score = Std.int(sec) * 10; // タイムボーナス x10
             total += score;
             var time = 'TIME ${minute}:${Utils.fillZero(second, 2)} (+${score})';
-            var txt = new FlxText(0, 200, FlxG.width, time, 24);
+            var txt = new FlxText(0, 200, FlxG.width, time, 20);
             txt.alignment = FlxTextAlign.CENTER;
             this.add(txt);
         }
@@ -42,10 +48,10 @@ class ResultState extends FlxState {
             this.add(txt2);
         }
 
-        var btn = new FlxButton(FlxG.width/2, FlxG.height*2/3, "BACK TO TITLE", function() {
+        var btn = new FlxButton(FlxG.width/2, FlxG.height*3/4, "BACK TO TITLE", function() {
             FlxG.switchState(new TitleState());
         });
-        Utils.scaleButton(btn, 3);
+        //Utils.scaleButton(btn, 3);
         // センタリング
         btn.x -= btn.width/2;
         btn.y -= btn.height/2;

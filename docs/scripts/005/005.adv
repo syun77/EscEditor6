@@ -25,3 +25,20 @@ def kuchinashi
 {
 	":クチナシの花が描かれている"
 }
+
+def hint
+{
+	":「ャ」と書いてある"
+}
+
+def star1
+{
+	%STAR_D1 = true
+	SCORE(500)
+}
+
+def star2
+{
+	%STAR_D2 = true
+	SCORE(50)
+}

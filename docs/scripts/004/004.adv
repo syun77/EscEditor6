@@ -9,3 +9,20 @@ def number
 		":正しくないようだ"
 	}
 }
+
+def hint
+{
+	":「チ」と書いてある"
+}
+
+def star1
+{
+	SCORE(1000)
+	%STAR_C1 = true
+}
+
+def star2
+{
+	SCORE(100)
+	%STAR_C2 = true
+}

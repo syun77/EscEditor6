@@ -27,3 +27,15 @@ def answer
 {
 	JUMP(GateE2)
 }
+
+def star
+{
+	SCORE(50)
+	%STAR_E2 = true
+}
+
+def hint
+{
+	":「ー」と書いてある"
+}
+
