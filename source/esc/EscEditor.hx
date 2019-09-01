@@ -27,8 +27,8 @@ import state.TitleState;
 import state.ResultState;
 import save.GameData;
 
-// 次に進むシーン
-typedef NEXT_SCENE = ResultState;
+// 次に進むState
+typedef NEXT_STATE = ResultState;
 
 /**
  * 状態
@@ -236,8 +236,10 @@ class EscEditor extends FlxSubState {
         }
         else {
             // スクリプト実行
-            _script.execute(path, funcName);
-
+            if(_script.execute(path, funcName) == false) {
+                // 指定の関数名がない
+                return false;
+            }
         }
 
         _state = State.ScriptWait;
@@ -327,7 +329,13 @@ class EscEditor extends FlxSubState {
 
         switch(_state) {
             case State.Init:
-                _state = State.FadeInWait;
+                var path = _loader.getScriptPath();
+                // シーン開始スクリプトがあれば実行
+                if(startScript(path, "init") == false) {
+                    // 存在しない場合はそのままフェード処理
+                    _state = State.FadeInWait;
+                }
+
             case State.FadeInWait:
                 _state = State.Execute;
             case State.Execute:
@@ -387,7 +395,7 @@ class EscEditor extends FlxSubState {
             _txtCompleted.color = FlxColor.RED;
             _txtCompleted.size = 32;
             new FlxTimer().start(3, function(_) {
-                FlxG.switchState(new NEXT_SCENE());
+                FlxG.switchState(new NEXT_STATE());
             });
             return;
         }
@@ -439,7 +447,7 @@ class EscEditor extends FlxSubState {
                 _txtCompleted.text = "COMPLETED";
                 _txtCompleted.size = 80;
                 new FlxTimer().start(3, function(_) {
-                    FlxG.switchState(new NEXT_SCENE());
+                    FlxG.switchState(new NEXT_STATE());
                 });
             }
             else if(_activeUI != null) {

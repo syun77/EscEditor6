@@ -25,7 +25,7 @@ class EscGlobal {
     public static inline var ITEM_INVALID:Int  = 0; // 無効なアイテムID
     public static inline var SCENE_INVALID:Int = 0; // 無効なシーンID
 
-    static inline var TIME_LIMIT:Float = 3;//5 * 60; // 制限時間
+    static inline var TIME_LIMIT:Float = 10 * 60; // 制限時間
 
     // --------------------------------------------------------------------
     // ■変数

@@ -84,7 +84,7 @@ class EscScript {
     /**
      * 実行
      */
-    public function execute(filepath:String, funcname:String=null):Void {
+    public function execute(filepath:String, funcname:String=null):Bool {
         _init();
 
         // 実行
@@ -110,10 +110,18 @@ class EscScript {
 
         if(funcname != null) {
             // 直接関数を呼び出す
+            if(funcname == "init") {
+                // "init" は事前検索をする
+                if(_script.searchFunction(funcname) == false) {
+                    // 存在しない
+                    return false;
+                }
+            }
             _script.jumpFunction(funcname);
         }
 
         _state = State.Execute;
+        return true;
     }
     function _WAIT(param:Array<String>):Int {
         _log('WAIT');

@@ -156,6 +156,24 @@
 							"y": 150,
 							"click": "",
 							"on": "UNLOCK_GATE_F"
+						},
+						{
+							"id": "13",
+							"file": "../../assets/data/scene001/gate_z.png",
+							"image": "3b09d2a2ccde56db24cebdf005d7357d",
+							"x": 59,
+							"y": 247,
+							"click": "gate_z",
+							"on": "OPEN_GATE_Z"
+						},
+						{
+							"id": "14",
+							"file": "../../assets/data/scene001/help.png",
+							"image": "c15201f2936a19966f08e659a4732590",
+							"x": 95,
+							"y": 265,
+							"click": "",
+							"off": "OPEN_GATE_Z"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -1145,6 +1163,11 @@
 					"id": "UNLOCK_GATE_Z",
 					"value": 16,
 					"comment": "GATE-Zのロック解除"
+				},
+				{
+					"id": "OPEN_GATE_Z",
+					"value": 17,
+					"comment": "GATE-Z解放"
 				},
 				{
 					"id": "PULL_DRAWER",

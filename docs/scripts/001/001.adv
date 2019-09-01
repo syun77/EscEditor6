@@ -1,3 +1,32 @@
+def init
+{
+	// ゲート解放数をカウントする
+	$10 = 0
+	if(%UNLOCK_GATE_A) {
+		$10 += 1
+	}
+	if(%UNLOCK_GATE_B) {
+		$10 += 1
+	}
+	if(%UNLOCK_GATE_C) {
+		$10 += 1
+	}
+	if(%UNLOCK_GATE_D) {
+		$10 += 1
+	}
+	if(%UNLOCK_GATE_E) {
+		$10 += 1
+	}
+	if(%UNLOCK_GATE_F) {
+		$10 += 1
+	}
+	
+	if($10 >= 3) {
+		// 3つ以上のゲート解放で最終ゲートが開く
+		%OPEN_GATE_Z = true
+	}
+}
+
 def gate_a
 {
 	JUMP(GateA)
@@ -24,5 +53,5 @@ def gate_f
 }
 def gate_z
 {
-	//JUMP(GateZ)
+	JUMP(GateZ)
 }

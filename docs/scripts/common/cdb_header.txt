@@ -42,6 +42,7 @@ flag:
   UNLOCK_GATE_E: 14 # GATE-Eのロックを解除
   UNLOCK_GATE_F: 15 # GATE-Fのロックを解除
   UNLOCK_GATE_Z: 16 # GATE-Zのロック解除
+  OPEN_GATE_Z: 17 # GATE-Z解放
   PULL_DRAWER: 30 # 引き出しを開けているかどうか
   HINT1: 90 # ヒント1
   HINT2: 91 # ヒント2

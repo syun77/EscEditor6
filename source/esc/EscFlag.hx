@@ -8,6 +8,7 @@ class EscFlag {
 	public static inline var UNLOCK_GATE_E:Int = 14;
 	public static inline var UNLOCK_GATE_F:Int = 15;
 	public static inline var UNLOCK_GATE_Z:Int = 16;
+	public static inline var OPEN_GATE_Z:Int = 17;
 	public static inline var PULL_DRAWER:Int = 30;
 	public static inline var HINT1:Int = 90;
 	public static inline var HINT2:Int = 91;
@@ -28,6 +29,7 @@ class EscFlag {
 		"UNLOCK_GATE_E" => 14,
 		"UNLOCK_GATE_F" => 15,
 		"UNLOCK_GATE_Z" => 16,
+		"OPEN_GATE_Z" => 17,
 		"PULL_DRAWER" => 30,
 		"HINT1" => 90,
 		"HINT2" => 91,

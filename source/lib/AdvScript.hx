@@ -127,6 +127,16 @@ class AdvScript {
   }
 
   /**
+   * 指定の関数を探す
+   * @param name 関数名
+   * @return Bool 存在する場合は true
+   */
+  public function searchFunction(name:String):Bool {
+    var addr = _searchFunction(name);
+    return addr >= 0;
+  }
+
+  /**
    * 指定の関数名に直接ジャンプする
    */
   public function jumpFunction(name:String):Bool {
