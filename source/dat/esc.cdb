@@ -48,7 +48,16 @@
 							"id": "1"
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene001/gate_a.png",
+							"image": "1fc6ea55403fc7a66de4434eae550bd1",
+							"x": 128,
+							"y": 132,
+							"click": "test"
+						}
+					],
 					"script": "../../docs/scripts/001/001.adv",
 					"id": "Entrance",
 					"moves": [],

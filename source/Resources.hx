@@ -2,7 +2,7 @@ package;
 
 class Resources {
 	// フォント
-    public static inline var FONT_PATH:String = "assets/fonts/PixelMplus12-Regular.ttf";
+    public static inline var FONT_PATH:String = "assets/fonts/PixelMplus10-Regular.ttf";
     public static inline var FONT_SIZE:Int = 20;
 
 	// カーソル

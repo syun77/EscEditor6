@@ -21,7 +21,7 @@ class SavingUI extends FlxSpriteGroup {
     public function new() {
         super();
 
-        _txt = new FlxText(0, Const.getBottom(), 0, "Saving...", 16);
+        _txt = new FlxText(0, Const.getBottom(), 0, "Saving...", Resources.FONT_SIZE);
         _txt.x = FlxG.width - _txt.width;
         _txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         _txt.y -= _txt.height;

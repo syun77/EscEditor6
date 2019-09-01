@@ -30,7 +30,7 @@ class SceneNameUI extends FlxSpriteGroup {
         // シーン名表示
         {
             _txt = new FlxText(8, -32, 0);
-            _txt.setFormat(Resources.FONT_PATH, 24);
+            _txt.setFormat(Resources.FONT_PATH, Resources.FONT_SIZE);
             _txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 2);
             _txt.text = dat.SceneDB.get(sceneID).name;
             this.add(_txt);
