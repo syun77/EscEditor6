@@ -7,6 +7,7 @@ import flixel.FlxG;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
+import flixel.util.FlxDestroyUtil;
 import esc.EscGlobal;
 import ui.MenuUIBase;
 
@@ -245,6 +246,7 @@ class NumberInputUI extends MenuUIBase {
 
         for(ui in _uiList) {
             this.remove(ui, true);
+            FlxDestroyUtil.destroy(ui);
         }
         exists = false;
     }

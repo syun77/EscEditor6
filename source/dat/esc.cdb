@@ -354,6 +354,60 @@
 			]
 		},
 		{
+			"name": "kanas",
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "answer",
+					"display": null
+				},
+				{
+					"typeStr": "2",
+					"name": "auto_check"
+				},
+				{
+					"typeStr": "3",
+					"name": "idx"
+				},
+				{
+					"typeStr": "8",
+					"name": "choices",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"id": 1,
+					"answer": "えかせつね",
+					"choices": [
+						{
+							"moji": "あいうえお"
+						},
+						{
+							"moji": "かきくけこ"
+						},
+						{
+							"moji": "さしすせそ"
+						},
+						{
+							"moji": "たちつてと"
+						},
+						{
+							"moji": "なにぬねの"
+						}
+					],
+					"auto_check": true,
+					"idx": 0
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
 			"name": "panels",
 			"columns": [
 				{
@@ -418,6 +472,20 @@
 					"name": "off",
 					"opt": true,
 					"display": null
+				}
+			]
+		},
+		{
+			"name": "kanas@choices",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "moji"
 				}
 			]
 		}

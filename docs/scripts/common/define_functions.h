@@ -1,6 +1,7 @@
 //関数名,     命令コード, 引数リスト, ...
 NUM_INPUT,    NUM_INPUT,  idx, digit
 PIC_INPUT,    PIC_INPUT,  picId, idx, digit
+KANA_INPUT,   KANA_INPUT, kanaId
 PANEL_INPUT,  PNL_INPUT,  panelId
 WAIT,         WAIT,       sec
 JUMP,         JUMP,       sceneId
