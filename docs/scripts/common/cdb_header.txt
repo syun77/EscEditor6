@@ -5,14 +5,6 @@
 const:
   # シーン
   Entrance: 1 # 入り口
-  GateA: 2 # ゲートA
-  GateB: 3 # ゲートB
-  GateC: 4 # ゲートC
-  GateD: 5 # ゲートD
-  GateE: 6 # ゲートE
-  GateE2: 7 # 　
-  GateF: 8 # ゲートF
-  GateZ: 9 # 最終ゲート
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -35,38 +27,4 @@ const:
   ITEM_SILVER_KEY: 17 # 銀色のカギ
   
 flag:
-  UNLOCK_GATE_A: 10 # GATE-Aのロックを解除
-  UNLOCK_GATE_B: 11 # GATE-Bのロックを解除
-  UNLOCK_GATE_C: 12 # GATE-Cのロックを解除
-  UNLOCK_GATE_D: 13 # GATE-Dのロックを解除
-  UNLOCK_GATE_E: 14 # GATE-Eのロックを解除
-  UNLOCK_GATE_F: 15 # GATE-Fのロックを解除
-  UNLOCK_GATE_Z: 16 # GATE-Zのロック解除
-  OPEN_GATE_Z: 17 # GATE-Z解放
-  PULL_DRAWER: 30 # 引き出しを開けているかどうか
-  HINT1: 90 # ヒント1
-  HINT2: 91 # ヒント2
-  HINT3: 92 # ヒント3
-  HINT4: 93 # ヒント4
-  HINT5: 94 # ヒント5
-  HINT6: 95 # ヒント6
-  HINT7: 96 # ヒント7
-  HINT8: 97 # ヒント8
-  HINT9: 98 # ヒント9
-  STAR_A1: 20 # 
-  STAR_A2: 21 # 
-  STAR_B1: 31 # 
-  STAR_B2: 32 # 
-  STAR_B3: 33 # 
-  STAR_B4: 34 # 
-  STAR_B5: 35 # 
-  STAR_C1: 40 # 
-  STAR_C2: 41 # 
-  STAR_D1: 50 # 
-  STAR_D2: 51 # 
-  STAR_E1: 60 # 
-  STAR_E2: 61 # 
-  STAR_F1: 80 # 
-  STAR_Z1: 99 # 
-  CORRECT_E: 65 # ゲートEの問題に正解したかどうか
-  STAR_F2: 81 # 
+  TEST_FLAG: 10 # テスト用

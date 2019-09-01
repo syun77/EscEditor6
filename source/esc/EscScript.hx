@@ -101,7 +101,6 @@ class EscScript {
             "ITEM_CHK"  => _ITEM_CHK,
             "CRAFT_CHK" => _CRAFT_CHK,
             "COMPLETE"  => _COMPLETE,
-            "SCORE"     => _SCORE,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -247,16 +246,6 @@ class EscScript {
         _log('COMPLETE');
         _isCompleted = true;
         return AdvScript.RET_EXIT;
-    }
-    function _SCORE(param:Array<String>):Int {
-        var v = _script.popStack();
-        _log('SCORE v:${v}');
-        EscGlobal.addScore(v);
-
-        // インフォメーション表示
-        PlayState.getInformationUI().start('スコア +${v}', 3);
-
-        return AdvScript.RET_CONTINUE;
     }
 
     /**

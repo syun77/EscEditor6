@@ -4,7 +4,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxDestroyUtil;
 import ui.SceneNameUI;
 import ui.SavingUI;
-import ui.ScoreUI;
 
 /**
  * テロップ表示管理
@@ -16,9 +15,6 @@ class TelopUI extends FlxSpriteGroup {
      */
     public function new() {
         super();
-
-        // スコア表示は常駐
-        this.add(new ScoreUI());
     }
 
     /**

@@ -24,11 +24,10 @@ import ui.PictureInputUI;
 import ui.DragPanelInputUI;
 import ui.TelopUI;
 import state.TitleState;
-import state.ResultState;
 import save.GameData;
 
 // 次に進むState
-typedef NEXT_STATE = ResultState;
+typedef NEXT_STATE = TitleState;
 
 /**
  * 状態
@@ -388,18 +387,6 @@ class EscEditor extends FlxSubState {
 
     function _updateExecute():Void {
         
-        if(EscGlobal.getTimeLimit() == 0) {
-            // 時間ぎれ
-            _state = State.TimeUp;
-            _txtCompleted.text = "TIME OVER";
-            _txtCompleted.color = FlxColor.RED;
-            _txtCompleted.size = 32;
-            new FlxTimer().start(3, function(_) {
-                FlxG.switchState(new NEXT_STATE());
-            });
-            return;
-        }
-
 		if(FlxG.mouse.justPressed) {
 
             // クリックしたオブジェクトを取得する
