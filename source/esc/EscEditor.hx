@@ -22,6 +22,7 @@ import ui.MenuUIBase;
 import ui.NumberInputUI;
 import ui.PictureInputUI;
 import ui.DragPanelInputUI;
+import ui.KanaInputUI;
 import ui.TelopUI;
 import state.TitleState;
 import save.GameData;
@@ -207,6 +208,22 @@ class EscEditor extends FlxSubState {
 
     public function openPanelInput(panelID:Int):Void {
         var menu = new DragPanelInputUI(panelID);
+        menu.funcClosed = function() {
+            // 結果を保存する
+            if(menu.getResult()) {
+                EscGlobal.retSet(1); // 成功
+            }
+            else {
+                EscGlobal.retSet(0);
+            }
+            // スクリプト処理を続行する
+            _state = State.ScriptWait;
+        }
+        _openMenu(menu, false);
+    }
+
+    public function openKanaInput(kanaID:Int):Void {
+        var menu = new KanaInputUI(kanaID);
         menu.funcClosed = function() {
             // 結果を保存する
             if(menu.getResult()) {

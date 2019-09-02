@@ -89,18 +89,19 @@ class EscScript {
 
         // 実行
         var tbl = [
-            "WAIT"      => _WAIT,
-            "MSG"       => _MSG,
-            "NUM_INPUT" => _NUM_INPUT,
-            "PIC_INPUT" => _PIC_INPUT,
-            "PNL_INPUT" => _PNL_INPUT,
-            "JUMP"      => _JUMP,
-            "ITEM_ADD"  => _ITEM_ADD,
-            "ITEM_HAS"  => _ITEM_HAS,
-            "ITEM_DEL"  => _ITEM_DEL,
-            "ITEM_CHK"  => _ITEM_CHK,
-            "CRAFT_CHK" => _CRAFT_CHK,
-            "COMPLETE"  => _COMPLETE,
+            "WAIT"       => _WAIT,
+            "MSG"        => _MSG,
+            "NUM_INPUT"  => _NUM_INPUT,
+            "PIC_INPUT"  => _PIC_INPUT,
+            "PNL_INPUT"  => _PNL_INPUT,
+            "KANA_INPUT" => _KANA_INPUT,
+            "JUMP"       => _JUMP,
+            "ITEM_ADD"   => _ITEM_ADD,
+            "ITEM_HAS"   => _ITEM_HAS,
+            "ITEM_DEL"   => _ITEM_DEL,
+            "ITEM_CHK"   => _ITEM_CHK,
+            "CRAFT_CHK"  => _CRAFT_CHK,
+            "COMPLETE"   => _COMPLETE,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -173,6 +174,15 @@ class EscScript {
         var editor = PlayState.getEditor();
         if(editor != null) {
             editor.openPanelInput(panelID);
+        }
+        return AdvScript.RET_YIELD;
+    }
+    function _KANA_INPUT(param:Array<String>):Int {
+        _log('KANA_INPUT');
+        var kanaID = _script.popStack();
+        var editor = PlayState.getEditor();
+        if(editor != null) {
+            editor.openKanaInput(kanaID);
         }
         return AdvScript.RET_YIELD;
     }

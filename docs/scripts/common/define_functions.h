@@ -3,6 +3,7 @@ NUM_INPUT,    NUM_INPUT,  idx, digit
 PIC_INPUT,    PIC_INPUT,  picId, idx, digit
 KANA_INPUT,   KANA_INPUT, kanaId
 PANEL_INPUT,  PNL_INPUT,  panelId
+KANA_INPUT,   KANA_INPUT, kanaId
 WAIT,         WAIT,       sec
 JUMP,         JUMP,       sceneId
 ITEM_ADD,     ITEM_ADD,   itemId

@@ -1,6 +1,11 @@
 FUNC_START,init
 FUNC_END,init
 FUNC_START,test
-MSG,9,メッセージ表示テストアイウエオかきくけこさしすせそ
+INT,1
+KANA_INPUT
+VAR,0
+IF,00000010
+MSG,9,正解
+GOTO,00000010
 FUNC_END,test
 END

@@ -161,18 +161,21 @@ class KanaInputUI extends MenuUIBase {
     static inline var MARGIN_X:Float = 12;
 
     var _state:State = State.Standby;
+    var _cnt:Int = 0;
+    var _timer:Float = 0;
     var _kanaID:Int = 0;
     var _uiList:Array<KanaUI> = new Array<KanaUI>();
     var _okSpr:FlxSprite; // OKボタン
     var _bg:FlxSprite;
     var _idx:Int = 0; // 結果を保存するグローバル変数番号
-    var _result:Int; // 結果の値
+    var _value:Int; // 入力している値
     var _autoCheck:Bool = false; // 自動正解チェックを行うかどうか
     var _answer:String = ""; // 正解文字列
+    var _result:Bool = false; // 正解したら true
 
     /**
      * コンストラクタ
-     * @param kanaID 
+     * @param kanaID 文字入力番号
      */
     public function new(kanaID:Int) {
         super();
@@ -189,10 +192,10 @@ class KanaInputUI extends MenuUIBase {
                 mojiList.push(moji.moji);
             }
         }
-        _result = 0;
+        _value = 0;
         if(_idx > 0) {
             // 変数番号が指定されていれば変数値を取得する
-            _result = EscGlobal.valGet(_idx);
+            _value = EscGlobal.valGet(_idx);
         }
         var strLength = mojiList.length;
 
@@ -232,7 +235,7 @@ class KanaInputUI extends MenuUIBase {
             var v = strLength - (1 + i);
             var pow = Math.pow(10, v+1);
             var div = Math.pow(10, v);
-            var num = Std.int((_result % pow) / div);
+            var num = Std.int((_value % pow) / div);
             var ui = new KanaUI(px, py, num, strList);
             // 前に追加
             _uiList.unshift(ui);
@@ -246,22 +249,57 @@ class KanaInputUI extends MenuUIBase {
     }
 
     /**
+     * 結果取得
+     * @return Bool 正解したら true
+     */
+    public function getResult():Bool {
+        return _result;
+    }
+
+    /**
      * 更新
      * @param elapsed 経過時間
      */
     override public function update(elapsed:Float):Void {
         super.update(elapsed);
 
+        _timer += elapsed;
+        _cnt++;
+
+        switch(_state) {
+            case State.Standby:
+                _updateStandby();
+            case State.CorrectWait:
+                _updateCorrectWait();
+        }
+
+    }
+
+    /**
+     * 更新・待機
+     */
+    function _updateStandby():Void {
         if(_idx > 0) {
             // 入力した値を反映
-            _result = 0;
+            _value = 0;
             for(i in 0..._uiList.length) {
                 var ui = _uiList[i];
-                _result += Std.int(ui.getIdx() * Math.pow(10, i));
+                _value += Std.int(ui.getIdx() * Math.pow(10, i));
             }
 
             // グローバルデータに反映
-            EscGlobal.valSet(_idx, _result);
+            EscGlobal.valSet(_idx, _value);
+        }
+
+        if(_checkAnswer()) {
+            // 正解
+            _result = true;
+            // 正解演出開始
+            _state = State.CorrectWait;
+            _cnt = 0;
+            // ボタンを決しておく
+            _okSpr.visible = false;
+            return;
         }
 
         if(FlxG.mouse.justPressed) {
@@ -269,6 +307,37 @@ class KanaInputUI extends MenuUIBase {
                 // OKボタンをクリックした
                 _close();
             }
+        }
+    }
+
+    /**
+     * 正解チェック
+     * @return Bool 正解していたらtrue
+     */
+    function _checkAnswer():Bool {
+        var str = "";
+        for(ui in _uiList) {
+            str = ui.getText() + str; // 逆順に足しこむ必要がある
+        }
+
+        return _answer == str;
+    }
+
+    /**
+     * 更新・正解演出終了待ち
+     */
+    function _updateCorrectWait():Void {
+        var isVisible:Bool = true;
+        if(_cnt < 30 && _cnt%4 < 2) {
+            // 点滅する
+            isVisible = false;
+        }
+        for(ui in _uiList) {
+            ui.visible = isVisible;
+        }
+
+        if(_cnt > 60) {
+            _close();
         }
     }
 
