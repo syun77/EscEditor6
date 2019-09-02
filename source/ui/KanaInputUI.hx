@@ -297,7 +297,7 @@ class KanaInputUI extends MenuUIBase {
             // 正解演出開始
             _state = State.CorrectWait;
             _cnt = 0;
-            // ボタンを決しておく
+            // ボタンを消しておく
             _okSpr.visible = false;
             return;
         }
