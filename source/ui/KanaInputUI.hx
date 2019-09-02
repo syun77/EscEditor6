@@ -15,7 +15,7 @@ import dat.KanaDB;
  * カナ文字入力UI
  */
 private class KanaUI extends FlxSpriteGroup {
-    public static inline var SIZE:Int = Resources.INPUT_SPR_SIZE;
+    public static inline var SIZE:Float = Resources.INPUT_SPR_SIZE;
     public static inline var TEXT_SIZE:Int = 60;
 
     static inline var ARROW_COLOR:Int = 0xFFc0c0c0;
@@ -327,15 +327,6 @@ class KanaInputUI extends MenuUIBase {
      * 更新・正解演出終了待ち
      */
     function _updateCorrectWait():Void {
-        var isVisible:Bool = true;
-        if(_cnt < 30 && _cnt%4 < 2) {
-            // 点滅する
-            isVisible = false;
-        }
-        for(ui in _uiList) {
-            ui.visible = isVisible;
-        }
-
         if(_cnt > 60) {
             _close();
         }
