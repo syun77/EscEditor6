@@ -305,7 +305,11 @@ class DragPanelInputUI extends MenuUIBase {
         if(hitSpr == null) {
             // 置き場所の指定がない場合は最初の位置に戻る
             _draggedPanel.resetOriginPosition();
-            _answers[_draggedPanel.ID] = ANSWER_INVALID_ID;
+            for(i in 0..._answer.length) {
+                if(_answers[i] == _draggedPanel.ID) {
+                    _answers[i] = ANSWER_INVALID_ID; // 消しておく
+                }
+            }
         }
         else {
             // 答えの枠に配置する
@@ -340,6 +344,9 @@ class DragPanelInputUI extends MenuUIBase {
             _result = true;
             _backSpr.exists = false; // 戻るボタンを非表示
             _state = State.Correct;
+            for(panel in _panels) {
+                panel.lock();
+            }
         }
         else {
             // 不正解
@@ -459,7 +466,11 @@ class DragPanelInputUI extends MenuUIBase {
         if(isReset) {
             // 位置のリセットが必要
             replacedPanel.resetOriginPosition();
-            _answers[replacedPanel.ID] = ANSWER_INVALID_ID;
+            for(i in 0..._answers.length) {
+                if(_answers[i] == replacedPanel.ID) {
+                    _answers[i] = ANSWER_INVALID_ID; // 消しておく
+                }
+            }
         }
 
         return replacedPanel;

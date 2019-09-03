@@ -12,6 +12,7 @@ private enum State {
     Standby; // 待機状態
     Dragged; // ドラッグ移動中
     JustReleased; // ドラッグを解放した瞬間
+    Lock; // 動かせない
 }
 
 class DraggableUI extends FlxSprite {
@@ -79,7 +80,10 @@ class DraggableUI extends FlxSprite {
      * @return Bool 終わったら true
      */
     public function isEndReturn():Bool {
-        if(_state != State.Standby) {
+        switch(_state) {
+        case State.Standby:
+        case State.Lock:
+        default:
             return false;
         }
 
@@ -139,6 +143,13 @@ class DraggableUI extends FlxSprite {
     }
 
     /**
+     * 移動をロックする
+     */
+    public function lock():Void {
+        _state = State.Lock;
+    }
+
+    /**
      * 更新
      * @param elapsed 経過時間
      */
@@ -171,7 +182,11 @@ class DraggableUI extends FlxSprite {
                 if(_isWait == false) {
                     _state = State.Standby;
                 }
-
+            case State.Lock:
+                var dx = (_xstart - x);
+                var dy = (_ystart - y);
+                x += dx * RETURNING_SPEED;
+                y += dy * RETURNING_SPEED;
         }
     }
 }
