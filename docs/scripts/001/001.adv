@@ -4,8 +4,8 @@ def init
 
 def test
 {
-	//KANA_INPUT(1)
-	PANEL_INPUT(1)
+	KANA_INPUT(1)
+	//PANEL_INPUT(1)
 	if($RET) {
 		":正解"
 	}

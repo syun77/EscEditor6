@@ -1,5 +1,6 @@
 package ui;
 
+import haxe.Resource;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
@@ -100,6 +101,15 @@ private class KanaUI extends FlxSpriteGroup {
     }
 
     /**
+     * 操作ボタンを無効にする
+     */
+    public function lock():Void {
+        for(spr in _sprList) {
+            spr.kill();
+        }
+    }
+
+    /**
      * 更新
      * @param elapsed 経過時間
      */
@@ -113,6 +123,9 @@ private class KanaUI extends FlxSpriteGroup {
         if(FlxG.mouse.justPressed) {
             for(i in 0..._sprList.length) {
                 var spr = _sprList[i];
+                if(spr.exists == false) {
+                    continue; // ロック対応
+                }
                 var clicked = Utils.checkClickSprite(spr);
                 if(clicked == false) {
                     continue;
@@ -166,7 +179,8 @@ class KanaInputUI extends MenuUIBase {
     var _kanaID:Int = 0;
     var _uiList:Array<KanaUI> = new Array<KanaUI>();
     var _okSpr:FlxSprite; // OKボタン
-    var _bg:FlxSprite;
+    var _bg:FlxSprite; // 背景
+    var _bgFlash:FlxSprite; // 正解時の点滅背景
     var _idx:Int = 0; // 結果を保存するグローバル変数番号
     var _value:Int; // 入力している値
     var _autoCheck:Bool = false; // 自動正解チェックを行うかどうか
@@ -206,6 +220,15 @@ class KanaInputUI extends MenuUIBase {
             _bg.y -= _bg.height/2;
             _bg.alpha = 0.3;
             this.add(_bg);
+        }
+
+        // 正解時の点滅背景
+        {
+            var bgHeight = Std.int(Resources.INPUT_SPR_SIZE * 1.1);
+            _bgFlash = new FlxSprite(0, Const.getCenterY()).makeGraphic(FlxG.width, bgHeight, FlxColor.WHITE);
+            _bgFlash.y -= _bgFlash.height/2;
+            _bgFlash.visible = false;
+            this.add(_bgFlash);
         }
 
         // OKボタン
@@ -299,6 +322,10 @@ class KanaInputUI extends MenuUIBase {
             _cnt = 0;
             // ボタンを消しておく
             _okSpr.visible = false;
+            // 操作パネルを消去
+            for(ui in _uiList) {
+                ui.lock();
+            }
             return;
         }
 
@@ -327,6 +354,13 @@ class KanaInputUI extends MenuUIBase {
      * 更新・正解演出終了待ち
      */
     function _updateCorrectWait():Void {
+        _bgFlash.visible = false;
+        if(_cnt < 30) {
+            var ratio = Math.sin(Math.PI * _cnt / 30);
+            _bgFlash.alpha = ratio;
+            _bgFlash.visible = true;
+        }
+
         if(_cnt > 60) {
             _close();
         }
