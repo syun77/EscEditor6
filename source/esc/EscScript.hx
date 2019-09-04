@@ -275,7 +275,6 @@ class EscScript {
 
         // 問題文を保持
         _selectQuestion = param[1]; // [1]が問題文
-        trace("question: " + _selectQuestion);
         return AdvScript.RET_CONTINUE; // TODO: ひとまず仮実装
     }
 
@@ -288,7 +287,6 @@ class EscScript {
         var p = new SelectParam();
         p.question = _selectQuestion;
         p.choices = param;
-        trace(p);
         PlayState.getEditor().openSelect(p);
 
         return AdvScript.RET_YIELD;

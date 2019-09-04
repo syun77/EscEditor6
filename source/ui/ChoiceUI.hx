@@ -1,5 +1,6 @@
 package ui;
 
+import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.text.FlxText;
@@ -101,12 +102,16 @@ class ChoiceUI extends FlxSpriteGroup {
                     _state = State.Standby;
                 }
             case State.Decided:
-               if(_cnt%4 < 2) {
-                   _bg.color = BG_COLOR_PRESSED;
-               } 
-               if(_cnt > 10) {
-                   _state = State.End;
-               }
+                var ratio = _cnt / 10.0;
+                var sc = 1 + 0.2 * FlxEase.expoOut(ratio);
+                var a = 1 - ratio;
+                _bg.alpha = a;
+                _bg.scale.set(sc, sc);
+                _txt.alpha = a;
+                _txt.scale.set(sc, sc);
+                if(_cnt >= 10) {
+                    _state = State.End;
+                }
             case State.End:
         }
     }
