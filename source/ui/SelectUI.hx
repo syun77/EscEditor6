@@ -13,6 +13,14 @@ private enum State {
     End;
 }
 
+class SelectParam {
+    public var question:String = null;
+    public var choices:Array<String> = null;
+
+    public function new() {
+    }
+}
+
 /**
  * 選択肢UI
  */
@@ -28,11 +36,13 @@ class SelectUI extends MenuUIBase {
     /**
      * コンストラクタ
      */
-    public function new() {
+    public function new(param:SelectParam) {
         super();
 
+        trace(param);
+
         // 問題文
-        var strQuestion = "問題文";
+        var strQuestion = param.question;
         var txt = new FlxText(0, QUESTION_POS_Y, FlxG.width, strQuestion);
         txt.setFormat(Resources.FONT_PATH, Resources.FONT_SIZE);
         txt.alignment = FlxTextAlign.CENTER;
@@ -40,7 +50,7 @@ class SelectUI extends MenuUIBase {
         this.add(txt);
 
         // 選択肢
-        var strArray = ["選択肢1", "選択肢2", "選択肢3"];
+        var strArray = param.choices;
 
         _uiList = new Array<ChoiceUI>();
         var px:Float = 0;
@@ -55,6 +65,14 @@ class SelectUI extends MenuUIBase {
         for(ui in _uiList) {
             this.add(ui);
         }
+    }
+    
+    /**
+     * 選択した番号を取得する
+     * @return Int 選択した番号
+     */
+    public function getSelectIdx():Int {
+        return _seleced;
     }
 
     /**
@@ -89,6 +107,7 @@ class SelectUI extends MenuUIBase {
                 var ui = _uiList[_seleced];
                 if(ui.isEnd()) {
                     _state = State.End;
+                    exists = false;
                 }
 
             case State.End:

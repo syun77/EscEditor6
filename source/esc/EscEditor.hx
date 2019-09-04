@@ -1,5 +1,7 @@
 package esc;
 
+import ui.SelectUI;
+import ui.SelectUI.SelectParam;
 import flixel.FlxSubState;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxSprite;
@@ -216,6 +218,17 @@ class EscEditor extends FlxSubState {
             else {
                 EscGlobal.retSet(0);
             }
+            // スクリプト処理を続行する
+            _state = State.ScriptWait;
+        }
+        _openMenu(menu, false);
+    }
+
+    public function openSelect(param:SelectParam):Void {
+        var menu = new SelectUI(param);
+        menu.funcClosed = function() {
+            // 選択結果を保持
+            EscGlobal.retSet(menu.getSelectIdx());
             // スクリプト処理を続行する
             _state = State.ScriptWait;
         }

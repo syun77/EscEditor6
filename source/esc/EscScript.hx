@@ -3,6 +3,7 @@ package esc;
 import lib.AdvScript;
 import state.PlayState;
 import dat.ItemDB;
+import ui.SelectUI.SelectParam;
 
 /**
  * 状態
@@ -24,6 +25,9 @@ class EscScript {
     var _wait:Float = 0;
     var _isLog:Bool = false;
     var _isCompleted:Bool = false; // ゲームクリアフラグ
+
+    // 選択肢
+    var _selectQuestion:String;
 
     /**
      * コンストラクタ
@@ -67,6 +71,10 @@ class EscScript {
         }
     }
 
+    /**
+     * 更新・スクリプト実行
+     * @param elapsed 経過時間
+     */
     function _updateExecute(elapsed:Float):Void {
         if(_wait > 0) {
             // 実行停止中
@@ -102,6 +110,9 @@ class EscScript {
             "ITEM_CHK"   => _ITEM_CHK,
             "CRAFT_CHK"  => _CRAFT_CHK,
             "COMPLETE"   => _COMPLETE,
+            "SEL"        => _SEL,
+            "SEL_ANS"    => _SEL_ANS,
+            "SEL_GOTO"   => _SEL_GOTO,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -257,6 +268,48 @@ class EscScript {
         _isCompleted = true;
         return AdvScript.RET_EXIT;
     }
+    function _SEL(param:Array<String>):Int {
+        if(_isLog) {
+            trace("[SCRIPT] SEL");
+        }
+
+        // 問題文を保持
+        _selectQuestion = param[1]; // [1]が問題文
+        trace("question: " + _selectQuestion);
+        return AdvScript.RET_CONTINUE; // TODO: ひとまず仮実装
+    }
+
+    function _SEL_ANS(param:Array<String>):Int {
+        if(_isLog) {
+            trace("[SCRIPT] SEL_ANS");
+        }
+
+        param.shift(); // 最初の値は選択肢の数なので捨てる
+        var p = new SelectParam();
+        p.question = _selectQuestion;
+        p.choices = param;
+        trace(p);
+        PlayState.getEditor().openSelect(p);
+
+        return AdvScript.RET_YIELD;
+    }
+
+    function _SEL_GOTO(param:Array<String>):Int {
+        if(_isLog) {
+            trace("[SCRIPT] SEL_GOTO");
+        }
+
+        var idx = EscGlobal.retGet();
+        if(idx < 0 || param.length <= idx) {
+            trace('[SCRIPT] Error invalid select idx(${idx})'); // 選んだ選択肢番号が正しくない
+        }
+        else {
+            var address = Std.parseInt(param[EscGlobal.retGet()]);
+            _script.jumpAddress(address);
+        }
+
+        return AdvScript.RET_CONTINUE;
+    }
 
     /**
     * ログの出力
@@ -268,7 +321,7 @@ class EscScript {
     }
 
     /**
-     * 登録
+     * コールバック関数を登録
      */
     function _register():Void {
         // フラグ
@@ -280,6 +333,17 @@ class EscScript {
         _script.funcLengthVar = function() { return EscGlobal.MAX_VAL; }
         _script.funcSetVar = EscGlobal.valSet;
         _script.funcGetVar = EscGlobal.valGet;
+    }
+
+    /**
+     * 選択肢の開始
+     * @param strList 
+     */
+    function _selectChoice(strList:Array<String>):Void {
+        var param = new SelectParam();
+        param.question = _selectQuestion;
+        param.choices = strList;
+        PlayState.getEditor().openSelect(param);
     }
 
 }
