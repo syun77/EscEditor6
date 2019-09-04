@@ -1,5 +1,6 @@
 package state;
 
+import ui.SelectUI;
 import flixel.FlxG;
 import flixel.FlxState;
 import ui.DragPanelInputUI;
@@ -17,6 +18,7 @@ class TestState extends FlxState {
         super.create();
 
         // this.add(new DragPanelInputUI(1));
-        this.add(new KanaInputUI(1));
+        // this.add(new KanaInputUI(1));
+        this.add(new SelectUI());
     }
 }

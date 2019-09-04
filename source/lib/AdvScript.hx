@@ -28,12 +28,18 @@ class AdvScript {
   // ■スタティック
 
   // ■公開変数
-  public var funcLengthBit:Void -> Int = null;
-  public var funcSetBit:Int -> Bool -> Void = null;
-  public var funcGetBit:Int -> Bool = null;
-  public var funcLengthVar:Void -> Int = null;
-  public var funcSetVar:Int -> Int -> Void = null;
-  public var funcGetVar:Int -> Int = null;
+  // ・フラグ関連
+  public var funcLengthBit:Void -> Int      = null; // フラグの最大数
+  public var funcSetBit:Int -> Bool -> Void = null; // フラグの設定
+  public var funcGetBit:Int -> Bool         = null; // フラグの取得
+  // ・変数関連
+  public var funcLengthVar:Void -> Int     = null; // 変数の最大数
+  public var funcSetVar:Int -> Int -> Void = null; // 変数の設定
+  public var funcGetVar:Int -> Int         = null; // 変数の取得
+  // ・選択肢関連
+  public var funcSelectQuestion:Array<String> -> Void = null; // 選択肢の問題文を設定
+  public var funcSelectChoices:Array<String> -> Void  = null; // 選択肢の解答を設定
+  public var funcSelectGoto:Void -> Int               = null; // 選択肢の選んだ項目番号を取得する
 
   // ■メンバ変数
   // スクリプトデータ
@@ -190,6 +196,9 @@ class AdvScript {
       "END"   => _END,
       "FUNC_START" => _FUNC_START,
       "FUNC_END"   => _FUNC_END,
+      "SEL"      => _SEL,
+      "SEL_ANS"  => _SEL_ANS,
+      "SEL_GOTO" => _SEL_GOTO,
     ];
 
     _userTbl = cmdTbl;
@@ -589,6 +598,44 @@ class AdvScript {
     else {
       var addr = _callStack.pop(); // コールスタックがある場合は復帰する
       _pc = addr /*+ 1*/; // 呼び出しの次のアドレス
+    }
+  }
+
+  private function _SEL(param:Array<String>):Void {
+    if(_bLog) {
+      trace("[SCRIPT] SEL");
+    }
+
+    if(funcSelectQuestion != null) {
+      funcSelectQuestion(param);
+    }
+  }
+
+  private function _SEL_ANS(param:Array<String>):Void {
+    if(_bLog) {
+      trace("[SCRIPT] SEL_ANS");
+    }
+
+    if(funcSelectChoices != null) {
+      param.shift(); // 最初の値は選択肢の数なので捨てる
+      funcSelectChoices(param);
+    }
+  }
+
+  private function _SEL_GOTO(param:Array<String>):Void {
+    if(_bLog) {
+      trace("[SCRIPT] SEL_GOTO");
+    }
+
+    if(funcSelectGoto != null) {
+      var idx = funcSelectGoto();
+      if(idx < 0 || param.length <= idx) {
+        trace('[SCRIPT] Error invalid select idx(${idx})'); // 選んだ選択肢番号が正しくない
+      }
+      else {
+        var address = Std.parseInt(param[idx]);
+        _jump(address); // 選んだ選択肢にジャンプする
+      }
     }
   }
 }
