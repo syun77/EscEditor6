@@ -2,7 +2,7 @@ def init
 {
 }
 
-def test
+def test_talk
 {
 	"会話テキスト１行目"
 	"会話テキスト２行目"
@@ -11,9 +11,11 @@ def test
 	"アイウエオ"
 	"かきくけこ/"
 }
-def test_select
+def test
 {
-	select("問題文")
+	select("問題文"
+		"問題文２"
+	)
 	{"選択肢1"
 		":選択肢1を選びました"
 	}

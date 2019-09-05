@@ -143,30 +143,7 @@ class EscScript {
     }
     function _MSG(param:Array<String>):Int {
         _log('MSG {${param[0]}} ${param[1]}');
-        var type = Std.parseInt(param[0]);
-        var msg = param[1];
-        var r = ~/\$(\d+)/;
-        if(r.match(msg)) {
-            // $V[n] を変数に置き換え
-            var idx = Std.parseInt(r.matched(1));
-            var val = EscGlobal.valGet(idx);
-            msg = r.replace(msg, '${val}');
-        }
-        
-        switch(type) {
-        case 1:
-            // 改ページ
-            PlayState.getEditor().addMessage(msg, true);
-            return AdvScript.RET_YIELD;
-        case 9:
-            // インフォメーション表示
-            PlayState.getInformationUI().start(msg, 3);
-            return AdvScript.RET_CONTINUE;
-        default:
-            // メッセージテキスト
-            PlayState.getEditor().addMessage(msg, false);
-            return AdvScript.RET_CONTINUE;
-        }
+        return _message(param, false);
     }
     function _NUM_INPUT(param:Array<String>):Int {
         _log('NUM_INPUT');
@@ -285,9 +262,18 @@ class EscScript {
             trace("[SCRIPT] SEL");
         }
 
-        // 問題文を保持
-        _selectQuestion = param[1]; // [1]が問題文
-        return AdvScript.RET_CONTINUE; // TODO: ひとまず仮実装
+        var cnt = Std.parseInt(param[0]);
+        var ret = AdvScript.RET_CONTINUE;
+        for(i in 0...cnt) {
+            var mode = 0;
+            if(i == cnt - 1) {
+                mode = 1; // 改ページ
+            }
+            var arr = ['${mode}', param[i + 1]];
+            ret = _message(arr, true);
+        }
+
+        return ret;
     }
 
     function _SEL_ANS(param:Array<String>):Int {
@@ -297,7 +283,6 @@ class EscScript {
 
         param.shift(); // 最初の値は選択肢の数なので捨てる
         var p = new SelectParam();
-        p.question = _selectQuestion;
         p.choices = param;
         PlayState.getEditor().openSelect(p);
 
@@ -331,6 +316,44 @@ class EscScript {
     }
 
     /**
+     * メッセージを処理する
+     * @param param 
+     * @return Int スクリプトの戻り値
+     */
+    function _message(param:Array<String>, isQuestion:Bool):Int {
+        var type = Std.parseInt(param[0]);
+        var msg = param[1];
+        var r = ~/\$(\d+)/;
+        if(r.match(msg)) {
+            // $V[n] を変数に置き換え
+            var idx = Std.parseInt(r.matched(1));
+            var val = EscGlobal.valGet(idx);
+            msg = r.replace(msg, '${val}');
+        }
+        
+        switch(type) {
+        case 1:
+            // 改ページ
+            if(isQuestion) {
+                // 問題文の場合は消さない
+                PlayState.getEditor().addMessage(msg, MessageUI.PF_MODE_KEEP);
+            }
+            else {
+                PlayState.getEditor().addMessage(msg, MessageUI.PF_MODE_WAIT);
+            }
+            return AdvScript.RET_YIELD;
+        case 9:
+            // インフォメーション表示
+            PlayState.getInformationUI().start(msg, 3);
+            return AdvScript.RET_CONTINUE;
+        default:
+            // メッセージテキスト
+            PlayState.getEditor().addMessage(msg);
+            return AdvScript.RET_CONTINUE;
+        }
+    }
+
+    /**
      * コールバック関数を登録
      */
     function _register():Void {
@@ -351,7 +374,6 @@ class EscScript {
      */
     function _selectChoice(strList:Array<String>):Void {
         var param = new SelectParam();
-        param.question = _selectQuestion;
         param.choices = strList;
         PlayState.getEditor().openSelect(param);
     }

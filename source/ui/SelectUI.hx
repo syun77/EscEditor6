@@ -1,5 +1,6 @@
 package ui;
 
+import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -15,7 +16,6 @@ private enum State {
 }
 
 class SelectParam {
-    public var question:String = null;
     public var choices:Array<String> = null;
 
     public function new() {
@@ -44,19 +44,10 @@ class SelectUI extends MenuUIBase {
 
         // 背景
         {
-            var bg = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-            bg.alpha = 0.5;
+            var bg = new FlxSprite(0, 0).makeGraphic(FlxG.width, Std.int(Const.getBottom()), FlxColor.BLACK);
+            bg.alpha = 0;
+            FlxTween.tween(bg, {alpha:0.3}, 0.5);
             this.add(bg);
-        }
-
-        // 問題文
-        {
-            var question = param.question;
-            var txt = new FlxText(0, QUESTION_POS_Y, FlxG.width, question);
-            txt.setFormat(Resources.FONT_PATH, Resources.FONT_SIZE);
-            txt.alignment = FlxTextAlign.CENTER;
-            txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-            this.add(txt);
         }
 
         // 選択肢

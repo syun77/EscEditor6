@@ -15,12 +15,20 @@ private enum State {
  */
 class MessageUI extends MenuUIBase {
 
+    // 動作モード
+    public static inline var PF_MODE_NONE:Int = 0; // 改行待ちしない
+    public static inline var PF_MODE_WAIT:Int = 1; // 改行待ちする
+    public static inline var PF_MODE_KEEP:Int = 2; // 消去しない
+
     // 最大3行まで
     public static inline var MAX_LINE:Int = 3;
+
+    // テキスト設定
     static inline var TXT_POS_X:Float = 48;
     static inline var TXT_OFS_Y:Float = 12;
     static inline var TXT_SPEED:Float = 0.05;
 
+    var _pfMode:Int = PF_MODE_NONE; // 改行モード
     var _tMessage:Float = 0;
     var _state:State = State.Standby;
     var _time:Float = 0;
@@ -70,18 +78,19 @@ class MessageUI extends MenuUIBase {
     /**
      * メッセージテキストを追加する
      * @param str 追加するメッセージテキスト
-     * @param isPF ページ送りがするかどうか
+     * @param pfMode ページ送りモード
      * @return Bool 追加できたらtrue
      */
-    public function addText(str:String, isPF:Bool):Bool {
+    public function addText(str:String, pfMode:Int=PF_MODE_NONE):Bool {
         if(_line >= MAX_LINE) {
             return false;
         }
 
         _txts[_line].text = str;
-        if(isPF) {
+        if(pfMode != PF_MODE_NONE) {
             // 改ページ要求行
             _requestPF = _line;
+            _pfMode = pfMode;
         }
         _line++;
         _tMessage = 0; // メッセージ表示タイマー初期化
@@ -92,6 +101,13 @@ class MessageUI extends MenuUIBase {
         }
 
         return true;
+    }
+
+    /**
+     * テキストを消す
+     */
+    public function clearTexts():Void {
+        _clear();       
     }
 
     /**
@@ -111,11 +127,28 @@ class MessageUI extends MenuUIBase {
                 // 改ページマーク更新
                 _updatePf();
                 
-                if(FlxG.mouse.justPressed) {
-                    _clear();
+                if(_nextPage()) {
+                    if(_pfMode == PF_MODE_WAIT) {
+                        // 通常の改行待ち
+                        _clear();
+                    }
+                    // 改ページアニメ停止
+                    _pf.animation.pause();
                     _state = State.Standby;
                 }
         }
+    }
+
+    function _nextPage():Bool {
+#if debug
+        if(FlxG.keys.justPressed.Z) {
+            return true;
+        }
+        if(FlxG.keys.justPressed.ENTER) {
+            return true;
+        }
+#end
+        return FlxG.mouse.justPressed;
     }
 
     /**
@@ -165,5 +198,8 @@ class MessageUI extends MenuUIBase {
         _requestPF = -1;
         _line = 0;
         _pf.visible = false;
+        _pf.animation.resume();
+
+        _pfMode = PF_MODE_NONE;
     }
 }

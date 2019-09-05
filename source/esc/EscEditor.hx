@@ -203,12 +203,15 @@ class EscEditor extends FlxSubState {
         return _informationUI;
     }
 
-    public function addMessage(str:String, isPF:Bool):Void {
-        _messageUI.addText(str, isPF);
-        if(isPF) {
+    public function addMessage(str:String, pfMode:Int=MessageUI.PF_MODE_NONE):Void {
+        _messageUI.addText(str, pfMode);
+        if(pfMode != MessageUI.PF_MODE_NONE) {
             // 改ページ入力待ち
             _state = State.MessageWait;
         }
+
+        // 通知メッセージを表示していれば消す
+        _informationUI.hide();
     }
 
     public function openNumberInput():Void {
@@ -244,6 +247,8 @@ class EscEditor extends FlxSubState {
         menu.funcClosed = function() {
             // 選択結果を保持
             EscGlobal.retSet(menu.getSelectIdx());
+            // テキストを消す
+            _messageUI.clearTexts();
             // スクリプト処理を続行する
             _state = State.ScriptWait;
         }
