@@ -16,6 +16,9 @@ private enum State {
     Hide;
 }
 
+/**
+ * 通知メッセージウィンドウ
+ */
 class InformationUI extends FlxSpriteGroup {
 
     static inline var TIMER:Float = 3;

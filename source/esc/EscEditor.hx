@@ -15,6 +15,7 @@ import flixel.util.FlxDestroyUtil;
 import esc.loader.EscLoader;
 import esc.loader.EscObj;
 import ui.InformationUI;
+import ui.MessageUI;
 import ui.MovingCursorUI;
 import ui.TapUI;
 import ui.ItemMenuUI;
@@ -36,14 +37,15 @@ typedef NEXT_STATE = TitleState;
  * 状態
  */
 private enum State {
-    Init;       // 初期化
-    FadeInWait; // フェードイン待ち
-    Execute;    // 実行中
-    ScriptWait; // スクリプト終了待ち
-    MenuUIWait; // 何かUIを開いている
-    NextScene;  // 次のシーンに進む
-    Completed;  // ゲームクリア
-    TimeUp;     // 時間ぎれ
+    Init;        // 初期化
+    FadeInWait;  // フェードイン待ち
+    Execute;     // 実行中
+    ScriptWait;  // スクリプト終了待ち
+    MenuUIWait;  // 何かUIを開いている
+    MessageWait; // 改ページ入力待ち
+    NextScene;   // 次のシーンに進む
+    Completed;   // ゲームクリア
+    TimeUp;      // 時間ぎれ
 }
 
 class EscEditor extends FlxSubState {
@@ -67,6 +69,7 @@ class EscEditor extends FlxSubState {
 
     // UI
     var _informationUI:InformationUI;
+    var _messageUI:MessageUI;
     var _movingCursorUI:MovingCursorUI;
     var _tapUI:TapUI;
     var _btnItem:ItemButtonUI; // アイテムボタン
@@ -147,6 +150,10 @@ class EscEditor extends FlxSubState {
         _informationUI = new InformationUI();
         this.add(_informationUI);
 
+        // メッセージテキスト
+        _messageUI = new MessageUI();
+        this.add(_messageUI);
+
         // アクティブUIレイヤー
         _activeUILayer = new FlxSpriteGroup();
         this.add(_activeUILayer);
@@ -194,6 +201,14 @@ class EscEditor extends FlxSubState {
 
     public function getInformationUI():InformationUI {
         return _informationUI;
+    }
+
+    public function addMessage(str:String, isPF:Bool):Void {
+        _messageUI.addText(str, isPF);
+        if(isPF) {
+            // 改ページ入力待ち
+            _state = State.MessageWait;
+        }
     }
 
     public function openNumberInput():Void {
@@ -382,6 +397,10 @@ class EscEditor extends FlxSubState {
                     _activeUILayer.remove(_activeUI);
                     _activeUI = FlxDestroyUtil.destroy(_activeUI);
                 }
+            case State.MessageWait:
+                if(_messageUI.isPF() == false) {
+                    _state = State.ScriptWait;
+                }
             case State.NextScene:
                 // 次のシーンに進む
             case State.Completed:
@@ -485,23 +504,11 @@ class EscEditor extends FlxSubState {
 
     function _updateMovingCursorUI():Void {
         var ui = _movingCursorUI;
-        switch(_state) {
-            case State.Init:
-                ui.visible = false;
-            case State.FadeInWait:
-                ui.visible = false;
-            case State.Execute:
-                ui.visible = true;
-            case State.ScriptWait:
-                ui.visible = false;
-            case State.MenuUIWait:
-                ui.visible = false;
-            case State.NextScene:
-                ui.visible = false;
-            case State.Completed:
-                ui.visible = false;
-            case State.TimeUp:
-                ui.visible = false;
+        if(_state == State.Execute) {
+            ui.visible = true;
+        }
+        else {
+            ui.visible = false;
         }
     }
 

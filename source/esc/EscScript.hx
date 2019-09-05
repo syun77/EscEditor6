@@ -1,5 +1,6 @@
 package esc;
 
+import ui.MessageUI;
 import lib.AdvScript;
 import state.PlayState;
 import dat.ItemDB;
@@ -152,9 +153,20 @@ class EscScript {
             msg = r.replace(msg, '${val}');
         }
         
-        // インフォメーション表示
-        PlayState.getInformationUI().start(msg, 3);
-        return AdvScript.RET_CONTINUE;
+        switch(type) {
+        case 1:
+            // 改ページ
+            PlayState.getEditor().addMessage(msg, true);
+            return AdvScript.RET_YIELD;
+        case 9:
+            // インフォメーション表示
+            PlayState.getInformationUI().start(msg, 3);
+            return AdvScript.RET_CONTINUE;
+        default:
+            // メッセージテキスト
+            PlayState.getEditor().addMessage(msg, false);
+            return AdvScript.RET_CONTINUE;
+        }
     }
     function _NUM_INPUT(param:Array<String>):Int {
         _log('NUM_INPUT');
