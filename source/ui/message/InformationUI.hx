@@ -1,4 +1,4 @@
-package ui;
+package ui.message;
 
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;

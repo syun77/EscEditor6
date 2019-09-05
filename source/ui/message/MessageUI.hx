@@ -1,4 +1,4 @@
-package ui;
+package ui.message;
 
 import flixel.FlxSprite;
 import flixel.FlxG;
@@ -139,6 +139,10 @@ class MessageUI extends MenuUIBase {
         }
     }
 
+    /**
+     * 次のページに進むボタンを押したかどうか
+     * @return Bool 押したらtrue
+     */
     function _nextPage():Bool {
 #if debug
         if(FlxG.keys.justPressed.Z) {

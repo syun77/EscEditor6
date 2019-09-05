@@ -1,4 +1,4 @@
-package ui;
+package ui.input;
 
 import haxe.Resource;
 import flixel.FlxG;

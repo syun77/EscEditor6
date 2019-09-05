@@ -1,6 +1,6 @@
 package esc;
 
-import ui.MessageUI;
+import ui.message.MessageUI;
 import lib.AdvScript;
 import state.PlayState;
 import dat.ItemDB;

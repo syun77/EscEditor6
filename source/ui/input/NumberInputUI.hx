@@ -1,20 +1,24 @@
-package ui;
+package ui.input;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
-import flixel.util.FlxColor;
-import flixel.tweens.FlxEase;
+import flixel.text.FlxText;
+import flixel.FlxG;
 import flixel.tweens.FlxTween;
-import flixel.FlxSubState;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxColor;
+import flixel.util.FlxDestroyUtil;
 import esc.EscGlobal;
 import ui.MenuUIBase;
 
 /**
- * 画像撰択UI
+ * 桁ごとの数値入力UI
  */
-private class ImageInputUI extends FlxSpriteGroup {
-    public static inline var SPR_SIZE:Float = Resources.INPUT_SPR_SIZE;
+private class DigitInputUI extends FlxSpriteGroup {
+
+    public static inline var SPR_WIDTH:Float = Resources.INPUT_SPR_SIZE;
+    public static inline var SPR_HEIGHT:Float = Resources.INPUT_SPR_SIZE;
+
     static inline var DEFAULT_COLOR:Int = 0xFFc0c0c0;
 
     // 方向定数
@@ -23,34 +27,25 @@ private class ImageInputUI extends FlxSpriteGroup {
     static inline var DIR_MAX:Int  = 2;
 
     var _num:Int = 0;
-    var _max:Int = 0;
-    var _digit:Int = 0;
-    var _digitMax:Int = 0;
+    var _max:Int = 10;
+    var _txt:FlxText;
     var _sprList:Array<FlxSprite>;
     var _upperY:Float = 0;
     var _bottomY:Float = 0;
-    var _pictureSpr:FlxSprite;
 
     /**
      * コンストラクタ
-     * @param px 描画座標(X)
-     * @param py 描画座標(Y)
-     * @param num 初期数値
-     * @param digit 桁番号
-     * @param inputNo 入力番号
      */
-    public function new(px:Float, py:Float, num:Int, digit:Int, inputNo:Int) {
+    public function new(px:Float, py:Float, num:Int) {
         super();
-
-        trace('num=${num} digit=${digit} picture=${inputNo}');
 
         // 初期数値を保持
         _num = num;
-        _digit = digit;
+        _max = 10;
 
         // 上下矢印画像読み込み
         _sprList = new Array<FlxSprite>();
-        var size:Float = SPR_SIZE;
+        var size:Float = SPR_HEIGHT;
         for(i in 0...DIR_MAX) {
             var spr = new FlxSprite(0, 0, Resources.NUM_ARROW);
             var px2 = px;
@@ -78,26 +73,19 @@ private class ImageInputUI extends FlxSpriteGroup {
             this.add(spr);
         }
 
-        // 入力画像の読み込み
-        _pictureSpr = new FlxSprite(px, py);
-        
-        var size:Int = Std.int(SPR_SIZE);
-        _pictureSpr.loadGraphic(Resources.getInputPicturePath(inputNo), true, size, size);
-        _max = Std.int(_pictureSpr.pixels.height / SPR_SIZE);
-        _digitMax = Std.int(_pictureSpr.pixels.width / SPR_SIZE);
-        trace('width=${_pictureSpr.pixels.width} height=${_pictureSpr.height} max=${_max} digitMax=${_digitMax}');
-        for(i in 0...(_max * _digitMax)) {
-            _pictureSpr.animation.add('${i}', [i], 1);
-        }
-
-        trace((_digit * _max) + _num);
-        _updatePicture();
-        this.add(_pictureSpr);
+        // 数字テキスト
+        _txt = new FlxText(px, py, Std.int(size), '${_num}', Std.int(size));
+        _txt.alignment = FlxTextAlign.CENTER;
+        _txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        this.add(_txt);
     }
 
+    /**
+     * 更新
+     */
     override public function update(elapsed:Float):Void {
         super.update(elapsed);
-        _updatePicture();
+        _txt.text = '${_num}';
 
         if(FlxG.mouse.justPressed) {
             for(i in 0..._sprList.length) {
@@ -108,23 +96,21 @@ private class ImageInputUI extends FlxSpriteGroup {
                 }
 
                 var ynext:Float = 0;
-                if(i == DIR_UP) {
-                    // 減算
-                    _num--;
-                    if(_num < 0) {
-                        _num = _max - 1;
-                    }
-                    ynext = _upperY;
-                    spr.y = ynext - (SPR_SIZE * 0.1);
-                }
-                else {
-                    // 加算
+                if(i == 0) {
                     _num++;
                     if(_num >= _max) {
                         _num = 0;
                     }
+                    ynext = _upperY;
+                    spr.y = ynext - (SPR_HEIGHT * 0.1);
+                }
+                else {
+                    _num--;
+                    if(_num < 0) {
+                        _num = _max - 1;
+                    }
                     ynext = _bottomY;
-                    spr.y = ynext + (SPR_SIZE * 0.1);
+                    spr.y = ynext + (SPR_HEIGHT * 0.1);
                 }
                 FlxTween.color(spr, 0.1, FlxColor.WHITE, DEFAULT_COLOR);
                 FlxTween.tween(spr, {y:ynext}, 0.1, {ease:FlxEase.expoOut});
@@ -132,21 +118,18 @@ private class ImageInputUI extends FlxSpriteGroup {
         }
     }
 
+    /**
+     * 数値の取得
+     */
     public function getNum():Int {
         return _num;
-    }
-
-    function _updatePicture():Void {
-        //var idx = (_digit * _max) + _num;
-        var idx = (_num * _digitMax) + _digit;
-        _pictureSpr.animation.play('${idx}');
     }
 }
 
 /**
- * 画像入力管理
+ * 数値入力管理
  */
-class PictureInputUI extends MenuUIBase {
+class NumberInputUI extends MenuUIBase {
 
     // 余白
     static inline var MARGIN_X:Float = 12;
@@ -154,7 +137,7 @@ class PictureInputUI extends MenuUIBase {
     var _idx:Int = 0;
     var _digit:Int = 0;
     var _num:Int = 0;
-    var _uiList:Array<ImageInputUI> = new Array<ImageInputUI>();
+    var _uiList:Array<DigitInputUI> = new Array<DigitInputUI>();
     var _okSpr:FlxSprite; // OKボタン
     var _bg:FlxSprite;
 
@@ -190,8 +173,7 @@ class PictureInputUI extends MenuUIBase {
     /**
      * 開く
      */
-    public function open(pictureID:Int, digit:Int):Void {
-
+    public function open():Void {
         exists = true;
 
         // 生成パラメータを設定
@@ -199,12 +181,14 @@ class PictureInputUI extends MenuUIBase {
             _idx = EscGlobal.numberInputGetIdx();
             _num = EscGlobal.valGet(_idx);
         }
-        _digit = digit;
+        {
+            _digit = EscGlobal.numberInputGetDigit();
+        }
 
         // 桁ごとの数値入力UIを生成
-        _uiList = new Array<ImageInputUI>();
-        var w = ImageInputUI.SPR_SIZE;
-        var h = ImageInputUI.SPR_SIZE;
+        _uiList = new Array<DigitInputUI>();
+        var w = DigitInputUI.SPR_WIDTH;
+        var h = DigitInputUI.SPR_HEIGHT;
         var ox = MARGIN_X;
         var px = (FlxG.width / 2) - ((w + ox) * _digit / 2);
         var py = Const.getCenterY() - (h / 2);
@@ -213,7 +197,7 @@ class PictureInputUI extends MenuUIBase {
             var pow = Math.pow(10, v+1);
             var div = Math.pow(10, v);
             var num = Std.int((_num % pow) / div);
-            var numUI = new ImageInputUI(px, py, num, i, pictureID);
+            var numUI = new DigitInputUI(px, py, num);
             // 前に追加
             _uiList.unshift(numUI);
 
@@ -223,8 +207,6 @@ class PictureInputUI extends MenuUIBase {
         for(ui in _uiList) {
             this.add(ui);
         }
-
-
     }
 
     /**
@@ -256,18 +238,16 @@ class PictureInputUI extends MenuUIBase {
         }
     }
 
-    /**
-     * 閉じているかどうか
-     */
     override public function isClosed():Bool {
         return exists == false;
     }
 
     function _close():Void {
-        exists = false;
 
         for(ui in _uiList) {
             this.remove(ui, true);
+            FlxDestroyUtil.destroy(ui);
         }
+        exists = false;
     }
 }

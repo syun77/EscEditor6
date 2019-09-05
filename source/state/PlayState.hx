@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import esc.EscEditor;
 import esc.EscGlobal;
-import ui.InformationUI;
+import ui.message.InformationUI;
 import save.GameData;
 
 /**

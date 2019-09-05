@@ -1,4 +1,4 @@
-package ui;
+package ui.input;
 
 import ui.MenuUIBase;
 import flixel.FlxSprite;
