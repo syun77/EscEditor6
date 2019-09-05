@@ -142,7 +142,7 @@ class EscScript {
         return AdvScript.RET_YIELD;
     }
     function _MSG(param:Array<String>):Int {
-        _log('MSG');
+        _log('MSG {${param[0]}} ${param[1]}');
         var type = Std.parseInt(param[0]);
         var msg = param[1];
         var r = ~/\$(\d+)/;
