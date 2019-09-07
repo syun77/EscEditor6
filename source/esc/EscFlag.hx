@@ -4,10 +4,14 @@ class EscFlag {
 	public static inline var TEST_FLAG:Int = 10;
 	public static inline var TOILET_OPEN:Int = 30;
 	public static inline var FAUSET_ENABLE:Int = 40;
+	public static inline var FILL_WATER:Int = 41;
+	public static inline var PICK_SHEETS:Int = 50;
 	static var _tbl:Map<String, Int> = [
 		"TEST_FLAG" => 10,
 		"TOILET_OPEN" => 30,
 		"FAUSET_ENABLE" => 40,
+		"FILL_WATER" => 41,
+		"PICK_SHEETS" => 50,
 	];
 	
 	public static function get(k:String):Int {

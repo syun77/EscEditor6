@@ -8,6 +8,7 @@ const:
   PrisonWest: 2 # 牢屋〜東側
   Toilet: 3 # トイレ
   Sink: 4 # 洗面台
+  Bed: 5 # ベッド
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -33,3 +34,5 @@ flag:
   TEST_FLAG: 10 # テスト用
   TOILET_OPEN: 30 # トイレのふたが開いた状態
   FAUSET_ENABLE: 40 # 蛇口を使える
+  FILL_WATER: 41 # 洗面台に水が溜まっている
+  PICK_SHEETS: 50 # シーツを取った

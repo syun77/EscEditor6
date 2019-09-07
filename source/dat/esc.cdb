@@ -111,6 +111,11 @@
 					],
 					"moves": [
 						{
+							"id": 0,
+							"click": "",
+							"jump": "Bed"
+						},
+						{
 							"id": 2,
 							"click": "",
 							"jump": "Entrance"
@@ -211,6 +216,55 @@
 					"moves": [
 						{
 							"id": 3,
+							"click": "",
+							"jump": "PrisonWest"
+						}
+					]
+				},
+				{
+					"id": "Bed",
+					"name": "ベッド",
+					"value": 5,
+					"script": "../../assets/data/scene005/sheets_hit.png",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/pillow.png",
+							"image": "532c7f9069cfe4a941f8ff92f1a97615",
+							"x": 90,
+							"y": 159,
+							"click": "pillow"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene005/sheets.png",
+							"image": "45d639af02420844c1cc6d899bba1ee6",
+							"x": 72,
+							"y": 155,
+							"click": "",
+							"off": "PICK_SHEETS"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene005/sheets_hit.png",
+							"image": "513de2a39329154cdecf7ca29464e059",
+							"x": 103,
+							"y": 186,
+							"click": "sheets",
+							"off": "PICK_SHEETS"
+						}
+					],
+					"moves": [
+						{
+							"id": 2,
 							"click": "",
 							"jump": "PrisonWest"
 						}
@@ -500,6 +554,11 @@
 					"id": "FILL_WATER",
 					"value": 41,
 					"comment": "洗面台に水が溜まっている"
+				},
+				{
+					"id": "PICK_SHEETS",
+					"value": 50,
+					"comment": "シーツを取った"
 				}
 			],
 			"separators": [],

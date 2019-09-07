@@ -1,0 +1,14 @@
+def init
+{
+}
+
+def pillow
+{
+	":枕だ"
+}
+
+def sheets
+{
+	%PICK_SHEETS = true
+	":シーツを取った"
+}
