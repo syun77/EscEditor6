@@ -108,6 +108,13 @@
 							"y": 137,
 							"click": "sink"
 						}
+					],
+					"moves": [
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Entrance"
+						}
 					]
 				},
 				{
@@ -129,7 +136,7 @@
 							"file": "../../assets/data/scene003/toilet_open.png",
 							"image": "dc75920ec0fb81a60dbb561232092b13",
 							"x": 71,
-							"y": 6,
+							"y": -34,
 							"click": "toilet_open",
 							"on": "TOILET_OPEN"
 						},
@@ -138,9 +145,67 @@
 							"file": "../../assets/data/scene003/toilet_closed.png",
 							"image": "24f89cb6e95dc0d96b023546083001eb",
 							"x": 73,
-							"y": 218,
+							"y": 178,
 							"click": "toilet_close",
 							"off": "TOILET_OPEN"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "PrisonWest"
+						}
+					]
+				},
+				{
+					"id": "Sink",
+					"name": "洗面台",
+					"value": 4,
+					"script": "../../docs/scripts/004/004.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/sing.png",
+							"image": "8725383e3f937909a3c166ae1a620abc",
+							"x": 80,
+							"y": 162,
+							"click": ""
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene004/water.png",
+							"image": "08d0cc809b17263e4827cf86b41fcce5",
+							"x": 111,
+							"y": 227,
+							"click": "",
+							"on": "FILL_WATER"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene004/fauset.png",
+							"image": "11c5a70c18a0cef4def8d997a1fff2e5",
+							"x": 176,
+							"y": 174,
+							"click": "",
+							"off": "FAUSET_ENABLE"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene004/fauset2.png",
+							"image": "4bb6a602a07df9c4ac6e97d5262dfaef",
+							"x": 172,
+							"y": 162,
+							"click": "",
+							"on": "FAUSET_ENABLE"
 						}
 					],
 					"moves": [
@@ -425,6 +490,16 @@
 					"id": "TOILET_OPEN",
 					"value": 30,
 					"comment": "トイレのふたが開いた状態"
+				},
+				{
+					"id": "FAUSET_ENABLE",
+					"value": 40,
+					"comment": "蛇口を使える"
+				},
+				{
+					"id": "FILL_WATER",
+					"value": 41,
+					"comment": "洗面台に水が溜まっている"
 				}
 			],
 			"separators": [],

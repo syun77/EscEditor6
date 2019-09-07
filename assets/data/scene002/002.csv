@@ -8,6 +8,7 @@ INT,3
 JUMP
 FUNC_END,toilet
 FUNC_START,sink
-MSG,9,洗面台がある
+INT,4
+JUMP
 FUNC_END,sink
 END

@@ -14,5 +14,5 @@ def toilet
 
 def sink
 {
-	":洗面台がある"
+	JUMP(Sink)
 }
