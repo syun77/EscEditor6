@@ -2,8 +2,10 @@ package esc;
 
 class EscFlag {
 	public static inline var TEST_FLAG:Int = 10;
+	public static inline var TOILET_OPEN:Int = 30;
 	static var _tbl:Map<String, Int> = [
 		"TEST_FLAG" => 10,
+		"TOILET_OPEN" => 30,
 	];
 	
 	public static function get(k:String):Int {

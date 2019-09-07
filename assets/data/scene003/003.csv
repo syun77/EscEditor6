@@ -1,0 +1,11 @@
+FUNC_START,init
+FUNC_END,init
+FUNC_START,toilet_open
+BOOL,0
+SET,16,30
+FUNC_END,toilet_open
+FUNC_START,toilet_close
+BOOL,1
+SET,16,30
+FUNC_END,toilet_close
+END

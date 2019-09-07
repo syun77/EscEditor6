@@ -91,6 +91,63 @@
 							"x": 87,
 							"y": 31,
 							"click": "window"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene002/toilet.png",
+							"image": "8cf13493928e35c4ba802dd187ccdbf1",
+							"x": 42,
+							"y": 161,
+							"click": "toilet"
+						},
+						{
+							"id": "３",
+							"file": "../../assets/data/scene002/sink.png",
+							"image": "ce735820015d42df769724a381340b60",
+							"x": 205,
+							"y": 137,
+							"click": "sink"
+						}
+					]
+				},
+				{
+					"id": "Toilet",
+					"name": "トイレ",
+					"value": 3,
+					"script": "../../docs/scripts/003/003.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/toilet_open.png",
+							"image": "dc75920ec0fb81a60dbb561232092b13",
+							"x": 71,
+							"y": 6,
+							"click": "toilet_open",
+							"on": "TOILET_OPEN"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/toilet_closed.png",
+							"image": "24f89cb6e95dc0d96b023546083001eb",
+							"x": 73,
+							"y": 218,
+							"click": "toilet_close",
+							"off": "TOILET_OPEN"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "PrisonWest"
 						}
 					]
 				}
@@ -363,6 +420,11 @@
 					"id": "TEST_FLAG",
 					"value": 10,
 					"comment": "テスト用"
+				},
+				{
+					"id": "TOILET_OPEN",
+					"value": 30,
+					"comment": "トイレのふたが開いた状態"
 				}
 			],
 			"separators": [],

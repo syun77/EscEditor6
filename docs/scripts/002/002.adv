@@ -6,3 +6,13 @@ def window
 {
 	":窓は開かない"
 }
+
+def toilet
+{
+	JUMP(Toilet)
+}
+
+def sink
+{
+	":洗面台がある"
+}

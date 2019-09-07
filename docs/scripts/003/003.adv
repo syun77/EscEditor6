@@ -1,0 +1,15 @@
+def init
+{
+}
+
+def toilet_open
+{
+	// トイレのふたを閉じる
+	%TOILET_OPEN = false
+}
+
+def toilet_close
+{
+	// トイレのふたを開く
+	%TOILET_OPEN = true
+}

@@ -6,6 +6,7 @@ const:
   # シーン
   Entrance: 1 # 鉄格子
   PrisonWest: 2 # 牢屋〜東側
+  Toilet: 3 # トイレ
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -29,3 +30,4 @@ const:
   
 flag:
   TEST_FLAG: 10 # テスト用
+  TOILET_OPEN: 30 # トイレのふたが開いた状態
