@@ -282,11 +282,11 @@ class ItemMenuUI extends MenuUIBase {
             px += _ofsX;
             py += _ofsY;
             var spr:DraggableUI = null;
-            _sprItems.map(function(spr2) {
+            for(spr2 in _sprItems) {
                 if(i == spr2.param) {
                     spr = spr2;
                 }
-            });
+            }
             if(spr == null) {
                 // 存在しないので新規作成
                 spr = new DraggableUI(_btnItem.x, _btnItem.y, path);

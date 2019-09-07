@@ -4,7 +4,8 @@
 ############################
 const:
   # シーン
-  Entrance: 1 # 入り口
+  Entrance: 1 # 鉄格子
+  PrisonWest: 2 # 牢屋〜東側
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー

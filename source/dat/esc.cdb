@@ -51,18 +51,48 @@
 					"objs": [
 						{
 							"id": "1",
-							"file": "../../assets/data/scene001/gate_a.png",
-							"image": "1fc6ea55403fc7a66de4434eae550bd1",
-							"x": 128,
-							"y": 132,
-							"click": "test"
+							"file": "../../assets/data/scene001/knob.png",
+							"image": "a45c96b3481bf5aef7bb4c152acb40d1",
+							"x": 247,
+							"y": 258,
+							"click": "lock"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
 					"id": "Entrance",
-					"moves": [],
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "PrisonWest"
+						}
+					],
 					"value": 1,
-					"name": "入り口"
+					"name": "鉄格子"
+				},
+				{
+					"id": "PrisonWest",
+					"name": "牢屋〜東側",
+					"value": 2,
+					"script": "../../docs/scripts/002/002.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/window.png",
+							"image": "fe605c4d4b69cf6ac0b79e07faed1ba5",
+							"x": 87,
+							"y": 31,
+							"click": "window"
+						}
+					]
 				}
 			],
 			"separators": [],

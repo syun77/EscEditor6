@@ -2,6 +2,11 @@ def init
 {
 }
 
+def lock
+{
+	":カギがかかっていて開かない"
+}
+
 def test_talk
 {
 	"会話テキスト１行目"

@@ -1,5 +1,8 @@
 FUNC_START,init
 FUNC_END,init
+FUNC_START,lock
+MSG,9,カギがかかっていて開かない
+FUNC_END,lock
 FUNC_START,test_talk
 MSG,0,会話テキスト１行目
 MSG,0,会話テキスト２行目
@@ -10,10 +13,10 @@ FUNC_END,test_talk
 FUNC_START,test
 SEL,2,問題文,問題文２
 SEL_ANS,2,選択肢1,選択肢2
-SEL_GOTO,00000014,00000016
+SEL_GOTO,00000017,00000019
 MSG,9,選択肢1を選びました
-GOTO,00000018
+GOTO,00000021
 MSG,9,選択肢2を選びました
-GOTO,00000018
+GOTO,00000021
 FUNC_END,test
 END

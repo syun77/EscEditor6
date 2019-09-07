@@ -97,7 +97,7 @@ class EscEditor extends FlxSubState {
         _txts = new Array<FlxText>();
 
         // 背景の読み込み
-        {
+        if(_loader.bg != null) {
             var bg = _loader.bg;
             _bg = new EscSprite(bg.x, bg.y, bg);
             bg.setText(_addText());
