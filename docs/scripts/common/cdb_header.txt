@@ -9,6 +9,7 @@ const:
   Toilet: 3 # トイレ
   Sink: 4 # 洗面台
   Bed: 5 # ベッド
+  Desk: 6 # 机
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -36,3 +37,5 @@ flag:
   FAUSET_ENABLE: 40 # 蛇口を使える
   FILL_WATER: 41 # 洗面台に水が溜まっている
   PICK_SHEETS: 50 # シーツを取った
+  OPEN_DRAWER1: 60 # 引き出し(左)を開ける
+  OPEN_DRAWER2: 61 # 引き出し(右)を開ける

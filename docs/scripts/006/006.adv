@@ -1,0 +1,25 @@
+def init
+{
+}
+
+def open_drawer1
+{
+	// 引き出し(左)を引く
+	%OPEN_DRAWER1 = true
+}
+
+def close_drawer1
+{
+	%OPEN_DRAWER1 = false
+}
+
+def open_drawer2
+{
+	// 引き出し(右)を引く
+	%OPEN_DRAWER2 = true
+}
+
+def close_drawer2
+{
+	%OPEN_DRAWER2 = false
+}

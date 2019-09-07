@@ -64,6 +64,11 @@
 						{
 							"id": 0,
 							"click": "",
+							"jump": "Desk"
+						},
+						{
+							"id": 2,
+							"click": "",
 							"jump": "PrisonWest"
 						}
 					],
@@ -113,12 +118,12 @@
 						{
 							"id": 0,
 							"click": "",
-							"jump": "Bed"
+							"jump": "Entrance"
 						},
 						{
 							"id": 2,
 							"click": "",
-							"jump": "Entrance"
+							"jump": "Bed"
 						}
 					]
 				},
@@ -225,7 +230,7 @@
 					"id": "Bed",
 					"name": "ベッド",
 					"value": 5,
-					"script": "../../assets/data/scene005/sheets_hit.png",
+					"script": "../../docs/scripts/005/005.adv",
 					"bgs": [
 						{
 							"id": "1",
@@ -264,9 +269,78 @@
 					],
 					"moves": [
 						{
-							"id": 2,
+							"id": 0,
 							"click": "",
 							"jump": "PrisonWest"
+						},
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Desk"
+						}
+					]
+				},
+				{
+					"id": "Desk",
+					"name": "机",
+					"value": 6,
+					"script": "../../docs/scripts/006/006.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/drawer_hit.png",
+							"image": "",
+							"x": 61,
+							"y": 240,
+							"click": "open_drawer1",
+							"off": "OPEN_DRAWER1"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene006/drawer1.png",
+							"image": "ae06aac7899c607eef497823b2f38777",
+							"x": 52,
+							"y": 239,
+							"click": "close_drawer1",
+							"on": "OPEN_DRAWER1"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene006/drawer_hit.png",
+							"image": "",
+							"x": 192,
+							"y": 240,
+							"click": "open_drawer2",
+							"off": "OPEN_DRAWER2"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene006/drawer2.png",
+							"image": "032d0d362aefeb46f61aff2dedd408e9",
+							"x": 191,
+							"y": 239,
+							"click": "close_drawer2",
+							"on": "OPEN_DRAWER2"
+						}
+					],
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Bed"
+						},
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Entrance"
 						}
 					]
 				}
@@ -559,6 +633,16 @@
 					"id": "PICK_SHEETS",
 					"value": 50,
 					"comment": "シーツを取った"
+				},
+				{
+					"id": "OPEN_DRAWER1",
+					"value": 60,
+					"comment": "引き出し(左)を開ける"
+				},
+				{
+					"id": "OPEN_DRAWER2",
+					"value": 61,
+					"comment": "引き出し(右)を開ける"
 				}
 			],
 			"separators": [],
