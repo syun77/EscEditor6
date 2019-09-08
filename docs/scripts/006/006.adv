@@ -35,13 +35,38 @@ def triangle
 	ITEM_ADD(ITEM_TRIANGLE)
 }
 
+def input
+{
+	KANA_INPUT(1)
+	if($RET) {
+		":右の引き出しのロックが解除された"
+		%UNLOCK_DRAWER2 = true
+		%OPEN_DRAWER2 = true
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+
 def open_drawer2
 {
 	// 引き出し(右)を引く
-	%OPEN_DRAWER2 = true
+	if(%UNLOCK_DRAWER2) {
+		%OPEN_DRAWER2 = true
+	}
+	else {
+		":引き出しは開かない"
+	}
 }
 
 def close_drawer2
 {
 	%OPEN_DRAWER2 = false
 }
+
+def key2
+{
+	// 金のカギを獲得
+	ITEM_ADD(ITEM_KEY2)
+}
+

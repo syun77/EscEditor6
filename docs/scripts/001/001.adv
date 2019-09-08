@@ -4,7 +4,33 @@ def init
 
 def lock
 {
-	":カギがかかっていて開かない"
+	$11 = 0
+	ITEM_HAS(ITEM_KEY)
+	if($RET) {
+		$11 += 1
+	}
+	ITEM_HAS(ITEM_KEY2)
+	if($RET) {
+		$11 += 1
+	}
+	
+	if($11 == 2) {
+		// 鉄格子解除
+		":鉄格子のカギを解除した"
+		%UNLOCK_LAST = true
+	}
+	elif($11 > 0) {
+		":カギが足りない"
+	}
+	else {
+		":カギがかかっていて開かない"
+	}
+}
+
+def unlock
+{
+	// ゲームクリア
+	COMPLETE()
 }
 
 def stick

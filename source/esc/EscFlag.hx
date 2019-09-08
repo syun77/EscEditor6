@@ -9,6 +9,8 @@ class EscFlag {
 	public static inline var GAIN_PANEL_KA:Int = 15;
 	public static inline var GAIN_PANEL_TA:Int = 16;
 	public static inline var GAIN_PANEL_NA:Int = 17;
+	public static inline var GAIN_SILVER_KEY:Int = 18;
+	public static inline var GAIN_GOLD_KEY:Int = 19;
 	public static inline var TOILET_OPEN:Int = 30;
 	public static inline var SEARCH_HANDLE:Int = 31;
 	public static inline var FAUSET_ENABLE:Int = 40;
@@ -16,9 +18,12 @@ class EscFlag {
 	public static inline var PICK_SHEETS:Int = 50;
 	public static inline var PICK_PILLOW:Int = 51;
 	public static inline var FIT_PANELS:Int = 52;
+	public static inline var UNLOCK_KATANA:Int = 53;
 	public static inline var OPEN_DRAWER1:Int = 60;
 	public static inline var OPEN_DRAWER2:Int = 61;
 	public static inline var RELEASED_DRAWER1:Int = 62;
+	public static inline var UNLOCK_DRAWER2:Int = 63;
+	public static inline var UNLOCK_LAST:Int = 70;
 	static var _tbl:Map<String, Int> = [
 		"TEST_FLAG" => 10,
 		"GAIN_STICK" => 11,
@@ -28,6 +33,8 @@ class EscFlag {
 		"GAIN_PANEL_KA" => 15,
 		"GAIN_PANEL_TA" => 16,
 		"GAIN_PANEL_NA" => 17,
+		"GAIN_SILVER_KEY" => 18,
+		"GAIN_GOLD_KEY" => 19,
 		"TOILET_OPEN" => 30,
 		"SEARCH_HANDLE" => 31,
 		"FAUSET_ENABLE" => 40,
@@ -35,9 +42,12 @@ class EscFlag {
 		"PICK_SHEETS" => 50,
 		"PICK_PILLOW" => 51,
 		"FIT_PANELS" => 52,
+		"UNLOCK_KATANA" => 53,
 		"OPEN_DRAWER1" => 60,
 		"OPEN_DRAWER2" => 61,
 		"RELEASED_DRAWER1" => 62,
+		"UNLOCK_DRAWER2" => 63,
+		"UNLOCK_LAST" => 70,
 	];
 	
 	public static function get(k:String):Int {

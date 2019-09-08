@@ -20,6 +20,8 @@ const:
   ITEM_PANEL_NA: 5 # "ナ"のパネル
   ITEM_PANEL_TA: 6 # "タ"のパネル
   ITEM_PANEL_KA: 7 # "カ"のパネル
+  ITEM_KEY: 8 # 銀のカギ
+  ITEM_KEY2: 9 # 金のカギ
   
 flag:
   TEST_FLAG: 10 # テスト用
@@ -30,6 +32,8 @@ flag:
   GAIN_PANEL_KA: 15 # パネル「カ」を取得
   GAIN_PANEL_TA: 16 # パネル「タ」を取得
   GAIN_PANEL_NA: 17 # パネル「ナ」を取得
+  GAIN_SILVER_KEY: 18 # 銀のカギを手に入れた
+  GAIN_GOLD_KEY: 19 # 金のカギを手に入れた
   TOILET_OPEN: 30 # トイレのふたが開いた状態
   SEARCH_HANDLE: 31 # 取っ手を一度調べた
   FAUSET_ENABLE: 40 # 蛇口を使える
@@ -37,6 +41,9 @@ flag:
   PICK_SHEETS: 50 # シーツを取った
   PICK_PILLOW: 51 # 枕を取った
   FIT_PANELS: 52 # パネルをはめ込んだ
+  UNLOCK_KATANA: 53 # カタナパズルを解除した
   OPEN_DRAWER1: 60 # 引き出し(左)を開ける
   OPEN_DRAWER2: 61 # 引き出し(右)を開ける
   RELEASED_DRAWER1: 62 # 引き出し(左)のねじ止めフラグ
+  UNLOCK_DRAWER2: 63 # 引き出し(右)を解放した
+  UNLOCK_LAST: 70 # 鉄格子を開いた

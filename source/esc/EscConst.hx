@@ -16,4 +16,6 @@ class EscConst {
 	public static inline var ITEM_PANEL_NA:Int = 5;
 	public static inline var ITEM_PANEL_TA:Int = 6;
 	public static inline var ITEM_PANEL_KA:Int = 7;
+	public static inline var ITEM_KEY:Int = 8;
+	public static inline var ITEM_KEY2:Int = 9;
 }

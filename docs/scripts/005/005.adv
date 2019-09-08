@@ -48,6 +48,9 @@ def hollow
 		PANEL_INPUT(1)
 		if($RET) {
 			":パネルをセットした"
+			ITEM_DEL(ITEM_PANEL_KA)
+			ITEM_DEL(ITEM_PANEL_TA)
+			ITEM_DEL(ITEM_PANEL_NA)
 			%FIT_PANELS = true
 		}
 	}
@@ -63,3 +66,23 @@ def hollow2
 {
 	":「カ」「タ」「ナ」のパネルが入っている"
 }
+
+def input
+{
+	// →(2) ↓(4)　↗︎(1)
+	PIC_INPUT(1, 51, 3)
+	if($51 == 241) {
+		%UNLOCK_KATANA = true
+		":ロックを解除した"
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+
+def key
+{
+	// 銀のカギを獲得
+	ITEM_ADD(ITEM_KEY)
+}
+
