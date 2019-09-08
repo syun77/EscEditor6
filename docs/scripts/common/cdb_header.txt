@@ -17,6 +17,9 @@ const:
   ITEM_HANDLE: 2 # 穴の空いた取っ手
   ITEM_SCREWDRIVER: 3 # ドライバー
   ITEM_TRIANGLE: 4 # 三角形の部品
+  ITEM_PANEL_KA: 5 # "カ"のパネル
+  ITEM_PANEL_TA: 6 # "タ"のパネル
+  ITEM_PANEL_NA: 7 # "ナ"のパネル
   
 flag:
   TEST_FLAG: 10 # テスト用
@@ -29,6 +32,10 @@ flag:
   FAUSET_ENABLE: 40 # 蛇口を使える
   FILL_WATER: 41 # 洗面台に水が溜まっている
   PICK_SHEETS: 50 # シーツを取った
+  PICK_PILLOW: 51 # 枕を取った
   OPEN_DRAWER1: 60 # 引き出し(左)を開ける
   OPEN_DRAWER2: 61 # 引き出し(右)を開ける
   RELEASED_DRAWER1: 62 # 引き出し(左)のねじ止めフラグ
+  GAIN_PANEL_KA: 15 # パネル「カ」を取得
+  GAIN_PANEL_TA: 16 # パネル「タ」を取得
+  GAIN_PANEL_NA: 17 # パネル「ナ」を取得

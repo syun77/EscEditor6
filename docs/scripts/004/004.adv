@@ -31,4 +31,9 @@ def sticker
 	":「七・八・しんにょう」と書いてある"
 }
 
+def panel
+{
+	ITEM_ADD(ITEM_PANEL_NA)
+}
+
 

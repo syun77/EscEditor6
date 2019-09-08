@@ -4,11 +4,27 @@ def init
 
 def pillow
 {
-	":枕だ"
+	%PICK_PILLOW = true
+}
+
+def pillow2
+{
+	%PICK_PILLOW = false
+}
+
+def panel
+{
+	// パネル"カ"を取得
+	ITEM_ADD(ITEM_PANEL_KA)
 }
 
 def sheets
 {
 	%PICK_SHEETS = true
 	":シーツを取った"
+}
+
+def sticker
+{
+	":「パネルを３つ探せ」と書いてある"
 }

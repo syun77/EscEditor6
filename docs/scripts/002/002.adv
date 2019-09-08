@@ -7,6 +7,11 @@ def window
 	":窓は開かない"
 }
 
+def panel
+{
+	ITEM_ADD(ITEM_PANEL_TA)
+}
+
 def toilet
 {
 	JUMP(Toilet)

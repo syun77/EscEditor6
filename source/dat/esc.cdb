@@ -121,6 +121,15 @@
 							"x": 205,
 							"y": 137,
 							"click": "sink"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene002/panel.png",
+							"image": "f77e0cd0fcfa931a3043c126bf11d0b5",
+							"x": 366,
+							"y": 299,
+							"click": "panel",
+							"off": "GAIN_PANEL_TA"
 						}
 					],
 					"moves": [
@@ -243,6 +252,16 @@
 							"y": 162,
 							"click": "fauset",
 							"on": "FAUSET_ENABLE"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene004/panel.png",
+							"image": "82add757f66e819674cf2f29b806d20c",
+							"x": 65,
+							"y": 383,
+							"click": "panel",
+							"on": "FILL_WATER",
+							"off": "GAIN_PANEL_NA"
 						}
 					],
 					"moves": [
@@ -273,7 +292,8 @@
 							"image": "532c7f9069cfe4a941f8ff92f1a97615",
 							"x": 90,
 							"y": 159,
-							"click": "pillow"
+							"click": "pillow",
+							"off": "PICK_PILLOW"
 						},
 						{
 							"id": "2",
@@ -292,6 +312,34 @@
 							"y": 186,
 							"click": "sheets",
 							"off": "PICK_SHEETS"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene005/sticker.png",
+							"image": "9f105f87741ea6df0d6bdc5303ee677b",
+							"x": 200,
+							"y": 234,
+							"click": "sticker",
+							"on": "PICK_SHEETS"
+						},
+						{
+							"id": "５",
+							"file": "../../assets/data/scene005/panel.png",
+							"image": "9d2a318d890aa3a0da9b7693c7a11b89",
+							"x": 117,
+							"y": 158,
+							"click": "panel",
+							"off": "GAIN_PANEL_KA",
+							"on": "PICK_PILLOW"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene005/pillow.png",
+							"image": "532c7f9069cfe4a941f8ff92f1a97615",
+							"x": 90,
+							"y": 119,
+							"click": "pillow2",
+							"on": "PICK_PILLOW"
 						}
 					],
 					"moves": [
@@ -570,6 +618,24 @@
 					"name": "三角形の部品",
 					"value": 4,
 					"flag": "GAIN_TRIANGLE"
+				},
+				{
+					"id": "ITEM_PANEL_KA",
+					"name": "\"カ\"のパネル",
+					"value": 5,
+					"flag": "GAIN_PANEL_KA"
+				},
+				{
+					"id": "ITEM_PANEL_TA",
+					"name": "\"タ\"のパネル",
+					"value": 6,
+					"flag": "GAIN_PANEL_TA"
+				},
+				{
+					"id": "ITEM_PANEL_NA",
+					"name": "\"ナ\"のパネル",
+					"value": 7,
+					"flag": "GAIN_PANEL_NA"
 				}
 			],
 			"separators": [],
@@ -645,6 +711,11 @@
 					"comment": "シーツを取った"
 				},
 				{
+					"id": "PICK_PILLOW",
+					"value": 51,
+					"comment": "枕を取った"
+				},
+				{
 					"id": "OPEN_DRAWER1",
 					"value": 60,
 					"comment": "引き出し(左)を開ける"
@@ -658,6 +729,21 @@
 					"id": "RELEASED_DRAWER1",
 					"value": 62,
 					"comment": "引き出し(左)のねじ止めフラグ"
+				},
+				{
+					"id": "GAIN_PANEL_KA",
+					"value": 15,
+					"comment": "パネル「カ」を取得"
+				},
+				{
+					"id": "GAIN_PANEL_TA",
+					"value": 16,
+					"comment": "パネル「タ」を取得"
+				},
+				{
+					"id": "GAIN_PANEL_NA",
+					"value": 17,
+					"comment": "パネル「ナ」を取得"
 				}
 			],
 			"separators": [],
@@ -751,22 +837,16 @@
 			"lines": [
 				{
 					"id": 1,
-					"answer": "あいうえお",
+					"answer": "カタナ",
 					"choices": [
 						{
-							"letter": "あ"
+							"letter": "ナ"
 						},
 						{
-							"letter": "い"
+							"letter": "タ"
 						},
 						{
-							"letter": "う"
-						},
-						{
-							"letter": "え"
-						},
-						{
-							"letter": "お"
+							"letter": "カ"
 						}
 					]
 				}

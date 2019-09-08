@@ -27,4 +27,8 @@ FUNC_END,fauset
 FUNC_START,sticker
 MSG,9,「七・八・しんにょう」と書いてある
 FUNC_END,sticker
+FUNC_START,panel
+INT,7
+ITEM_ADD
+FUNC_END,panel
 END
