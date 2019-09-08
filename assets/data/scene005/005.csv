@@ -9,7 +9,7 @@ BOOL,0
 SET,16,51
 FUNC_END,pillow2
 FUNC_START,panel
-INT,5
+INT,7
 ITEM_ADD
 FUNC_END,panel
 FUNC_START,sheets

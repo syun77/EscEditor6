@@ -17,9 +17,9 @@ const:
   ITEM_HANDLE: 2 # 穴の空いた取っ手
   ITEM_SCREWDRIVER: 3 # ドライバー
   ITEM_TRIANGLE: 4 # 三角形の部品
-  ITEM_PANEL_KA: 5 # "カ"のパネル
+  ITEM_PANEL_NA: 5 # "ナ"のパネル
   ITEM_PANEL_TA: 6 # "タ"のパネル
-  ITEM_PANEL_NA: 7 # "ナ"のパネル
+  ITEM_PANEL_KA: 7 # "カ"のパネル
   
 flag:
   TEST_FLAG: 10 # テスト用

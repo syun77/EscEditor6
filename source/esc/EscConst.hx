@@ -13,7 +13,7 @@ class EscConst {
 	public static inline var ITEM_HANDLE:Int = 2;
 	public static inline var ITEM_SCREWDRIVER:Int = 3;
 	public static inline var ITEM_TRIANGLE:Int = 4;
-	public static inline var ITEM_PANEL_KA:Int = 5;
+	public static inline var ITEM_PANEL_NA:Int = 5;
 	public static inline var ITEM_PANEL_TA:Int = 6;
-	public static inline var ITEM_PANEL_NA:Int = 7;
+	public static inline var ITEM_PANEL_KA:Int = 7;
 }

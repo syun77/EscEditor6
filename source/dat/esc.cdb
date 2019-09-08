@@ -620,10 +620,10 @@
 					"flag": "GAIN_TRIANGLE"
 				},
 				{
-					"id": "ITEM_PANEL_KA",
-					"name": "\"カ\"のパネル",
+					"id": "ITEM_PANEL_NA",
+					"name": "\"ナ\"のパネル",
 					"value": 5,
-					"flag": "GAIN_PANEL_KA"
+					"flag": "GAIN_PANEL_NA"
 				},
 				{
 					"id": "ITEM_PANEL_TA",
@@ -632,10 +632,10 @@
 					"flag": "GAIN_PANEL_TA"
 				},
 				{
-					"id": "ITEM_PANEL_NA",
-					"name": "\"ナ\"のパネル",
+					"id": "ITEM_PANEL_KA",
+					"name": "\"カ\"のパネル",
 					"value": 7,
-					"flag": "GAIN_PANEL_NA"
+					"flag": "GAIN_PANEL_KA"
 				}
 			],
 			"separators": [],
