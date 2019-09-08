@@ -8,47 +8,12 @@ if($RET) {
 	return
 }
 
-if($ITEM == ITEM_USB_ADAPTER) {
-	":USBケーブルを差し込める電源アダプタだ"
+if($ITEM == ITEM_STICK) {
+	":先端が十字型になった鉄の棒だ"
 }
-elif($ITEM == ITEM_USB_CABLE) {
-	":USBケーブルだ"
+elif($ITEM == ITEM_HANDLE) {
+	":何か細いものを差し込めそうな取っ手だ"
 }
-elif($ITEM == ITEM_USB_ADAPTER_CABLE) {
-	":USBと電源をつなげるケーブルだ"
+elif($ITEM == ITEM_SCREWDRIVER) {
+	":プラスのネジを回すことができるドライバーだ"
 }
-elif($ITEM == ITEM_FLASHLIGHT_NA) {
-	":電池がない懐中電灯だ"
-}
-elif($ITEM == ITEM_FLOPPY) {
-	":フロッピーディスクだ"
-}
-elif($ITEM == ITEM_REMOTE) {
-	// 懐中電灯を持っていれば電池取り出し
-	ITEM_HAS(ITEM_FLASHLIGHT_NA)
-	if($RET) {
-		ITEM_DEL(ITEM_REMOTE)
-		ITEM_ADD(ITEM_BATTERY)
-		":リモコンから電池を取り出した"
-	}
-	else {
-		":エアコンのリモコンだ"
-	}
-}
-elif($ITEM == ITEM_MAGNET) {
-	":U型の磁石だ"
-}
-elif($ITEM == ITEM_ROPE) {
-	":しっかりした作りのロープだ"
-}
-elif($ITEM == ITEM_ROPE_MAGNET) {
-	":磁石をつないだロープだ"
-}
-elif($ITEM == ITEM_SILVER_KEY) {
-	":銀色のカギだ"
-}
-elif($ITEM == ITEM_GLASS) {
-	":虫メガネだ"
-}
-
-

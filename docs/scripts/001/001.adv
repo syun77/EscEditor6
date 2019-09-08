@@ -7,6 +7,12 @@ def lock
 	":カギがかかっていて開かない"
 }
 
+def stick
+{
+	// 細長い鉄の棒を取得する
+	ITEM_ADD(ITEM_STICK)
+}
+
 def test_talk
 {
 	"会話テキスト１行目"

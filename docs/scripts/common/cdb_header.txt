@@ -13,27 +13,17 @@ const:
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
-  ITEM_YELLOW_KEY: 1 # 黄色いカギ
-  ITEM_RED_KEY: 2 # 赤いカギ
-  ITEM_BLUE_KEY: 3 # 青いカギ
-  ITEM_GREEN_KEY: 4 # 緑のカギ
-  ITEM_GLASS: 5 # 虫めがね
-  ITEM_FLOPPY: 6 # フロッピーディスク
-  ITEM_FLASHLIGHT_NA: 7 # 電池のない懐中電灯
-  ITEM_BATTERY: 8 # 乾電池
-  ITEM_REMOTE: 9 # リモコン
-  ITEM_FLASHLIGHT: 10 # 懐中電灯
-  ITEM_ROPE: 11 # ロープ
-  ITEM_ROPE_MAGNET: 12 # 磁石付きロープ
-  ITEM_MAGNET: 13 # 磁石
-  ITEM_USB_ADAPTER: 14 # USB電源アダプタ
-  ITEM_USB_CABLE: 15 # USBケーブル
-  ITEM_USB_ADAPTER_CABLE: 16 # 電源アダプタ付きUSBケーブル
-  ITEM_SILVER_KEY: 17 # 銀色のカギ
+  ITEM_STICK: 1 # 細長い鉄の棒
+  ITEM_HANDLE: 2 # 穴の空いた取っ手
+  ITEM_SCREWDRIVER: 3 # ドライバー
   
 flag:
   TEST_FLAG: 10 # テスト用
+  GAIN_STICK: 11 # 細長い鉄の棒取得
+  GAIN_HANDLE: 12 # 取っ手を取得
+  GAIN_SCREWDRIVER: 13 # ドライバーを取得
   TOILET_OPEN: 30 # トイレのふたが開いた状態
+  SEARCH_HANDLE: 31 # 取っ手を一度調べた
   FAUSET_ENABLE: 40 # 蛇口を使える
   FILL_WATER: 41 # 洗面台に水が溜まっている
   PICK_SHEETS: 50 # シーツを取った

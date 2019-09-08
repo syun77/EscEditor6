@@ -13,3 +13,16 @@ def toilet_close
 	// トイレのふたを開く
 	%TOILET_OPEN = true
 }
+
+def handle
+{
+	if(%SEARCH_HANDLE) {
+		// 取っ手を外す
+		"取っ手を回したら外れそうだ……/"
+		ITEM_ADD(ITEM_HANDLE)
+	}
+	else {
+		":取っ手は動かない"
+		%SEARCH_HANDLE = true
+	}
+}

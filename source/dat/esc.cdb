@@ -56,6 +56,15 @@
 							"x": 247,
 							"y": 258,
 							"click": "lock"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene001/stick.png",
+							"image": "393987beae507fa31df6ddf449c8ad1b",
+							"x": 33,
+							"y": 293,
+							"click": "stick",
+							"off": "GAIN_STICK"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -143,21 +152,30 @@
 					"objs": [
 						{
 							"id": "1",
-							"file": "../../assets/data/scene003/toilet_open.png",
-							"image": "dc75920ec0fb81a60dbb561232092b13",
-							"x": 71,
-							"y": -34,
-							"click": "toilet_open",
-							"on": "TOILET_OPEN"
-						},
-						{
-							"id": "2",
 							"file": "../../assets/data/scene003/toilet_closed.png",
 							"image": "24f89cb6e95dc0d96b023546083001eb",
 							"x": 73,
 							"y": 178,
 							"click": "toilet_close",
 							"off": "TOILET_OPEN"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/handle.png",
+							"image": "84a21e7046d21d8ad8fdb65eccaefbc7",
+							"x": 198,
+							"y": 118,
+							"click": "handle",
+							"off": "GAIN_HANDLE"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene003/toilet_open.png",
+							"image": "dc75920ec0fb81a60dbb561232092b13",
+							"x": 71,
+							"y": -34,
+							"click": "toilet_open",
+							"on": "TOILET_OPEN"
 						}
 					],
 					"moves": [
@@ -494,97 +512,30 @@
 					"id": "ITEM_DUMMY"
 				},
 				{
-					"name": "黄色いカギ",
+					"id": "ITEM_STICK",
+					"name": "細長い鉄の棒",
 					"value": 1,
-					"id": "ITEM_YELLOW_KEY"
+					"flag": "GAIN_STICK"
 				},
 				{
-					"name": "赤いカギ",
+					"id": "ITEM_HANDLE",
+					"name": "穴の空いた取っ手",
 					"value": 2,
-					"id": "ITEM_RED_KEY"
+					"flag": "GAIN_HANDLE"
 				},
 				{
-					"name": "青いカギ",
+					"id": "ITEM_SCREWDRIVER",
+					"name": "ドライバー",
 					"value": 3,
-					"id": "ITEM_BLUE_KEY"
-				},
-				{
-					"name": "緑のカギ",
-					"value": 4,
-					"id": "ITEM_GREEN_KEY"
-				},
-				{
-					"name": "虫めがね",
-					"value": 5,
-					"id": "ITEM_GLASS"
-				},
-				{
-					"name": "フロッピーディスク",
-					"value": 6,
-					"id": "ITEM_FLOPPY"
-				},
-				{
-					"name": "電池のない懐中電灯",
-					"value": 7,
-					"id": "ITEM_FLASHLIGHT_NA"
-				},
-				{
-					"name": "乾電池",
-					"value": 8,
-					"id": "ITEM_BATTERY"
-				},
-				{
-					"name": "リモコン",
-					"value": 9,
-					"id": "ITEM_REMOTE"
-				},
-				{
-					"name": "懐中電灯",
-					"value": 10,
-					"id": "ITEM_FLASHLIGHT"
-				},
-				{
-					"name": "ロープ",
-					"value": 11,
-					"id": "ITEM_ROPE"
-				},
-				{
-					"name": "磁石付きロープ",
-					"value": 12,
-					"id": "ITEM_ROPE_MAGNET"
-				},
-				{
-					"name": "磁石",
-					"value": 13,
-					"id": "ITEM_MAGNET"
-				},
-				{
-					"name": "USB電源アダプタ",
-					"value": 14,
-					"id": "ITEM_USB_ADAPTER"
-				},
-				{
-					"name": "USBケーブル",
-					"value": 15,
-					"id": "ITEM_USB_CABLE"
-				},
-				{
-					"name": "電源アダプタ付きUSBケーブル",
-					"value": 16,
-					"id": "ITEM_USB_ADAPTER_CABLE",
+					"flag": "GAIN_SCREWDRIVER",
 					"materials": [
 						{
-							"material": "ITEM_USB_ADAPTER"
+							"material": "ITEM_STICK"
 						},
 						{
-							"material": "ITEM_USB_CABLE"
+							"material": "ITEM_HANDLE"
 						}
 					]
-				},
-				{
-					"name": "銀色のカギ",
-					"value": 17,
-					"id": "ITEM_SILVER_KEY"
 				}
 			],
 			"separators": [],
@@ -615,9 +566,29 @@
 					"comment": "テスト用"
 				},
 				{
+					"id": "GAIN_STICK",
+					"value": 11,
+					"comment": "細長い鉄の棒取得"
+				},
+				{
+					"id": "GAIN_HANDLE",
+					"value": 12,
+					"comment": "取っ手を取得"
+				},
+				{
+					"id": "GAIN_SCREWDRIVER",
+					"value": 13,
+					"comment": "ドライバーを取得"
+				},
+				{
 					"id": "TOILET_OPEN",
 					"value": 30,
 					"comment": "トイレのふたが開いた状態"
+				},
+				{
+					"id": "SEARCH_HANDLE",
+					"value": 31,
+					"comment": "取っ手を一度調べた"
 				},
 				{
 					"id": "FAUSET_ENABLE",

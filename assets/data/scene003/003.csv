@@ -8,4 +8,15 @@ FUNC_START,toilet_close
 BOOL,1
 SET,16,30
 FUNC_END,toilet_close
+FUNC_START,handle
+BIT,31
+IF,00000018
+MSG,1,取っ手を回したら外れそうだ……
+INT,2
+ITEM_ADD
+GOTO,00000021
+MSG,9,取っ手は動かない
+BOOL,1
+SET,16,31
+FUNC_END,handle
 END
