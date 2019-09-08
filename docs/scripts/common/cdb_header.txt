@@ -16,12 +16,14 @@ const:
   ITEM_STICK: 1 # 細長い鉄の棒
   ITEM_HANDLE: 2 # 穴の空いた取っ手
   ITEM_SCREWDRIVER: 3 # ドライバー
+  ITEM_TRIANGLE: 4 # 三角形の部品
   
 flag:
   TEST_FLAG: 10 # テスト用
   GAIN_STICK: 11 # 細長い鉄の棒取得
   GAIN_HANDLE: 12 # 取っ手を取得
   GAIN_SCREWDRIVER: 13 # ドライバーを取得
+  GAIN_TRIANGLE: 14 # 三角形の部品
   TOILET_OPEN: 30 # トイレのふたが開いた状態
   SEARCH_HANDLE: 31 # 取っ手を一度調べた
   FAUSET_ENABLE: 40 # 蛇口を使える

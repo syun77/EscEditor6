@@ -28,6 +28,10 @@ FUNC_START,close_drawer1
 BOOL,0
 SET,16,60
 FUNC_END,close_drawer1
+FUNC_START,triangle
+INT,4
+ITEM_ADD
+FUNC_END,triangle
 FUNC_START,open_drawer2
 BOOL,1
 SET,16,61

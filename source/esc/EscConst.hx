@@ -12,4 +12,5 @@ class EscConst {
 	public static inline var ITEM_STICK:Int = 1;
 	public static inline var ITEM_HANDLE:Int = 2;
 	public static inline var ITEM_SCREWDRIVER:Int = 3;
+	public static inline var ITEM_TRIANGLE:Int = 4;
 }

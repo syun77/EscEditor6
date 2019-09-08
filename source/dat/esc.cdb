@@ -223,7 +223,7 @@
 							"image": "11c5a70c18a0cef4def8d997a1fff2e5",
 							"x": 176,
 							"y": 174,
-							"click": "",
+							"click": "check_fauset",
 							"off": "FAUSET_ENABLE"
 						},
 						{
@@ -232,7 +232,7 @@
 							"image": "4bb6a602a07df9c4ac6e97d5262dfaef",
 							"x": 172,
 							"y": 162,
-							"click": "",
+							"click": "fauset",
 							"on": "FAUSET_ENABLE"
 						}
 					],
@@ -356,6 +356,16 @@
 							"y": 240,
 							"click": "screw",
 							"off": "RELEASED_DRAWER1"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene006/triangle.png",
+							"image": "01a31cba541dd07ed71bb4fc6787b673",
+							"x": 98,
+							"y": 291,
+							"click": "triangle",
+							"off": "GAIN_TRIANGLE",
+							"on": "OPEN_DRAWER1"
 						}
 					],
 					"moves": [
@@ -545,6 +555,12 @@
 							"material": "ITEM_HANDLE"
 						}
 					]
+				},
+				{
+					"id": "ITEM_TRIANGLE",
+					"name": "三角形の部品",
+					"value": 4,
+					"flag": "GAIN_TRIANGLE"
 				}
 			],
 			"separators": [],
@@ -588,6 +604,11 @@
 					"id": "GAIN_SCREWDRIVER",
 					"value": 13,
 					"comment": "ドライバーを取得"
+				},
+				{
+					"id": "GAIN_TRIANGLE",
+					"value": 14,
+					"comment": "三角形の部品"
 				},
 				{
 					"id": "TOILET_OPEN",

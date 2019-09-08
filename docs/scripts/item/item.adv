@@ -17,3 +17,6 @@ elif($ITEM == ITEM_HANDLE) {
 elif($ITEM == ITEM_SCREWDRIVER) {
 	":プラスのネジを回すことができるドライバーだ"
 }
+elif($ITEM == ITEM_TRIANGLE) {
+	":どこかにはめ込めそうな三角形の部品だ"
+}

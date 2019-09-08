@@ -5,6 +5,7 @@ class EscFlag {
 	public static inline var GAIN_STICK:Int = 11;
 	public static inline var GAIN_HANDLE:Int = 12;
 	public static inline var GAIN_SCREWDRIVER:Int = 13;
+	public static inline var GAIN_TRIANGLE:Int = 14;
 	public static inline var TOILET_OPEN:Int = 30;
 	public static inline var SEARCH_HANDLE:Int = 31;
 	public static inline var FAUSET_ENABLE:Int = 40;
@@ -18,6 +19,7 @@ class EscFlag {
 		"GAIN_STICK" => 11,
 		"GAIN_HANDLE" => 12,
 		"GAIN_SCREWDRIVER" => 13,
+		"GAIN_TRIANGLE" => 14,
 		"TOILET_OPEN" => 30,
 		"SEARCH_HANDLE" => 31,
 		"FAUSET_ENABLE" => 40,

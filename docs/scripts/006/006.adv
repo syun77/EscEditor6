@@ -30,6 +30,11 @@ def close_drawer1
 	%OPEN_DRAWER1 = false
 }
 
+def triangle
+{
+	ITEM_ADD(ITEM_TRIANGLE)
+}
+
 def open_drawer2
 {
 	// 引き出し(右)を引く
