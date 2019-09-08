@@ -29,3 +29,4 @@ flag:
   PICK_SHEETS: 50 # シーツを取った
   OPEN_DRAWER1: 60 # 引き出し(左)を開ける
   OPEN_DRAWER2: 61 # 引き出し(右)を開ける
+  RELEASED_DRAWER1: 62 # 引き出し(左)のねじ止めフラグ

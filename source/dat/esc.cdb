@@ -347,6 +347,15 @@
 							"y": 239,
 							"click": "close_drawer2",
 							"on": "OPEN_DRAWER2"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene006/screw.png",
+							"image": "db89da1e9c849c114e1444cedea0d9c3",
+							"x": 49,
+							"y": 240,
+							"click": "screw",
+							"off": "RELEASED_DRAWER1"
 						}
 					],
 					"moves": [
@@ -614,6 +623,11 @@
 					"id": "OPEN_DRAWER2",
 					"value": 61,
 					"comment": "引き出し(右)を開ける"
+				},
+				{
+					"id": "RELEASED_DRAWER1",
+					"value": 62,
+					"comment": "引き出し(左)のねじ止めフラグ"
 				}
 			],
 			"separators": [],

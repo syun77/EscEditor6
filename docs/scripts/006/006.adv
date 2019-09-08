@@ -2,8 +2,25 @@ def init
 {
 }
 
+def screw
+{
+	ITEM_CHK(ITEM_SCREWDRIVER)
+	if(!$RET) {
+		":プラスのネジがついてる"
+		return
+	}
+
+	":ネジを外した"
+	// 引き出し(左)を開くことができる
+	%RELEASED_DRAWER1 = true
+}
+
 def open_drawer1
 {
+	if(%RELEASED_DRAWER1 == false) {
+		":引き出しは開かない"
+		return
+	}
 	// 引き出し(左)を引く
 	%OPEN_DRAWER1 = true
 }

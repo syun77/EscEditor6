@@ -191,6 +191,7 @@ class AdvScript {
       "GE"    => _GE,
       "AND"   => _AND,
       "OR"    => _OR,
+      "NOT"   => _NOT,
       "GREATER" => _GREATER,
       "IF"    => _IF,
       "ELIF"  => _IF,
@@ -521,6 +522,15 @@ class AdvScript {
       trace('[SCRIPT] OR ${left} || ${right}');
     }
     pushStackBool(left != 0 || right != 0);
+  }
+
+  // '!'
+  private function _NOT(param:Array<String>):Void {
+    var right = popStack();
+    if(_bLog) {
+      trace('[SCRIPT] NOT ${right}');
+    }
+    pushStackBool((right != 0) == false);
   }
 
   private function _IF(param:Array<String>):Void {

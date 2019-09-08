@@ -12,6 +12,7 @@ class EscFlag {
 	public static inline var PICK_SHEETS:Int = 50;
 	public static inline var OPEN_DRAWER1:Int = 60;
 	public static inline var OPEN_DRAWER2:Int = 61;
+	public static inline var RELEASED_DRAWER1:Int = 62;
 	static var _tbl:Map<String, Int> = [
 		"TEST_FLAG" => 10,
 		"GAIN_STICK" => 11,
@@ -24,6 +25,7 @@ class EscFlag {
 		"PICK_SHEETS" => 50,
 		"OPEN_DRAWER1" => 60,
 		"OPEN_DRAWER2" => 61,
+		"RELEASED_DRAWER1" => 62,
 	];
 	
 	public static function get(k:String):Int {
