@@ -340,6 +340,24 @@
 							"y": 119,
 							"click": "pillow2",
 							"on": "PICK_PILLOW"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene005/hollow.png",
+							"image": "e3d1e7f6863afad7974e8fe03cdf483c",
+							"x": 166,
+							"y": 83,
+							"click": "hollow",
+							"off": "FIT_PANELS"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene005/hollow2.png",
+							"image": "cc60dbf6ecdf06d2bbda9dae93ff49f8",
+							"x": 166,
+							"y": 83,
+							"click": "hollow2",
+							"on": "FIT_PANELS"
 						}
 					],
 					"moves": [
@@ -686,6 +704,21 @@
 					"comment": "三角形の部品"
 				},
 				{
+					"id": "GAIN_PANEL_KA",
+					"value": 15,
+					"comment": "パネル「カ」を取得"
+				},
+				{
+					"id": "GAIN_PANEL_TA",
+					"value": 16,
+					"comment": "パネル「タ」を取得"
+				},
+				{
+					"id": "GAIN_PANEL_NA",
+					"value": 17,
+					"comment": "パネル「ナ」を取得"
+				},
+				{
 					"id": "TOILET_OPEN",
 					"value": 30,
 					"comment": "トイレのふたが開いた状態"
@@ -716,6 +749,11 @@
 					"comment": "枕を取った"
 				},
 				{
+					"id": "FIT_PANELS",
+					"value": 52,
+					"comment": "パネルをはめ込んだ"
+				},
+				{
 					"id": "OPEN_DRAWER1",
 					"value": 60,
 					"comment": "引き出し(左)を開ける"
@@ -729,21 +767,6 @@
 					"id": "RELEASED_DRAWER1",
 					"value": 62,
 					"comment": "引き出し(左)のねじ止めフラグ"
-				},
-				{
-					"id": "GAIN_PANEL_KA",
-					"value": 15,
-					"comment": "パネル「カ」を取得"
-				},
-				{
-					"id": "GAIN_PANEL_TA",
-					"value": 16,
-					"comment": "パネル「タ」を取得"
-				},
-				{
-					"id": "GAIN_PANEL_NA",
-					"value": 17,
-					"comment": "パネル「ナ」を取得"
 				}
 			],
 			"separators": [],

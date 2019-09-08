@@ -28,3 +28,38 @@ def sticker
 {
 	":「パネルを３つ探せ」と書いてある"
 }
+
+def hollow
+{
+	$50 = 0
+	ITEM_HAS(ITEM_PANEL_KA)
+	if($RET) {
+		$50 += 1
+	}
+	ITEM_HAS(ITEM_PANEL_TA)
+	if($RET) {
+		$50 += 1
+	}
+	ITEM_HAS(ITEM_PANEL_NA)
+	if($RET) {
+		$50 += 1
+	}
+	if($50 == 3) {
+		PANEL_INPUT(1)
+		if($RET) {
+			":パネルをセットした"
+			%FIT_PANELS = true
+		}
+	}
+	elif($50 > 0) {
+		":パネルの数が足りないようだ"
+	}
+	else {
+		":何かをはめ込む窪みが３つある"
+	}
+}
+
+def hollow2
+{
+	":「カ」「タ」「ナ」のパネルが入っている"
+}
