@@ -210,6 +210,15 @@
 						},
 						{
 							"id": "2",
+							"file": "../../assets/data/scene004/sticker.png",
+							"image": "43a663461c6f6d761f097fae410baea8",
+							"x": 143,
+							"y": 277,
+							"click": "sticker",
+							"on": "FILL_WATER"
+						},
+						{
+							"id": "3",
 							"file": "../../assets/data/scene004/water.png",
 							"image": "08d0cc809b17263e4827cf86b41fcce5",
 							"x": 111,
@@ -218,7 +227,7 @@
 							"on": "FILL_WATER"
 						},
 						{
-							"id": "3",
+							"id": "4",
 							"file": "../../assets/data/scene004/fauset.png",
 							"image": "11c5a70c18a0cef4def8d997a1fff2e5",
 							"x": 176,
@@ -227,7 +236,7 @@
 							"off": "FAUSET_ENABLE"
 						},
 						{
-							"id": "4",
+							"id": "5",
 							"file": "../../assets/data/scene004/fauset2.png",
 							"image": "4bb6a602a07df9c4ac6e97d5262dfaef",
 							"x": 172,

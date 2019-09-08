@@ -24,4 +24,7 @@ MSG,9,蛇口をひねって水を流し込んだ
 BOOL,1
 SET,16,41
 FUNC_END,fauset
+FUNC_START,sticker
+MSG,9,「七・八・しんにょう」と書いてある
+FUNC_END,sticker
 END
