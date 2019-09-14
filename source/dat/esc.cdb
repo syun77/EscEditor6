@@ -84,6 +84,28 @@
 							"jump": "Entrance"
 						}
 					]
+				},
+				{
+					"id": "Train3",
+					"name": "３号車両",
+					"value": 3,
+					"script": "../../docs/scripts/003/003.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Train2"
+						}
+					]
 				}
 			],
 			"separators": [],

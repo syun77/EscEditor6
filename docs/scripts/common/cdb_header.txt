@@ -5,6 +5,8 @@
 const:
   # シーン
   Entrance: 1 # １号車両
+  Train2: 2 # ２号車両
+  Train3: 3 # ３号車両
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
