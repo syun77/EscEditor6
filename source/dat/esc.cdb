@@ -57,6 +57,14 @@
 							"y": 76,
 							"click": "strap",
 							"off": "GAIN_STRAP_CIRCLE"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene001/next.png",
+							"image": "a4c975ad9dccca1a3b200687206d26f9",
+							"x": 158,
+							"y": 170,
+							"click": "next"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
