@@ -8,6 +8,7 @@ const:
   Train2: 2 # ２号車両
   Train3: 3 # ３号車両
   Input1234: 4 # ？？？
+  Train2Door: 5 # ３号車両に続く扉
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -25,3 +26,7 @@ flag:
   GAIN_MEMO: 14 # 「こけし、買い取ります」のメモ書き取得
   GAIN_FLOPPY: 15 # フロッピーディスク取得
   UNLOCK_PINK: 40 # ピンクの金庫を解錠した
+  UNLOCK_TRAIN2: 50 # 2号車両に続く扉を解錠した
+  FIT_CIRCLE: 51 # 円形の穴に吊り革を差し込んだ
+  FIT_TRIANGLE: 52 # 三角形の穴に吊り革を差し込んだ
+  FIT_BOTH: 53 # 両方の穴に吊り革を差し込んだ

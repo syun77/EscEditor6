@@ -26,3 +26,16 @@ def input
 {
 	JUMP(Input1234)
 }
+
+def door
+{
+	if(%UNLOCK_TRAIN2) {
+		// 解錠ずみ
+		JUMP(Train3)
+	}
+	else {
+		// 鍵を解除していない
+		JUMP(Train2Door)
+	}
+}
+

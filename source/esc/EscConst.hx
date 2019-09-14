@@ -6,6 +6,7 @@ class EscConst {
 	public static inline var Train2:Int = 2;
 	public static inline var Train3:Int = 3;
 	public static inline var Input1234:Int = 4;
+	public static inline var Train2Door:Int = 5;
 	public static inline var ITEM_DUMMY:Int = 0;
 	public static inline var ITEM_STRAP_CIRCLE:Int = 1;
 	public static inline var ITEM_STRAP_TRIANGLE:Int = 2;

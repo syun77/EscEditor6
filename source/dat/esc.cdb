@@ -120,6 +120,14 @@
 							"x": 327,
 							"y": 77,
 							"click": "input"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene002/door.png",
+							"image": "737e15e3288f562c49aaa218b4136270",
+							"x": 86,
+							"y": 138,
+							"click": "door"
 						}
 					],
 					"moves": [
@@ -193,6 +201,85 @@
 							"click": "knife",
 							"on": "UNLOCK_PINK",
 							"off": "GAIN_KNIFE"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Train2"
+						}
+					]
+				},
+				{
+					"id": "Train2Door",
+					"name": "３号車両に続く扉",
+					"value": 5,
+					"script": "../../docs/scripts/005/005.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/knob.png",
+							"image": "a45c96b3481bf5aef7bb4c152acb40d1",
+							"x": 27,
+							"y": 392,
+							"click": "lock",
+							"off": "UNLOCK_TRAIN2"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene005/circle.png",
+							"image": "98305f1d051b6f51f73aef9f106ae82e",
+							"x": 95,
+							"y": 297,
+							"click": "circle",
+							"off": "FIT_CIRCLE"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene005/circle2.png",
+							"image": "45476156bc4fb3ef29e49e365ddbd9ff",
+							"x": 95,
+							"y": 297,
+							"click": "circle2",
+							"off": "UNLOCK_TRAIN2",
+							"on": "FIT_CIRCLE"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene005/triangle.png",
+							"image": "0060d9a819ae88f0edf159fdeeb4365f",
+							"x": 236,
+							"y": 297,
+							"click": "triangle",
+							"off": "FIT_TRIANGLE"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene005/triangle2.png",
+							"image": "52616d8b7b06a83b13953d9ddc21dd8d",
+							"x": 236,
+							"y": 297,
+							"click": "triangle2",
+							"on": "FIT_TRIANGLE",
+							"off": "UNLOCK_TRAIN2"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene005/input.png",
+							"image": "f3e3f7a84cded71d65da8036d6f954c2",
+							"x": 139,
+							"y": 369,
+							"click": "input",
+							"on": "FIT_BOTH"
 						}
 					],
 					"moves": [
@@ -439,6 +526,26 @@
 					"id": "UNLOCK_PINK",
 					"value": 40,
 					"comment": "ピンクの金庫を解錠した"
+				},
+				{
+					"id": "UNLOCK_TRAIN2",
+					"value": 50,
+					"comment": "2号車両に続く扉を解錠した"
+				},
+				{
+					"id": "FIT_CIRCLE",
+					"value": 51,
+					"comment": "円形の穴に吊り革を差し込んだ"
+				},
+				{
+					"id": "FIT_TRIANGLE",
+					"value": 52,
+					"comment": "三角形の穴に吊り革を差し込んだ"
+				},
+				{
+					"id": "FIT_BOTH",
+					"value": 53,
+					"comment": "両方の穴に吊り革を差し込んだ"
 				}
 			],
 			"separators": [],

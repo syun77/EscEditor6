@@ -1,0 +1,61 @@
+def init
+{
+}
+
+def lock
+{
+	":ロックされていて開かない"
+}
+
+def circle
+{
+	ITEM_CHK(ITEM_STRAP_CIRCLE)
+	if($RET) {
+		ITEM_DEL(ITEM_STRAP_CIRCLE)
+		":吊り革を穴に差し込んだ"
+		%FIT_CIRCLE = true
+		if(%FIT_TRIANGLE) {
+			%FIT_BOTH = true
+		}
+		return
+	}
+	":円形のものをはめ込む穴がある"
+}
+
+def circle2
+{
+	":「30」という数字が浮かび上がっている"
+}
+
+def triangle
+{
+	ITEM_CHK(ITEM_STRAP_TRIANGLE)
+	if($RET) {
+		ITEM_DEL(ITEM_STRAP_TRIANGLE)
+		":吊り革を穴に差し込んだ"
+		%FIT_TRIANGLE = true
+		if(%FIT_CIRCLE) {
+			%FIT_BOTH = true
+		}
+		return
+	}
+	":三角形のものをはめ込む穴がある"
+}
+
+def triangle2
+{
+	":「120」という数字が浮かび上がっている"
+}
+
+def input
+{
+	NUM_INPUT(50, 3)
+	if($50 == 350) {
+		"扉のロックが解除された/"
+		%UNLOCK_TRAIN2 = true
+		JUMP(Train3)
+	}
+	else {
+		":正しくないようだ"
+	}
+}
