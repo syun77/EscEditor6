@@ -53,8 +53,8 @@
 							"id": "1",
 							"file": "../../assets/data/scene001/strap.png",
 							"image": "f4fc8867420f14f6832c9f912a4ae6ca",
-							"x": 0,
-							"y": 0,
+							"x": 48,
+							"y": 26,
 							"click": "strap"
 						}
 					],
