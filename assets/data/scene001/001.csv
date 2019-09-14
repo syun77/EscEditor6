@@ -23,6 +23,14 @@ MSG,9,取れかけそうな吊り革だ
 INT,1
 SET,1,10
 FUNC_END,strap
+FUNC_START,memo
+INT,4
+ITEM_ADD
+FUNC_END,memo
+FUNC_START,floppy
+INT,5
+ITEM_ADD
+FUNC_END,floppy
 FUNC_START,next
 INT,2
 JUMP

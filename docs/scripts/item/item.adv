@@ -17,3 +17,9 @@ elif($ITEM == ITEM_STRAP_CIRCLE) {
 elif($ITEM == ITEM_STRAP_TRIANGLE) {
 	":三角形の吊り革だ"
 }
+elif($ITEM == ITEM_MEMO) {
+	":「こけし、買い取ります」と書かれている"
+}
+elif($ITEM == ITEM_FLOPPY) {
+	":フロッピーディスクだ"
+}

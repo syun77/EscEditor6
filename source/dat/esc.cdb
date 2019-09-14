@@ -65,6 +65,24 @@
 							"x": 158,
 							"y": 170,
 							"click": "next"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene001/memo.png",
+							"image": "e8a2572d16f650511de3016f3dfbd955",
+							"x": 10,
+							"y": 123,
+							"click": "memo",
+							"off": "GAIN_MEMO"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene001/floppy.png",
+							"image": "c6891b994fc157a42fefd6dd0c3cb7ba",
+							"x": 115,
+							"y": 313,
+							"click": "floppy",
+							"off": "GAIN_FLOPPY"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -351,6 +369,18 @@
 					"name": "カッターナイフ",
 					"value": 3,
 					"flag": "GAIN_KNIFE"
+				},
+				{
+					"id": "ITEM_MEMO",
+					"name": "メモ書き",
+					"value": 4,
+					"flag": "GAIN_MEMO"
+				},
+				{
+					"id": "ITEM_FLOPPY",
+					"name": "フロッピーディスク",
+					"value": 5,
+					"flag": "GAIN_FLOPPY"
 				}
 			],
 			"separators": [],
@@ -394,6 +424,16 @@
 					"id": "GAIN_KNIFE",
 					"value": 13,
 					"comment": "カッターナイフを取得"
+				},
+				{
+					"id": "GAIN_MEMO",
+					"value": 14,
+					"comment": "「こけし、買い取ります」のメモ書き取得"
+				},
+				{
+					"id": "GAIN_FLOPPY",
+					"value": 15,
+					"comment": "フロッピーディスク取得"
 				},
 				{
 					"id": "UNLOCK_PINK",

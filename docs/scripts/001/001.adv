@@ -22,6 +22,16 @@ def strap
 	$10 += 1
 }
 
+def memo
+{
+	ITEM_ADD(ITEM_MEMO)
+}
+
+def floppy
+{
+	ITEM_ADD(ITEM_FLOPPY)
+}
+
 def next
 {
 	// 2号車両に進む

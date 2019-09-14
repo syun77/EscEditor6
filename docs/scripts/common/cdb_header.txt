@@ -14,10 +14,14 @@ const:
   ITEM_STRAP_CIRCLE: 1 # 丸い吊り革
   ITEM_STRAP_TRIANGLE: 2 # 三角の吊り革
   ITEM_KNIFE: 3 # カッターナイフ
+  ITEM_MEMO: 4 # メモ書き
+  ITEM_FLOPPY: 5 # フロッピーディスク
   
 flag:
   TEST_FLAG: 10 # テスト用
   GAIN_STRAP_CIRCLE: 11 # 丸い吊り革を取得
   GAIN_STRAP_TRIANGLE: 12 # 三角の吊り革を取得
   GAIN_KNIFE: 13 # カッターナイフを取得
+  GAIN_MEMO: 14 # 「こけし、買い取ります」のメモ書き取得
+  GAIN_FLOPPY: 15 # フロッピーディスク取得
   UNLOCK_PINK: 40 # ピンクの金庫を解錠した
