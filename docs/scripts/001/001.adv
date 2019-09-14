@@ -2,61 +2,7 @@ def init
 {
 }
 
-def lock
+def strap
 {
-	$11 = 0
-	ITEM_HAS(ITEM_KEY)
-	if($RET) {
-		$11 += 1
-	}
-	ITEM_HAS(ITEM_KEY2)
-	if($RET) {
-		$11 += 1
-	}
-	
-	if($11 == 2) {
-		// 鉄格子解除
-		":鉄格子のカギを解除した"
-		%UNLOCK_LAST = true
-	}
-	elif($11 > 0) {
-		":カギが足りない"
-	}
-	else {
-		":カギがかかっていて開かない"
-	}
-}
-
-def unlock
-{
-	// ゲームクリア
-	COMPLETE()
-}
-
-def stick
-{
-	// 細長い鉄の棒を取得する
-	ITEM_ADD(ITEM_STICK)
-}
-
-def test_talk
-{
-	"会話テキスト１行目"
-	"会話テキスト２行目"
-	"会話テキスト３行目/"
-	
-	"アイウエオ"
-	"かきくけこ/"
-}
-def test
-{
-	select("問題文"
-		"問題文２"
-	)
-	{"選択肢1"
-		":選択肢1を選びました"
-	}
-	{"選択肢2"
-		":選択肢2を選びました"
-	}
+	":取れかけそうなつり革だ"
 }

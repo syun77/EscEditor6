@@ -4,12 +4,7 @@
 ############################
 const:
   # シーン
-  Entrance: 1 # 鉄格子
-  PrisonWest: 2 # 牢屋〜東側
-  Toilet: 3 # トイレ
-  Sink: 4 # 洗面台
-  Bed: 5 # ベッド
-  Desk: 6 # 机
+  Entrance: 1 # １号車両
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
