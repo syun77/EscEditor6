@@ -76,7 +76,16 @@
 							"y": 0
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/strap.png",
+							"image": "31102c275459b9f6dd0d9bd926e7f8a1",
+							"x": 276,
+							"y": 20,
+							"click": "strap"
+						}
+					],
 					"moves": [
 						{
 							"id": 3,
