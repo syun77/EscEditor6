@@ -43,7 +43,7 @@
 					"bgs": [
 						{
 							"x": 0,
-							"y": 0,
+							"y": 50,
 							"file": "../../assets/data/scene001/bg.png",
 							"id": "1"
 						}
@@ -54,7 +54,7 @@
 							"file": "../../assets/data/scene001/strap.png",
 							"image": "f4fc8867420f14f6832c9f912a4ae6ca",
 							"x": 48,
-							"y": 26,
+							"y": 76,
 							"click": "strap",
 							"off": "GAIN_STRAP_CIRCLE"
 						}
@@ -74,7 +74,7 @@
 							"id": "1",
 							"file": "../../assets/data/scene002/bg.png",
 							"x": 0,
-							"y": 0
+							"y": 50
 						}
 					],
 					"objs": [
@@ -83,7 +83,7 @@
 							"file": "../../assets/data/scene002/strap.png",
 							"image": "31102c275459b9f6dd0d9bd926e7f8a1",
 							"x": 276,
-							"y": 20,
+							"y": 70,
 							"click": "strap",
 							"off": "GAIN_STRAP_TRIANGLE"
 						},
@@ -92,7 +92,7 @@
 							"file": "../../assets/data/scene002/input.png",
 							"image": "",
 							"x": 327,
-							"y": 27,
+							"y": 77,
 							"click": "input"
 						}
 					],
@@ -114,7 +114,7 @@
 							"id": "1",
 							"file": "../../assets/data/scene003/bg.png",
 							"x": 0,
-							"y": 0
+							"y": 50
 						}
 					],
 					"objs": [],
@@ -136,10 +136,39 @@
 							"id": "1",
 							"file": "../../assets/data/scene004/bg.png",
 							"x": 0,
-							"y": 0
+							"y": 50
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/input.png",
+							"image": "e8c0fcb40b0173c65e54d496fe5f7893",
+							"x": 41,
+							"y": 224,
+							"click": "input",
+							"off": "UNLOCK_PINK"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene004/unlock.png",
+							"image": "8c83d8ff2268eb60ee64ae08e712ca21",
+							"x": 0,
+							"y": 50,
+							"click": "",
+							"on": "UNLOCK_PINK"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene004/knife.png",
+							"image": "98129f43764c03178241fbec0ceb98d9",
+							"x": 152,
+							"y": 239,
+							"click": "knife",
+							"on": "UNLOCK_PINK",
+							"off": "GAIN_KNIFE"
+						}
+					],
 					"moves": [
 						{
 							"id": 3,
@@ -357,6 +386,11 @@
 					"id": "GAIN_KNIFE",
 					"value": 13,
 					"comment": "カッターナイフを取得"
+				},
+				{
+					"id": "UNLOCK_PINK",
+					"value": 40,
+					"comment": "ピンクの金庫を解錠した"
 				}
 			],
 			"separators": [],

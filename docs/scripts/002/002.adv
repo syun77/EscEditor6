@@ -4,7 +4,22 @@ def init
 
 def strap
 {
+	if($20 > 0) {
+		ITEM_CHK(ITEM_KNIFE)
+		if($RET) {
+			select("カッターナイフで"
+				"持ち手を切り取れそうだ")
+			{"切り取る"
+				// 三角形のつり革を獲得
+				ITEM_ADD(ITEM_STRAP_TRIANGLE)
+			}
+			{"何もしない"
+			}
+			return
+		}
+	}
 	":取れかけそうな吊り革だ"
+	$20 += 1
 }
 
 def input

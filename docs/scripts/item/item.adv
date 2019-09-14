@@ -8,15 +8,12 @@ if($RET) {
 	return
 }
 
-if($ITEM == ITEM_STICK) {
-	":先端が十字型になった鉄の棒だ"
+if($ITEM == ITEM_KNIFE) {
+	":よく切れそうなカッターナイフだ"
 }
-elif($ITEM == ITEM_HANDLE) {
-	":何か細いものを差し込めそうな取っ手だ"
+elif($ITEM == ITEM_STRAP_CIRCLE) {
+	":円形の吊り革だ"
 }
-elif($ITEM == ITEM_SCREWDRIVER) {
-	":プラスのネジを回すことができるドライバーだ"
-}
-elif($ITEM == ITEM_TRIANGLE) {
-	":どこかにはめ込めそうな三角形の部品だ"
+elif($ITEM == ITEM_STRAP_TRIANGLE) {
+	":三角形の吊り革だ"
 }

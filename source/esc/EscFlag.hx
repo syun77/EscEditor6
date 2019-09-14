@@ -5,11 +5,13 @@ class EscFlag {
 	public static inline var GAIN_STRAP_CIRCLE:Int = 11;
 	public static inline var GAIN_STRAP_TRIANGLE:Int = 12;
 	public static inline var GAIN_KNIFE:Int = 13;
+	public static inline var UNLOCK_PINK:Int = 40;
 	static var _tbl:Map<String, Int> = [
 		"TEST_FLAG" => 10,
 		"GAIN_STRAP_CIRCLE" => 11,
 		"GAIN_STRAP_TRIANGLE" => 12,
 		"GAIN_KNIFE" => 13,
+		"UNLOCK_PINK" => 40,
 	];
 	
 	public static function get(k:String):Int {

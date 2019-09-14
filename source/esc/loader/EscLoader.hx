@@ -26,6 +26,8 @@ class EscLoader {
         for(b in scenes.bgs) {
             bg = new EscObj(_root);
             bg.type = "bg";
+            bg.x = b.x;
+            bg.y = b.y;
             bg.id = b.id;
             bg.image = _toPath(b.file);
         }

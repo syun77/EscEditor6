@@ -1,3 +1,23 @@
 def init
 {
 }
+
+def input
+{
+	NUM_INPUT(40, 4)
+	if($40 == 8932) {
+		// ピンクの金庫を解除
+		%UNLOCK_PINK = true
+		":ロックが解除された"
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+
+def knife
+{
+	// カッターナイフを獲得
+	ITEM_ADD(ITEM_KNIFE)
+}
+

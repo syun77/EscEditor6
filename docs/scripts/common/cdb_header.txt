@@ -20,3 +20,4 @@ flag:
   GAIN_STRAP_CIRCLE: 11 # 丸い吊り革を取得
   GAIN_STRAP_TRIANGLE: 12 # 三角の吊り革を取得
   GAIN_KNIFE: 13 # カッターナイフを取得
+  UNLOCK_PINK: 40 # ピンクの金庫を解錠した
