@@ -7,40 +7,16 @@ const:
   Entrance: 1 # １号車両
   Train2: 2 # ２号車両
   Train3: 3 # ３号車両
+  Input1234: 4 # ？？？
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
-  ITEM_STICK: 1 # 細長い鉄の棒
-  ITEM_HANDLE: 2 # 穴の空いた取っ手
-  ITEM_SCREWDRIVER: 3 # ドライバー
-  ITEM_TRIANGLE: 4 # 三角形の部品
-  ITEM_PANEL_NA: 5 # "ナ"のパネル
-  ITEM_PANEL_TA: 6 # "タ"のパネル
-  ITEM_PANEL_KA: 7 # "カ"のパネル
-  ITEM_KEY: 8 # 銀のカギ
-  ITEM_KEY2: 9 # 金のカギ
+  ITEM_STRAP_CIRCLE: 1 # 丸い吊り革
+  ITEM_STRAP_TRIANGLE: 2 # 三角の吊り革
+  ITEM_KNIFE: 3 # カッターナイフ
   
 flag:
   TEST_FLAG: 10 # テスト用
-  GAIN_STICK: 11 # 細長い鉄の棒取得
-  GAIN_HANDLE: 12 # 取っ手を取得
-  GAIN_SCREWDRIVER: 13 # ドライバーを取得
-  GAIN_TRIANGLE: 14 # 三角形の部品
-  GAIN_PANEL_KA: 15 # パネル「カ」を取得
-  GAIN_PANEL_TA: 16 # パネル「タ」を取得
-  GAIN_PANEL_NA: 17 # パネル「ナ」を取得
-  GAIN_SILVER_KEY: 18 # 銀のカギを手に入れた
-  GAIN_GOLD_KEY: 19 # 金のカギを手に入れた
-  TOILET_OPEN: 30 # トイレのふたが開いた状態
-  SEARCH_HANDLE: 31 # 取っ手を一度調べた
-  FAUSET_ENABLE: 40 # 蛇口を使える
-  FILL_WATER: 41 # 洗面台に水が溜まっている
-  PICK_SHEETS: 50 # シーツを取った
-  PICK_PILLOW: 51 # 枕を取った
-  FIT_PANELS: 52 # パネルをはめ込んだ
-  UNLOCK_KATANA: 53 # カタナパズルを解除した
-  OPEN_DRAWER1: 60 # 引き出し(左)を開ける
-  OPEN_DRAWER2: 61 # 引き出し(右)を開ける
-  RELEASED_DRAWER1: 62 # 引き出し(左)のねじ止めフラグ
-  UNLOCK_DRAWER2: 63 # 引き出し(右)を解放した
-  UNLOCK_LAST: 70 # 鉄格子を開いた
+  GAIN_STRAP_CIRCLE: 11 # 丸い吊り革を取得
+  GAIN_STRAP_TRIANGLE: 12 # 三角の吊り革を取得
+  GAIN_KNIFE: 13 # カッターナイフを取得

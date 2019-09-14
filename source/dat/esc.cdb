@@ -55,7 +55,8 @@
 							"image": "f4fc8867420f14f6832c9f912a4ae6ca",
 							"x": 48,
 							"y": 26,
-							"click": "strap"
+							"click": "strap",
+							"off": "GAIN_STRAP_CIRCLE"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -83,7 +84,16 @@
 							"image": "31102c275459b9f6dd0d9bd926e7f8a1",
 							"x": 276,
 							"y": 20,
-							"click": "strap"
+							"click": "strap",
+							"off": "GAIN_STRAP_TRIANGLE"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene002/input.png",
+							"image": "",
+							"x": 327,
+							"y": 27,
+							"click": "input"
 						}
 					],
 					"moves": [
@@ -103,6 +113,28 @@
 						{
 							"id": "1",
 							"file": "../../assets/data/scene003/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": [],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Train2"
+						}
+					]
+				},
+				{
+					"id": "Input1234",
+					"name": "？？？",
+					"value": 4,
+					"script": "../../docs/scripts/004/004.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bg.png",
 							"x": 0,
 							"y": 0
 						}
@@ -266,66 +298,22 @@
 					"id": "ITEM_DUMMY"
 				},
 				{
-					"id": "ITEM_STICK",
-					"name": "細長い鉄の棒",
+					"id": "ITEM_STRAP_CIRCLE",
+					"name": "丸い吊り革",
 					"value": 1,
-					"flag": "GAIN_STICK"
+					"flag": "GAIN_STRAP_CIRCLE"
 				},
 				{
-					"id": "ITEM_HANDLE",
-					"name": "穴の空いた取っ手",
+					"id": "ITEM_STRAP_TRIANGLE",
+					"name": "三角の吊り革",
 					"value": 2,
-					"flag": "GAIN_HANDLE"
+					"flag": "GAIN_STRAP_TRIANGLE"
 				},
 				{
-					"id": "ITEM_SCREWDRIVER",
-					"name": "ドライバー",
+					"id": "ITEM_KNIFE",
+					"name": "カッターナイフ",
 					"value": 3,
-					"flag": "GAIN_SCREWDRIVER",
-					"materials": [
-						{
-							"material": "ITEM_STICK"
-						},
-						{
-							"material": "ITEM_HANDLE"
-						}
-					]
-				},
-				{
-					"id": "ITEM_TRIANGLE",
-					"name": "三角形の部品",
-					"value": 4,
-					"flag": "GAIN_TRIANGLE"
-				},
-				{
-					"id": "ITEM_PANEL_NA",
-					"name": "\"ナ\"のパネル",
-					"value": 5,
-					"flag": "GAIN_PANEL_NA"
-				},
-				{
-					"id": "ITEM_PANEL_TA",
-					"name": "\"タ\"のパネル",
-					"value": 6,
-					"flag": "GAIN_PANEL_TA"
-				},
-				{
-					"id": "ITEM_PANEL_KA",
-					"name": "\"カ\"のパネル",
-					"value": 7,
-					"flag": "GAIN_PANEL_KA"
-				},
-				{
-					"id": "ITEM_KEY",
-					"name": "銀のカギ",
-					"value": 8,
-					"flag": "GAIN_SILVER_KEY"
-				},
-				{
-					"id": "ITEM_KEY2",
-					"name": "金のカギ",
-					"value": 9,
-					"flag": "GAIN_GOLD_KEY"
+					"flag": "GAIN_KNIFE"
 				}
 			],
 			"separators": [],
@@ -356,114 +344,19 @@
 					"comment": "テスト用"
 				},
 				{
-					"id": "GAIN_STICK",
+					"id": "GAIN_STRAP_CIRCLE",
 					"value": 11,
-					"comment": "細長い鉄の棒取得"
+					"comment": "丸い吊り革を取得"
 				},
 				{
-					"id": "GAIN_HANDLE",
+					"id": "GAIN_STRAP_TRIANGLE",
 					"value": 12,
-					"comment": "取っ手を取得"
+					"comment": "三角の吊り革を取得"
 				},
 				{
-					"id": "GAIN_SCREWDRIVER",
+					"id": "GAIN_KNIFE",
 					"value": 13,
-					"comment": "ドライバーを取得"
-				},
-				{
-					"id": "GAIN_TRIANGLE",
-					"value": 14,
-					"comment": "三角形の部品"
-				},
-				{
-					"id": "GAIN_PANEL_KA",
-					"value": 15,
-					"comment": "パネル「カ」を取得"
-				},
-				{
-					"id": "GAIN_PANEL_TA",
-					"value": 16,
-					"comment": "パネル「タ」を取得"
-				},
-				{
-					"id": "GAIN_PANEL_NA",
-					"value": 17,
-					"comment": "パネル「ナ」を取得"
-				},
-				{
-					"id": "GAIN_SILVER_KEY",
-					"value": 18,
-					"comment": "銀のカギを手に入れた"
-				},
-				{
-					"id": "GAIN_GOLD_KEY",
-					"value": 19,
-					"comment": "金のカギを手に入れた"
-				},
-				{
-					"id": "TOILET_OPEN",
-					"value": 30,
-					"comment": "トイレのふたが開いた状態"
-				},
-				{
-					"id": "SEARCH_HANDLE",
-					"value": 31,
-					"comment": "取っ手を一度調べた"
-				},
-				{
-					"id": "FAUSET_ENABLE",
-					"value": 40,
-					"comment": "蛇口を使える"
-				},
-				{
-					"id": "FILL_WATER",
-					"value": 41,
-					"comment": "洗面台に水が溜まっている"
-				},
-				{
-					"id": "PICK_SHEETS",
-					"value": 50,
-					"comment": "シーツを取った"
-				},
-				{
-					"id": "PICK_PILLOW",
-					"value": 51,
-					"comment": "枕を取った"
-				},
-				{
-					"id": "FIT_PANELS",
-					"value": 52,
-					"comment": "パネルをはめ込んだ"
-				},
-				{
-					"id": "UNLOCK_KATANA",
-					"value": 53,
-					"comment": "カタナパズルを解除した"
-				},
-				{
-					"id": "OPEN_DRAWER1",
-					"value": 60,
-					"comment": "引き出し(左)を開ける"
-				},
-				{
-					"id": "OPEN_DRAWER2",
-					"value": 61,
-					"comment": "引き出し(右)を開ける"
-				},
-				{
-					"id": "RELEASED_DRAWER1",
-					"value": 62,
-					"comment": "引き出し(左)のねじ止めフラグ"
-				},
-				{
-					"id": "UNLOCK_DRAWER2",
-					"value": 63,
-					"comment": "引き出し(右)を解放した"
-				},
-				{
-					"id": "UNLOCK_LAST",
-					"value": 70,
-					"comment": "鉄格子を開いた"
+					"comment": "カッターナイフを取得"
 				}
 			],
 			"separators": [],

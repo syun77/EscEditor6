@@ -6,3 +6,8 @@ def strap
 {
 	":取れかけそうな吊り革だ"
 }
+
+def input
+{
+	JUMP(Input1234)
+}

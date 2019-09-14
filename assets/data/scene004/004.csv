@@ -3,8 +3,4 @@ FUNC_END,init
 FUNC_START,strap
 MSG,9,取れかけそうな吊り革だ
 FUNC_END,strap
-FUNC_START,input
-INT,4
-JUMP
-FUNC_END,input
 END
