@@ -1,8 +1,46 @@
 def init
 {
+	if(%HAND1_OFF && %HAND2_OFF) {
+		// ２つの手を消していると能面が出現する
+		%MASK_DROP = true
+	}
 }
 
 def strap
 {
 	":取れかけそうな吊り革だ"
 }
+
+def box
+{
+	%OPEN_BOX = true
+	%HAND2_ON = true
+}
+
+def box2
+{
+	%OPEN_BOX = false
+}
+
+def hand
+{
+	%HAND2_OFF = true
+}
+
+def mask
+{
+	ITEM_ADD(ITEM_MASK)
+}
+
+def dark_hit
+{
+	ITEM_CHK(ITEM_MASK)
+	if($RET) {
+		"能面の力で闇が晴れていく/"
+		%TRAIN3_NON_DARK = true
+	}
+	else {
+		":暗くて先に進むことができない"
+	}
+}
+

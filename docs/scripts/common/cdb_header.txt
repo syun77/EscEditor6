@@ -17,6 +17,7 @@ const:
   ITEM_KNIFE: 3 # カッターナイフ
   ITEM_MEMO: 4 # メモ書き
   ITEM_FLOPPY: 5 # フロッピーディスク
+  ITEM_MASK: 6 # 能面
   
 flag:
   TEST_FLAG: 10 # テスト用
@@ -25,8 +26,16 @@ flag:
   GAIN_KNIFE: 13 # カッターナイフを取得
   GAIN_MEMO: 14 # 「こけし、買い取ります」のメモ書き取得
   GAIN_FLOPPY: 15 # フロッピーディスク取得
+  GAIN_MASK: 16 # 能面を取得
+  OPEN_BOX: 30 # 箱を開いているかどうか
   UNLOCK_PINK: 40 # ピンクの金庫を解錠した
   UNLOCK_TRAIN2: 50 # 2号車両に続く扉を解錠した
   FIT_CIRCLE: 51 # 円形の穴に吊り革を差し込んだ
   FIT_TRIANGLE: 52 # 三角形の穴に吊り革を差し込んだ
   FIT_BOTH: 53 # 両方の穴に吊り革を差し込んだ
+  HAND1_ON: 20 # 
+  HAND1_OFF: 21 # 
+  HAND2_ON: 22 # 
+  HAND2_OFF: 23 # 
+  MASK_DROP: 24 # 能面出現
+  TRAIN3_NON_DARK: 25 # ３号車両の暗闇解除

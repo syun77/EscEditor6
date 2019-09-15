@@ -37,3 +37,9 @@ def next
 	// 2号車両に進む
 	JUMP(Train2)
 }
+
+def hand1
+{
+	%HAND1_OFF = true
+}
+

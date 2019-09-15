@@ -83,6 +83,16 @@
 							"y": 313,
 							"click": "floppy",
 							"off": "GAIN_FLOPPY"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene001/hand.png",
+							"image": "942adba438c8a8f3de6308c942061fec",
+							"x": 337,
+							"y": 220,
+							"click": "hand1",
+							"on": "HAND1_ON",
+							"off": "HAND1_OFF"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -151,7 +161,73 @@
 							"y": 50
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/box.png",
+							"image": "6839858cc8bf6e2c34503a9260155b63",
+							"x": 61,
+							"y": 219,
+							"click": "box",
+							"off": "OPEN_BOX"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/box2.png",
+							"image": "9be802a45819f5c009ff2719fd992c25",
+							"x": 51,
+							"y": 205,
+							"click": "box2",
+							"on": "OPEN_BOX"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene003/hand.png",
+							"image": "0d9bd50cb79ca650728bfa3222daacdf",
+							"x": 359,
+							"y": 192,
+							"click": "hand",
+							"on": "HAND2_ON",
+							"off": "HAND2_OFF"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene003/blood.png",
+							"image": "abe0f05107cba80b8250689880ff6111",
+							"x": 359,
+							"y": 192,
+							"click": "",
+							"on": "HAND2_OFF"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene003/mask.png",
+							"image": "d154df266d8b4d8e7277fee74ddda91d",
+							"x": 6,
+							"y": 178,
+							"click": "mask",
+							"off": "GAIN_MASK",
+							"on": "MASK_DROP"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene003/bg2.png",
+							"image": "5bb98d3831f700e0de07b9b1dce68425",
+							"x": 0,
+							"y": 50,
+							"click": "",
+							"off": "TRAIN3_NON_DARK"
+						},
+						{
+							"id": "7",
+							"file": "../../assets/data/scene003/dark_hit.png",
+							"image": "8046dbf30f6c0aceb8f291299efe6a85",
+							"x": 42,
+							"y": 104,
+							"click": "dark_hit",
+							"off": "TRAIN3_NON_DARK"
+						}
+					],
 					"moves": [
 						{
 							"id": 3,
@@ -468,6 +544,12 @@
 					"name": "フロッピーディスク",
 					"value": 5,
 					"flag": "GAIN_FLOPPY"
+				},
+				{
+					"id": "ITEM_MASK",
+					"name": "能面",
+					"value": 6,
+					"flag": "GAIN_MASK"
 				}
 			],
 			"separators": [],
@@ -523,6 +605,16 @@
 					"comment": "フロッピーディスク取得"
 				},
 				{
+					"id": "GAIN_MASK",
+					"value": 16,
+					"comment": "能面を取得"
+				},
+				{
+					"id": "OPEN_BOX",
+					"value": 30,
+					"comment": "箱を開いているかどうか"
+				},
+				{
 					"id": "UNLOCK_PINK",
 					"value": 40,
 					"comment": "ピンクの金庫を解錠した"
@@ -546,6 +638,32 @@
 					"id": "FIT_BOTH",
 					"value": 53,
 					"comment": "両方の穴に吊り革を差し込んだ"
+				},
+				{
+					"id": "HAND1_ON",
+					"value": 20
+				},
+				{
+					"id": "HAND1_OFF",
+					"value": 21
+				},
+				{
+					"id": "HAND2_ON",
+					"value": 22
+				},
+				{
+					"id": "HAND2_OFF",
+					"value": 23
+				},
+				{
+					"id": "MASK_DROP",
+					"value": 24,
+					"comment": "能面出現"
+				},
+				{
+					"id": "TRAIN3_NON_DARK",
+					"value": 25,
+					"comment": "３号車両の暗闇解除"
 				}
 			],
 			"separators": [],

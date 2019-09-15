@@ -9,6 +9,7 @@ def input
 		// ピンクの金庫を解除
 		%UNLOCK_PINK = true
 		":ロックが解除された"
+		%HAND1_ON = true
 	}
 	else {
 		":正しくないようだ"
