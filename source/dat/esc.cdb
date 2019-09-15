@@ -226,6 +226,15 @@
 							"y": 104,
 							"click": "dark_hit",
 							"off": "TRAIN3_NON_DARK"
+						},
+						{
+							"id": "8",
+							"file": "../../assets/data/scene003/dark_hit.png",
+							"image": "8046dbf30f6c0aceb8f291299efe6a85",
+							"x": 42,
+							"y": 104,
+							"click": "next",
+							"on": "TRAIN3_NON_DARK"
 						}
 					],
 					"moves": [
@@ -363,6 +372,85 @@
 							"id": 3,
 							"click": "",
 							"jump": "Train2"
+						}
+					]
+				},
+				{
+					"id": "LastDoor",
+					"name": "最後の扉",
+					"value": 6,
+					"script": "../../docs/scripts/006/006.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene006/sticker.png",
+							"image": "f0cf3188c75e8c4316b54dc8edd3af79",
+							"x": 88,
+							"y": 134,
+							"click": "sticker",
+							"off": "UNLOCK_LASTDOOR"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene006/floppy.png",
+							"image": "e06ef469419bf314f3f22fca9f3051c6",
+							"x": 170,
+							"y": 289,
+							"click": "floppy",
+							"off": "INSERT_FLOPPY"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene006/floppy2.png",
+							"image": "98b8a3339384e54fc4754e0dc77bb536",
+							"x": 170,
+							"y": 289,
+							"click": "floppy2",
+							"on": "INSERT_FLOPPY",
+							"off": "UNLOCK_LASTDOOR"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene006/sticker2.png",
+							"image": "101cc7aefadc9d9dc4cd4095ed9abb99",
+							"x": 97,
+							"y": 234,
+							"click": "sticker2",
+							"on": "LASTDOOR_HINT1",
+							"off": "UNLOCK_LASTDOOR"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene006/input.png",
+							"image": "83bac70271694e6898522529db6766ca",
+							"x": 110,
+							"y": 344,
+							"click": "input",
+							"off": "UNLOCK_LASTDOOR"
+						},
+						{
+							"id": "10",
+							"file": "../../assets/data/scene006/unlock.png",
+							"image": "8fcdb0961c66f339d9b952b67bf986da",
+							"x": 0,
+							"y": 50,
+							"click": "escape",
+							"on": "UNLOCK_LASTDOOR"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Train3"
 						}
 					]
 				}
@@ -664,6 +752,21 @@
 					"id": "TRAIN3_NON_DARK",
 					"value": 25,
 					"comment": "３号車両の暗闇解除"
+				},
+				{
+					"id": "INSERT_FLOPPY",
+					"value": 60,
+					"comment": "フロッピーディスクを差し込んだ"
+				},
+				{
+					"id": "LASTDOOR_HINT1",
+					"value": 61,
+					"comment": "最後のドアのヒント１"
+				},
+				{
+					"id": "UNLOCK_LASTDOOR",
+					"value": 62,
+					"comment": "最後のドアを解錠した"
 				}
 			],
 			"separators": [],
@@ -713,16 +816,22 @@
 			"lines": [
 				{
 					"id": 1,
-					"answer": "なまえ",
+					"answer": "しゆうまつ",
 					"choices": [
 						{
-							"moji": "あかさたな"
+							"moji": "さしすせそ"
 						},
 						{
-							"moji": "なまやらわ"
+							"moji": "やゆよ"
 						},
 						{
-							"moji": "えけせてね"
+							"moji": "あいうえお"
+						},
+						{
+							"moji": "まみむめも"
+						},
+						{
+							"moji": "たちつてと"
 						}
 					],
 					"auto_check": false,

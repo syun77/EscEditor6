@@ -21,7 +21,7 @@ class TitleState extends FlxState {
         txt.alignment = FlxTextAlign.CENTER;
         txt.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLUE);
         this.add(txt);
-        var txt2 = new FlxText(FlxG.width*3/4, txt.y+txt.height, 0, "v 4.00");
+        var txt2 = new FlxText(FlxG.width*3/4, txt.y+txt.height, 0, "v 5.00");
         this.add(txt2);
 
         var btn = new FlxButton(FlxG.width/2, FlxG.height*2/3, "START", function() {

@@ -9,6 +9,7 @@ const:
   Train3: 3 # ３号車両
   Input1234: 4 # ？？？
   Train2Door: 5 # ３号車両に続く扉
+  LastDoor: 6 # 最後の扉
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -39,3 +40,6 @@ flag:
   HAND2_OFF: 23 # 
   MASK_DROP: 24 # 能面出現
   TRAIN3_NON_DARK: 25 # ３号車両の暗闇解除
+  INSERT_FLOPPY: 60 # フロッピーディスクを差し込んだ
+  LASTDOOR_HINT1: 61 # 最後のドアのヒント１
+  UNLOCK_LASTDOOR: 62 # 最後のドアを解錠した

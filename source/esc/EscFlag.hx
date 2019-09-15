@@ -20,6 +20,9 @@ class EscFlag {
 	public static inline var HAND2_OFF:Int = 23;
 	public static inline var MASK_DROP:Int = 24;
 	public static inline var TRAIN3_NON_DARK:Int = 25;
+	public static inline var INSERT_FLOPPY:Int = 60;
+	public static inline var LASTDOOR_HINT1:Int = 61;
+	public static inline var UNLOCK_LASTDOOR:Int = 62;
 	static var _tbl:Map<String, Int> = [
 		"TEST_FLAG" => 10,
 		"GAIN_STRAP_CIRCLE" => 11,
@@ -40,6 +43,9 @@ class EscFlag {
 		"HAND2_OFF" => 23,
 		"MASK_DROP" => 24,
 		"TRAIN3_NON_DARK" => 25,
+		"INSERT_FLOPPY" => 60,
+		"LASTDOOR_HINT1" => 61,
+		"UNLOCK_LASTDOOR" => 62,
 	];
 	
 	public static function get(k:String):Int {

@@ -38,9 +38,14 @@ def dark_hit
 	if($RET) {
 		"能面の力で闇が晴れていく/"
 		%TRAIN3_NON_DARK = true
+		ITEM_DEL(ITEM_MASK)
 	}
 	else {
 		":暗くて先に進むことができない"
 	}
 }
 
+def next
+{
+	JUMP(LastDoor)
+}

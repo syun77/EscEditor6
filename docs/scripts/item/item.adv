@@ -23,3 +23,6 @@ elif($ITEM == ITEM_MEMO) {
 elif($ITEM == ITEM_FLOPPY) {
 	":フロッピーディスクだ"
 }
+elif($ITEM == ITEM_MASK) {
+	":能面だ。「闇より汝を守らむ」と書いてある"
+}
