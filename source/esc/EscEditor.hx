@@ -75,6 +75,7 @@ class EscEditor extends FlxSubState {
     var _btnItem:ItemButtonUI; // アイテムボタン
     var _activeUI:MenuUIBase; // 実行中のオーバーレイするメニューUI
     var _activeUILayer:FlxSpriteGroup;
+    var _advObj:FlxSprite;
     
 
     // スクリプト
@@ -150,6 +151,11 @@ class EscEditor extends FlxSubState {
         _informationUI = new InformationUI();
         this.add(_informationUI);
 
+        // ADVオブジェクト
+        _advObj = new FlxSprite();
+        _advObj.kill();
+        this.add(_advObj);
+
         // メッセージテキスト
         _messageUI = new MessageUI();
         this.add(_messageUI);
@@ -212,6 +218,20 @@ class EscEditor extends FlxSubState {
 
         // 通知メッセージを表示していれば消す
         _informationUI.hide();
+    }
+
+    public function showObj(objID:Int):Void {
+        var path = Resources.getAdvObjPath(objID);
+        _advObj.loadGraphic(path);
+        _advObj.revive();
+        _advObj.x = FlxG.width/2 - _advObj.width/2;
+        _advObj.y = Const.getBottom()/2 - _advObj.height/2;
+        _advObj.scale.set(0, 0);
+        FlxTween.tween(_advObj.scale, {x:1, y:1}, 1, {ease:FlxEase.elasticOut});
+    }
+
+    public function hideObj():Void {
+        _advObj.kill();
     }
 
     public function openNumberInput():Void {

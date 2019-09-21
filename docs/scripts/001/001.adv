@@ -1,5 +1,8 @@
 def init
 {
+	DRAW_OBJ(1)
+	"これはカッターナイフです/"
+	ERASE_OBJ()
 }
 
 def strap
@@ -35,7 +38,6 @@ def floppy
 def next
 {
 	// 2号車両に進む
-	JUMP(Train2)
 }
 
 def hand1

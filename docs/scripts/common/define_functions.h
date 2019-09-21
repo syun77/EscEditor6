@@ -12,6 +12,9 @@ ITEM_DEL,     ITEM_DEL,   itemId
 ITEM_CHK,     ITEM_CHK,   itemId
 CRAFT_CHK,    CRAFT_CHK,  itemId1, itemId2
 COMPLETE,     COMPLETE,   
+GAMEOVER,     GAMEOVER,
+DRAW_OBJ,     DRAW_OBJ,   id
+ERASE_OBJ,    ERASE_OBJ,  
 //draw_bg,    DRB,        id, effectId=0
 //erase_bg,   ERB,        effectId=0
 //draw_ch,    DRC,        id, pos, effectId=0

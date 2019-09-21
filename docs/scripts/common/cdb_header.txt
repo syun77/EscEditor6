@@ -4,12 +4,7 @@
 ############################
 const:
   # シーン
-  Entrance: 1 # １号車両
-  Train2: 2 # ２号車両
-  Train3: 3 # ３号車両
-  Input1234: 4 # ？？？
-  Train2Door: 5 # ３号車両に続く扉
-  LastDoor: 6 # 最後の扉
+  Entrance: 1 # 受付
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー

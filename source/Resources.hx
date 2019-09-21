@@ -50,4 +50,13 @@ class Resources {
 	public static function getItemPath(itemID:Int):String {
 		return 'assets/images/item/${Utils.fillZero(itemID, 3)}.png'; 
 	}
+
+	/**
+	 * ADVオブジェクトの画像パスを取得する
+	 * @param objID オブジェクトID
+	 * @return String オブジェクトのパス
+	 */
+	public static function getAdvObjPath(objID:Int):String {
+		return 'assets/images/adv/objs/${Utils.fillZero(objID, 3)}.png';
+	}
 }

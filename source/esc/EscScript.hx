@@ -114,6 +114,8 @@ class EscScript {
             "SEL"        => _SEL,
             "SEL_ANS"    => _SEL_ANS,
             "SEL_GOTO"   => _SEL_GOTO,
+            "DRAW_OBJ"   => _DRAW_OBJ,
+            "ERASE_OBJ"  => _ERASE_OBJ,
         ];
         _script = new AdvScript(tbl, filepath);
         _register();
@@ -302,6 +304,27 @@ class EscScript {
             var address = Std.parseInt(param[EscGlobal.retGet()]);
             _script.jumpAddress(address);
         }
+
+        return AdvScript.RET_CONTINUE;
+    }
+
+    function _DRAW_OBJ(param:Array<String>):Int {
+        var objID = _script.popStack();
+        if(_isLog) {
+            trace('[SCRIPT] DRAW_OBJ(${objID})');
+        }
+
+        PlayState.getEditor().showObj(objID);
+
+        return AdvScript.RET_CONTINUE;
+    }
+    
+    function _ERASE_OBJ(param:Array<String>):Int {
+        if(_isLog) {
+            trace("[SCRIPT] ERASE_OBJ");
+        }
+        
+        PlayState.getEditor().hideObj();
 
         return AdvScript.RET_CONTINUE;
     }
