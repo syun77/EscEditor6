@@ -1,47 +1,48 @@
 def init
 {
-	DRAW_OBJ(1)
-	"これはカッターナイフです/"
-	ERASE_OBJ()
+	//DRAW_OBJ(1)
+	//"これはカッターナイフです/"
+	//ERASE_OBJ()
 }
 
-def strap
+def sticker
 {
-	if($10 > 0) {
-		ITEM_CHK(ITEM_KNIFE)
-		if($RET) {
-			select("カッターナイフで"
-				"持ち手を切り取れそうだ")
-			{"切り取る"
-				// 円形のつり革を獲得
-				ITEM_ADD(ITEM_STRAP_CIRCLE)
-			}
-			{"何もしない"
-			}
-			return
-		}
+	"「ゼツボウのサイハテで"
+	"私は死ヌだろう」"
+	"と書かれている/"
+}
+
+def input
+{
+	select("外れそうな板がある…")
+	{"外す"
+		%OPEN_ENTRANCE_INPUT = true
 	}
-	":取れかけそうな吊り革だ"
-	$10 += 1
+	{"そのままにしておく"
+	}
 }
 
-def memo
+def input2
 {
-	ITEM_ADD(ITEM_MEMO)
+	KANA_INPUT(1)
+	if($RET) {
+		// 解除
+		":ロックを解除した"
+		%UNLOCK_ENTRANCE_INPUT = true
+	}
+	else {
+		":正しくないようだ"
+	}
 }
 
-def floppy
+def unlock
 {
-	ITEM_ADD(ITEM_FLOPPY)
+	if(%READ_ENTRANCE_INPUT == false) {
+		"メモ書きが入っている/"
+		%READ_ENTRANCE_INPUT = true
+	}
+	
+	"メモには「バッテリーにナイフを"
+	"突き刺すと発火する」"
+	"と書かれている/"
 }
-
-def next
-{
-	// 2号車両に進む
-}
-
-def hand1
-{
-	%HAND1_OFF = true
-}
-

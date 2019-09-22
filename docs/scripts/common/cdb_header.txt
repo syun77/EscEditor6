@@ -4,8 +4,11 @@
 ############################
 const:
   # シーン
-  Reception: 1 # 受付
-  Entrance: 2 # 入り口
+  Entrance: 1 # 受付
+  Corridor: 2 # 通路
+  Hall: 3 # 出口
+  Room: 4 # 病室
+  Examination: 5 # 診察室
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
@@ -24,9 +27,9 @@ flag:
   GAIN_MEMO: 14 # 「こけし、買い取ります」のメモ書き取得
   GAIN_FLOPPY: 15 # フロッピーディスク取得
   GAIN_MASK: 16 # 能面を取得
-  OPEN_BOX: 30 # 箱を開いているかどうか
-  UNLOCK_PINK: 40 # ピンクの金庫を解錠した
-  UNLOCK_TRAIN2: 50 # 2号車両に続く扉を解錠した
+  OPEN_ENTRANCE_INPUT: 30 # 受付の入力場所を開いているかどうか
+  UNLOCK_ENTRANCE_INPUT: 31 # 受付の入力を解除
+  READ_ENTRANCE_INPUT: 32 # 受付のメモを読んだ
   FIT_CIRCLE: 51 # 円形の穴に吊り革を差し込んだ
   FIT_TRIANGLE: 52 # 三角形の穴に吊り革を差し込んだ
   FIT_BOTH: 53 # 両方の穴に吊り革を差し込んだ

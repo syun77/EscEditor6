@@ -48,19 +48,82 @@
 							"id": "1"
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene001/sticker.png",
+							"image": "8a65f6ce0ea365cc72b34d39b49e554b",
+							"x": 156,
+							"y": 128,
+							"click": "sticker"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene001/input.png",
+							"image": "b333b1b40be468ad18e6583eb742c55f",
+							"x": 304,
+							"y": 280,
+							"click": "input",
+							"off": "OPEN_ENTRANCE_INPUT"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene001/input2.png",
+							"image": "8a8d463a6249ab20462b71e66f32ca70",
+							"x": 304,
+							"y": 280,
+							"click": "input2",
+							"on": "OPEN_ENTRANCE_INPUT",
+							"off": "UNLOCK_ENTRANCE_INPUT"
+						},
+						{
+							"id": "",
+							"file": "../../assets/data/scene001/unlock.png",
+							"image": "cb2c5c143fb40130beff8a3bdd8392e7",
+							"x": 304,
+							"y": 280,
+							"click": "unlock",
+							"on": "UNLOCK_ENTRANCE_INPUT"
+						}
+					],
 					"script": "../../docs/scripts/001/001.adv",
 					"id": "Entrance",
 					"value": 1,
-					"name": "受付"
+					"name": "受付",
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Corridor"
+						},
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Hall"
+						}
+					]
 				},
 				{
 					"id": "Corridor",
 					"name": "通路",
 					"value": 2,
 					"script": "../../docs/scripts/002/002.adv",
-					"bgs": [],
-					"objs": []
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
+						}
+					]
 				},
 				{
 					"id": "Hall",
@@ -70,9 +133,39 @@
 					"bgs": [
 						{
 							"id": "1",
-							"file": "../../assets/data/scene002/bg.png",
+							"file": "../../assets/data/scene003/bg.png",
 							"x": 0,
-							"y": 0
+							"y": 50
+						}
+					],
+					"objs": []
+				},
+				{
+					"id": "Room",
+					"name": "病室",
+					"value": 4,
+					"script": "../../assets/data/scene004/bg.png",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": []
+				},
+				{
+					"id": "Examination",
+					"name": "診察室",
+					"value": 5,
+					"script": "../../assets/data/scene005/bg.png",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/bg.png",
+							"x": 0,
+							"y": 50
 						}
 					],
 					"objs": []
@@ -321,19 +414,19 @@
 					"comment": "能面を取得"
 				},
 				{
-					"id": "OPEN_BOX",
+					"id": "OPEN_ENTRANCE_INPUT",
 					"value": 30,
-					"comment": "箱を開いているかどうか"
+					"comment": "受付の入力場所を開いているかどうか"
 				},
 				{
-					"id": "UNLOCK_PINK",
-					"value": 40,
-					"comment": "ピンクの金庫を解錠した"
+					"id": "UNLOCK_ENTRANCE_INPUT",
+					"value": 31,
+					"comment": "受付の入力を解除"
 				},
 				{
-					"id": "UNLOCK_TRAIN2",
-					"value": 50,
-					"comment": "2号車両に続く扉を解錠した"
+					"id": "READ_ENTRANCE_INPUT",
+					"value": 32,
+					"comment": "受付のメモを読んだ"
 				},
 				{
 					"id": "FIT_CIRCLE",
@@ -439,26 +532,23 @@
 			"lines": [
 				{
 					"id": 1,
-					"answer": "しゆうまつ",
+					"answer": "つきかげ",
 					"choices": [
 						{
-							"moji": "さしすせそ"
+							"moji": "さしすせそたちつてと"
 						},
 						{
-							"moji": "やゆよ"
+							"moji": "かきくけこさしすせそ"
 						},
 						{
-							"moji": "あいうえお"
+							"moji": "かきくけこさしすせそ"
 						},
 						{
-							"moji": "まみむめも"
-						},
-						{
-							"moji": "たちつてと"
+							"moji": "がぎぐげござじずぜぞ"
 						}
 					],
 					"auto_check": false,
-					"idx": 60
+					"idx": 30
 				}
 			],
 			"separators": [],

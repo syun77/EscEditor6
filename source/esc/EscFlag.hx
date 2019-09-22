@@ -8,9 +8,9 @@ class EscFlag {
 	public static inline var GAIN_MEMO:Int = 14;
 	public static inline var GAIN_FLOPPY:Int = 15;
 	public static inline var GAIN_MASK:Int = 16;
-	public static inline var OPEN_BOX:Int = 30;
-	public static inline var UNLOCK_PINK:Int = 40;
-	public static inline var UNLOCK_TRAIN2:Int = 50;
+	public static inline var OPEN_ENTRANCE_INPUT:Int = 30;
+	public static inline var UNLOCK_ENTRANCE_INPUT:Int = 31;
+	public static inline var READ_ENTRANCE_INPUT:Int = 32;
 	public static inline var FIT_CIRCLE:Int = 51;
 	public static inline var FIT_TRIANGLE:Int = 52;
 	public static inline var FIT_BOTH:Int = 53;
@@ -31,9 +31,9 @@ class EscFlag {
 		"GAIN_MEMO" => 14,
 		"GAIN_FLOPPY" => 15,
 		"GAIN_MASK" => 16,
-		"OPEN_BOX" => 30,
-		"UNLOCK_PINK" => 40,
-		"UNLOCK_TRAIN2" => 50,
+		"OPEN_ENTRANCE_INPUT" => 30,
+		"UNLOCK_ENTRANCE_INPUT" => 31,
+		"READ_ENTRANCE_INPUT" => 32,
 		"FIT_CIRCLE" => 51,
 		"FIT_TRIANGLE" => 52,
 		"FIT_BOTH" => 53,
