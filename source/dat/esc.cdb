@@ -172,7 +172,25 @@
 							"x": 186,
 							"y": 205,
 							"click": "wolf2",
-							"on": "AWARE_PLAYER"
+							"on": "AWARE_PLAYER",
+							"off": "GONE_WOLF"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene003/driver.png",
+							"image": "49256c29f3676f22b0017497a609d7c7",
+							"x": 172,
+							"y": 225,
+							"click": "driver",
+							"off": "GAIN_DRIVER"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene003/clock.png",
+							"image": "",
+							"x": 64,
+							"y": 122,
+							"click": "clock"
 						}
 					],
 					"moves": [
@@ -363,22 +381,22 @@
 					"id": "ITEM_DUMMY"
 				},
 				{
-					"id": "ITEM_STRAP_CIRCLE",
-					"name": "丸い吊り革",
+					"id": "ITEM_CELL_PHONE",
+					"name": "携帯電話",
 					"value": 1,
-					"flag": "GAIN_STRAP_CIRCLE"
+					"flag": "GAIN_CELL_PHONE"
 				},
 				{
-					"id": "ITEM_STRAP_TRIANGLE",
-					"name": "三角の吊り革",
+					"id": "ITEM_DRIVER",
+					"name": "ドライバー",
 					"value": 2,
-					"flag": "GAIN_STRAP_TRIANGLE"
+					"flag": "GAIN_DRIVER"
 				},
 				{
-					"id": "ITEM_MEMO",
-					"name": "メモ書き",
+					"id": "ITEM_BATTERY",
+					"name": "バッテリー",
 					"value": 3,
-					"flag": "GAIN_MEMO"
+					"flag": "GAIN_BATTERY"
 				},
 				{
 					"id": "ITEM_KNIFE",
@@ -387,16 +405,38 @@
 					"flag": "GAIN_KNIFE"
 				},
 				{
-					"id": "ITEM_FLOPPY",
-					"name": "フロッピーディスク",
+					"id": "ITEM_STICK",
+					"name": "木の棒",
 					"value": 5,
-					"flag": "GAIN_FLOPPY"
+					"flag": "GAIN_STICK"
 				},
 				{
-					"id": "ITEM_MASK",
-					"name": "能面",
+					"id": "ITEM_FIRE_STICK",
+					"name": "火のついた木の棒",
 					"value": 6,
-					"flag": "GAIN_MASK"
+					"flag": "GAIN_FIRE_STICK"
+				},
+				{
+					"id": "ITEM_NOTE1",
+					"name": "メモ",
+					"value": 7,
+					"flag": "GAIN_NOTE1"
+				},
+				{
+					"id": "ITEM_NOTE2",
+					"name": "メモ",
+					"value": 8,
+					"flag": "GAIN_NOTE2"
+				},
+				{
+					"id": "ITEM_WET_NOTE1",
+					"name": "濡れたメモ",
+					"value": 9
+				},
+				{
+					"id": "ITEM_WET_NOTE2",
+					"name": "濡れたメモ",
+					"value": 10
 				}
 			],
 			"separators": [],
@@ -427,34 +467,49 @@
 					"comment": "テスト用"
 				},
 				{
-					"id": "GAIN_STRAP_CIRCLE",
+					"id": "GAIN_CELL_PHONE",
 					"value": 11,
-					"comment": "丸い吊り革を取得"
+					"comment": "携帯電話を取得"
 				},
 				{
-					"id": "GAIN_STRAP_TRIANGLE",
+					"id": "GAIN_DRIVER",
 					"value": 12,
-					"comment": "三角の吊り革を取得"
+					"comment": "ドライバー取得"
+				},
+				{
+					"id": "GAIN_BATTERY",
+					"value": 13,
+					"comment": "バッテリーを取得"
 				},
 				{
 					"id": "GAIN_KNIFE",
-					"value": 13,
-					"comment": "カッターナイフを取得"
-				},
-				{
-					"id": "GAIN_MEMO",
 					"value": 14,
-					"comment": "「こけし、買い取ります」のメモ書き取得"
+					"comment": "ナイフを取得"
 				},
 				{
-					"id": "GAIN_FLOPPY",
+					"id": "GAIN_STICK",
 					"value": 15,
-					"comment": "フロッピーディスク取得"
+					"comment": "木の棒を取得"
 				},
 				{
-					"id": "GAIN_MASK",
+					"id": "GAIN_FIRE_STICK",
 					"value": 16,
-					"comment": "能面を取得"
+					"comment": "火のついた木の棒を取得"
+				},
+				{
+					"id": "GAIN_FIRE_BATTERY",
+					"value": 17,
+					"comment": "発火したバッテリーを取得"
+				},
+				{
+					"id": "GAIN_NOTE1",
+					"value": 18,
+					"comment": "メモ１を取得"
+				},
+				{
+					"id": "GAIN_NOTE2",
+					"value": 19,
+					"comment": "メモ２を取得"
 				},
 				{
 					"id": "OPEN_ENTRANCE_INPUT",
@@ -477,9 +532,9 @@
 					"comment": "プレイヤーに気がつく"
 				},
 				{
-					"id": "FIT_TRIANGLE",
-					"value": 52,
-					"comment": "三角形の穴に吊り革を差し込んだ"
+					"id": "GONE_WOLF",
+					"value": 41,
+					"comment": "狼が立ち去った"
 				},
 				{
 					"id": "FIT_BOTH",
@@ -501,21 +556,6 @@
 				{
 					"id": "HAND2_OFF",
 					"value": 23
-				},
-				{
-					"id": "MASK_DROP",
-					"value": 24,
-					"comment": "能面出現"
-				},
-				{
-					"id": "TRAIN3_NON_DARK",
-					"value": 25,
-					"comment": "３号車両の暗闇解除"
-				},
-				{
-					"id": "INSERT_FLOPPY",
-					"value": 60,
-					"comment": "フロッピーディスクを差し込んだ"
 				},
 				{
 					"id": "LASTDOOR_HINT1",

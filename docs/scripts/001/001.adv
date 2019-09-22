@@ -1,8 +1,5 @@
 def init
 {
-	//DRAW_OBJ(1)
-	//"これはカッターナイフです/"
-	//ERASE_OBJ()
 }
 
 def sticker

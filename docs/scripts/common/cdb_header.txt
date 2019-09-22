@@ -12,33 +12,37 @@ const:
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
-  ITEM_STRAP_CIRCLE: 1 # 丸い吊り革
-  ITEM_STRAP_TRIANGLE: 2 # 三角の吊り革
-  ITEM_MEMO: 3 # メモ書き
+  ITEM_CELL_PHONE: 1 # 携帯電話
+  ITEM_DRIVER: 2 # ドライバー
+  ITEM_BATTERY: 3 # バッテリー
   ITEM_KNIFE: 4 # ナイフ
-  ITEM_FLOPPY: 5 # フロッピーディスク
-  ITEM_MASK: 6 # 能面
+  ITEM_STICK: 5 # 木の棒
+  ITEM_FIRE_STICK: 6 # 火のついた木の棒
+  ITEM_NOTE1: 7 # メモ
+  ITEM_NOTE2: 8 # メモ
+  ITEM_WET_NOTE1: 9 # 濡れたメモ
+  ITEM_WET_NOTE2: 10 # 濡れたメモ
   
 flag:
   TEST_FLAG: 10 # テスト用
-  GAIN_STRAP_CIRCLE: 11 # 丸い吊り革を取得
-  GAIN_STRAP_TRIANGLE: 12 # 三角の吊り革を取得
-  GAIN_KNIFE: 13 # カッターナイフを取得
-  GAIN_MEMO: 14 # 「こけし、買い取ります」のメモ書き取得
-  GAIN_FLOPPY: 15 # フロッピーディスク取得
-  GAIN_MASK: 16 # 能面を取得
+  GAIN_CELL_PHONE: 11 # 携帯電話を取得
+  GAIN_DRIVER: 12 # ドライバー取得
+  GAIN_BATTERY: 13 # バッテリーを取得
+  GAIN_KNIFE: 14 # ナイフを取得
+  GAIN_STICK: 15 # 木の棒を取得
+  GAIN_FIRE_STICK: 16 # 火のついた木の棒を取得
+  GAIN_FIRE_BATTERY: 17 # 発火したバッテリーを取得
+  GAIN_NOTE1: 18 # メモ１を取得
+  GAIN_NOTE2: 19 # メモ２を取得
   OPEN_ENTRANCE_INPUT: 30 # 受付の入力場所を開いているかどうか
   UNLOCK_ENTRANCE_INPUT: 31 # 受付の入力を解除
   READ_ENTRANCE_INPUT: 32 # 受付のメモを読んだ
   AWARE_PLAYER: 40 # プレイヤーに気がつく
-  FIT_TRIANGLE: 52 # 三角形の穴に吊り革を差し込んだ
+  GONE_WOLF: 41 # 狼が立ち去った
   FIT_BOTH: 53 # 両方の穴に吊り革を差し込んだ
   HAND1_ON: 20 # 
   HAND1_OFF: 21 # 
   HAND2_ON: 22 # 
   HAND2_OFF: 23 # 
-  MASK_DROP: 24 # 能面出現
-  TRAIN3_NON_DARK: 25 # ３号車両の暗闇解除
-  INSERT_FLOPPY: 60 # フロッピーディスクを差し込んだ
   LASTDOOR_HINT1: 61 # 最後のドアのヒント１
   UNLOCK_LASTDOOR: 62 # 最後のドアを解錠した

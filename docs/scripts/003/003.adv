@@ -32,3 +32,44 @@ def wolf2
 		}
 	}
 }
+
+def clock
+{
+	":時計は9時20分ごろを指している"
+}
+
+def driver
+{
+	if(%AWARE_PLAYER == false) {
+		if($35 > 0) {
+			select("何か落ちているが"
+			"近くには狼がいる…")
+			{"静かに近づく"
+				// ドライバー入手
+				ITEM_ADD(ITEM_DRIVER)
+				return
+			}
+			{"堂々と近づく"
+			}
+			{"素早く近づく"
+			}
+		}
+		
+		"狼はこちらに気がついたようだ/"
+		%AWARE_PLAYER = true
+		return
+	}
+	
+	":狼が邪魔をして手を出せない"
+	$35 += 1
+}
+
+def iron
+{
+	if(%GONE_WOLF) {
+		":鉄格子は動かない"
+		return
+	}
+	
+	":狼が邪魔をして調べることができない"
+}
