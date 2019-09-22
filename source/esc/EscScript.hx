@@ -26,6 +26,7 @@ class EscScript {
     var _wait:Float = 0;
     var _isLog:Bool = false;
     var _isCompleted:Bool = false; // ゲームクリアフラグ
+    var _isGameOver:Bool = false; // ゲームオーバーフラグ
 
     // 選択肢
     var _selectQuestion:String;
@@ -56,6 +57,14 @@ class EscScript {
      */
     public function isCompleted():Bool {
         return _isCompleted;
+    }
+
+    /**
+     * ゲームオーバーかどうか
+     * @return Bool ゲームオーバーなら true
+     */
+    public function isGameOver():Bool {
+        return _isGameOver;
     }
 
     /**
@@ -111,6 +120,7 @@ class EscScript {
             "ITEM_CHK"   => _ITEM_CHK,
             "CRAFT_CHK"  => _CRAFT_CHK,
             "COMPLETE"   => _COMPLETE,
+            "GAMEOVER"   => _GAMEOVER,
             "SEL"        => _SEL,
             "SEL_ANS"    => _SEL_ANS,
             "SEL_GOTO"   => _SEL_GOTO,
@@ -257,6 +267,11 @@ class EscScript {
     function _COMPLETE(param:Array<String>):Int {
         _log('COMPLETE');
         _isCompleted = true;
+        return AdvScript.RET_EXIT;
+    }
+    function _GAMEOVER(param:Array<String>):Int {
+        _log('GAMEOVER');
+        _isGameOver = true;
         return AdvScript.RET_EXIT;
     }
     function _SEL(param:Array<String>):Int {

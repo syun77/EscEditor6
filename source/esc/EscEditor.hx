@@ -503,6 +503,9 @@ class EscEditor extends FlxSubState {
                     close();
                 }, true);
             }
+            else if(_script.isGameOver()) {
+                FlxG.switchState(new NEXT_STATE());
+            }
             else if(_script.isCompleted()) {
                 _state = State.Completed;
                 _txtCompleted.text = "COMPLETED";
