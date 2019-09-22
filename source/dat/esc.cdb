@@ -48,57 +48,34 @@
 							"id": "1"
 						}
 					],
-					"objs": [
-						{
-							"id": "1",
-							"file": "../../assets/data/scene001/strap.png",
-							"image": "f4fc8867420f14f6832c9f912a4ae6ca",
-							"x": 48,
-							"y": 76,
-							"click": "strap",
-							"off": "GAIN_STRAP_CIRCLE"
-						},
-						{
-							"id": "2",
-							"file": "../../assets/data/scene001/next.png",
-							"image": "a4c975ad9dccca1a3b200687206d26f9",
-							"x": 158,
-							"y": 170,
-							"click": "next"
-						},
-						{
-							"id": "3",
-							"file": "../../assets/data/scene001/memo.png",
-							"image": "e8a2572d16f650511de3016f3dfbd955",
-							"x": 10,
-							"y": 123,
-							"click": "memo",
-							"off": "GAIN_MEMO"
-						},
-						{
-							"id": "4",
-							"file": "../../assets/data/scene001/floppy.png",
-							"image": "c6891b994fc157a42fefd6dd0c3cb7ba",
-							"x": 115,
-							"y": 313,
-							"click": "floppy",
-							"off": "GAIN_FLOPPY"
-						},
-						{
-							"id": "5",
-							"file": "../../assets/data/scene001/hand.png",
-							"image": "942adba438c8a8f3de6308c942061fec",
-							"x": 337,
-							"y": 220,
-							"click": "hand1",
-							"on": "HAND1_ON",
-							"off": "HAND1_OFF"
-						}
-					],
+					"objs": [],
 					"script": "../../docs/scripts/001/001.adv",
 					"id": "Entrance",
 					"value": 1,
 					"name": "受付"
+				},
+				{
+					"id": "Corridor",
+					"name": "通路",
+					"value": 2,
+					"script": "../../docs/scripts/002/002.adv",
+					"bgs": [],
+					"objs": []
+				},
+				{
+					"id": "Hall",
+					"name": "出口",
+					"value": 3,
+					"script": "../../docs/scripts/003/003.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/bg.png",
+							"x": 0,
+							"y": 0
+						}
+					],
+					"objs": []
 				}
 			],
 			"separators": [],

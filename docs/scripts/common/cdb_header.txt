@@ -4,7 +4,8 @@
 ############################
 const:
   # シーン
-  Entrance: 1 # 受付
+  Reception: 1 # 受付
+  Entrance: 2 # 入り口
   
   # アイテム
   ITEM_DUMMY: 0 # ダミー
