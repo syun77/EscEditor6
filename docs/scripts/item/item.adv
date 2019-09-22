@@ -7,22 +7,53 @@ if($RET) {
 	ITEM_ADD($RET)
 	return
 }
+if(%READ_ENTRANCE_INPUT) {
+	if($CRAFT1 == ITEM_BATTERY && $CRAFT2 == ITEM_KNIFE) {
+		// 発火したバッテリーを獲得
+		ITEM_DEL($CRAFT1)
+		ITEM_DEL($CRAFT2)
+		ITEM_ADD(ITEM_FIRE_BATTERY)
+		return
+	}
+	if($CRAFT1 == ITEM_KNIFE && $CRAFT2 == ITEM_BATTERY) {
+		// 発火したバッテリーを獲得
+		ITEM_DEL($CRAFT1)
+		ITEM_DEL($CRAFT2)
+		ITEM_ADD(ITEM_FIRE_BATTERY)
+		return
+	}
+}
 
-if($ITEM == ITEM_KNIFE) {
-	":よく切れそうなカッターナイフだ"
+if($ITEM == ITEM_CELL_PHONE) {
+	":電池の切れた携帯電話だ"
 }
-elif($ITEM == ITEM_STRAP_CIRCLE) {
-	":円形の吊り革だ"
+elif($ITEM == ITEM_KNIFE) {
+	":よく切れそうなナイフだ"
 }
-elif($ITEM == ITEM_STRAP_TRIANGLE) {
-	":三角形の吊り革だ"
+elif($ITEM == ITEM_DRIVER) {
+	":ドライバーだ"
 }
-elif($ITEM == ITEM_MEMO) {
-	":「こけし、買い取ります」と書かれている"
+elif($ITEM == ITEM_STICK) {
+	":木の棒だ"
 }
-elif($ITEM == ITEM_FLOPPY) {
-	":フロッピーディスクだ"
+elif($ITEM == ITEM_FIRE_STICK) {
+	":先端に火のついた木の棒だ"
 }
-elif($ITEM == ITEM_MASK) {
-	":能面だ。「闇より汝を守らむ」と書いてある"
+elif($ITEM == ITEM_FIRE_BATTERY) {
+	":ナイフを突き刺したことで発火したバッテリーだ"
+}
+elif($ITEM == ITEM_NOTE1) {
+	":「死肉」と書いてある"
+}
+elif($ITEM == ITEM_NOTE2) {
+	":「生き血」と書いてある"
+}
+elif($ITEM == ITEM_WET_NOTE1) {
+	":「死肉→内気」と書いてある"
+}
+elif($ITEM == ITEM_WET_NOTE2) {
+	":「ニシキ→生き血」と書いてある"
+}
+elif($ITEM == ITEM_NOTE3) {
+	":「坂→赤」と書いてある"
 }

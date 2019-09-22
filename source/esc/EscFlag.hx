@@ -11,6 +11,7 @@ class EscFlag {
 	public static inline var GAIN_FIRE_BATTERY:Int = 17;
 	public static inline var GAIN_NOTE1:Int = 18;
 	public static inline var GAIN_NOTE2:Int = 19;
+	public static inline var GAIN_NOTE3:Int = 23;
 	public static inline var OPEN_ENTRANCE_INPUT:Int = 30;
 	public static inline var UNLOCK_ENTRANCE_INPUT:Int = 31;
 	public static inline var READ_ENTRANCE_INPUT:Int = 32;
@@ -20,7 +21,6 @@ class EscFlag {
 	public static inline var HAND1_ON:Int = 20;
 	public static inline var HAND1_OFF:Int = 21;
 	public static inline var HAND2_ON:Int = 22;
-	public static inline var HAND2_OFF:Int = 23;
 	public static inline var LASTDOOR_HINT1:Int = 61;
 	public static inline var UNLOCK_LASTDOOR:Int = 62;
 	static var _tbl:Map<String, Int> = [
@@ -34,6 +34,7 @@ class EscFlag {
 		"GAIN_FIRE_BATTERY" => 17,
 		"GAIN_NOTE1" => 18,
 		"GAIN_NOTE2" => 19,
+		"GAIN_NOTE3" => 23,
 		"OPEN_ENTRANCE_INPUT" => 30,
 		"UNLOCK_ENTRANCE_INPUT" => 31,
 		"READ_ENTRANCE_INPUT" => 32,
@@ -43,7 +44,6 @@ class EscFlag {
 		"HAND1_ON" => 20,
 		"HAND1_OFF" => 21,
 		"HAND2_ON" => 22,
-		"HAND2_OFF" => 23,
 		"LASTDOOR_HINT1" => 61,
 		"UNLOCK_LASTDOOR" => 62,
 	];

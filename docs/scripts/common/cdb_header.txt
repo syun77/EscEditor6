@@ -18,10 +18,12 @@ const:
   ITEM_KNIFE: 4 # ナイフ
   ITEM_STICK: 5 # 木の棒
   ITEM_FIRE_STICK: 6 # 火のついた木の棒
-  ITEM_NOTE1: 7 # メモ
-  ITEM_NOTE2: 8 # メモ
-  ITEM_WET_NOTE1: 9 # 濡れたメモ
-  ITEM_WET_NOTE2: 10 # 濡れたメモ
+  ITEM_FIRE_BATTERY: 7 # 発火したバッテリー
+  ITEM_NOTE1: 8 # メモ
+  ITEM_NOTE2: 9 # メモ
+  ITEM_WET_NOTE1: 10 # 濡れたメモ
+  ITEM_WET_NOTE2: 11 # 濡れたメモ
+  ITEM_NOTE3: 12 # メモ
   
 flag:
   TEST_FLAG: 10 # テスト用
@@ -34,6 +36,7 @@ flag:
   GAIN_FIRE_BATTERY: 17 # 発火したバッテリーを取得
   GAIN_NOTE1: 18 # メモ１を取得
   GAIN_NOTE2: 19 # メモ２を取得
+  GAIN_NOTE3: 23 # メモ３を取得
   OPEN_ENTRANCE_INPUT: 30 # 受付の入力場所を開いているかどうか
   UNLOCK_ENTRANCE_INPUT: 31 # 受付の入力を解除
   READ_ENTRANCE_INPUT: 32 # 受付のメモを読んだ
@@ -43,6 +46,5 @@ flag:
   HAND1_ON: 20 # 
   HAND1_OFF: 21 # 
   HAND2_ON: 22 # 
-  HAND2_OFF: 23 # 
   LASTDOOR_HINT1: 61 # 最後のドアのヒント１
   UNLOCK_LASTDOOR: 62 # 最後のドアを解錠した

@@ -14,8 +14,10 @@ class EscConst {
 	public static inline var ITEM_KNIFE:Int = 4;
 	public static inline var ITEM_STICK:Int = 5;
 	public static inline var ITEM_FIRE_STICK:Int = 6;
-	public static inline var ITEM_NOTE1:Int = 7;
-	public static inline var ITEM_NOTE2:Int = 8;
-	public static inline var ITEM_WET_NOTE1:Int = 9;
-	public static inline var ITEM_WET_NOTE2:Int = 10;
+	public static inline var ITEM_FIRE_BATTERY:Int = 7;
+	public static inline var ITEM_NOTE1:Int = 8;
+	public static inline var ITEM_NOTE2:Int = 9;
+	public static inline var ITEM_WET_NOTE1:Int = 10;
+	public static inline var ITEM_WET_NOTE2:Int = 11;
+	public static inline var ITEM_NOTE3:Int = 12;
 }

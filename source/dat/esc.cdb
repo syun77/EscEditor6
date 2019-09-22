@@ -125,12 +125,51 @@
 							"y": 50
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/sticker.png",
+							"image": "33a5a17f000ed9b1932c3b57e050a4c3",
+							"x": 146,
+							"y": 140,
+							"click": "sticker"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene002/dust1.png",
+							"image": "0d138e81158fd154cbd1eb2da585a17a",
+							"x": 186,
+							"y": 244,
+							"click": "dust1"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene002/dust2.png",
+							"image": "568ac380a46d65ef50c0670a9045a3c1",
+							"x": 138,
+							"y": 224,
+							"click": "dust2"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene002/memo.png",
+							"image": "910d8c846672ad5e34914349c2becc4a",
+							"x": 210,
+							"y": 212,
+							"click": "memo",
+							"off": "GAIN_NOTE1"
+						}
+					],
 					"moves": [
 						{
 							"id": 3,
 							"click": "",
 							"jump": "Entrance"
+						},
+						{
+							"id": 1,
+							"click": "",
+							"jump": "Room"
 						}
 					]
 				},
@@ -214,7 +253,19 @@
 							"y": 50
 						}
 					],
-					"objs": []
+					"objs": [],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Corridor"
+						},
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Examination"
+						}
+					]
 				},
 				{
 					"id": "Examination",
@@ -229,7 +280,14 @@
 							"y": 50
 						}
 					],
-					"objs": []
+					"objs": [],
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Room"
+						}
+					]
 				}
 			],
 			"separators": [],
@@ -414,29 +472,57 @@
 					"id": "ITEM_FIRE_STICK",
 					"name": "火のついた木の棒",
 					"value": 6,
-					"flag": "GAIN_FIRE_STICK"
+					"flag": "GAIN_FIRE_STICK",
+					"materials": [
+						{
+							"material": "ITEM_STICK"
+						},
+						{
+							"material": "ITEM_FIRE_BATTERY"
+						}
+					]
+				},
+				{
+					"id": "ITEM_FIRE_BATTERY",
+					"name": "発火したバッテリー",
+					"value": 7,
+					"flag": "GAIN_FIRE_BATTERY",
+					"materials": [
+						{
+							"material": "ITEM_BATTERY"
+						},
+						{
+							"material": "ITEM_KNIFE"
+						}
+					]
 				},
 				{
 					"id": "ITEM_NOTE1",
 					"name": "メモ",
-					"value": 7,
+					"value": 8,
 					"flag": "GAIN_NOTE1"
 				},
 				{
 					"id": "ITEM_NOTE2",
 					"name": "メモ",
-					"value": 8,
+					"value": 9,
 					"flag": "GAIN_NOTE2"
 				},
 				{
 					"id": "ITEM_WET_NOTE1",
 					"name": "濡れたメモ",
-					"value": 9
+					"value": 10
 				},
 				{
 					"id": "ITEM_WET_NOTE2",
 					"name": "濡れたメモ",
-					"value": 10
+					"value": 11
+				},
+				{
+					"id": "ITEM_NOTE3",
+					"name": "メモ",
+					"value": 12,
+					"flag": "GAIN_NOTE3"
 				}
 			],
 			"separators": [],
@@ -512,6 +598,11 @@
 					"comment": "メモ２を取得"
 				},
 				{
+					"id": "GAIN_NOTE3",
+					"value": 23,
+					"comment": "メモ３を取得"
+				},
+				{
 					"id": "OPEN_ENTRANCE_INPUT",
 					"value": 30,
 					"comment": "受付の入力場所を開いているかどうか"
@@ -552,10 +643,6 @@
 				{
 					"id": "HAND2_ON",
 					"value": 22
-				},
-				{
-					"id": "HAND2_OFF",
-					"value": 23
 				},
 				{
 					"id": "LASTDOOR_HINT1",
