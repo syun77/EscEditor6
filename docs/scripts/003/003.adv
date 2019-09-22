@@ -1,3 +1,34 @@
 def init
 {
+	%AWARE_PLAYER = false
+}
+
+def wolf1
+{
+	"狼はこちらに気がついたようだ/"
+	%AWARE_PLAYER = true
+}
+
+def wolf2
+{
+	"狼はこちらの様子を伺っている/"
+	ITEM_CHK(ITEM_KNIFE)
+	if($RET) {
+		select("ナイフを使って"
+		"狼を脅してみるか？")
+		{"脅す"
+			"狼は襲いかかってきた/"
+			OBJ_DRAW(2)
+			"素早い動きで狼は"
+			"腕に噛み付いてくる/"
+			
+			"何とか狼を振りほどき、"
+			"逃げ出した/"
+			OBJ_ERASE()
+			JUMP(Entrance)
+		}
+		{"何もしない"
+			return
+		}
+	}
 }

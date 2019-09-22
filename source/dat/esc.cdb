@@ -77,13 +77,22 @@
 							"off": "UNLOCK_ENTRANCE_INPUT"
 						},
 						{
-							"id": "",
+							"id": "4",
 							"file": "../../assets/data/scene001/unlock.png",
 							"image": "cb2c5c143fb40130beff8a3bdd8392e7",
 							"x": 304,
 							"y": 280,
 							"click": "unlock",
 							"on": "UNLOCK_ENTRANCE_INPUT"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene001/knife.png",
+							"image": "d1cce553bc6b3c9194f1b38ac7bb3bce",
+							"x": 41,
+							"y": 295,
+							"click": "knife",
+							"off": "GAIN_KNIFE"
 						}
 					],
 					"script": "../../docs/scripts/001/001.adv",
@@ -138,7 +147,41 @@
 							"y": 50
 						}
 					],
-					"objs": []
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/iron.png",
+							"image": "2f1554abbf3da725d880b621d832fccb",
+							"x": 137,
+							"y": 123,
+							"click": "iron"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/wolf1.png",
+							"image": "ba57d07d71341bd7dffa316286eb49dc",
+							"x": 186,
+							"y": 205,
+							"click": "wolf1",
+							"off": "AWARE_PLAYER"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene003/wolf2.png",
+							"image": "5113b2df796b05fe62d55f0da0f07a61",
+							"x": 186,
+							"y": 205,
+							"click": "wolf2",
+							"on": "AWARE_PLAYER"
+						}
+					],
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Entrance"
+						}
+					]
 				},
 				{
 					"id": "Room",
@@ -332,16 +375,16 @@
 					"flag": "GAIN_STRAP_TRIANGLE"
 				},
 				{
-					"id": "ITEM_KNIFE",
-					"name": "カッターナイフ",
-					"value": 3,
-					"flag": "GAIN_KNIFE"
-				},
-				{
 					"id": "ITEM_MEMO",
 					"name": "メモ書き",
-					"value": 4,
+					"value": 3,
 					"flag": "GAIN_MEMO"
+				},
+				{
+					"id": "ITEM_KNIFE",
+					"name": "ナイフ",
+					"value": 4,
+					"flag": "GAIN_KNIFE"
 				},
 				{
 					"id": "ITEM_FLOPPY",
@@ -429,9 +472,9 @@
 					"comment": "受付のメモを読んだ"
 				},
 				{
-					"id": "FIT_CIRCLE",
-					"value": 51,
-					"comment": "円形の穴に吊り革を差し込んだ"
+					"id": "AWARE_PLAYER",
+					"value": 40,
+					"comment": "プレイヤーに気がつく"
 				},
 				{
 					"id": "FIT_TRIANGLE",

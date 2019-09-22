@@ -12,6 +12,12 @@ def sticker
 	"と書かれている/"
 }
 
+def knife
+{
+	// ナイフ獲得
+	ITEM_ADD(ITEM_KNIFE)
+}
+
 def input
 {
 	select("外れそうな板がある…")

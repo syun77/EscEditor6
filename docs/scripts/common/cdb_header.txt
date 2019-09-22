@@ -14,8 +14,8 @@ const:
   ITEM_DUMMY: 0 # ダミー
   ITEM_STRAP_CIRCLE: 1 # 丸い吊り革
   ITEM_STRAP_TRIANGLE: 2 # 三角の吊り革
-  ITEM_KNIFE: 3 # カッターナイフ
-  ITEM_MEMO: 4 # メモ書き
+  ITEM_MEMO: 3 # メモ書き
+  ITEM_KNIFE: 4 # ナイフ
   ITEM_FLOPPY: 5 # フロッピーディスク
   ITEM_MASK: 6 # 能面
   
@@ -30,7 +30,7 @@ flag:
   OPEN_ENTRANCE_INPUT: 30 # 受付の入力場所を開いているかどうか
   UNLOCK_ENTRANCE_INPUT: 31 # 受付の入力を解除
   READ_ENTRANCE_INPUT: 32 # 受付のメモを読んだ
-  FIT_CIRCLE: 51 # 円形の穴に吊り革を差し込んだ
+  AWARE_PLAYER: 40 # プレイヤーに気がつく
   FIT_TRIANGLE: 52 # 三角形の穴に吊り革を差し込んだ
   FIT_BOTH: 53 # 両方の穴に吊り革を差し込んだ
   HAND1_ON: 20 # 

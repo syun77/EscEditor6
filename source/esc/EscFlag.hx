@@ -11,7 +11,7 @@ class EscFlag {
 	public static inline var OPEN_ENTRANCE_INPUT:Int = 30;
 	public static inline var UNLOCK_ENTRANCE_INPUT:Int = 31;
 	public static inline var READ_ENTRANCE_INPUT:Int = 32;
-	public static inline var FIT_CIRCLE:Int = 51;
+	public static inline var AWARE_PLAYER:Int = 40;
 	public static inline var FIT_TRIANGLE:Int = 52;
 	public static inline var FIT_BOTH:Int = 53;
 	public static inline var HAND1_ON:Int = 20;
@@ -34,7 +34,7 @@ class EscFlag {
 		"OPEN_ENTRANCE_INPUT" => 30,
 		"UNLOCK_ENTRANCE_INPUT" => 31,
 		"READ_ENTRANCE_INPUT" => 32,
-		"FIT_CIRCLE" => 51,
+		"AWARE_PLAYER" => 40,
 		"FIT_TRIANGLE" => 52,
 		"FIT_BOTH" => 53,
 		"HAND1_ON" => 20,
