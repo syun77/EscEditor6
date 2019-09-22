@@ -244,7 +244,7 @@
 					"id": "Room",
 					"name": "病室",
 					"value": 4,
-					"script": "../../assets/data/scene004/bg.png",
+					"script": "../../docs/scripts/004/004.adv",
 					"bgs": [
 						{
 							"id": "1",
@@ -253,7 +253,33 @@
 							"y": 50
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bucket.png",
+							"image": "a2863a78b3a8fe500b8b6e61755f3958",
+							"x": 181,
+							"y": 251,
+							"click": "bucket"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene004/blood.png",
+							"image": "ee1d3497c3c4e8607a1dd2939342b4e1",
+							"x": 83,
+							"y": 258,
+							"click": "blood"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene004/phone.png",
+							"image": "452ab4755503d332fcda217112abf12c",
+							"x": 237,
+							"y": 308,
+							"click": "phone",
+							"off": "GAIN_CELL_PHONE"
+						}
+					],
 					"moves": [
 						{
 							"id": 3,
@@ -271,7 +297,7 @@
 					"id": "Examination",
 					"name": "診察室",
 					"value": 5,
-					"script": "../../assets/data/scene005/bg.png",
+					"script": "../../docs/scripts/005/005.adv",
 					"bgs": [
 						{
 							"id": "1",
@@ -503,15 +529,15 @@
 					"flag": "GAIN_NOTE1"
 				},
 				{
-					"id": "ITEM_NOTE2",
-					"name": "メモ",
-					"value": 9,
-					"flag": "GAIN_NOTE2"
-				},
-				{
 					"id": "ITEM_WET_NOTE1",
 					"name": "濡れたメモ",
-					"value": 10
+					"value": 9
+				},
+				{
+					"id": "ITEM_NOTE2",
+					"name": "メモ",
+					"value": 10,
+					"flag": "GAIN_NOTE2"
 				},
 				{
 					"id": "ITEM_WET_NOTE2",

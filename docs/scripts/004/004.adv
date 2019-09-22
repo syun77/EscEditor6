@@ -1,3 +1,57 @@
 def init
 {
 }
+
+def bucket
+{
+	if($40 > 0) {
+		ITEM_CHK(ITEM_NOTE1)
+		if($RET) {
+			"「死肉」と書かれた紙を"
+			"バケツの水で濡らしてみた/"
+			ITEM_DEL(ITEM_NOTE1)
+			OBJ_DRAW(3)
+			"すると「死肉→内気」という"
+			"文字が浮かび上がった/"
+			OBJ_ERASE()
+			ITEM_ADD(ITEM_WET_NOTE1)
+			return
+		}
+		ITEM_CHK(ITEM_NOTE2)
+		if($RET) {
+			"「生き血」と書かれた紙を"
+			"バケツの水で濡らしてみた/"
+			ITEM_DEL(ITEM_NOTE2)
+			OBJ_DRAW(4)
+			"すると「ニシキ→生き血」という"
+			"文字が浮かび上がった/"
+			OBJ_ERASE()
+			ITEM_ADD(ITEM_WET_NOTE2)
+			return
+		}
+	}
+	
+	":バケツには水が入っている"
+	$40 += 1
+}
+
+def blood
+{
+	":ベッドには血のような染みがある"
+}
+
+def phone
+{
+	OBJ_DRAW(5)
+	select("床に携帯電話が落ちている")
+	{"拾う"
+		"普通の携帯電話のようだ/"
+		
+		"バッテリーが切れているのか"
+		"電源は入らない…/"
+		ITEM_ADD(ITEM_CELL_PHONE)
+	}
+	{"拾わない"
+	}
+	OBJ_ERASE()
+}

@@ -20,8 +20,8 @@ const:
   ITEM_FIRE_STICK: 6 # 火のついた木の棒
   ITEM_FIRE_BATTERY: 7 # 発火したバッテリー
   ITEM_NOTE1: 8 # メモ
-  ITEM_NOTE2: 9 # メモ
-  ITEM_WET_NOTE1: 10 # 濡れたメモ
+  ITEM_WET_NOTE1: 9 # 濡れたメモ
+  ITEM_NOTE2: 10 # メモ
   ITEM_WET_NOTE2: 11 # 濡れたメモ
   ITEM_NOTE3: 12 # メモ
   
