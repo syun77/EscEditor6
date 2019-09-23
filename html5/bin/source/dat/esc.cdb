@@ -1,0 +1,970 @@
+{
+	"sheets": [
+		{
+			"name": "scenes",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "name",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "value"
+				},
+				{
+					"typeStr": "13",
+					"name": "script"
+				},
+				{
+					"typeStr": "8",
+					"name": "bgs",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "objs",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "moves",
+					"opt": true,
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"bgs": [
+						{
+							"x": 0,
+							"y": 50,
+							"file": "../../assets/data/scene001/bg.png",
+							"id": "1"
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene001/sticker.png",
+							"image": "8a65f6ce0ea365cc72b34d39b49e554b",
+							"x": 156,
+							"y": 128,
+							"click": "sticker"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene001/input.png",
+							"image": "b333b1b40be468ad18e6583eb742c55f",
+							"x": 304,
+							"y": 280,
+							"click": "input",
+							"off": "OPEN_ENTRANCE_INPUT"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene001/input2.png",
+							"image": "8a8d463a6249ab20462b71e66f32ca70",
+							"x": 304,
+							"y": 280,
+							"click": "input2",
+							"on": "OPEN_ENTRANCE_INPUT",
+							"off": "UNLOCK_ENTRANCE_INPUT"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene001/unlock.png",
+							"image": "cb2c5c143fb40130beff8a3bdd8392e7",
+							"x": 304,
+							"y": 280,
+							"click": "unlock",
+							"on": "UNLOCK_ENTRANCE_INPUT"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene001/knife.png",
+							"image": "d1cce553bc6b3c9194f1b38ac7bb3bce",
+							"x": 41,
+							"y": 295,
+							"click": "knife",
+							"off": "GAIN_KNIFE"
+						}
+					],
+					"script": "../../docs/scripts/001/001.adv",
+					"id": "Entrance",
+					"value": 1,
+					"name": "受付",
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Corridor"
+						},
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Hall"
+						}
+					]
+				},
+				{
+					"id": "Corridor",
+					"name": "通路",
+					"value": 2,
+					"script": "../../docs/scripts/002/002.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene002/sticker.png",
+							"image": "f9adb2e9560d31834d7042d0f2a3917f",
+							"x": 146,
+							"y": 140,
+							"click": "sticker",
+							"on": "READ_ENTRANCE_INPUT"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene002/dust1.png",
+							"image": "0d138e81158fd154cbd1eb2da585a17a",
+							"x": 186,
+							"y": 244,
+							"click": "dust1"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene002/dust2.png",
+							"image": "568ac380a46d65ef50c0670a9045a3c1",
+							"x": 138,
+							"y": 224,
+							"click": "dust2"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene002/memo.png",
+							"image": "910d8c846672ad5e34914349c2becc4a",
+							"x": 210,
+							"y": 212,
+							"click": "memo",
+							"off": "GAIN_NOTE1"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene002/sticker2.png",
+							"image": "cff04ca98a3e2bd4e37a96170bd13afd",
+							"x": 146,
+							"y": 140,
+							"click": "",
+							"off": "READ_ENTRANCE_INPUT"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Entrance"
+						},
+						{
+							"id": 1,
+							"click": "",
+							"jump": "Room"
+						}
+					]
+				},
+				{
+					"id": "Hall",
+					"name": "出口",
+					"value": 3,
+					"script": "../../docs/scripts/003/003.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene003/iron.png",
+							"image": "2f1554abbf3da725d880b621d832fccb",
+							"x": 137,
+							"y": 123,
+							"click": "iron",
+							"off": "UNLOCK_IRON"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene003/wolf1.png",
+							"image": "ba57d07d71341bd7dffa316286eb49dc",
+							"x": 186,
+							"y": 205,
+							"click": "wolf1",
+							"off": "AWARE_PLAYER"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene003/wolf2.png",
+							"image": "5113b2df796b05fe62d55f0da0f07a61",
+							"x": 186,
+							"y": 205,
+							"click": "wolf2",
+							"on": "AWARE_PLAYER",
+							"off": "GONE_WOLF"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene003/driver.png",
+							"image": "49256c29f3676f22b0017497a609d7c7",
+							"x": 172,
+							"y": 225,
+							"click": "driver",
+							"off": "GAIN_DRIVER"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene003/clock.png",
+							"image": "",
+							"x": 64,
+							"y": 122,
+							"click": "clock"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene003/unlock.png",
+							"image": "",
+							"x": 137,
+							"y": 123,
+							"click": "unlock",
+							"on": "UNLOCK_IRON"
+						}
+					],
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Entrance"
+						}
+					]
+				},
+				{
+					"id": "Room",
+					"name": "病室",
+					"value": 4,
+					"script": "../../docs/scripts/004/004.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene004/bucket.png",
+							"image": "a2863a78b3a8fe500b8b6e61755f3958",
+							"x": 181,
+							"y": 251,
+							"click": "bucket"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene004/blood.png",
+							"image": "ee1d3497c3c4e8607a1dd2939342b4e1",
+							"x": 83,
+							"y": 258,
+							"click": "blood"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene004/phone.png",
+							"image": "452ab4755503d332fcda217112abf12c",
+							"x": 237,
+							"y": 308,
+							"click": "phone",
+							"off": "GAIN_CELL_PHONE"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene004/shelf2.png",
+							"image": "53ddb9826f1b4d0cefe9527729a9ca21",
+							"x": 116,
+							"y": 86,
+							"click": "open_shelf",
+							"off": "OPEN_SHELF"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene004/shelf.png",
+							"image": "9e029aab22cf5dfa1bcf3699f9291fe3",
+							"x": 95,
+							"y": 80,
+							"click": "close_shelf",
+							"on": "OPEN_SHELF"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene004/memo.png",
+							"image": "4c4ded48fe9e6fef685c96bd9f85aa05",
+							"x": 119,
+							"y": 153,
+							"click": "memo",
+							"off": "GAIN_NOTE2",
+							"on": "OPEN_SHELF"
+						}
+					],
+					"moves": [
+						{
+							"id": 3,
+							"click": "",
+							"jump": "Corridor"
+						},
+						{
+							"id": 2,
+							"click": "",
+							"jump": "Examination"
+						}
+					]
+				},
+				{
+					"id": "Examination",
+					"name": "診察室",
+					"value": 5,
+					"script": "../../docs/scripts/005/005.adv",
+					"bgs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/bg.png",
+							"x": 0,
+							"y": 50
+						}
+					],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/input.png",
+							"image": "b56a2fde7e1f446789d6e0dc666446de",
+							"x": 239,
+							"y": 135,
+							"click": "input",
+							"off": "UNLOCK_18782"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene005/sticker.png",
+							"image": "015d8848ad5cb34cfefa2ed0a6448892",
+							"x": 2,
+							"y": 149,
+							"click": "sticker",
+							"on": "UNLOCK_18782"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene005/chair.png",
+							"image": "29e11cbd40616d1591483357275596f2",
+							"x": 177,
+							"y": 278,
+							"click": "chair"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene005/stick.png",
+							"image": "ded8c55fd24c3150559715842f65689e",
+							"x": 124,
+							"y": 202,
+							"click": "stick",
+							"off": "GAIN_STICK"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene005/sticker2.png",
+							"image": "2f913ab38349812cf4f4905289b33631",
+							"x": 223,
+							"y": 77,
+							"click": "sticker2"
+						}
+					],
+					"moves": [
+						{
+							"id": 0,
+							"click": "",
+							"jump": "Room"
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "scenes@bgs",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "13",
+					"name": "file",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "x"
+				},
+				{
+					"typeStr": "3",
+					"name": "y"
+				}
+			]
+		},
+		{
+			"name": "scenes@objs",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "id",
+					"display": null
+				},
+				{
+					"typeStr": "13",
+					"name": "file",
+					"display": null
+				},
+				{
+					"typeStr": "7",
+					"name": "image",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "x"
+				},
+				{
+					"typeStr": "3",
+					"name": "y"
+				},
+				{
+					"typeStr": "1",
+					"name": "click",
+					"display": null
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "on",
+					"opt": true
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "off",
+					"opt": true
+				}
+			]
+		},
+		{
+			"name": "scenes@moves",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "5:left,up,right,down",
+					"name": "id"
+				},
+				{
+					"typeStr": "6:scenes",
+					"name": "jump",
+					"opt": true,
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "click",
+					"display": null
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "on",
+					"opt": true,
+					"display": null
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "off",
+					"opt": true
+				}
+			]
+		},
+		{
+			"name": "items",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "name",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "value"
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "flag",
+					"opt": true
+				},
+				{
+					"typeStr": "8",
+					"name": "materials",
+					"opt": true
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "craft_flag",
+					"opt": true
+				}
+			],
+			"lines": [
+				{
+					"name": "ダミー",
+					"value": 0,
+					"id": "ITEM_DUMMY"
+				},
+				{
+					"id": "ITEM_CELL_PHONE",
+					"name": "携帯電話",
+					"value": 1,
+					"flag": "GAIN_CELL_PHONE"
+				},
+				{
+					"id": "ITEM_DRIVER",
+					"name": "ドライバー",
+					"value": 2,
+					"flag": "GAIN_DRIVER"
+				},
+				{
+					"id": "ITEM_BATTERY",
+					"name": "バッテリー",
+					"value": 3,
+					"flag": "GAIN_BATTERY",
+					"materials": [
+						{
+							"material": "ITEM_CELL_PHONE"
+						},
+						{
+							"material": "ITEM_DRIVER"
+						}
+					],
+					"craft_flag": "READ_ENTRANCE_INPUT"
+				},
+				{
+					"id": "ITEM_KNIFE",
+					"name": "ナイフ",
+					"value": 4,
+					"flag": "GAIN_KNIFE"
+				},
+				{
+					"id": "ITEM_STICK",
+					"name": "木の棒",
+					"value": 5,
+					"flag": "GAIN_STICK"
+				},
+				{
+					"id": "ITEM_FIRE_STICK",
+					"name": "火のついた木の棒",
+					"value": 6,
+					"flag": "GAIN_FIRE_STICK",
+					"materials": [
+						{
+							"material": "ITEM_STICK"
+						},
+						{
+							"material": "ITEM_FIRE_BATTERY"
+						}
+					]
+				},
+				{
+					"id": "ITEM_FIRE_BATTERY",
+					"name": "発火したバッテリー",
+					"value": 7,
+					"flag": "GAIN_FIRE_BATTERY",
+					"materials": [
+						{
+							"material": "ITEM_BATTERY"
+						},
+						{
+							"material": "ITEM_KNIFE"
+						}
+					]
+				},
+				{
+					"id": "ITEM_NOTE1",
+					"name": "メモ",
+					"value": 8,
+					"flag": "GAIN_NOTE1"
+				},
+				{
+					"id": "ITEM_WET_NOTE1",
+					"name": "濡れたメモ",
+					"value": 9
+				},
+				{
+					"id": "ITEM_NOTE2",
+					"name": "メモ",
+					"value": 10,
+					"flag": "GAIN_NOTE2"
+				},
+				{
+					"id": "ITEM_WET_NOTE2",
+					"name": "濡れたメモ",
+					"value": 11
+				},
+				{
+					"id": "ITEM_NOTE3",
+					"name": "メモ",
+					"value": 12,
+					"flag": "GAIN_NOTE3"
+				},
+				{
+					"id": "ITEM_KEY",
+					"name": "カギ",
+					"value": 13,
+					"flag": "GAIN_KEY"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "flags",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id"
+				},
+				{
+					"typeStr": "3",
+					"name": "value"
+				},
+				{
+					"typeStr": "1",
+					"name": "comment",
+					"opt": true,
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"id": "TEST_FLAG",
+					"value": 10,
+					"comment": "テスト用"
+				},
+				{
+					"id": "GAIN_CELL_PHONE",
+					"value": 11,
+					"comment": "携帯電話を取得"
+				},
+				{
+					"id": "GAIN_DRIVER",
+					"value": 12,
+					"comment": "ドライバー取得"
+				},
+				{
+					"id": "GAIN_BATTERY",
+					"value": 13,
+					"comment": "バッテリーを取得"
+				},
+				{
+					"id": "GAIN_KNIFE",
+					"value": 14,
+					"comment": "ナイフを取得"
+				},
+				{
+					"id": "GAIN_STICK",
+					"value": 15,
+					"comment": "木の棒を取得"
+				},
+				{
+					"id": "GAIN_FIRE_STICK",
+					"value": 16,
+					"comment": "火のついた木の棒を取得"
+				},
+				{
+					"id": "GAIN_FIRE_BATTERY",
+					"value": 17,
+					"comment": "発火したバッテリーを取得"
+				},
+				{
+					"id": "GAIN_NOTE1",
+					"value": 18,
+					"comment": "メモ１を取得"
+				},
+				{
+					"id": "GAIN_NOTE2",
+					"value": 19,
+					"comment": "メモ２を取得"
+				},
+				{
+					"id": "GAIN_NOTE3",
+					"value": 23,
+					"comment": "メモ３を取得"
+				},
+				{
+					"id": "GAIN_KEY",
+					"value": 20,
+					"comment": "カギを取得"
+				},
+				{
+					"id": "OPEN_ENTRANCE_INPUT",
+					"value": 30,
+					"comment": "受付の入力場所を開いているかどうか"
+				},
+				{
+					"id": "UNLOCK_ENTRANCE_INPUT",
+					"value": 31,
+					"comment": "受付の入力を解除"
+				},
+				{
+					"id": "READ_ENTRANCE_INPUT",
+					"value": 32,
+					"comment": "受付のメモを読んだ"
+				},
+				{
+					"id": "AWARE_PLAYER",
+					"value": 40,
+					"comment": "プレイヤーに気がつく"
+				},
+				{
+					"id": "GONE_WOLF",
+					"value": 41,
+					"comment": "狼が立ち去った"
+				},
+				{
+					"id": "OPEN_SHELF",
+					"value": 42,
+					"comment": "棚を開いた"
+				},
+				{
+					"id": "UNLOCK_18782",
+					"value": 43,
+					"comment": "嫌なやつのロックを解除した"
+				},
+				{
+					"id": "READ_CHAIR_STICKER",
+					"value": 44,
+					"comment": "「カギはイスの下」を読んだ"
+				},
+				{
+					"id": "LASTDOOR_HINT1",
+					"value": 61,
+					"comment": "最後のドアのヒント１"
+				},
+				{
+					"id": "UNLOCK_IRON",
+					"value": 62,
+					"comment": "最後のドアを解錠した"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "items@materials",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "6:items",
+					"name": "material",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "kanas",
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "answer",
+					"display": null
+				},
+				{
+					"typeStr": "2",
+					"name": "auto_check"
+				},
+				{
+					"typeStr": "3",
+					"name": "idx"
+				},
+				{
+					"typeStr": "8",
+					"name": "choices",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"id": 1,
+					"answer": "つきかげ",
+					"choices": [
+						{
+							"moji": "さしすせそたちつてと"
+						},
+						{
+							"moji": "かきくけこさしすせそ"
+						},
+						{
+							"moji": "かきくけこさしすせそ"
+						},
+						{
+							"moji": "がぎぐげござじずぜぞ"
+						}
+					],
+					"auto_check": false,
+					"idx": 30
+				},
+				{
+					"id": 2,
+					"answer": "いやなやつ",
+					"auto_check": false,
+					"idx": 50,
+					"choices": [
+						{
+							"moji": "あいうえおかきくけこ"
+						},
+						{
+							"moji": "まみむめもやゆよ"
+						},
+						{
+							"moji": "たちつてとなにぬねの"
+						},
+						{
+							"moji": "やゆよらりるれろわをん"
+						},
+						{
+							"moji": "たちつてとなにぬねの"
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "panels",
+			"columns": [
+				{
+					"typeStr": "3",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "answer"
+				},
+				{
+					"typeStr": "8",
+					"name": "choices"
+				}
+			],
+			"lines": [
+				{
+					"id": 1,
+					"answer": "カタナ",
+					"choices": [
+						{
+							"letter": "ナ"
+						},
+						{
+							"letter": "タ"
+						},
+						{
+							"letter": "カ"
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "panels@choices",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "letter",
+					"display": null
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "on",
+					"opt": true
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "off",
+					"opt": true,
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "kanas@choices",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "moji"
+				}
+			]
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}
