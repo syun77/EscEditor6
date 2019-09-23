@@ -20,4 +20,5 @@ class EscConst {
 	public static inline var ITEM_NOTE2:Int = 10;
 	public static inline var ITEM_WET_NOTE2:Int = 11;
 	public static inline var ITEM_NOTE3:Int = 12;
+	public static inline var ITEM_KEY:Int = 13;
 }

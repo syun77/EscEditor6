@@ -24,6 +24,7 @@ const:
   ITEM_NOTE2: 10 # メモ
   ITEM_WET_NOTE2: 11 # 濡れたメモ
   ITEM_NOTE3: 12 # メモ
+  ITEM_KEY: 13 # カギ
   
 flag:
   TEST_FLAG: 10 # テスト用
@@ -37,14 +38,14 @@ flag:
   GAIN_NOTE1: 18 # メモ１を取得
   GAIN_NOTE2: 19 # メモ２を取得
   GAIN_NOTE3: 23 # メモ３を取得
+  GAIN_KEY: 20 # カギを取得
   OPEN_ENTRANCE_INPUT: 30 # 受付の入力場所を開いているかどうか
   UNLOCK_ENTRANCE_INPUT: 31 # 受付の入力を解除
   READ_ENTRANCE_INPUT: 32 # 受付のメモを読んだ
   AWARE_PLAYER: 40 # プレイヤーに気がつく
   GONE_WOLF: 41 # 狼が立ち去った
   OPEN_SHELF: 42 # 棚を開いた
-  HAND1_ON: 20 # 
-  HAND1_OFF: 21 # 
-  HAND2_ON: 22 # 
+  UNLOCK_18782: 43 # 嫌なやつのロックを解除した
+  READ_CHAIR_STICKER: 44 # 「カギはイスの下」を読んだ
   LASTDOOR_HINT1: 61 # 最後のドアのヒント１
-  UNLOCK_LASTDOOR: 62 # 最後のドアを解錠した
+  UNLOCK_IRON: 62 # 最後のドアを解錠した

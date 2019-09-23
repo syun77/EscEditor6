@@ -1,7 +1,9 @@
 FUNC_START,init
 FUNC_END,init
 FUNC_START,sticker
-MSG,9,「ミナゴロシ÷２」と書いてある
+MSG,9,「カギはイスの下」と書いてある
+BOOL,1
+SET,16,44
 FUNC_END,sticker
 FUNC_START,memo
 MSG,1,何かが書かれた紙が置かれている

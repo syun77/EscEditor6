@@ -7,22 +7,6 @@ if($RET) {
 	ITEM_ADD($RET)
 	return
 }
-if(%READ_ENTRANCE_INPUT) {
-	if($CRAFT1 == ITEM_BATTERY && $CRAFT2 == ITEM_KNIFE) {
-		// 発火したバッテリーを獲得
-		ITEM_DEL($CRAFT1)
-		ITEM_DEL($CRAFT2)
-		ITEM_ADD(ITEM_FIRE_BATTERY)
-		return
-	}
-	if($CRAFT1 == ITEM_KNIFE && $CRAFT2 == ITEM_BATTERY) {
-		// 発火したバッテリーを獲得
-		ITEM_DEL($CRAFT1)
-		ITEM_DEL($CRAFT2)
-		ITEM_ADD(ITEM_FIRE_BATTERY)
-		return
-	}
-}
 
 if($ITEM == ITEM_CELL_PHONE) {
 	":電池の切れた携帯電話だ"
@@ -57,3 +41,7 @@ elif($ITEM == ITEM_WET_NOTE2) {
 elif($ITEM == ITEM_NOTE3) {
 	":「坂→赤」と書いてある"
 }
+elif($ITEM == ITEM_KEY) {
+	":古びたカギだ"
+}
+

@@ -1,6 +1,9 @@
 def init
 {
 	%AWARE_PLAYER = false
+	if(%GONE_WOLF) {
+		%AWARE_PLAYER = true
+	}
 }
 
 def wolf1
@@ -12,6 +15,14 @@ def wolf1
 def wolf2
 {
 	"狼はこちらの様子を伺っている/"
+	ITEM_CHK(ITEM_FIRE_STICK)
+	if($RET) {
+		"火のついた棒を持ったまま近づくと"
+		"狼は逃げるように去っていった/"
+		%GONE_WOLF = true
+		return
+	}
+	
 	ITEM_CHK(ITEM_KNIFE)
 	if($RET) {
 		select("ナイフを使って"
@@ -67,9 +78,23 @@ def driver
 def iron
 {
 	if(%GONE_WOLF) {
+		ITEM_CHK(ITEM_KEY)
+		if($RET) {
+			"カギを使って鉄格子を開いた/"
+			%UNLOCK_IRON = true
+			ITEM_DEL(ITEM_KEY)
+			return
+		}
+		
 		":鉄格子は動かない"
 		return
 	}
 	
 	":狼が邪魔をして調べることができない"
 }
+
+def unlock
+{
+	COMPLETE()
+}
+

@@ -1,3 +1,41 @@
 def init
 {
 }
+
+def input
+{
+	KANA_INPUT(2)
+	if($RET) {
+		%UNLOCK_18782 = true
+	}
+	else {
+		":正しくないようだ"
+	}
+}
+
+def sticker
+{
+	":「坂→赤」と書かれている"
+}
+
+def sticker2
+{
+	":「ミナゴロシ÷２」と書かれている"
+}
+
+def chair
+{
+	if(%READ_CHAIR_STICKER && %GAIN_KEY == false) {
+		"イスの下を調べてみた/"
+		ITEM_ADD(ITEM_KEY)
+		return
+	}
+	
+	":イスがある"
+}
+
+def stick
+{
+	"木の棒が落ちている/"
+	ITEM_ADD(ITEM_STICK)
+}

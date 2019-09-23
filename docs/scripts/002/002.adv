@@ -4,7 +4,8 @@ def init
 
 def sticker
 {
-	":「ミナゴロシ÷２」と書いてある"
+	":「カギはイスの下」と書いてある"
+	%READ_CHAIR_STICKER = true
 }
 
 def memo

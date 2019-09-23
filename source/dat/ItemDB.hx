@@ -61,6 +61,12 @@ class ItemDB {
             if(item.materials == null) {
                 continue;
             }
+            if(item.craft_flag != null) {
+                if(EscGlobal.flagCheck(item.craft_flag.value) == false) {
+                    // フラグが立っていないので合成できない
+                    continue;
+                }
+            }
             for(mat in item.materials) {
                 if(mat.material.value == itemID1 || mat.material.value == itemID2) {
                     cnt++;

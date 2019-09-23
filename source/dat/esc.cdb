@@ -129,10 +129,11 @@
 						{
 							"id": "1",
 							"file": "../../assets/data/scene002/sticker.png",
-							"image": "33a5a17f000ed9b1932c3b57e050a4c3",
+							"image": "f9adb2e9560d31834d7042d0f2a3917f",
 							"x": 146,
 							"y": 140,
-							"click": "sticker"
+							"click": "sticker",
+							"on": "READ_ENTRANCE_INPUT"
 						},
 						{
 							"id": "2",
@@ -158,6 +159,15 @@
 							"y": 212,
 							"click": "memo",
 							"off": "GAIN_NOTE1"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene002/sticker2.png",
+							"image": "cff04ca98a3e2bd4e37a96170bd13afd",
+							"x": 146,
+							"y": 140,
+							"click": "",
+							"off": "READ_ENTRANCE_INPUT"
 						}
 					],
 					"moves": [
@@ -193,7 +203,8 @@
 							"image": "2f1554abbf3da725d880b621d832fccb",
 							"x": 137,
 							"y": 123,
-							"click": "iron"
+							"click": "iron",
+							"off": "UNLOCK_IRON"
 						},
 						{
 							"id": "2",
@@ -230,6 +241,15 @@
 							"x": 64,
 							"y": 122,
 							"click": "clock"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene003/unlock.png",
+							"image": "",
+							"x": 137,
+							"y": 123,
+							"click": "unlock",
+							"on": "UNLOCK_IRON"
 						}
 					],
 					"moves": [
@@ -334,7 +354,51 @@
 							"y": 50
 						}
 					],
-					"objs": [],
+					"objs": [
+						{
+							"id": "1",
+							"file": "../../assets/data/scene005/input.png",
+							"image": "b56a2fde7e1f446789d6e0dc666446de",
+							"x": 239,
+							"y": 135,
+							"click": "input",
+							"off": "UNLOCK_18782"
+						},
+						{
+							"id": "2",
+							"file": "../../assets/data/scene005/sticker.png",
+							"image": "015d8848ad5cb34cfefa2ed0a6448892",
+							"x": 2,
+							"y": 149,
+							"click": "sticker",
+							"on": "UNLOCK_18782"
+						},
+						{
+							"id": "3",
+							"file": "../../assets/data/scene005/chair.png",
+							"image": "29e11cbd40616d1591483357275596f2",
+							"x": 177,
+							"y": 278,
+							"click": "chair"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene005/stick.png",
+							"image": "ded8c55fd24c3150559715842f65689e",
+							"x": 124,
+							"y": 202,
+							"click": "stick",
+							"off": "GAIN_STICK"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene005/sticker2.png",
+							"image": "2f913ab38349812cf4f4905289b33631",
+							"x": 223,
+							"y": 77,
+							"click": "sticker2"
+						}
+					],
 					"moves": [
 						{
 							"id": 0,
@@ -484,6 +548,11 @@
 					"typeStr": "8",
 					"name": "materials",
 					"opt": true
+				},
+				{
+					"typeStr": "6:flags",
+					"name": "craft_flag",
+					"opt": true
 				}
 			],
 			"lines": [
@@ -508,7 +577,16 @@
 					"id": "ITEM_BATTERY",
 					"name": "バッテリー",
 					"value": 3,
-					"flag": "GAIN_BATTERY"
+					"flag": "GAIN_BATTERY",
+					"materials": [
+						{
+							"material": "ITEM_CELL_PHONE"
+						},
+						{
+							"material": "ITEM_DRIVER"
+						}
+					],
+					"craft_flag": "READ_ENTRANCE_INPUT"
 				},
 				{
 					"id": "ITEM_KNIFE",
@@ -577,6 +655,12 @@
 					"name": "メモ",
 					"value": 12,
 					"flag": "GAIN_NOTE3"
+				},
+				{
+					"id": "ITEM_KEY",
+					"name": "カギ",
+					"value": 13,
+					"flag": "GAIN_KEY"
 				}
 			],
 			"separators": [],
@@ -657,6 +741,11 @@
 					"comment": "メモ３を取得"
 				},
 				{
+					"id": "GAIN_KEY",
+					"value": 20,
+					"comment": "カギを取得"
+				},
+				{
 					"id": "OPEN_ENTRANCE_INPUT",
 					"value": 30,
 					"comment": "受付の入力場所を開いているかどうか"
@@ -687,16 +776,14 @@
 					"comment": "棚を開いた"
 				},
 				{
-					"id": "HAND1_ON",
-					"value": 20
+					"id": "UNLOCK_18782",
+					"value": 43,
+					"comment": "嫌なやつのロックを解除した"
 				},
 				{
-					"id": "HAND1_OFF",
-					"value": 21
-				},
-				{
-					"id": "HAND2_ON",
-					"value": 22
+					"id": "READ_CHAIR_STICKER",
+					"value": 44,
+					"comment": "「カギはイスの下」を読んだ"
 				},
 				{
 					"id": "LASTDOOR_HINT1",
@@ -704,7 +791,7 @@
 					"comment": "最後のドアのヒント１"
 				},
 				{
-					"id": "UNLOCK_LASTDOOR",
+					"id": "UNLOCK_IRON",
 					"value": 62,
 					"comment": "最後のドアを解錠した"
 				}
@@ -773,6 +860,29 @@
 					],
 					"auto_check": false,
 					"idx": 30
+				},
+				{
+					"id": 2,
+					"answer": "いやなやつ",
+					"auto_check": false,
+					"idx": 50,
+					"choices": [
+						{
+							"moji": "あいうえおかきくけこ"
+						},
+						{
+							"moji": "まみむめもやゆよ"
+						},
+						{
+							"moji": "たちつてとなにぬねの"
+						},
+						{
+							"moji": "やゆよらりるれろわをん"
+						},
+						{
+							"moji": "たちつてとなにぬねの"
+						}
+					]
 				}
 			],
 			"separators": [],
