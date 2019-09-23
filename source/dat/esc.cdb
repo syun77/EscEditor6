@@ -296,6 +296,16 @@
 							"y": 80,
 							"click": "close_shelf",
 							"on": "OPEN_SHELF"
+						},
+						{
+							"id": "6",
+							"file": "../../assets/data/scene004/memo.png",
+							"image": "4c4ded48fe9e6fef685c96bd9f85aa05",
+							"x": 119,
+							"y": 153,
+							"click": "memo",
+							"off": "GAIN_NOTE2",
+							"on": "OPEN_SHELF"
 						}
 					],
 					"moves": [

@@ -70,4 +70,9 @@ FUNC_START,close_shelf
 BOOL,0
 SET,16,42
 FUNC_END,close_shelf
+FUNC_START,memo
+MSG,1,メモ書きがある
+INT,10
+ITEM_ADD
+FUNC_END,memo
 END

@@ -128,12 +128,12 @@ class MessageUI extends MenuUIBase {
                 _updatePf();
                 
                 if(_nextPage()) {
+                    // 改ページアニメ停止
+                    _pf.animation.pause();
                     if(_pfMode == PF_MODE_WAIT) {
                         // 通常の改行待ち
                         _clear();
                     }
-                    // 改ページアニメ停止
-                    _pf.animation.pause();
                     _state = State.Standby;
                 }
         }

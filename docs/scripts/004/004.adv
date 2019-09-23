@@ -65,3 +65,9 @@ def close_shelf
 	%OPEN_SHELF = false
 }
 
+def memo
+{
+	"メモ書きがある/"
+	ITEM_ADD(ITEM_NOTE2)
+}
+
