@@ -278,6 +278,24 @@
 							"y": 308,
 							"click": "phone",
 							"off": "GAIN_CELL_PHONE"
+						},
+						{
+							"id": "4",
+							"file": "../../assets/data/scene004/shelf2.png",
+							"image": "53ddb9826f1b4d0cefe9527729a9ca21",
+							"x": 116,
+							"y": 86,
+							"click": "open_shelf",
+							"off": "OPEN_SHELF"
+						},
+						{
+							"id": "5",
+							"file": "../../assets/data/scene004/shelf.png",
+							"image": "9e029aab22cf5dfa1bcf3699f9291fe3",
+							"x": 95,
+							"y": 80,
+							"click": "close_shelf",
+							"on": "OPEN_SHELF"
 						}
 					],
 					"moves": [
@@ -654,9 +672,9 @@
 					"comment": "狼が立ち去った"
 				},
 				{
-					"id": "FIT_BOTH",
-					"value": 53,
-					"comment": "両方の穴に吊り革を差し込んだ"
+					"id": "OPEN_SHELF",
+					"value": 42,
+					"comment": "棚を開いた"
 				},
 				{
 					"id": "HAND1_ON",

@@ -42,7 +42,7 @@ flag:
   READ_ENTRANCE_INPUT: 32 # 受付のメモを読んだ
   AWARE_PLAYER: 40 # プレイヤーに気がつく
   GONE_WOLF: 41 # 狼が立ち去った
-  FIT_BOTH: 53 # 両方の穴に吊り革を差し込んだ
+  OPEN_SHELF: 42 # 棚を開いた
   HAND1_ON: 20 # 
   HAND1_OFF: 21 # 
   HAND2_ON: 22 # 

@@ -55,3 +55,13 @@ def phone
 	}
 	OBJ_ERASE()
 }
+
+def open_shelf
+{
+	%OPEN_SHELF = true
+}
+def close_shelf
+{
+	%OPEN_SHELF = false
+}
+

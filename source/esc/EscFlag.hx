@@ -17,7 +17,7 @@ class EscFlag {
 	public static inline var READ_ENTRANCE_INPUT:Int = 32;
 	public static inline var AWARE_PLAYER:Int = 40;
 	public static inline var GONE_WOLF:Int = 41;
-	public static inline var FIT_BOTH:Int = 53;
+	public static inline var OPEN_SHELF:Int = 42;
 	public static inline var HAND1_ON:Int = 20;
 	public static inline var HAND1_OFF:Int = 21;
 	public static inline var HAND2_ON:Int = 22;
@@ -40,7 +40,7 @@ class EscFlag {
 		"READ_ENTRANCE_INPUT" => 32,
 		"AWARE_PLAYER" => 40,
 		"GONE_WOLF" => 41,
-		"FIT_BOTH" => 53,
+		"OPEN_SHELF" => 42,
 		"HAND1_ON" => 20,
 		"HAND1_OFF" => 21,
 		"HAND2_ON" => 22,
