@@ -68,11 +68,11 @@ def driver
 		
 		"狼はこちらに気がついたようだ/"
 		%AWARE_PLAYER = true
+		$35 += 1
 		return
 	}
 	
 	":狼が邪魔をして手を出せない"
-	$35 += 1
 }
 
 def iron

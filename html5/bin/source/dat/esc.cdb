@@ -229,7 +229,7 @@
 							"id": "4",
 							"file": "../../assets/data/scene003/driver.png",
 							"image": "49256c29f3676f22b0017497a609d7c7",
-							"x": 172,
+							"x": 166,
 							"y": 225,
 							"click": "driver",
 							"off": "GAIN_DRIVER"
